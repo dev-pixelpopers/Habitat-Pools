@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #040303;
+  --color-foreground: #ededed;
+  
+  /* Fonts */
+  --font-nohemi: var(--font-nohemi), sans-serif;
+  
+  /* Typography Sizes */
+  --text-display-lg: 96px;
+  --text-display-lg--line-height: 88px;
+  --text-display-md: 80px;
+  --text-display-md--line-height: 76.127px;
+  --text-display-sm: 66px;
+  --text-display-sm--line-height: 62px;
+  --text-title-xl: 61.579px;
+  --text-title-xl--line-height: 52.119px;
+  --text-title-lg: 54.722px;
+  --text-title-lg--line-height: 71.635px;
+  --text-title-md: 36px;
+  --text-title-md--line-height: 57.84px;
+  --text-title-sm: 26px;
+  --text-title-sm--line-height: 57.84px;
+  --text-body-xl: 24px;
+  --text-body-xl--line-height: 44px;
+  --text-body-lg: 22px;
+  --text-body-lg--line-height: 30px;
+  --text-body-md: 20.526px;
+  --text-body-md--line-height: 27.99px;
+
+  /* Colors */
+  --color-primary: #112931;
+  --color-primary-light: rgba(17, 41, 49, 0.18);
+  --color-secondary-100: #86a3ac;
+  --color-secondary-200: #8eabb4;
+  --color-neutral-900: #040303;
+  --color-neutral-800: #2b2828;
+  --color-neutral-300: #d9d9d9;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-nohemi);
+}
