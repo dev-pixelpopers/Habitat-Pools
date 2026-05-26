@@ -55,3 +55,24 @@ body {
 h1, h2, h3, h4, h5, h6, p, span, a, body {
   font-family: "Nohemi";
 }
+
+.btn-all a:before {
+    content: '';
+    height: 50px;
+    position: absolute;
+    border-left: 1px solid #fff;
+    left: 0%;
+    top: 0px;
+    border-bottom: 1px solid #fff;
+    width: 92%;
+}
+.btn-all a:after {
+    content: '';
+    position: absolute;
+    border-right: 1px solid #fff;
+    height: 60px;
+    right: 0px;
+    border-bottom: 1px solid #fff;
+    width: 95%;
+    bottom: 0px;
+}

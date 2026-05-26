@@ -51,8 +51,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <p className="text-white text-[26px] leading-[48px] capitalize">
             Experience a level of craftsmanship where the people you meet are the ones who build your project. No handoffs. No layers. Just direct involvement, every step of the way
           </p>
-          <div className='btn-all'>
-            <a href='#' className='capitalize text-[22px]'>call us today</a>
+          <div className='btn-all mt-[60px] relative'>
+            <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
           </div>
         </div>
 
