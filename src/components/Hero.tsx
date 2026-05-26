@@ -11,7 +11,7 @@ export default function Hero({ className = "" }: HeroProps) {
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="http://localhost:3845/assets/bbe0165c1a7c689e876fb2baf00e098f3a895d26.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
           alt="Luxury Pool and Landscape"
           fill
           priority
