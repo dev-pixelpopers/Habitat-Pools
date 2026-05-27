@@ -3,6 +3,7 @@ import AboutSection from "@/components/about";
 import ProjectsSection from "@/components/project";
 import StickyServicesContainer from "@/components/service";
 import AboutService from "@/components/about-service";
+import ReviewsSection from "@/components/review";
 
 export default function Home() {
   return (
@@ -56,6 +57,8 @@ export default function Home() {
     <StickyServicesContainer/>
 
     <AboutService/>
+
+    <ReviewsSection/>
     </div>
   );
 }

@@ -18,10 +18,10 @@ export const AboutService: React.FC<AboutServiceProps> = ({
 }) => {
   return (
     // Background color set to match the dark teal in the design
-    <section className="w-full min-h-screen bg-[#112428] flex items-center justify-center py-16 px-6 sm:px-12 lg:px-20 font-sans">
+    <section className="w-full bg-[#112931] flex items-center justify-center py-[100px] px-[40px]">
       
       {/* Max-width container to keep things constrained on very large screens */}
-      <div className="w-full max-w-[1500px] grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         
         {/* Left Column: Image */}
         <div className="w-full">
@@ -36,22 +36,19 @@ export const AboutService: React.FC<AboutServiceProps> = ({
         <div className="flex flex-col justify-center items-end text-right">
           
           {/* Heading */}
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-[42px] font-medium leading-[1.3] tracking-tight mb-8 max-w-[650px]">
+          <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 max-w-[786px]">
             {heading}
           </h2>
           
           {/* Description Paragraph */}
-          <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-12 max-w-[580px]">
+          <p className="text-white/90 text-[24px] leading-[44px] mb-14 capitalize max-w-[680px]">
             {description}
           </p>
           
           {/* Outlined Action Button */}
-          <button
-            onClick={onButtonClick}
-            className="px-10 py-3.5 border border-white/60 text-white text-sm font-medium tracking-wide hover:bg-white hover:text-[#112428] transition-all duration-300 ease-in-out"
-          >
-            {buttonText}
-          </button>
+          <div className='btn-all mt-[20px] relative'>
+            <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
+          </div>
 
         </div>
       </div>
