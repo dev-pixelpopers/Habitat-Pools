@@ -14,7 +14,7 @@ const StickySection: React.FC<{ data: SectionProps }> = ({ data }) => {
   return (
     // 'sticky top-0' is section ko uper fix kar dega jab yeh viewport ke top par pohnchega
     // 'h-screen' ensures har section pori screen gheray
-    <div className="sticky top-0 w-full h-screen w-full rounded-t-[2.5rem] overflow-hidden flex shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+    <div className="sticky top-0 w-full h-screen rounded-t-[2.5rem] overflow-hidden flex shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
@@ -24,21 +24,21 @@ const StickySection: React.FC<{ data: SectionProps }> = ({ data }) => {
           className="w-full h-full object-cover"
         />
         {/* Dark overlay taake white text wazeh nazar aaye */}
-        <div className="absolute inset-0 bg-black/30"></div> 
+        {/* <div className="absolute inset-0 bg-black/30"></div>  */}
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 w-full px-[95px] py-[200px] grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="relative z-10 w-full px-[95px] py-[200px] flex gap-10">
         
         {/* Left Column: Main Title */}
-        <div className="flex">
+        <div className="flex w-[65%] pt-[60px]">
           <h2 className="text-white text-[66px] leading-[62px] tracking-tight capitalize">
             {data.title}
           </h2>
         </div>
 
         {/* Right Column: Description & Action */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col w-[35%]">
           <p className="text-white text-[24px] leading-[36px] font-normal">
             {data.description}
           </p>
@@ -64,21 +64,21 @@ export const StickyServicesContainer: React.FC = () => {
       title: "Pool Design & Build",
       description: "Custom Pools Designed Around Your Space, Your Lifestyle, And Your Vision—Built With Precision And Long-Term Durability In Mind.",
       buttonText: "Book A Services",
-      imageSrc: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1920&auto=format&fit=crop", // Add your own image URL
+      imageSrc: "/images/service-01.png", // Add your own image URL
     },
     {
       id: 2,
-      title: "Outdoor Living",
-      description: "Transforming your backyard into an extraordinary living space with custom patios, pergolas, and fire features.",
-      buttonText: "Explore Options",
-      imageSrc: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1920&auto=format&fit=crop", 
+      title: "Landscape Design",
+      description: "From clean, modern layouts to fully integrated outdoor environments, we create spaces that feel cohesive and elevated.",
+      buttonText: "Book A Services",
+      imageSrc: "/images/service-02.png", 
     },
     {
       id: 3,
-      title: "Maintenance & Care",
-      description: "Keep your luxury pool in pristine condition year-round with our dedicated, professional maintenance services.",
-      buttonText: "View Packages",
-      imageSrc: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1920&auto=format&fit=crop", 
+      title: "Remodel & Upgrades",
+      description: "Transform outdated pools and outdoor areas into refined, high-end spaces that match today’s standards.",
+      buttonText: "Book A Services",
+      imageSrc: "/images/service-03.png", 
     }
   ];
 
