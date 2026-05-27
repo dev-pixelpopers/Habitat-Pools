@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AboutSection from "@/components/about";
 import ProjectsSection from "@/components/project";
+import StickyServicesContainer from "@/components/service";
 
 export default function Home() {
   return (
@@ -50,6 +51,8 @@ export default function Home() {
     <AboutSection/>
 
     <ProjectsSection/>
+
+    <StickyServicesContainer/>
     </div>
   );
 }

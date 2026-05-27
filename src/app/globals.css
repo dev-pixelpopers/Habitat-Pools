@@ -76,3 +76,6 @@ h1, h2, h3, h4, h5, h6, p, span, a, body {
     width: 95%;
     bottom: 0px;
 }
+.btn-dark a:before, .btn-dark a:after {
+    border-color: #112931;
+}
