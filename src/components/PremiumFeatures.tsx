@@ -51,7 +51,7 @@ export default function PremiumFeatures() {
         >
             {/* Header */}
             <div
-                className="relative mb-10 md:mb-12 flex flex-col lg:flex-row justify-start lg:gap-[354px]"
+                className="relative mb-7 md:mb-7 flex flex-col lg:flex-row justify-start lg:gap-[354px]"
                 style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? "translateY(0)" : "translateY(-16px)",
@@ -60,13 +60,13 @@ export default function PremiumFeatures() {
             >
                 {/* Feature label */}
                 <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[36px] text-[#86A3AC] lg:text-[28px] hidden lg:block tracking-wide">
+                    <span className="text-[36px] text-[#86A3AC] hidden lg:block tracking-wide">
                         Feature
                     </span>
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-[40px] leading-[62.74px] max-w-[700px] text-white">
+                <h2 className="text-[96px] leading-[88px] max-w-[1100px] text-white">
                     Enhance Your Pool With Premium Features
                 </h2>
             </div>

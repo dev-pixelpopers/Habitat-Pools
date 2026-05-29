@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 
 // --- Types ---
 interface Review {
@@ -51,18 +53,18 @@ const ArrowRightIcon = () => (
 // --- Sub-components ---
 const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
   return (
-    <div className="bg-white rounded-[1.5rem] p-8 md:p-10 flex flex-col gap-6 flex-1 shadow-2xl min-w-[300px]">
+    <div className="bg-white rounded-[1.1rem] flex flex-col gap-30 flex-shrink-0 w-full lg:w-[calc(33.333%-16px)] snap-center shadow-2xl pt-[50px] pb-[30px] px-[30px]">
       
       {/* Header: Quote Icon + Name & Stars */}
       <div className="flex items-center gap-5">
         <div className="flex-shrink-0">
-          <QuoteIcon />
+          <img src="/images/review-quote.png" width="60px" height="60px"/>
         </div>
         <div className="flex flex-col">
-          <h4 className="text-[1.1rem] font-medium text-gray-900 leading-tight">
+          <h4 className="text-[22px] text-black leading-tight">
             {review.name}
           </h4>
-          <div className="flex items-center gap-1 mt-1">
+          <div className="flex items-center gap-0 mt-1">
             {[...Array(review.rating)].map((_, i) => (
               <StarIcon key={i} />
             ))}
@@ -71,7 +73,7 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
       </div>
 
       {/* Review Text */}
-      <p className="text-[#112428] text-[14px] leading-[1.8] font-normal tracking-wide">
+      <p className="text-[#000000] text-[18px] leading-[32px] font-normal">
         {review.text}
       </p>
     </div>
@@ -80,12 +82,14 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 
 // --- Main Component ---
 export const ReviewsSection: React.FC = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   const reviews: Review[] = [
     {
       id: "1",
       name: "Jennifer Collins",
       rating: 5,
-      text: "The Quality Of Work Is Exceptional. They Transformed Our Vision Into A Breathtaking Custom Pool That Completely Elevated Our Home. If You're Looking For Luxury Pool Construction With Premium Service, This Is The Company To Trust.",
+      text: "The quality of work is exceptional. They transformed our vision into a breathtaking custom pool that completely elevated our home. If you’re looking for luxury pool construction with premium service, this is the company to trust.",
     },
     {
       id: "2",
@@ -99,32 +103,44 @@ export const ReviewsSection: React.FC = () => {
       rating: 5,
       text: "We Wanted A Modern Infinity Pool That Felt Elegant And Timeless, And They Delivered Flawlessly. The Entire Construction Process Was Smooth, Professional, And Completed On Schedule. Guests Are Constantly Complimenting Our New Outdoor Space.",
     },
+    // Dummy review added for testing slider movement
+    {
+      id: "4",
+      name: "Michael Smith",
+      rating: 5,
+      text: "Absolutely phenomenal experience from start to finish. The crew was always on time, polite, and kept the site clean. The pool is exactly what we dreamed of, and the smart features they recommended are a game-changer.",
+    },
   ];
 
-  return (
-    // Background Image Wrapper with Overlay
-    <section className="relative w-full flex flex-col justify-center py-24 overflow-hidden bg-[#0a1417]">
-      
-      {/* Background Image Setup */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/review-bg.png" // Placeholder pool image
-          alt="Luxury backyard pool at night"
-          className="w-full h-full object-cover"
-        />
-        {/* Dark Teal/Black Gradient Overlay */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#0a191e]/90 via-[#112428]/70 to-[#0a191e]/90"></div> */}
-      </div>
+  // --- Scroll Logic ---
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+    }
+  };
 
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    // Section Background setup directly on the section tag
+    <section 
+      className="relative w-full flex flex-col justify-center pt-[0px] pb-[150px] px-[95px] pt-[40px] overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/review-bg.png')" }}
+    >
+      
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12">
+      <div className="relative z-10 w-full">
         
         {/* Header Section */}
-        <div className="w-full mb-16 relative">
-          <span className="absolute left-0 top-2 text-[#86A3AC] text-2xl lg:text-[28px] hidden lg:block tracking-wide">
+        <div className="w-full mb-60 relative">
+          <span className="absolute left-0 top-20 text-[#86A3AC] text-[36px]">
             Reviews
           </span>
-          <h2 className="text-center text-white text-5xl md:text-[64px] leading-[1.1] font-medium tracking-tight">
+          <h2 className="text-[96px] leading-[1.1] tracking-tight max-w-[900px] m-auto">
             Real Stories. <br />
             Stunning Backyards
           </h2>
@@ -134,21 +150,30 @@ export const ReviewsSection: React.FC = () => {
         <div className="relative flex items-center justify-center w-full">
           
           {/* Left Arrow */}
-          <button className="hidden xl:flex absolute left-4 z-20 w-16 h-16 rounded-full border border-white/30 items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300">
+          {/* <button 
+            onClick={scrollLeft}
+            className="hidden xl:flex absolute -left-4 2xl:-left-12 z-20 w-16 h-16 rounded-full border border-white/30 items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
             <ArrowLeftIcon />
-          </button>
+          </button> */}
 
-          {/* Cards Grid */}
-          <div className="flex flex-col xl:flex-row gap-6 w-full max-w-[1300px] mx-auto z-10">
+          {/* Cards Grid / Scrollable Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 w-full max-w-[1300px] mx-auto z-10 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {reviews.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
 
-          {/* Right Arrow */}
-          <button className="hidden xl:flex absolute right-4 z-20 w-16 h-16 rounded-full border border-white/30 items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300">
+         
+          {/* <button 
+            onClick={scrollRight}
+            className="hidden xl:flex absolute -right-4 2xl:-right-12 z-20 w-16 h-16 rounded-full border border-white/30 items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
             <ArrowRightIcon />
-          </button>
+          </button> */}
 
         </div>
       </div>
