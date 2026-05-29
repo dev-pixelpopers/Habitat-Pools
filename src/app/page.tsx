@@ -4,6 +4,8 @@ import ProjectsSection from "@/components/project";
 import StickyServicesContainer from "@/components/service";
 import AboutService from "@/components/about-service";
 import ReviewsSection from "@/components/review";
+import PremiumFeatures from "@/components/PremiumFeatures";
+import BeforeAfter from "@/components/BeforeAfter";
 
 export default function Home() {
   return (
@@ -36,7 +38,7 @@ export default function Home() {
             {/* Second Column */}
             <div className="flex justify-center">
               <div className="w-[419px]">
-              <img src="/images/arrow.png" alt="Arrow" className="w-full h-full object-cover" />
+                <img src="/images/arrow.png" alt="Arrow" className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -50,15 +52,19 @@ export default function Home() {
         </div>
       </section>
 
-    <AboutSection/>
+      <AboutSection />
 
-    <ProjectsSection/>
+      <ProjectsSection />
 
-    <StickyServicesContainer/>
+      <StickyServicesContainer />
 
-    <AboutService/>
+      <AboutService />
 
-    <ReviewsSection/>
+      <ReviewsSection />
+
+      <PremiumFeatures />
+
+      <BeforeAfter />
     </div>
   );
 }
