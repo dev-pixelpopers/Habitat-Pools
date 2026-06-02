@@ -1,4 +1,11 @@
-import React from 'react';
+"use client";
+import { useRef } from 'react';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger so GSAP knows how to handle scroll events
+gsap.registerPlugin(ScrollTrigger);
 
 interface AboutSectionProps {
   imageSrc?: string;
@@ -10,20 +17,56 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({
-  imageSrc = '/images/about-img.png', // Set to your attached image path
+  imageSrc = '/images/about-img.png',
   tagline = 'Who We Are',
   headingLines = ['From Ordinary To', 'Extraordinary', 'Outdoors'],
   description = 'Experience A Level Of Craftsmanship Where The People You Meet Are The Ones Who Build Your Project. No Handoffs. No Layers. Just Direct Involvement, Every Step Of The Way',
   buttonText = 'Call Us Today',
   onButtonClick,
 }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+
+  useGSAP(() => {
+    // Ensure all our elements exist before animating
+    if (!imageRef.current || !headingRef.current || !descriptionRef.current || !sectionRef.current) return;
+
+    // 1. Initial Setup: Set the starting clip-paths
+    // Image & Heading: Bottom to Top (100% top inset)
+    gsap.set([imageRef.current, headingRef.current], { clipPath: "inset(100% 0% 0% 0%)" });
+
+    // Description: Left to Right (100% right inset)
+    gsap.set(descriptionRef.current, { clipPath: "inset(0% 100% 0% 0%)" });
+
+    // 2. The Timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 30%",
+        end: "+=400",
+        scrub: 1,
+        toggleActions: "play none none reverse",
+      }
+    });
+
+    // 3. The Animations
+    // Using the '0' position parameter makes them all animate at the exact same time
+    tl.to(imageRef.current, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.out" }, 0)
+      .to(headingRef.current, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.out" }, 0)
+      .to(descriptionRef.current, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.out" }, 0);
+
+  }, { scope: sectionRef }); // Good practice: scope GSAP to this specific section
+
   return (
-    <section className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]">
-      
+    <section ref={sectionRef} className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]">
+
       {/* First Row */}
       <div className="mb-[-185px] z-2 relative ml-[150px]">
-        <h2 className="text-white text-[96px] leading-[88px] max-w-[750px] m-auto">
-          From Ordinary to Extraordinary Outdoors
+        <h2 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[800px] m-auto">
+          {headingLines.join(' ')}
         </h2>
       </div>
 
@@ -33,14 +76,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         {/* First Column */}
         <div className='w-[20%] pt-[20px]'>
           <h4 className="text-[#86A3AC] text-[36px] leading-[38px] capitalize">
-            who we are
+            {tagline}
           </h4>
         </div>
 
-        {/* Second Column */}
-        <div className="flex justify-center className='w-[42%]'">
+        {/* Second Column (Fixed className typo here) */}
+        <div className="flex justify-center w-[42%]">
           <img
-            src="/images/about-img.png"
+            ref={imageRef}
+            src={imageSrc}
             alt="About"
             className="w-full rounded-[20px]"
           />
@@ -48,11 +92,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
         {/* Third Column */}
         <div className='w-[38%] pl-[60px] flex flex-col justify-center'>
-          <p className="text-white text-[26px] leading-[48px] capitalize">
-            Experience a level of craftsmanship where the people you meet are the ones who build your project. No handoffs. No layers. Just direct involvement, every step of the way
+          <p ref={descriptionRef} className="text-white text-[26px] leading-[48px] capitalize">
+            {description}
           </p>
           <div className='btn-all mt-[60px] relative'>
-            <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
+            <a
+              ref={buttonRef}
+              href='#'
+              onClick={onButtonClick}
+              className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center'>
+              {buttonText}
+            </a>
           </div>
         </div>
 

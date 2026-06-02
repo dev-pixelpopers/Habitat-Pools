@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client";
 import AboutSection from "@/components/about";
 import ProjectsSection from "@/components/project";
 import StickyServicesContainer from "@/components/service";
@@ -9,19 +9,44 @@ import BeforeAfter from "@/components/BeforeAfter";
 import GetInTouch from "@/components/GetInTouch";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!videoRef.current || !containerRef.current) return;
+    const tl = gsap.timeline();
+    tl.to(videoRef.current, {
+      borderRadius: "0px",
+      width: "100%",
+      height: "100%",
+      top: 0,
+      left: 0,
+      duration: 1,
+      ease: "power3.out",
+    })
+    tl.to(containerRef.current, {
+      y: 0,
+      duration: 1.5,
+      ease: "power3.out",
+    }, ">")
+  }, { scope: videoRef })
+
   return (
     <div className="app">
       <Header />
-      <section className="relative h-screen w-full overflow-hidden px-[95px] pb-[50px]">
+      <section className="relative h-screen w-full overflow-hidden px-[95px] pb-[50px] flex flex-col justify-end items-center">
         {/* Background Video */}
-        <video
+        <video ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute w-[386px] h-[383px] object-cover rounded-[540px]"
         >
           <source src="/images/video-hero.mp4" type="video/mp4" />
         </video>
@@ -30,7 +55,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Content */}
-        <div className="relative z-10 h-full flex items-end">
+        <div ref={containerRef} className="relative z-10 flex items-end translate-y-100">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center justify-center w-full">
             {/* First Column */}
             <div>

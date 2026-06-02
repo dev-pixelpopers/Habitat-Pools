@@ -1,6 +1,11 @@
 "use client";
 
 import React, { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // --- Types ---
 interface Review {
@@ -36,29 +41,15 @@ const StarIcon = () => (
   </svg>
 );
 
-const ArrowLeftIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M19 12H5" />
-    <path d="M12 19l-7-7 7-7" />
-  </svg>
-);
-
-const ArrowRightIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14" />
-    <path d="M12 5l7 7-7 7" />
-  </svg>
-);
-
 // --- Sub-components ---
 const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
   return (
     <div className="bg-white rounded-[1.1rem] flex flex-col gap-30 flex-shrink-0 w-full lg:w-[calc(33.333%-16px)] snap-center shadow-2xl pt-[50px] pb-[30px] px-[30px]">
-      
+
       {/* Header: Quote Icon + Name & Stars */}
       <div className="flex items-center gap-5">
         <div className="flex-shrink-0">
-          <img src="/images/review-quote.png" width="60px" height="60px"/>
+          <img src="/images/review-quote.png" width="60px" height="60px" />
         </div>
         <div className="flex flex-col">
           <h4 className="text-[22px] text-black leading-tight">
@@ -83,6 +74,8 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 // --- Main Component ---
 export const ReviewsSection: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgImageRef = useRef<HTMLImageElement>(null);
 
   const reviews: Review[] = [
     {
@@ -125,18 +118,54 @@ export const ReviewsSection: React.FC = () => {
     }
   };
 
+  // --- GSAP: Animate background image from bottom + scale up ---
+  useGSAP(() => {
+    const bgImg = bgImageRef.current;
+    if (!bgImg) return;
+
+    // Initial state: scaled down and pushed below
+    gsap.set(bgImg, {
+      scale: 0.6,
+      y: "30%",
+      opacity: 0,
+    });
+
+    // Animate when section scrolls to 40%
+    gsap.to(bgImg, {
+      scale: 1,
+      y: 0,
+      opacity: 1,
+      duration: 1.4,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 40%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  }, { scope: sectionRef });
+
   return (
     // Section Background setup directly on the section tag
-    <section 
-      className="relative w-full flex flex-col justify-center pt-[0px] pb-[150px] px-[95px] pt-[40px] overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/review-bg.png')" }}
+    <section
+      ref={sectionRef}
+      className="relative w-full flex flex-col justify-center pt-[0px] pb-[150px] px-[95px] pt-[40px] overflow-hidden"
     >
-      
+      {/* Absolute Background Image — animated from bottom with scale */}
+      <div className="absolute inset-0">
+        <img
+          ref={bgImageRef}
+          src="/images/review-bg.png"
+          className="w-full h-full object-cover"
+          alt=""
+          style={{ transformOrigin: "center bottom" }}
+        />
+      </div>
       {/* Main Content Container */}
-      <div className="relative z-10 w-full">
-        
+      <div className="relative z-10 w-full flex flex-col gap-[150px]">
+
         {/* Header Section */}
-        <div className="w-full mb-60 relative">
+        <div className="w-full relative">
           <span className="absolute left-0 top-20 text-[#86A3AC] text-[36px]">
             Reviews
           </span>
@@ -148,17 +177,17 @@ export const ReviewsSection: React.FC = () => {
 
         {/* Carousel & Cards Section */}
         <div className="relative flex items-center justify-center w-full">
-          
+
           {/* Left Arrow */}
-          {/* <button 
+          <button
             onClick={scrollLeft}
-            className="hidden xl:flex absolute -left-4 2xl:-left-12 z-20 w-16 h-16 rounded-full border border-white/30 items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+            className="hidden xl:flex absolute -left-4 2xl:-left-12 z-20 w-[271px] h-[271px] items-center justify-center text-white cursor-pointer"
           >
-            <ArrowLeftIcon />
-          </button> */}
+            <img src="/images/arrow-left-new.svg" alt="" />
+          </button>
 
           {/* Cards Grid / Scrollable Container */}
-          <div 
+          <div
             ref={scrollContainerRef}
             className="flex gap-6 w-full max-w-[1300px] mx-auto z-10 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
@@ -167,13 +196,15 @@ export const ReviewsSection: React.FC = () => {
             ))}
           </div>
 
-         
-          {/* <button 
+
+          {/* Right Arrow */}
+          <button
             onClick={scrollRight}
-            className="hidden xl:flex absolute -right-4 2xl:-right-12 z-20 w-16 h-16 rounded-full border border-white/30 items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+            className="hidden xl:flex absolute -right-4 2xl:-right-12 z-20 w-[271px] h-[271px] items-center justify-center text-white cursor-pointer"
           >
-            <ArrowRightIcon />
-          </button> */}
+            {/* <ArrowRightIcon /> */}
+            <img src="/images/arrow-right-new.svg" alt="" />
+          </button>
 
         </div>
       </div>

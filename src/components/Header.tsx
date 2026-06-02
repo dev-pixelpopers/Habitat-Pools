@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,20 +19,20 @@ export default function Header() {
     { label: "Contact", href: "#" },
   ];
 
+  useGSAP(() => {
+    gsap.to("header", {
+      delay: 2,
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+  }, []);
+
   return (
     <>
       {/* ── Header ── */}
-      <header
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          width: "100%",
-          fontFamily: "'Nohemi', sans-serif",
-          boxSizing: "border-box",
-        }}
+      <header className="absolute top-0 left-0 w-full z-50 -translate-y-100"
       >
         <div
           style={{
