@@ -70,7 +70,9 @@ export default function BeforeAfter() {
   return (
     <section
       className="relative w-full overflow-hidden flex flex-col gap-15 pt-[120px]"
-      style={{ background: "#112931" }}
+      style={{
+        background: "linear-gradient(180deg, #112931 0%, #112931 68%, #ffffff 68%, #ffffff 100%)",
+      }}
     >
       {/* Top dark section with heading */}
       <div className="w-full flex justify-center">

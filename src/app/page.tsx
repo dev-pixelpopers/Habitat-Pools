@@ -6,10 +6,14 @@ import AboutService from "@/components/about-service";
 import ReviewsSection from "@/components/review";
 import PremiumFeatures from "@/components/PremiumFeatures";
 import BeforeAfter from "@/components/BeforeAfter";
+import GetInTouch from "@/components/GetInTouch";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <div className="app">
+      <Header />
       <section className="relative h-screen w-full overflow-hidden px-[95px] pb-[50px]">
         {/* Background Video */}
         <video
@@ -65,6 +69,10 @@ export default function Home() {
       <PremiumFeatures />
 
       <BeforeAfter />
+
+      <GetInTouch />
+
+      <Footer />
     </div>
   );
 }

@@ -10,10 +10,10 @@
 @theme inline {
   --color-background: #040303;
   --color-foreground: #ededed;
-  
+
   /* Fonts */
   --font-nohemi: var(--font-nohemi), sans-serif;
-  
+
   /* Typography Sizes */
   --text-display-lg: 96px;
   --text-display-lg--line-height: 88px;
@@ -52,30 +52,57 @@ body {
   font-family: var(--font-nohemi);
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a, body {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+body {
   font-family: "Nohemi";
 }
 
-.btn-all a:before {
-    content: '';
-    height: 50px;
-    position: absolute;
-    border-left: 1px solid #fff;
-    left: 0%;
-    top: 0px;
-    border-bottom: 1px solid #fff;
-    width: 92%;
+.btn-all button {
+  z-index: 9;
+  cursor: pointer;
 }
-.btn-all a:after {
-    content: '';
-    position: absolute;
-    border-right: 1px solid #fff;
-    height: 60px;
-    right: 0px;
-    border-bottom: 1px solid #fff;
-    width: 95%;
-    bottom: 0px;
+
+.btn-all a:before,
+.btn-all button:before {
+  content: '';
+  height: 50px;
+  position: absolute;
+  border-left: 1px solid #fff;
+  left: 0%;
+  top: 0px;
+  border-bottom: 1px solid #fff;
+  width: 92%;
+  pointer-events: none;
 }
-.btn-dark a:before, .btn-dark a:after {
-    border-color: #112931;
+
+.btn-all button:before {
+  top: 20% !important;
+}
+
+.btn-all a:after,
+.btn-all button:after {
+  content: '';
+  position: absolute;
+  border-right: 1px solid #fff;
+  height: 60px;
+  right: 0px;
+  border-bottom: 1px solid #fff;
+  width: 95%;
+  bottom: 0px;
+  pointer-events: none;
+}
+
+.btn-dark a:before,
+.btn-dark a:after,
+.btn-dark button:before,
+.btn-dark button:after {
+  border-color: #112931;
 }
