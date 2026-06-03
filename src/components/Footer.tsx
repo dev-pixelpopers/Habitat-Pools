@@ -1,17 +1,19 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const navLinks = [
-    { label: "Home", href: "#" },
-    { label: "Projects", href: "#" },
-    { label: "About", href: "#" },
-    { label: "Reviews", href: "#" },
-    { label: "Services", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "About", href: "/about" },
+    { label: "Reviews", href: "/reviews" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -142,7 +144,7 @@ export default function Footer() {
             style={{ justifySelf: "end" }}
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 style={{
@@ -162,7 +164,7 @@ export default function Footer() {
                 }
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

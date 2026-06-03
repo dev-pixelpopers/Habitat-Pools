@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,12 +12,12 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Home", href: "#" },
-    { label: "Projects", href: "#" },
-    { label: "About", href: "#" },
-    { label: "Reviews", href: "#" },
-    { label: "Services", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "About", href: "/about" },
+    { label: "Reviews", href: "/reviews" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
   ];
 
   useGSAP(() => {
@@ -96,7 +97,7 @@ export default function Header() {
               borderRight: "1px solid rgba(255,255,255,0.25)",
             }}
           >
-            <a href="#">
+            <Link href="/">
               <img
                 src="/images/logo-main.png"
                 alt="HABITAT Pool & Landscape"
@@ -106,7 +107,7 @@ export default function Header() {
                   display: "block",
                 }}
               />
-            </a>
+            </Link>
           </div>
 
           {/* Right — See Our Work */}
@@ -122,8 +123,8 @@ export default function Header() {
               borderLeft: "1px solid rgba(255,255,255,0.25)",
             }}
           >
-            <a
-              href="#"
+            <Link
+              href="/projects"
               style={{
                 color: "#ffffff",
                 fontFamily: "'Nohemi', sans-serif",
@@ -142,7 +143,7 @@ export default function Header() {
               }
             >
               See Our Work
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -227,13 +228,13 @@ export default function Header() {
                   paddingRight: "40px",
                 }}
               >
-                <a href="#">
+                <Link href="/">
                   <img
                     src="/images/logo-main.png"
                     alt="HABITAT Pool & Landscape"
                     style={{ height: "40px", width: "auto", display: "block" }}
                   />
-                </a>
+                </Link>
               </div>
 
               {/* Empty right cell */}
@@ -261,7 +262,7 @@ export default function Header() {
             }}
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
@@ -285,7 +286,7 @@ export default function Header() {
                 }
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
