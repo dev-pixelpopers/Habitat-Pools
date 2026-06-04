@@ -169,7 +169,7 @@ export default function ContactPage() {
                   Call Us
                 </p>
                 <a
-                  href="tel:+01234567890"
+                  href="tel:+4804207515"
                   style={{
                     fontSize: "26px",
                     lineHeight: "30px",
@@ -180,7 +180,7 @@ export default function ContactPage() {
                     transition: "color 0.2s ease",
                   }}
                 >
-                  ( 0123 ) 456 789
+                  ( 480 ) 420 7515
                 </a>
               </div>
 
@@ -208,7 +208,7 @@ export default function ContactPage() {
                     transition: "color 0.2s ease",
                   }}
                 >
-                  Infodummy@.Com
+                  habitatpoolsaz@gmail.com
                 </a>
               </div>
 

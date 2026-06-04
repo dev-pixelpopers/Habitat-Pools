@@ -80,7 +80,7 @@ export default function GetInTouch() {
                 Call Us
               </p>
               <a
-                href="tel:+01234567890"
+                href="tel:+4804207515"
                 style={{
                   fontSize: "26px",
                   lineHeight: "30px",
@@ -100,7 +100,7 @@ export default function GetInTouch() {
                   "#0a0a0a")
                 }
               >
-                ( 0123 ) 456 789
+                ( 480 ) 420 7515
               </a>
             </div>
 
@@ -138,7 +138,7 @@ export default function GetInTouch() {
                   "#0a0a0a")
                 }
               >
-                Infodummy@.Com
+                habitatpoolsaz@gmail.com
               </a>
             </div>
           </div>
