@@ -1,19 +1,13 @@
 "use client";
 import React, { useRef, useState, forwardRef } from 'react';
+import Link from 'next/link';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { allProjects, Project } from "@/data/projects";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-
-// --- Types ---
-interface Project {
-  id: string;
-  title: string;
-  imageSrc: string;
-  description: string;
-}
 
 // --- Icons ---
 const ArrowUpRightIcon = () => (
@@ -35,14 +29,15 @@ const ArrowUpRightIcon = () => (
 // --- Sub-components ---
 
 // 1. Wrap ProjectCard in forwardRef so we can attach GSAP animations directly to it
-const ProjectCard = forwardRef<HTMLDivElement, { project: Project }>(({ project }, ref) => {
+export const ProjectCard = forwardRef<HTMLAnchorElement, { project: Project }>(({ project }, ref) => {
   return (
-    <div
+    <Link
+      href={`/projects/${project.slug}`}
       ref={ref}
-      className="relative flex flex-col p-6 bg-white border border-gray rounded-[2rem] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:bg-[#112931] transition-colors duration-300 group"
+      className="relative flex flex-col p-6 bg-white border border-gray rounded-[2rem] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:bg-[#112931] transition-colors duration-300 group cursor-pointer text-decoration-none block"
     >
       {/* Top Right Action Button */}
-      <div className="bg-[#122126] text-white p-6 rounded-full cursor-pointer group-hover:bg-white group-hover:text-[#112931] transition-colors duration-300 z-10 max-w-[75px] ml-auto my-auto flex items-center justify-center">
+      <div className="bg-[#122126] text-white p-6 rounded-full group-hover:bg-white group-hover:text-[#112931] transition-colors duration-300 z-10 max-w-[75px] ml-auto my-auto flex items-center justify-center">
         <ArrowUpRightIcon />
       </div>
 
@@ -54,7 +49,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: Project }>(({ project 
       {/* Project Image */}
       <div className="w-full aspect-[4/3] mb-6 overflow-hidden rounded-[1.5rem] rotate-[-4deg]">
         <img
-          src={project.imageSrc}
+          src={project.heroImage}
           alt={`Preview of ${project.title} project`}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
         />
@@ -62,9 +57,9 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: Project }>(({ project 
 
       {/* Project Description */}
       <p className="text-[20px] text-[#112931] group-hover:text-white transition-colors duration-300 text-center leading-relaxed px-4 mt-[50px]">
-        {project.description}
+        {project.subtitle}
       </p>
-    </div>
+    </Link>
   );
 });
 
@@ -73,26 +68,11 @@ ProjectCard.displayName = "ProjectCard";
 // --- Main Component ---
 
 export const ProjectsSection: React.FC = () => {
-  const defaultDescription = "Custom Pools Designed Around Your Space, Your Lifestyle, And Your Vision";
-
-  // Added 3 more projects for the "Load More" functionality
-  const allProjects: Project[] = [
-    { id: "1", title: "Luminara", imageSrc: "/images/project-01.png", description: defaultDescription },
-    { id: "2", title: "Amani", imageSrc: "/images/project-02.png", description: defaultDescription },
-    { id: "3", title: "Tranquil", imageSrc: "/images/project-03.png", description: defaultDescription },
-    { id: "4", title: "Soluna", imageSrc: "/images/project-04.png", description: defaultDescription },
-    { id: "5", title: "Orchard", imageSrc: "/images/project-05.png", description: defaultDescription },
-    { id: "6", title: "Loller", imageSrc: "/images/project-06.png", description: defaultDescription },
-    { id: "7", title: "Oasis", imageSrc: "/images/project-01.png", description: defaultDescription },
-    { id: "8", title: "Mirage", imageSrc: "/images/project-02.png", description: defaultDescription },
-    { id: "9", title: "Zenith", imageSrc: "/images/project-03.png", description: defaultDescription },
-  ];
-
   // 2. State to track visible projects
   const [visibleCount, setVisibleCount] = useState(6);
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useGSAP(() => {
     for (let i = 0; i < visibleCount; i += 3) {

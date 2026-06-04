@@ -2,7 +2,13 @@
 
 import { useRef, useState, useCallback, useEffect } from "react";
 
-export default function BeforeAfter() {
+export default function BeforeAfter({
+  beforeImage = "/images/before-pool.png",
+  afterImage = "/images/after-pool.png",
+}: {
+  beforeImage?: string;
+  afterImage?: string;
+} = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -69,15 +75,15 @@ export default function BeforeAfter() {
 
   return (
     <section
-      className="relative w-full overflow-hidden flex flex-col gap-15 pt-[120px]"
+      className="relative w-full overflow-hidden flex flex-col gap-15 py-[120px]"
       style={{
-        background: "linear-gradient(180deg, #112931 0%, #112931 68%, #ffffff 68%, #ffffff 100%)",
+        background: "#ffffff",
       }}
     >
       {/* Top dark section with heading */}
       <div className="w-full flex justify-center">
         <h2
-          className="text-white text-center"
+          className="text-[#112931] text-center"
           style={{
             fontSize: "96px",
             lineHeight: 1.2,
@@ -94,7 +100,6 @@ export default function BeforeAfter() {
         className="w-full px-8 md:px-16 lg:px-24"
         style={{
           maxWidth: "100%",
-          height: "820px",
           opacity: mounted ? 1 : 0,
           transition: "opacity 0.8s ease 0.3s",
         }}
@@ -103,7 +108,7 @@ export default function BeforeAfter() {
           ref={containerRef}
           className="relative w-full overflow-hidden select-none"
           style={{
-            aspectRatio: "16 / 9",
+            height: "80vh",
             borderRadius: "12px",
             cursor: isDragging ? "grabbing" : "grab",
           }}
@@ -114,7 +119,7 @@ export default function BeforeAfter() {
           <div
             className="absolute inset-0 w-full h-full"
             style={{
-              backgroundImage: "url(/images/after-pool.png)",
+              backgroundImage: `url(${afterImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -124,7 +129,7 @@ export default function BeforeAfter() {
           <div
             className="absolute inset-0 w-full h-full"
             style={{
-              backgroundImage: "url(/images/before-pool.png)",
+              backgroundImage: `url(${beforeImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
