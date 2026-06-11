@@ -17,8 +17,8 @@ interface AboutServiceProps {
 export const AboutService: React.FC<AboutServiceProps> = ({
   // Fallback image added for testing, you can replace it with your actual asset
   imageSrc = '/images/owner.png',
-  heading = 'At Habitat Pools & Landscape, we do things differently',
-  description = "When you work with us, you work directly with the owners. We're on-site multiple times a week, overseeing every detail, making decisions in real time, and ensuring nothing gets lost in translation.",
+  heading = 'YEARS OF EXPERIENCE',
+  description = "Our experience covers every angle of the backyard — from years of pool service and maintenance to full-scale pool construction, home building, and landscape design. We’ve seen what works, what lasts, and what makes a space truly stand out. That broad background gives us the insight to build better.",
   buttonText = 'Call Us Today',
   onButtonClick,
 }) => {
@@ -61,13 +61,13 @@ export const AboutService: React.FC<AboutServiceProps> = ({
       duration: 1.2,
       ease: "power3.out",
     }, 0)
-    .to(rightCol, {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.out",
-    }, 0.15); // slight stagger for a polished feel
+      .to(rightCol, {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+      }, 0.15); // slight stagger for a polished feel
 
   }, { scope: sectionRef });
 

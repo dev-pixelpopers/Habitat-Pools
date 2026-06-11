@@ -19,8 +19,8 @@ interface AboutSectionProps {
 export const AboutSection: React.FC<AboutSectionProps> = ({
   imageSrc = '/images/about-img.png',
   tagline = 'Who We Are',
-  headingLines = ['From Ordinary To', 'Extraordinary', 'Outdoors'],
-  description = 'Experience A Level Of Craftsmanship Where The People You Meet Are The Ones Who Build Your Project. No Handoffs. No Layers. Just Direct Involvement, Every Step Of The Way',
+  headingLines = ['We Make Stunning', 'Outdoor', 'Spaces'],
+  description = 'We’re two brothers with a passion for transforming backyards into beautiful, functional outdoor spaces. From design to the final detail, we’re hands-on every step of the way. We don’t cut corners, we use quality materials, and we make sure everything is done right the first time. Our eye for detail and commitment to quality is what sets us apart. We know that being involved from start to finish leads to better results and happier clients.',
   buttonText = 'Call Us Today',
   onButtonClick,
 }) => {
@@ -65,8 +65,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
       {/* First Row */}
       <div className="mb-[-185px] z-2 relative ml-[150px]">
-        <h2 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[800px] m-auto">
-          {headingLines.join(' ')}
+        <h2 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[855px] m-auto">
+          We Make Stunning Outdoor<br /> Spaces
         </h2>
       </div>
 
@@ -92,7 +92,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
         {/* Third Column */}
         <div className='w-[38%] pl-[60px] flex flex-col justify-center'>
-          <p ref={descriptionRef} className="text-white text-[26px] leading-[48px] capitalize">
+          <p ref={descriptionRef} className="text-white text-[24px] leading-[41px] capitalize">
             {description}
           </p>
           <div className='btn-all mt-[60px] relative'>

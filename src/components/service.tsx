@@ -59,7 +59,7 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
 
             {/* Outlined Button */}
             <div className='btn-all mt-[30px] relative'>
-              <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>book a services </a>
+              <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{data.buttonText}</a>
             </div>
           </div>
 
@@ -81,23 +81,23 @@ export const StickyServicesContainer: React.FC = () => {
   const sectionsData: SectionProps[] = [
     {
       id: 1,
-      title: "Pool Design & Build",
-      description: "Custom Pools Designed Around Your Space, Your Lifestyle, And Your Vision—Built With Precision And Long-Term Durability In Mind.",
-      buttonText: "Book A Services",
+      title: "DESIGN",
+      description: "We create custom pool designs tailored to each client’s style, space, and vision. From layout and features to materials and flow, every detail is thoughtfully planned to bring your dream backyard to life. It’s not just about looks — it’s about smart design that works beautifully.",
+      buttonText: "Make An Appointment",
       imageSrc: "/images/service-01.png", // Add your own image URL
     },
     {
       id: 2,
-      title: "Landscape Design",
-      description: "From clean, modern layouts to fully integrated outdoor environments, we create spaces that feel cohesive and elevated.",
-      buttonText: "Book A Services",
+      title: "BUILD",
+      description: "We build high-quality pools and outdoor spaces with precision and care. From excavation to the final finish, we’re hands-on every step of the way. Our landscape work ties it all together — creating seamless, functional, and beautiful backyards built to last.",
+      buttonText: "Make An Appointment",
       imageSrc: "/images/service-02.png",
     },
     {
       id: 3,
-      title: "Remodel & Upgrades",
-      description: "Transform outdated pools and outdoor areas into refined, high-end spaces that match today's standards.",
-      buttonText: "Book A Services",
+      title: "REMODEL",
+      description: "We breathe new life into outdated pools and landscapes. Whether it’s a full redesign or simple upgrades, we transform worn-out spaces into fresh, modern, and functional outdoor retreats. From resurfacing to reimagining layouts, we make it feel like a brand-new backyard — without starting from scratch.",
+      buttonText: "Make An Appointment",
       imageSrc: "/images/service-03.png",
     }
   ];
