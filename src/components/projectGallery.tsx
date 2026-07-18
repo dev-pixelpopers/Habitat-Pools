@@ -1,13 +1,69 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface ProjectGalleryProps {
     images: string[];
     title: string;
+    video?: string;
+    videoThumbnail?: string;
 }
 
-export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
+function VideoTile({ src, poster, style }: { src: string; poster?: string; style: React.CSSProperties }) {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [hovering, setHovering] = useState(false);
+
+    const handleMouseEnter = () => {
+        setHovering(true);
+        videoRef.current?.play();
+    };
+
+    const handleMouseLeave = () => {
+        setHovering(false);
+        videoRef.current?.pause();
+    };
+
+    return (
+        <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="group relative overflow-hidden rounded-[16px] cursor-pointer bg-black"
+            style={style}
+        >
+            <video
+                ref={videoRef}
+                src={src}
+                poster={poster}
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            {/* Play icon — visible until hovered */}
+            <div
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                    hovering ? "opacity-0" : "opacity-100"
+                }`}
+            >
+                <div
+                    className="flex items-center justify-center w-[76px] h-[76px] rounded-full transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                        background: "rgba(255,255,255,0.15)",
+                        backdropFilter: "blur(8px)",
+                        border: "1px solid rgba(255,255,255,0.3)",
+                    }}
+                >
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function ProjectGallery({ images, title, video, videoThumbnail }: ProjectGalleryProps) {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -53,17 +109,19 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
         return () => { document.body.style.overflow = ""; };
     }, [lightboxIndex]);
 
-    // Build grid pattern — repeating every 5 images
-    // Pattern: [wide, tall] [tall, wide] [three equal]
-    const getGridItem = (idx: number) => {
-        const pos = idx % 5;
-        if (pos === 0) return "col-span-2 row-span-1 aspect-[16/9]";
-        if (pos === 1) return "col-span-1 row-span-2 aspect-[3/4]";
-        if (pos === 2) return "col-span-1 row-span-2 aspect-[3/4]";
-        if (pos === 3) return "col-span-2 row-span-1 aspect-[16/9]";
-        if (pos === 4) return "col-span-1 row-span-1 aspect-square";
-        return "col-span-1 row-span-1 aspect-square";
-    };
+    // Grid cells in display order — the video (when present) takes the
+    // tall slot right after the first (landscape) image.
+    type GalleryCell =
+        | { kind: "image"; src: string; photoIndex: number }
+        | { kind: "video"; src: string };
+
+    const cells: GalleryCell[] = video
+        ? [
+              { kind: "image", src: images[0], photoIndex: 0 },
+              { kind: "video", src: video },
+              ...images.slice(1).map((src, i) => ({ kind: "image" as const, src, photoIndex: i + 1 })),
+          ]
+        : images.map((src, i) => ({ kind: "image" as const, src, photoIndex: i }));
 
     return (
         <>
@@ -87,7 +145,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                             gridAutoRows: "300px",
                         }}
                     >
-                        {images.map((image, idx) => {
+                        {cells.map((cell, idx) => {
                             const pos = idx % 5;
                             let colSpan = 1;
                             let rowSpan = 1;
@@ -98,20 +156,26 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                             else if (pos === 3) { colSpan = 1; rowSpan = 1; }
                             else if (pos === 4) { colSpan = 2; rowSpan = 1; }
 
+                            const gridStyle = {
+                                gridColumn: `span ${colSpan}`,
+                                gridRow: `span ${rowSpan}`,
+                            };
+
+                            if (cell.kind === "video") {
+                                return <VideoTile key="video" src={cell.src} poster={videoThumbnail} style={gridStyle} />;
+                            }
+
                             return (
                                 <div
-                                    key={idx}
-                                    onClick={() => openLightbox(idx)}
+                                    key={cell.photoIndex}
+                                    onClick={() => openLightbox(cell.photoIndex)}
                                     className="group relative overflow-hidden rounded-[16px] cursor-pointer"
-                                    style={{
-                                        gridColumn: `span ${colSpan}`,
-                                        gridRow: `span ${rowSpan}`,
-                                    }}
+                                    style={gridStyle}
                                 >
                                     {/* Image */}
                                     <img
-                                        src={image}
-                                        alt={`${title} gallery ${idx + 1}`}
+                                        src={cell.src}
+                                        alt={`${title} gallery ${cell.photoIndex + 1}`}
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
 
@@ -146,7 +210,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                                                 borderRadius: "20px",
                                             }}
                                         >
-                                            {idx + 1} / {images.length}
+                                            {cell.photoIndex + 1} / {images.length}
                                         </span>
                                     </div>
                                 </div>

@@ -335,7 +335,12 @@ export default function CaseStudyTemplate({
           })}
         </div>
       </section> */}
-      <ProjectGallery images={project.gallery} title={project.title} />
+      <ProjectGallery
+        images={project.gallery}
+        title={project.title}
+        video={project.video}
+        videoThumbnail={project.videoThumbnail}
+      />
 
 
 

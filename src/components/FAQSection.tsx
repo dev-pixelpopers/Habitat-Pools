@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 interface FAQItem {
   question: string;
@@ -25,6 +25,60 @@ export default function FAQSection({ faqs, theme = "light" }: FAQSectionProps) {
   const subTextColor = isDark ? "rgba(17, 41, 49, 0.7)" : "rgba(255, 255, 255, 0.7)";
   const borderColor = isDark ? "rgba(17, 41, 49, 0.15)" : "rgba(255, 255, 255, 0.15)";
   const tagColor = "#86A3AC";
+
+  const renderAnswer = (raw: string): ReactNode[] => {
+    const output: ReactNode[] = [];
+    const chunks = raw.split("{br}").map((chunk) => chunk.trim()).filter(Boolean);
+
+    chunks.forEach((chunk, chunkIdx) => {
+      const liRegex = /{li}(.*?){\/li}/g;
+      const listItems: string[] = [];
+      let match: RegExpExecArray | null;
+
+      while ((match = liRegex.exec(chunk)) !== null) {
+        listItems.push(match[1].trim());
+      }
+
+      const remainingText = chunk.replace(liRegex, "").trim();
+
+      if (remainingText) {
+        output.push(
+          <p key={`faq-p-${chunkIdx}`} className="mb-4 last:mb-0">
+            {remainingText}
+          </p>
+        );
+      }
+
+      if (listItems.length > 0) {
+        const midpoint = Math.ceil(listItems.length / 2);
+        const firstColumnItems = listItems.slice(0, midpoint);
+        const secondColumnItems = listItems.slice(midpoint);
+
+        output.push(
+          <div
+            key={`faq-ul-${chunkIdx}`}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-4 last:mb-0"
+          >
+            <ul className="pl-5 space-y-1">
+              {firstColumnItems.map((item, index) => (
+                <li key={`faq-li-${chunkIdx}-${index}`}>- {item}</li>
+              ))}
+            </ul>
+
+            {secondColumnItems.length > 0 && (
+              <ul className="pl-5 space-y-1">
+                {secondColumnItems.map((item, index) => (
+                  <li key={`faq-li-${chunkIdx}-${index + midpoint}`}>- {item}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      }
+    });
+
+    return output;
+  };
 
   return (
     <section
@@ -108,7 +162,7 @@ export default function FAQSection({ faqs, theme = "light" }: FAQSectionProps) {
                     className="pb-8 text-[20px] leading-[36px] max-w-[680px]"
                     style={{ color: subTextColor }}
                   >
-                    {faq.answer}
+                    {renderAnswer(faq.answer)}
                   </div>
                 </div>
               </div>

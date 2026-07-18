@@ -46,7 +46,7 @@ export default function GetInTouch() {
               fontFamily: "'Nohemi', sans-serif",
             }}
           >
-            Have A Project Idea?
+            Wanna transform your outdoor space? Let’s talk.
           </span>
 
           {/* Main heading */}
@@ -61,7 +61,7 @@ export default function GetInTouch() {
               marginBottom: "48px",
             }}
           >
-            Let&apos;s Discuss It Together
+            Schedule Your Free Consultation Today
           </h2>
 
           {/* Contact details */}
@@ -140,6 +140,21 @@ export default function GetInTouch() {
               >
                 habitatpoolsaz@gmail.com
               </a>
+
+              
+            </div>
+
+            <div>
+              <span
+            style={{
+              fontSize: "18px",
+              lineHeight: "30px",
+              color: "#0a0a0a",
+              fontFamily: "'Nohemi', sans-serif",
+            }}
+          >
+           Or complete our online contact form, and a member of our team will get back to you within 24 hours to discuss your project.
+          </span>
             </div>
           </div>
         </div>

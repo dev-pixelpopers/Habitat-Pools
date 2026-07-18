@@ -24,15 +24,19 @@ const stats = [
 const values = [
   {
     title: "Craftsmanship",
-    description: "Every pool and landscape is built with meticulous attention to detail, using premium materials that stand the test of time.",
+    description: "Every pool, landscape, and outdoor living space is built with exceptional attention to detail using premium materials designed to stand the test of time.",
   },
   {
     title: "Transparency",
-    description: "No hidden fees, no surprises. We keep you informed at every stage with clear timelines and honest communication.",
+    description: "Clear communication is central to everything we do. We keep homeowners informed throughout every phase of design and construction so there are no unexpected surprises.",
+  },
+  {
+    title: "Integrity",
+    description: "We believe in doing the right thing, standing behind our work, and treating every project with the same care we would expect for our own homes.",
   },
   {
     title: "Innovation",
-    description: "We integrate the latest pool technologies, smart automation, and sustainable practices into every project we deliver.",
+    description: "From smart pool automation and energy-efficient equipment to modern design solutions, we incorporate thoughtful innovations that improve both performance and long-term enjoyment.",
   },
 ];
 
@@ -139,8 +143,8 @@ export default function AboutPage() {
       <section className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]" style={{ fontFamily: "'Nohemi', sans-serif" }}>
         {/* Overlapping heading */}
         <div className="mb-[-185px] z-2 relative ml-[150px]">
-          <h2 className="text-white text-[96px] leading-[88px] max-w-[800px] m-auto">
-            From Ordinary To Extraordinary Outdoors
+          <h2 className="text-white text-[96px] leading-[88px] max-w-[1020px] m-auto">
+            Years of Experience. Company Built on Trust
           </h2>
         </div>
 
@@ -159,14 +163,7 @@ export default function AboutPage() {
           {/* Text */}
           <div ref={storyTextRef} className="w-[38%] pl-[60px] flex flex-col justify-center">
             <p className="text-white text-[26px] leading-[48px] capitalize">
-              Founded with a passion for creating exceptional outdoor spaces, Habitat Pools & Landscape
-              has grown into a premier luxury pool and landscape company. Our team brings together
-              decades of combined expertise in design, engineering, and construction.
-            </p>
-            <p className="text-white/70 text-[22px] leading-[40px] capitalize mt-8">
-              We believe every backyard has the potential to become a personal paradise. Our approach
-              combines innovative design with time-tested craftsmanship to deliver spaces that exceed
-              expectations.
+             Before founding Habitat Pools, we built our experience through years of hands-on work in pool service, luxury pool construction, landscape design, and residential construction. Throughout our careers, we've contributed to more than 300 custom swimming pool and landscape projects across Arizona. That experience shaped our commitment to quality craftsmanship, transparent communication, thoughtful planning, and attention to detail, creating outdoor spaces that are beautiful, functional, and built to last.
             </p>
           </div>
         </div>
@@ -190,35 +187,48 @@ export default function AboutPage() {
 
       {/* ── Owner Section ── */}
       <section
-        className="relative w-full bg-[#112931] flex items-center justify-center py-[100px] px-[40px] overflow-hidden"
+        className="relative w-full bg-[#112931] flex flex-col items-center justify-center py-[100px] px-[40px] overflow-hidden"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="w-full flex flex-row gap-12 lg:gap-24 items-start">
           {/* Left — Image */}
-          <div ref={ownerLeftRef} className="w-full">
+          <div ref={ownerLeftRef} className="w-[35%]">
             <img
               src="/images/owner.png"
               alt="Owners reviewing plans on site"
-              className="w-full h-auto object-cover shadow-2xl"
+              className="w-full h-[70vh] object-cover shadow-2xl"
             />
           </div>
 
           {/* Right — Content */}
-          <div ref={ownerRightRef} className="flex flex-col justify-center items-end text-right">
-            <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 max-w-[786px]">
-              At Habitat Pools & Landscape, We Do Things Differently
+          <div ref={ownerRightRef} className="w-[65%] flex flex-col justify-center items-start text-left">
+            <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8">
+              Meet the Brothers Behind Habitat Pools
             </h2>
-            <p className="text-white/90 text-[24px] leading-[44px] mb-14 capitalize max-w-[680px]">
-              When you work with us, you work directly with the owners. We&apos;re on-site multiple
-              times a week, overseeing every detail, making decisions in real time, and ensuring
-              nothing gets lost in translation.
+            <p className="text-white/90 text-[24px] leading-[44px] mb-14 capitalize">
+              Habitat Pools is proudly owned and operated by two brothers serving Arizona homeowners. <br/>
+              Unlike many larger companies, we stay involved from your initial consultation to your final walkthrough. The people you meet at the beginning of your project are the same people overseeing design decisions, coordinating construction, answering your questions, and ensuring every detail meets our standards. <br/>
+              One of the greatest advantages we bring to every project comes from years of experience beyond construction alone. Before transitioning into custom swimming pool construction, Carter spent seven years owning and operating a professional pool service company, maintaining hundreds of residential pools throughout Arizona.<br/>
+              That experience provided valuable insight into how pools perform long after construction is complete.
+              He learned which equipment consistently delivers reliable performance, how proper plumbing design improves water circulation, and why certain pools remain cleaner while requiring less maintenance than others.
             </p>
+            
+          </div>
+        </div>
+        <div className="">
+
+            <p className="text-white/90 text-[24px] leading-[44px] mb-14 capitalize">
+            
+              After moving into luxury pool construction, Carter helped lead the design and construction division for a high-end Arizona pool builder, contributing to the growth of a company that expanded from building approximately 20 custom pools annually to more than 75 projects each year.<br/>Today, that unique combination of maintenance knowledge and construction expertise influences every Habitat Pools project.
+
+            </p>
+
             <div className="btn-all mt-[20px] relative">
               <a href="/contact" className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center">
                 Call Us Today
               </a>
             </div>
-          </div>
+          
         </div>
       </section>
 
@@ -234,7 +244,7 @@ export default function AboutPage() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {values.map((v) => (
             <div
               key={v.title}
@@ -255,29 +265,41 @@ export default function AboutPage() {
       <FAQSection
         faqs={[
           {
-            question: "Who reviews the plans and supervises the project site?",
-            answer: "At Habitat, we operate with a hands-on philosophy. The business owners personally supervise the project site, review structural drafts, and perform walkthroughs multiple times a week to guarantee high standards.",
+            question: "How long does it take to build a custom pool?",
+            answer: "Every project is unique, but most custom pool projects are completed in approximately 90 days after construction begins. Larger or more complex pool and landscape projects may take longer depending on design complexity, permitting, weather, and material selections.",
           },
           {
-            question: "What makes Habitat Pools & Landscape different from other pool builders?",
-            answer: "We offer a unified service integrating both pool engineering and landscape design. Beyond that, our direct client-to-owner relationship eliminates middlemen, ensuring faster communication and flawless execution.",
+            question: "Do you offer free consultations?",
+            answer: "Yes. Every project begins with a complimentary consultation where we discuss your ideas, evaluate your property, and answer your questions. We can meet on-site or schedule a phone consultation if needed.",
           },
           {
-            question: "Are you licensed, bonded, and insured?",
-            answer: "Yes, we are fully licensed, bonded, and carry extensive general liability and worker's compensation insurance to protect you and your property throughout the build process.",
+            question: "Can I see my pool design before construction starts?",
+            answer: "Absolutely. We create detailed custom design renderings so you can visualize your new backyard before construction begins. We continue refining the design until you're satisfied before preparing a final proposal.",
           },
           {
-            question: "How do you handle project management and communication?",
-            answer: "We use dedicated management channels where you get real-time photo updates, schedule overviews, and direct access to our team. We believe in absolute transparency, meaning no hidden charges or delays without notification.",
+            question: "Do you handle permits and engineering?",
+            answer: "Yes. Once your design is approved, we coordinate engineering plans and submit all required permits, helping simplify the process for you from start to finish.",
+          },
+          {
+            question: "How much does a custom pool cost in Arizona?",
+            answer: "Costs depend on size, design, features, finishes, and site conditions. Homeowners are encouraged to schedule a free consultation so we can discuss project scope and costing involved.",
+          },
+          {
+            question: "Which areas do you serve?",
+            answer: "Our primary service areas include:{li}Gilbert{/li} {li}Queen Creek{/li} {li}San Tan Valley{/li} {li}Mesa{/li} {li}Tempe{/li} {li}Scottsdale{/li} {li}Paradise Valley{/li} {li}Cave Creek{/li} {li}Ahwatukee{/li} {li}Phoenix{/li} {br} We've also completed projects in Goodyear, Glendale, and Peoria, and we're always happy to discuss projects in nearby communities.",
+          },
+          {
+            question: "Can you build more than just a swimming pool?",
+            answer: "Yes. We specialize in complete backyard transformations that may include:{li}Custom swimming pools{/li}{li}Integrated spas{/li} {li}Outdoor kitchens{/li} {li}Fire features{/li} {li}Water features{/li} {li}Custom decking{/li} {li}Landscape design{/li} {li}Hardscaping{/li} {li}Outdoor lighting{/li} {li}Smart pool automation{/li}{br} Our goal is to create a cohesive outdoor living space that complements your home and lifestyle.",
           },
         ]}
       />
 
       {/* ── CTA Section ── */}
       <CTA
-        heading="Ready To Transform Your Space?"
-        description="Join The Growing Family Of Homeowners Who Trust Habitat For Their Dream Outdoor Living."
-        buttonText="Get Started"
+        heading="Ready to Transform your Backyard?"
+        description="Schedule your complimentary consultation and let's start designing a backyard that's uniquely yours."
+        buttonText="Contact Us Today"
         buttonLink="/contact"
       />
 

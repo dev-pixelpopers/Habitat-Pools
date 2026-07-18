@@ -13,6 +13,8 @@ export interface Project {
   philosophy: string;
   howwedoit: string;
   gallery: string[];
+  video?: string;
+  videoThumbnail?: string;
   beforeImages?: string[];
   afterImages?: string[];
   features?: string[];
@@ -30,12 +32,12 @@ export interface Project {
 export const allProjects: Project[] = [
   {
     id: "1",
-    slug: "luminara",
-    title: "Luminara",
+    slug: "Kimball",
+    title: "Kimball",
     subtitle: "A modern architectural marvel blending light, water, and geometric concrete styling.",
     category: "Pool Design",
-    heroImage: "/images/project-01.png",
-    overview: "Located on a hillside overlooking the valley, the Luminara project is a custom geometric pool featuring a perimeter overflow, floating stepping stones, and an integrated spa. The design emphasizes clean horizontal lines, raw concrete structures, and custom LED lighting integrated directly into the coping.",
+    heroImage: "/images/Projects/Kimball/Kimball-4.jpg",
+    overview: "Located on a hillside overlooking the valley, the Kimball project is a custom geometric pool featuring a perimeter overflow, floating stepping stones, and an integrated spa. The design emphasizes clean horizontal lines, raw concrete structures, and custom LED lighting integrated directly into the coping.",
     location: "Beverly Hills, CA",
     year: "2025",
     services: ["Pool Design & Build", "Hardscape Design", "Smart Pool Automation"],
@@ -43,16 +45,17 @@ export const allProjects: Project[] = [
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
     howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material.",
     gallery: [
-      "/images/project-01.png",
-      "/images/project-02.png",
-      "/images/project-03.png",
-      "/images/project-04.png",
+      "/images/Projects/Kimball/Kimball-1.jpg",
+      "/images/Projects/Kimball/Kimball-2.jpg",
+      "/images/Projects/Kimball/Kimball-3.jpg",
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/service-03.png"
+      "/images/Projects/Kimball/Kimball-5.jpg"
     ],
     afterImages: [
-      "/images/project-01.png"
+      "/images/Projects/Kimball/Kimball-6.jpg"
     ],
     features: [
       "Perimeter Overflow Edge",
@@ -64,22 +67,22 @@ export const allProjects: Project[] = [
       {
         title: "Excavation & Shoring",
         description: "Digging and shoring on a steep hillside slope, installing 15 structural concrete piles for foundation stability.",
-        image: "/images/service-01.png"
+        image: "/images/Projects/Kimball/Kimball-7.jpg"
       },
       {
         title: "Steel Reinforcement & Plumbing",
         description: "Installing double-grid steel rebar cages and high-flow plumbing lines for the smart filtration system.",
-        image: "/images/service-02.png"
+        image: "/images/Projects/Kimball/Kimball-8.jpg"
       },
       {
         title: "Shotcrete & Tiling",
         description: "Pneumatically applying shotcrete shell followed by meticulous hand-laying of custom glass mosaic tiles.",
-        image: "/images/service-03.png"
+        image: "/images/Projects/Kimball/Kimball-9.jpg"
       }
     ],
     testimonial: {
       name: "Elizabeth Vance",
-      quote: "The Luminara pool is an absolute masterpiece. Every single night, the lighting transforms our backyard into a living piece of modern art. The craftsmanship is flawless."
+      quote: "The Kimball pool is an absolute masterpiece. Every single night, the lighting transforms our backyard into a living piece of modern art. The craftsmanship is flawless."
     }
   },
   {
@@ -95,12 +98,14 @@ export const allProjects: Project[] = [
     services: ["Pool Design & Build", "Landscape Design", "Softscape & Planting"],
     vision: "Erasing the boundaries between private resort and open horizon. The design prioritizes understated textures, earthy tones, and zero-edge reflection.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-02.png",
       "/images/project-05.png",
       "/images/features_1.png"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/service-02.png"
     ],
@@ -143,12 +148,14 @@ export const allProjects: Project[] = [
     services: ["Pool Design & Build", "Hardscape Design", "Fire Feature Integration"],
     vision: "To design a quiet sanctuary shielded from the city noise. Linear water movements, dark reflective plaster, and raw fire elements create a balanced sensory experience.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-03.png",
       "/images/project-06.png",
-      "/images/features_2.jpg"
+      "/images/project-05.png",
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/service-03.png"
     ],
@@ -179,12 +186,14 @@ export const allProjects: Project[] = [
     services: ["Remodel & Upgrades", "Landscape Design", "Outdoor Living Spaces"],
     vision: "To completely overhaul the property structure to maximize sun exposure, active entertainment, and fluid circulation throughout the yard.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-04.png",
       "/images/features_4.png",
       "/images/features_2.jpg"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/service-03.png"
     ],
@@ -215,11 +224,14 @@ export const allProjects: Project[] = [
     services: ["Landscape Design", "Pool Design & Build", "Softscape & Planting"],
     vision: "Establishing a rustic pool deck that feels like it has been part of the orchard grounds for generations.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-05.png",
-      "/images/about-img.png"
+      "/images/about-img.png",
+      "/images/service-01.png"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Hand-Chiseled Fieldstone Coping",
       "PebbleTec Natural Pool Plaster",
@@ -244,11 +256,14 @@ export const allProjects: Project[] = [
     services: ["Pool Design & Build", "Smart Pool Automation", "Lighting Design"],
     vision: "Seamless, minimal detailing combined with cutting-edge smart home controls for optimal operational convenience.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-06.png",
-      "/images/features_3.jpg"
+      "/images/features_3.jpg",
+      "/images/service-02.png"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "IntelliFlo Variable Speed Pumps",
       "Under-Coping LED Accent Strips",
@@ -273,11 +288,14 @@ export const allProjects: Project[] = [
     services: ["Remodel & Upgrades", "Landscape Design", "Spa Integration"],
     vision: "To recreate a organic, jungle-inspired water lagoon in the heart of suburban Los Angeles.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-01.png",
-      "/images/features_1.png"
+      "/images/features_1.png",
+      "/images/service-03.png"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Natural Fieldstone Rock Grotto",
       "Hidden Grotto Spa with Seating",
@@ -302,11 +320,14 @@ export const allProjects: Project[] = [
     services: ["Pool Design & Build", "Hardscape Design", "Water Features"],
     vision: "Absolute minimalism. Minimal joints, zero protruding coping, and absolute stillness of the water surface.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-02.png",
-      "/images/features_3.jpg"
+      "/images/features_3.jpg",
+      "/images/project-05.png"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Four-Sided Slot Overflow Gutters",
       "Extra-Fine Gray Quartz Finish",
@@ -331,12 +352,14 @@ export const allProjects: Project[] = [
     services: ["Pool Design & Build", "Landscape Design", "Outdoor Kitchens"],
     vision: "To design a multi-zone outdoor entertainment zone that feels unified in its architectural language, material palette, and scale.",
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material samples to ensure the client could visualize the final result. Once approved, we moved to structural engineering, designing a custom retaining wall system to accommodate the hillside topography. The build phase followed with excavation, shoring, and the installation of the smart pool automation and lighting systems.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-03.png",
       "/images/features_4.png",
       "/images/features_2.jpg"
     ],
+    video: "/videos/Kimball/Kimball.mp4",
+    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Architectural Raw Concrete Outdoor Kitchen",
       "Polished Teak Wood Bench Lounge",

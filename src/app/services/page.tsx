@@ -19,48 +19,54 @@ interface Service {
   description: string;
   details: string[];
   imageSrc: string;
+  href: string;
 }
 
 const services: Service[] = [
   {
     id: 1,
-    title: "Pool Design & Build",
-    description: "Custom Pools Designed Around Your Space, Your Lifestyle, And Your Vision—Built With Precision And Long-Term Durability In Mind.",
+    title: "Custom Swimming Pool Construction",
+    description: "Custom swimming pools designed around your home, lifestyle, and property to create a beautiful, functional backyard.",
     details: [
-      "Custom Shape & Size Design",
-      "Infinity & Vanishing Edge Pools",
-      "Spa & Hot Tub Integration",
-      "Smart Pool Automation",
-      "Energy-Efficient Equipment",
+      "Infinity-edge & freeform pools",
+      "Integrated spas & Baja shelves",
+      "Premium pebble interiors",
+      "Smart pool automation",
+      "Energy-efficient pool equipment",
     ],
     imageSrc: "/images/service-01.png",
+    href: "/services/custom-pool-construction",
   },
   {
     id: 2,
-    title: "Landscape Design",
-    description: "From Clean, Modern Layouts To Fully Integrated Outdoor Environments, We Create Spaces That Feel Cohesive And Elevated.",
+    title: "Pool & Landscape Design",
+    description: "Our pool & landscape design services combine creative vision and functionality, ensuring every element of your backyard works together seamlessly.",
     details: [
-      "Hardscape & Softscape Design",
-      "Outdoor Living Spaces",
-      "Garden & Planting Design",
-      "Drainage & Irrigation Systems",
-      "Retaining Walls & Pathways",
+      "Pool & Landscape design",
+      "3D design renderings",
+      "Hardscape planning",
+      "Outdoor lighting",
+      "Plant selection",
+      "Material selections"
     ],
     imageSrc: "/images/service-02.png",
+    href: "/services/pool-and-landscape-design",
   },
   {
     id: 3,
-    title: "Remodel & Upgrades",
-    description: "Transform Outdated Pools And Outdoor Areas Into Refined, High-End Spaces That Match Today's Standards.",
+    title: "Pool Remodeling & Renovations",
+    description: "We transform existing pools into beautiful, functional outdoor living environments built for today's lifestyle.",
     details: [
-      "Pool Resurfacing & Retiling",
-      "Equipment Modernization",
-      "Deck & Coping Replacement",
-      "Water Feature Additions",
-      "LED Lighting Upgrades",
+      "Pool resurfacing",
+      "Tile & coping replacement",
+      "Equipment upgrades",
+      "Pool automation",
+      "LED lighting & Water features",
     ],
     imageSrc: "/images/service-03.png",
+    href: "/services/pool-remodeling-and-renovations",
   },
+  
 ];
 
 /* ── Premium Features ── */
@@ -72,7 +78,7 @@ type Feature = {
 
 const features: Feature[] = [
   { id: "water", label: "Water Features", image: "/images/features_1.png" },
-  { id: "fire", label: "Outdoor Fire Features", image: "/images/features_2.jpg" },
+  { id: "fire", label: "Fire Features", image: "/images/features_2.jpg" },
   { id: "lighting", label: "Lighting Features", image: "/images/features_3.jpg" },
   { id: "kitchen", label: "Outdoor Kitchens", image: "/images/features_4.png" },
 ];
@@ -119,12 +125,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           <span className="text-[#86A3AC] text-[22px] mb-4">0{service.id}</span>
 
           {/* Title */}
-          <h3 className="text-white text-[66px] leading-[62px] tracking-tight capitalize mb-8">
+          <h3 className="text-white text-[66px] leading-[62px] tracking-tight uppercase mb-8">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-white/80 text-[24px] leading-[36px] font-normal mb-10">
+          <p className="text-white/80 text-[24px] leading-[36px] font-normal">
             {service.description}
           </p>
 
@@ -140,8 +146,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
           {/* CTA Button */}
           <div className="btn-all relative mt-2">
-            <a href="/contact" className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center">
-              Book A Service
+            <a href={service.href} className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center">
+              Explore More
             </a>
           </div>
         </div>
@@ -198,20 +204,18 @@ export default function ServicesPage() {
 
       {/* ── Intro Text ── */}
       <section
-        className="w-full py-[100px] px-[85px] bg-white flex flex-col lg:flex-row gap-16 items-start"
+        className="w-full py-[100px] px-[85px] bg-white flex flex-col lg:flex-row gap-16 items-end"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
         <div className="lg:w-[40%]">
           <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">What We Offer</span>
           <h2 className="text-[#112931] text-[66px] leading-[72px]">
-            Comprehensive Pool & Landscape Solutions
+            Pool Construction & Luxury Outdoor Features in Arizona
           </h2>
         </div>
         <div className="lg:w-[60%] flex items-center">
           <p className="text-[#112931]/80 text-[24px] leading-[44px] capitalize">
-            From initial concept to final build, we handle every aspect of your outdoor transformation.
-            Our integrated approach ensures seamless execution, premium materials, and results that
-            exceed expectations. Each service is tailored to your unique vision and lifestyle.
+            As a trusted custom pool builder in Arizona, Habitat Pools specializes in custom swimming pool construction, pool & landscape design, and complete backyard transformations that elevate the way you live outdoors. If you're building a brand-new backyard or upgrading an existing space, our team creates outdoor environments that are thoughtfully designed, expertly built, and tailored to your lifestyle.
           </p>
         </div>
       </section>
@@ -243,9 +247,14 @@ export default function ServicesPage() {
           <div className="flex items-center gap-2 mb-4">
             <span className="text-[36px] text-[#86A3AC] hidden lg:block tracking-wide">Feature</span>
           </div>
+          <div className="flex flex-col gap-4">
           <h2 className="text-[96px] leading-[88px] max-w-[1100px] text-white">
-            Enhance Your Pool With Premium Features
+            Outdoor Living Features
           </h2>
+          <p className="text-white/80 text-[24px] leading-[36px] font-normal mb-10">
+            Complete your backyard with premium features that enhance comfort, functionality, and year-round enjoyment. Every feature is thoughtfully integrated into your overall design to create a seamless outdoor living experience.
+          </p>
+          </div>
         </div>
 
         {/* Cards */}
@@ -322,12 +331,13 @@ export default function ServicesPage() {
           <h2 className="text-[96px] leading-[88px] text-[#112931] text-center">How We Work</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { step: "01", title: "Consultation", desc: "We listen to your vision, assess your space, and discuss possibilities during an in-depth initial meeting." },
-            { step: "02", title: "Design", desc: "Our team creates detailed 3D renderings and plans tailored to your exact specifications and preferences." },
-            { step: "03", title: "Build", desc: "Expert craftsmen bring the design to life with premium materials and meticulous attention to every detail." },
-            { step: "04", title: "Handover", desc: "We walk you through every feature, provide maintenance guidance, and ensure your complete satisfaction." },
+            { step: "01", title: "Complimentary Consultation", desc: "Every project begins with a free consultation where we'll discuss your vision, evaluate your property, and understand your goals for your new outdoor space." },
+            { step: "02", title: "Custom Design", desc: "After taking site measurements and photos, we create custom design renderings tailored to your home. We'll refine the design based on your feedback until you're confident it reflects exactly what you want before preparing a detailed proposal." },
+            { step: "03", title: "Planning & Preparation", desc: "Once your design is approved, we'll guide you through material selections, coordinate engineering plans, obtain the necessary permits, and prepare every detail before construction begins." },
+            { step: "04", title: "Construction", desc: "Our experienced team brings your vision to life with quality craftsmanship and regular project updates, keeping you informed throughout every stage of construction." },
+            { step: "05", title: "Final Walkthrough & Pool School", desc: "Before your project is complete, we'll conduct a final walkthrough, address any finishing touches, and provide a personalized Pool School so you can confidently enjoy your new backyard." },
           ].map((item) => (
             <div key={item.step} className="flex flex-col gap-4 p-8 border-t-2 border-[#112931]/10 hover:border-[#86A3AC] transition-colors duration-300">
               <span className="text-[#86A3AC] text-[54px] leading-[54px]">{item.step}</span>
@@ -342,20 +352,24 @@ export default function ServicesPage() {
       <FAQSection
         faqs={[
           {
-            question: "What services do you provide beyond pool construction?",
-            answer: "We offer complete turnkey outdoor living creations. This includes pool building, customized hot tub integration, comprehensive landscaping, hardscaping (decks, patios, pathways), fire/water features, and fully equipped outdoor kitchens.",
+            question: "How long does the construction process take?",
+            answer: "Every project is unique, but most custom projects are completed in approximately 90 days after construction begins. Larger or more complex backyard transformations may require additional time depending on engineering, permitting, weather conditions, and custom features.",
           },
           {
-            question: "Can you build an outdoor kitchen and fireplace as part of the landscaping?",
-            answer: "Yes, our hardscape and softscape landscaping services cover full structural construction of stone fireplaces, fire pits, wood-fired pizza ovens, pergolas, and modular outdoor kitchen stations.",
+            question: "Do you handle engineering plans and permits?",
+            answer: "Yes. Habitat Pools coordinates the engineering process and submits all required permits before construction begins. We manage these steps on your behalf to help ensure your project moves forward as smoothly as possible.",
           },
           {
-            question: "Do you offer landscaping services without a pool build?",
-            answer: "While we specialize in integrated pool and landscape packages, we also take on large-scale landscape design and hardscape remodel projects that do not include a pool.",
+            question: "Can I customize every aspect of my swimming pool?",
+            answer: "Absolutely. Every pool we build is fully customized to suit your property, lifestyle, and personal preferences. From the pool shape and size to tile, pebble interiors, decking, water features, lighting, spas, and automation systems, every detail is selected with your vision in mind.",
           },
           {
-            question: "What type of equipment and smart controls do you install?",
-            answer: "We install energy-efficient, variable-speed pumps, saltwater filtration systems, and full smart pool automation (Pentair/Jandy). This allows you to control pool temperatures, lighting, and water features right from your phone.",
+            question: "Do you help with selecting materials?",
+            answer: "Yes. We'll guide you through selecting finishes and materials that complement your home's style, including decking, tile, coping, pebble interiors, lighting concepts, and landscape elements.",
+          },
+          {
+            question: "What features can I add to my custom pool?",
+            answer: "We offer a wide range of premium features, including integrated spas, Baja shelves, waterfalls, deck jets, fire features, LED lighting, smart pool automation, outdoor kitchens, custom decking, hardscaping, and complete landscape design to create a seamless outdoor living space.",
           },
         ]}
       />

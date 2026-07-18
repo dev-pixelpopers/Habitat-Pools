@@ -26,7 +26,7 @@ const features: Feature[] = [
     },
     {
         id: "kitchen",
-        label: "Outdoor Kitchens",
+        label: "Outdoor Kitchens & BBQ Area",
         image: "/images/features_4.png",
     },
 ];
@@ -51,7 +51,7 @@ export default function PremiumFeatures() {
         >
             {/* Header */}
             <div
-                className="relative mb-7 md:mb-7 flex flex-col lg:flex-row justify-start lg:gap-[354px]"
+                className="relative mb-7 md:mb-7 flex flex-col lg:flex-row justify-start lg:gap-[300px]"
                 style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? "translateY(0)" : "translateY(-16px)",
@@ -66,8 +66,8 @@ export default function PremiumFeatures() {
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-[96px] leading-[88px] max-w-[1100px] text-white">
-                    Enhance Your Pool With Premium Features
+                <h2 className="text-[96px] leading-[88px] max-w-[1200px] text-white">
+                    Custom Features That Bring Your Backyard to Life
                 </h2>
             </div>
 

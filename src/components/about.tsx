@@ -20,7 +20,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   imageSrc = '/images/about-img.png',
   tagline = 'Who We Are',
   headingLines = ['We Make Stunning', 'Outdoor', 'Spaces'],
-  description = 'We’re two brothers with a passion for transforming backyards into beautiful, functional outdoor spaces. From design to the final detail, we’re hands-on every step of the way. We don’t cut corners, we use quality materials, and we make sure everything is done right the first time. Our eye for detail and commitment to quality is what sets us apart. We know that being involved from start to finish leads to better results and happier clients.',
+  description = "Habitat Pools was founded in 2024 by two brothers after more than 18 years of combined experience in Arizona's pool and landscape industry. As brothers and business partners, we're passionate about creating outdoor spaces that are as functional as they are beautiful. Unlike larger companies where projects often change hands between multiple departments, we stay involved, committed and transparent.",
   buttonText = 'Call Us Today',
   onButtonClick,
 }) => {
@@ -65,8 +65,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
       {/* First Row */}
       <div className="mb-[-185px] z-2 relative ml-[150px]">
-        <h2 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[855px] m-auto">
-          We Make Stunning Outdoor<br /> Spaces
+        <h2 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[1150px] m-auto">
+          Built on Experience<br/>Driven by <br/> Craftsmanship
         </h2>
       </div>
 
@@ -74,19 +74,19 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       <div className="flex gap-[40px]">
 
         {/* First Column */}
-        <div className='w-[20%] pt-[20px]'>
+        <div className='w-[15%] pt-[20px]'>
           <h4 className="text-[#86A3AC] text-[36px] leading-[38px] capitalize">
             {tagline}
           </h4>
         </div>
 
         {/* Second Column (Fixed className typo here) */}
-        <div className="flex justify-center w-[42%]">
+        <div className="flex justify-center w-[47%]">
           <img
             ref={imageRef}
             src={imageSrc}
             alt="About"
-            className="w-full rounded-[20px]"
+            className="w-full rounded-[20px] max-h-[90%]"
           />
         </div>
 

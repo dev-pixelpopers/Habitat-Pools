@@ -46,7 +46,7 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
 
           {/* Left Column: Main Title */}
           <div className="flex w-[65%] pt-[60px]">
-            <h2 className="text-white text-[66px] leading-[62px] tracking-tight capitalize">
+            <h2 className="text-white text-[66px] leading-[62px] tracking-tight uppercase">
               {data.title}
             </h2>
           </div>
@@ -81,22 +81,22 @@ export const StickyServicesContainer: React.FC = () => {
   const sectionsData: SectionProps[] = [
     {
       id: 1,
-      title: "DESIGN",
-      description: "We create custom pool designs tailored to each client’s style, space, and vision. From layout and features to materials and flow, every detail is thoughtfully planned to bring your dream backyard to life. It’s not just about looks — it’s about smart design that works beautifully.",
+      title: "CUSTOM POOL & LANDSCAPE DESIGN",
+      description: "Your vision is the starting point for every project. From modern geometric pools to resort-style retreats and timeless entertaining spaces, we create custom designs that combine exceptional beauty with smarter planning for easier long-term maintenance.",
       buttonText: "Make An Appointment",
       imageSrc: "/images/service-01.png", // Add your own image URL
     },
     {
       id: 2,
-      title: "BUILD",
-      description: "We build high-quality pools and outdoor spaces with precision and care. From excavation to the final finish, we’re hands-on every step of the way. Our landscape work ties it all together — creating seamless, functional, and beautiful backyards built to last.",
+      title: "Custom Swimming Pool Construction",
+      description: "Every phase of swimming pool construction is carefully coordinated, from excavation and engineering to plumbing, electrical work, shotcrete, tile installation, coping, decking, landscaping, and premium pebble finishes. 90 days is all it takes!",
       buttonText: "Make An Appointment",
       imageSrc: "/images/service-02.png",
     },
     {
       id: 3,
-      title: "REMODEL",
-      description: "We breathe new life into outdated pools and landscapes. Whether it’s a full redesign or simple upgrades, we transform worn-out spaces into fresh, modern, and functional outdoor retreats. From resurfacing to reimagining layouts, we make it feel like a brand-new backyard — without starting from scratch.",
+      title: "Pool Remodeling & Backyard Renovations",
+      description: "Our pool remodeling services include resurfacing, tile replacement, new decking, equipment upgrades, and complete pool redesigns. We also renovate backyards with landscaping, lighting, outdoor kitchens, and fire features to create cohesive Arizona outdoor living spaces built for lasting enjoyment.",
       buttonText: "Make An Appointment",
       imageSrc: "/images/service-03.png",
     }

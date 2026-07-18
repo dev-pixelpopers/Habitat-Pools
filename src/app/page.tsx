@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="app">
       <Header />
-      <section className="relative h-screen w-full overflow-hidden px-[95px] pb-[50px] flex flex-col justify-end items-center">
+      <section className="relative h-screen w-full overflow-hidden px-[85px] pb-[50px] flex flex-col justify-end items-center">
         {/* Background Video */}
         <video ref={videoRef}
           autoPlay
@@ -56,25 +56,25 @@ export default function Home() {
 
         {/* Content */}
         <div ref={containerRef} className="relative z-10 flex items-end translate-y-100">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center justify-center w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 xl:flex xl:flex-row xl:gap-4 gap-0 items-center justify-center w-full">
             {/* First Column */}
-            <div>
+            <div className="xl:w-[40%]">
               <h1 className="text-white text-[80px] leading-[76.1px] font-normal">
-                Luxury Pools & Landscapes
+                Custom Pool Builders In Phoenix, Arizona
               </h1>
             </div>
 
             {/* Second Column */}
-            <div className="flex justify-center">
+            <div className="flex justify-center xl:w-[20%]">
               <div className="w-[419px]">
                 <img src="/images/arrow.png" alt="Arrow" className="w-full h-full object-cover" />
               </div>
             </div>
 
             {/* Third Column */}
-            <div>
+            <div className="xl:w-[40%]">
               <p className="text-white text-[22px] leading-[44px] capitalize font-normal">
-                Experience a level of craftsmanship where the people you meet are the ones who build your
+                We design and build custom pools, luxury landscapes, and complete outdoor living spaces throughout Gilbert, Queen Creek, Mesa, Scottsdale, Tempe, Paradise Valley, Phoenix, and the surrounding East & West Valley.
               </p>
             </div>
           </div>

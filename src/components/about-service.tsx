@@ -17,14 +17,66 @@ interface AboutServiceProps {
 export const AboutService: React.FC<AboutServiceProps> = ({
   // Fallback image added for testing, you can replace it with your actual asset
   imageSrc = '/images/owner.png',
-  heading = 'YEARS OF EXPERIENCE',
-  description = "Our experience covers every angle of the backyard — from years of pool service and maintenance to full-scale pool construction, home building, and landscape design. We’ve seen what works, what lasts, and what makes a space truly stand out. That broad background gives us the insight to build better.",
+  heading = 'Serving Homeowners Across Arizona',
+  description = "Habitat Pools builds custom swimming pools, luxury landscapes, and complete outdoor living spaces across Arizona's East Valley.{li} Gilbert{/li} {li}Queen Creek{/li} {li}San Tan Valley{/li} {li}Mesa{/li} {li}Tempe{/li} {li}Scottsdale{/li} {li}Paradise Valley{/li} {li}Cave Creek{/li} {li}Ahwatukee{/li} {li}Phoenix{/li} {br}We've also done projects in Goodyear, Glendale, and Peoria, and we're always happy to discuss projects in nearby communities.",
   buttonText = 'Call Us Today',
   onButtonClick,
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
+
+  const renderDescription = (raw: string): React.ReactNode[] => {
+    const output: React.ReactNode[] = [];
+    const chunks = raw.split('{br}').map((chunk) => chunk.trim()).filter(Boolean);
+
+    chunks.forEach((chunk, chunkIdx) => {
+      const liRegex = /{li}(.*?){\/li}/g;
+      const listItems: string[] = [];
+      let match: RegExpExecArray | null;
+
+      while ((match = liRegex.exec(chunk)) !== null) {
+        listItems.push(match[1].trim());
+      }
+
+      const remainingText = chunk.replace(liRegex, '').trim();
+
+      if (remainingText) {
+        output.push(
+          <p key={`p-${chunkIdx}`} className="mb-4 last:mb-0">
+            {remainingText}
+          </p>
+        );
+      }
+
+      if (listItems.length > 0) {
+        const midpoint = Math.ceil(listItems.length / 2);
+        const firstColumnItems = listItems.slice(0, midpoint);
+        const secondColumnItems = listItems.slice(midpoint);
+
+        output.push(
+          <div key={`ul-${chunkIdx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-right mb-4 last:mb-0">
+            <ul className="pl-5 space-y-1">
+              {firstColumnItems.map((item, index) => (
+                <li key={`li-${chunkIdx}-${index}`}>- {item}</li>
+              ))}
+            </ul>
+
+            {secondColumnItems.length > 0 && (
+              <ul className="pl-5 space-y-1">
+                {secondColumnItems.map((item, index) => (
+                  <li key={`li-${chunkIdx}-${index + midpoint}`}>- {item}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      }
+    });
+
+    return output;
+  };
+  
 
   useGSAP(() => {
     const leftCol = leftColRef.current;
@@ -96,9 +148,9 @@ export const AboutService: React.FC<AboutServiceProps> = ({
           </h2>
 
           {/* Description Paragraph */}
-          <p className="text-white/90 text-[24px] leading-[44px] mb-14 capitalize max-w-[680px]">
-            {description}
-          </p>
+          <div className="text-white/90 text-[24px] leading-[44px] mb-14 max-w-[680px]">
+            {renderDescription(description)}
+          </div>
 
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative'>
