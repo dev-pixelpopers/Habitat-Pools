@@ -142,9 +142,9 @@ export default function AboutPage() {
       {/* ── Story Section ── */}
       <section className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]" style={{ fontFamily: "'Nohemi', sans-serif" }}>
         {/* Overlapping heading */}
-        <div className="mb-[-185px] z-2 relative ml-[150px]">
+        <div className="mb-[-95px] z-2 relative ml-[150px]">
           <h2 className="text-white text-[96px] leading-[88px] max-w-[1020px] m-auto">
-            Years of Experience. Company Built on Trust
+            Years of Experience.<br/>Built on Trust
           </h2>
         </div>
 
@@ -162,7 +162,7 @@ export default function AboutPage() {
 
           {/* Text */}
           <div ref={storyTextRef} className="w-[38%] pl-[60px] flex flex-col justify-center">
-            <p className="text-white text-[26px] leading-[48px] capitalize">
+            <p className="text-white text-[26px] leading-[48px] capitalize pt-16">
              Before founding Habitat Pools, we built our experience through years of hands-on work in pool service, luxury pool construction, landscape design, and residential construction. Throughout our careers, we've contributed to more than 300 custom swimming pool and landscape projects across Arizona. That experience shaped our commitment to quality craftsmanship, transparent communication, thoughtful planning, and attention to detail, creating outdoor spaces that are beautiful, functional, and built to last.
             </p>
           </div>
