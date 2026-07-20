@@ -48,7 +48,7 @@ export default function Home() {
           playsInline
           className="absolute w-[386px] h-[383px] object-cover rounded-[540px]"
         >
-          <source src="/images/video-hero.mp4" type="video/mp4" />
+          <source src="/videos/HeroVideo.mp4" type="video/mp4" />
         </video>
 
         {/* Overlay */}
