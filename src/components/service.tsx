@@ -59,7 +59,7 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
 
             {/* Outlined Button */}
             <div className='btn-all mt-[30px] relative'>
-              <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{data.buttonText}</a>
+              <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{data.buttonText}</a>
             </div>
           </div>
 
@@ -81,15 +81,15 @@ export const StickyServicesContainer: React.FC = () => {
   const sectionsData: SectionProps[] = [
     {
       id: 1,
-      title: "CUSTOM POOL & LANDSCAPE DESIGN",
-      description: "Your vision is the starting point for every project. From modern geometric pools to resort-style retreats and timeless entertaining spaces, we create custom designs that combine exceptional beauty with smarter planning for easier long-term maintenance.",
+      title: "Custom Swimming Pool Construction",
+      description: "Every phase of swimming pool construction is carefully coordinated, from excavation and engineering to plumbing, electrical work, shotcrete, tile installation, coping, decking, landscaping, and premium pebble finishes. 90 days is all it takes!",
       buttonText: "Make An Appointment",
       imageSrc: "/images/service-01.png", // Add your own image URL
     },
     {
       id: 2,
-      title: "Custom Swimming Pool Construction",
-      description: "Every phase of swimming pool construction is carefully coordinated, from excavation and engineering to plumbing, electrical work, shotcrete, tile installation, coping, decking, landscaping, and premium pebble finishes. 90 days is all it takes!",
+      title: "Custom Pool & Landscape Design",
+      description: "Your vision is the starting point for every project. From modern geometric pools to resort-style retreats and timeless entertaining spaces, we create custom designs that combine exceptional beauty with smarter planning for easier long-term maintenance.",
       buttonText: "Make An Appointment",
       imageSrc: "/images/service-02.png",
     },

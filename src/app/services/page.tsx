@@ -32,12 +32,12 @@ const services: Service[] = [
       "Integrated spas & Baja shelves",
       "Premium pebble interiors",
       "Smart pool automation",
-      "Energy-efficient pool equipment",
+      "Energy-efficient pool equipment"
     ],
-    imageSrc: "/images/service-01.png",
+    imageSrc: "/images/service-02.png",
     href: "/services/custom-pool-construction",
   },
-  {
+   {
     id: 2,
     title: "Pool & Landscape Design",
     description: "Our pool & landscape design services combine creative vision and functionality, ensuring every element of your backyard works together seamlessly.",
@@ -46,10 +46,9 @@ const services: Service[] = [
       "3D design renderings",
       "Hardscape planning",
       "Outdoor lighting",
-      "Plant selection",
-      "Material selections"
+      "Plant and Material Selections",
     ],
-    imageSrc: "/images/service-02.png",
+    imageSrc: "/images/service-01.png",
     href: "/services/pool-and-landscape-design",
   },
   {
@@ -135,9 +134,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           </p>
 
           {/* Detail list */}
-          <ul className="flex flex-col gap-3 mb-10">
+          <ul className="flex flex-col gap-3 pt-6 pb-10">
             {service.details.map((detail) => (
-              <li key={detail} className="text-white/70 text-[20px] leading-[28px] flex items-center gap-3">
+              <li key={detail} className="text-white/70 text-[20px] leading-[28px] flex items-center gap-3 capitalize">
                 <span className="w-[6px] h-[6px] rounded-full bg-[#86A3AC] flex-shrink-0" />
                 {detail}
               </li>

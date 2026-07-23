@@ -154,7 +154,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
 
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative'>
-            <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
+            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
           </div>
 
         </div>

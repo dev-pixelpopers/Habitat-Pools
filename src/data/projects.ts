@@ -49,7 +49,7 @@ export const allProjects: Project[] = [
       "/images/Projects/Kimball/Kimball-2.jpg",
       "/images/Projects/Kimball/Kimball-3.jpg",
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/Projects/Kimball/Kimball-5.jpg"
@@ -104,7 +104,7 @@ export const allProjects: Project[] = [
       "/images/project-05.png",
       "/images/features_1.png"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/service-02.png"
@@ -154,7 +154,7 @@ export const allProjects: Project[] = [
       "/images/project-06.png",
       "/images/project-05.png",
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/service-03.png"
@@ -192,7 +192,7 @@ export const allProjects: Project[] = [
       "/images/features_4.png",
       "/images/features_2.jpg"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
       "/images/service-03.png"
@@ -230,7 +230,7 @@ export const allProjects: Project[] = [
       "/images/about-img.png",
       "/images/service-01.png"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Hand-Chiseled Fieldstone Coping",
@@ -262,7 +262,7 @@ export const allProjects: Project[] = [
       "/images/features_3.jpg",
       "/images/service-02.png"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "IntelliFlo Variable Speed Pumps",
@@ -294,7 +294,7 @@ export const allProjects: Project[] = [
       "/images/features_1.png",
       "/images/service-03.png"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Natural Fieldstone Rock Grotto",
@@ -326,7 +326,7 @@ export const allProjects: Project[] = [
       "/images/features_3.jpg",
       "/images/project-05.png"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Four-Sided Slot Overflow Gutters",
@@ -358,7 +358,7 @@ export const allProjects: Project[] = [
       "/images/features_4.png",
       "/images/features_2.jpg"
     ],
-    video: "/videos/Kimball/Kimball.mp4",
+    video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
       "Architectural Raw Concrete Outdoor Kitchen",

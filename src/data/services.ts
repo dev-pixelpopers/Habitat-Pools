@@ -16,6 +16,7 @@ type whyUsdescription = {
 };
 
 type ourEasiness = {
+  easyTitle:string;
   easypara: string;
   easyListItems: string[];
 };
@@ -51,7 +52,7 @@ export interface ServiceDetail {
   }[];
   whyUstitle:string;
   whyUsdescription:whyUsdescription;
-  ourPoolTitle:string;
+  ourEasiness : ourEasiness;
   ctaHeading: string;
   ctaDescription: string;
   ctaButtonText: string;
@@ -160,7 +161,11 @@ export const allServices: ServiceDetail[] = [
     ],
     whyImage:"/images/owner.png"
   },
-    ourPoolTitle:"",
+    ourEasiness:{
+      easyTitle:"Our Pools are Easy to Maintain",
+      easypara:"Many homeowners love the idea of owning a pool, but some eventually become frustrated by constant maintenance, inefficient equipment, or water quality issues. We believe thoughtful construction decisions made today help prevent those frustrations tomorrow. That's why every Habitat Pools project is designed to:",
+      easyListItems:["Improve water circulation","Maximize equipment efficiency","Simplify routine maintenance"],
+    },
     ctaHeading: "Ready to Build Your Dream Pool?",
     ctaDescription: "Turn your vision into a custom pool that’s designed for your lifestyle and built to last.",
     ctaButtonText: "Schedule Your Free Consultation",
@@ -286,7 +291,11 @@ export const allServices: ServiceDetail[] = [
     ],
     whyImage:"/images/owner.png"
   },
-    ourPoolTitle:"",
+    ourEasiness:{
+      easyTitle:"Our Pools are Easy to Maintain",
+      easypara:"Many homeowners love the idea of owning a pool, but some eventually become frustrated by constant maintenance, inefficient equipment, or water quality issues. We believe thoughtful construction decisions made today help prevent those frustrations tomorrow. That's why every Habitat Pools project is designed to:",
+      easyListItems:["Improve water circulation","Maximize equipment efficiency","Simplify routine maintenance"],
+    },
     ctaHeading: "Ready to Build Your Dream Pool?",
     ctaDescription: "Turn your vision into a custom pool that’s designed for your lifestyle and built to last.",
     ctaButtonText: "Schedule Your Free Consultation",
@@ -412,7 +421,11 @@ export const allServices: ServiceDetail[] = [
     ],
     whyImage:"/images/owner.png"
   },
-    ourPoolTitle:"",
+    ourEasiness:{
+      easyTitle:"Our Pools are Easy to Maintain",
+      easypara:"Many homeowners love the idea of owning a pool, but some eventually become frustrated by constant maintenance, inefficient equipment, or water quality issues. We believe thoughtful construction decisions made today help prevent those frustrations tomorrow. That's why every Habitat Pools project is designed to:",
+      easyListItems:["Improve water circulation","Maximize equipment efficiency","Simplify routine maintenance"],
+    },
     ctaHeading: "Ready to Build Your Dream Pool?",
     ctaDescription: "Turn your vision into a custom pool that’s designed for your lifestyle and built to last.",
     ctaButtonText: "Schedule Your Free Consultation",

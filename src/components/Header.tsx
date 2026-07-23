@@ -102,7 +102,7 @@ export default function Header() {
                 src="/images/logo-main.png"
                 alt="HABITAT Pool & Landscape"
                 style={{
-                  height: "40px",
+                  height: "58px",
                   width: "auto",
                   display: "block",
                 }}
@@ -232,7 +232,7 @@ export default function Header() {
                   <img
                     src="/images/logo-main.png"
                     alt="HABITAT Pool & Landscape"
-                    style={{ height: "40px", width: "auto", display: "block" }}
+                    style={{ height: "58px", width: "auto", display: "block" }}
                   />
                 </Link>
               </div>

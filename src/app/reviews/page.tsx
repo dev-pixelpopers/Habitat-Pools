@@ -214,20 +214,20 @@ export default function ReviewsPage() {
       <FAQSection
         faqs={[
           {
-            question: "Can I speak with past clients to ask about their experience?",
-            answer: "Yes, we can provide client references upon request. Many of our past clients are happy to share their firsthand experience working with our design and construction teams.",
+            question: "How long does it take to complete a custom pool project?",
+            answer: "Every project is unique, but most custom pool projects are completed in approximately 90 days after construction begins. Larger backyard transformations or more complex projects may require additional time depending on the design, permitting, and selected features.",
           },
           {
-            question: "Are the reviews on this page verified?",
-            answer: "Every testimonial featured on our website represents a real project build. We pull reviews directly from verified customer feedback platforms like Google Maps and Houzz.",
+            question: "Do you offer free consultations?",
+            answer: "Yes. Every project begins with a complimentary consultation where we'll discuss your ideas, evaluate your property, answer your questions, and explore the best options for your backyard.",
           },
           {
-            question: "Do you offer any warranty on the workmanship and materials?",
-            answer: "Absolutely. We stand behind our custom craftsmanship. We offer robust warranties covering pool structure, plaster finishes, tiling, and manufacturer guarantees on smart pumps and filtration systems.",
+            question: "Can I see my design before construction starts?",
+            answer: "Absolutely. We create custom design renderings that allow you to visualize your new pool and outdoor space before construction begins. We'll continue refining the design until you're completely satisfied before moving forward.",
           },
           {
-            question: "How do you handle issues or feedback during construction?",
-            answer: "Because we have direct owner involvement, any design adjustments or construction updates are resolved quickly on-site. You can communicate feedback directly, and we will implement solutions immediately.",
+            question: "Do you handle engineering and permits?",
+            answer: "Yes. Once your design is finalized, we coordinate the required engineering plans and obtain all necessary permits before construction begins, making the process as seamless as possible for you.",
           },
         ]}
       />

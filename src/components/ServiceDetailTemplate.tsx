@@ -336,23 +336,23 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
 
           {/* Heading */}
           <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 max-w-[786px]">
-            {service.whyUstitle}
+            {service.ourEasiness.easyTitle}
           </h2>
 
           {/* Description Paragraph */}
           <div className="text-white/90 text-[24px] leading-[44px] mb-14 max-w-[680px]">
-            {service.whyUsdescription.whypara}
+            {service.ourEasiness.easypara}
           
             {/* whyDescListItems */}
           <ul className="flex flex-col gap-x-8 gap-y-2 pl-5 text-left pt-4">
-            {service.whyUsdescription.whyListItems.map((item, i) => (
+            {service.ourEasiness.easyListItems.map((item, i) => (
               <li key={i}>- {item}</li>
             ))}
           </ul>
               </div>
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative'>
-            <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
+            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
           </div>
 
         </div>

@@ -13,6 +13,7 @@ interface AboutSectionProps {
   headingLines?: string[];
   description?: string;
   buttonText?: string;
+  buttonLink?:string;
   onButtonClick?: () => void;
 }
 
@@ -22,6 +23,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   headingLines = ['We Make Stunning', 'Outdoor', 'Spaces'],
   description = "Habitat Pools was founded in 2024 by two brothers after more than 18 years of combined experience in Arizona's pool and landscape industry. As brothers and business partners, we're passionate about creating outdoor spaces that are as functional as they are beautiful. Unlike larger companies where projects often change hands between multiple departments, we stay involved, committed and transparent.",
   buttonText = 'Call Us Today',
+  buttonLink= '/contact',
   onButtonClick,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -98,7 +100,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <div className='btn-all mt-[60px] relative'>
             <a
               ref={buttonRef}
-              href='#'
+              href={buttonLink}
               onClick={onButtonClick}
               className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center'>
               {buttonText}
