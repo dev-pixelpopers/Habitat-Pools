@@ -44,7 +44,7 @@ const StarIcon = () => (
 // --- Sub-components ---
 const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
   return (
-    <div className="bg-white rounded-[1.1rem] flex flex-col gap-30 flex-shrink-0 w-full lg:w-[calc(33.333%-16px)] snap-center shadow-2xl pt-[50px] pb-[30px] px-[30px]">
+    <div className="bg-white rounded-[1.1rem] flex flex-col gap-30 flex-shrink-0 w-full lg:w-[100%] snap-center shadow-2xl pt-[50px] pb-[30px] px-[30px]">
 
       {/* Header: Quote Icon + Name & Stars */}
       <div className="flex items-center gap-5">
@@ -80,29 +80,23 @@ export const ReviewsSection: React.FC = () => {
   const reviews: Review[] = [
     {
       id: "1",
-      name: "Jennifer Collins",
+      name: "Jordyn Matthews",
       rating: 5,
-      text: "The quality of work is exceptional. They transformed our vision into a breathtaking custom pool that completely elevated our home. If you’re looking for luxury pool construction with premium service, this is the company to trust.",
+      text: "We just wrapped up working with Carter and Colby from Habitat Pools on our dream backyard, and we honestly couldn't be happier with how it turned out. We are absolutely in love with our new pool and backyard! The entire process was so easy thanks to their experience and incredible eye for design. From the pool layout and plant selection to the tile choices, shade structures, appliances, and lighting, they guided us through every decision without making it feel overwhelming. We wanted a backyard that was both functional (somewhere we could actually spend time, even during the Arizona summer) and beautiful, and they absolutely nailed it. What we appreciated most was that they always kept our budget in mind. They genuinely wanted us to end up with a backyard we'd love, at a price we could afford. If you're looking for a company that creates truly high-end, luxurious outdoor spaces while making the entire process enjoyable, give Habitat Pools a call. Creating incredible backyards is what they do best, and it definitely shows.",
     },
     {
       id: "2",
-      name: "Daniel Rodriguez",
+      name: "Christopher Langake",
       rating: 5,
-      text: "From The Initial Design Consultation To The Final Reveal, The Team Exceeded Every Expectation. Our Backyard Now Feels Like A Five-Star Resort. The Craftsmanship, Attention To Detail, And Luxury Finishes Are Absolutely Stunning",
+      text: "Absolutely fantastic company to work with for your backyard paradise! They took our dreams and made them reality! From landscaping to pool design we couldn’t be happier with our family oasis, Cactus Cove! What has made the exceptional is the after care, this wasn’t just a job for them, it was a commitment and they have honored every bit of what you’d expect but so rarely get these days! Looking for a dream pool or landscape, don’t hesitate, call Colby and Carter - Ha it at Pools!",
     },
     {
       id: "3",
-      name: "Sarah Thompson",
+      name: "Cassandra Nash",
       rating: 5,
-      text: "We Wanted A Modern Infinity Pool That Felt Elegant And Timeless, And They Delivered Flawlessly. The Entire Construction Process Was Smooth, Professional, And Completed On Schedule. Guests Are Constantly Complimenting Our New Outdoor Space.",
+      text: "We cannot say enough good things about Habitat Pools. What started as a pool project turned into a complete transformation of our entire outdoor space. We had a vision of exactly what we wanted and they went above and beyond to create a space beyond what we had imagined. They handled everything: landscaping, all new plants, garden beds, irrigation, driveway extension, pool, spa, and a beautiful shade structure, and every detail was thoughtfully designed and executed. What truly set Habitat Pools apart was their creativity, communication, and hands-on approach throughout the entire process. They didn’t just build us a pool (which is absolutely amazing, by the way) — they completely reimagined how our family uses and enjoys our home. One of our favorite parts of the project is the side yard transformation. What was once wasted space is now one of the most special areas of our property, complete with raised garden beds, fruit trees, and the sweetest playhouse tucked away for our kids. It feels like something out of a magazine, but still functional and family-focused. Colby and Carter were responsive, collaborative, and genuinely cared about making sure every part of the project was perfect. We are beyond grateful for the vision and effort they brought to our home and would recommend Habitat Pools to anyone looking for a company that goes above and beyond.",
     },
     // Dummy review added for testing slider movement
-    {
-      id: "4",
-      name: "Michael Smith",
-      rating: 5,
-      text: "Absolutely phenomenal experience from start to finish. The crew was always on time, polite, and kept the site clean. The pool is exactly what we dreamed of, and the smart features they recommended are a game-changer.",
-    },
   ];
 
   // --- Scroll Logic ---

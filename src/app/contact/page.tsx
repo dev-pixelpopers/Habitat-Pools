@@ -231,9 +231,9 @@ export default function ContactPage() {
                     color: "#0a0a0a",
                   }}
                 >
-                  123 Pool Lane, Suite 100
+                  Located in
                   <br />
-                  Los Angeles, CA 90001
+                  Gilbert, Arizona.
                 </p>
               </div>
 

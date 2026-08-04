@@ -48,14 +48,32 @@ export const allProjects: Project[] = [
       "/images/Projects/Kimball/Kimball-1.jpg",
       "/images/Projects/Kimball/Kimball-2.jpg",
       "/images/Projects/Kimball/Kimball-3.jpg",
+      "/images/Projects/Kimball/Kimball-10.jpg",
+      "/images/Projects/Kimball/Kimball-11.jpg",
+      "/images/Projects/Kimball/Kimball-12.jpg",
+      "/images/Projects/Kimball/Kimball-13.jpg",
+      "/images/Projects/Kimball/Kimball-14.jpg",
+      "/images/Projects/Kimball/Kimball-15.jpg",
+      "/images/Projects/Kimball/Kimball-16.jpg",
+      "/images/Projects/Kimball/Kimball-17.jpg",
+      "/images/Projects/Kimball/Kimball-18.jpg",
+      "/images/Projects/Kimball/Kimball-19.jpg",
+      "/images/Projects/Kimball/Kimball-20.jpg",
+      "/images/Projects/Kimball/Kimball-21.jpg",
+      "/images/Projects/Kimball/Kimball-22.jpg",
+      "/images/Projects/Kimball/Kimball-23.jpg",
+      "/images/Projects/Kimball/Kimball-24.jpg",
+      "/images/Projects/Kimball/Kimball-25.jpg",
+      "/images/Projects/Kimball/Kimball-26.jpg",
+      "/images/Projects/Kimball/Kimball-27.jpg",
     ],
     video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/Projects/Kimball/Kimball-5.jpg"
+      "/images/Projects/Kimball/before.jpg"
     ],
     afterImages: [
-      "/images/Projects/Kimball/Kimball-6.jpg"
+      "/images/Projects/Kimball/Kimball-10.jpg"
     ],
     features: [
       "Perimeter Overflow Edge",
@@ -87,12 +105,12 @@ export const allProjects: Project[] = [
   },
   {
     id: "2",
-    slug: "amani",
-    title: "Amani",
+    slug: "melissa-dinan",
+    title: "Melissa Dinan",
     subtitle: "A serene infinity pool that blends seamlessly with the natural coastal horizon.",
     category: "Landscape",
     heroImage: "/images/project-02.png",
-    overview: "Overlooking the Pacific ocean, Amani was engineered to establish a vanishing horizon line. Surrounded by soft native grasses and natural stone paving, the landscape honors the quiet coastal environment.",
+    overview: "Overlooking the Pacific ocean, Melissa Dinan was engineered to establish a vanishing horizon line. Surrounded by soft native grasses and natural stone paving, the landscape honors the quiet coastal environment.",
     location: "Malibu, CA",
     year: "2024",
     services: ["Pool Design & Build", "Landscape Design", "Softscape & Planting"],
@@ -137,12 +155,12 @@ export const allProjects: Project[] = [
   },
   {
     id: "3",
-    slug: "tranquil",
-    title: "Tranquil",
+    slug: "parkview-media",
+    title: "Parkview Media",
     subtitle: "Modern geometric pool with integrated spa and soothing linear water features.",
     category: "Pool Design",
     heroImage: "/images/project-03.png",
-    overview: "Built for a contemporary urban residence, Tranquil is a rectangular oasis featuring black granite plaster, custom bronze scuppers, and an adjacent sunken fire pit lounge area.",
+    overview: "Built for a contemporary urban residence, Parkview Media is a rectangular oasis featuring black granite plaster, custom bronze scuppers, and an adjacent sunken fire pit lounge area.",
     location: "Pasadena, CA",
     year: "2025",
     services: ["Pool Design & Build", "Hardscape Design", "Fire Feature Integration"],
@@ -157,7 +175,7 @@ export const allProjects: Project[] = [
     video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/service-03.png"
+      "/images/service-03.jpeg"
     ],
     afterImages: [
       "/images/project-03.png"
@@ -175,8 +193,8 @@ export const allProjects: Project[] = [
   },
   {
     id: "4",
-    slug: "soluna",
-    title: "Soluna",
+    slug: "vidlak",
+    title: "Vidlak",
     subtitle: "Resort-style backyard transformation with fire and water elements.",
     category: "Remodel",
     heroImage: "/images/project-04.png",
@@ -195,7 +213,7 @@ export const allProjects: Project[] = [
     video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/service-03.png"
+      "/images/service-03.jpeg"
     ],
     afterImages: [
       "/images/project-04.png"
@@ -227,7 +245,7 @@ export const allProjects: Project[] = [
     howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-05.png",
-      "/images/about-img.png",
+      "/images/about-img.jpeg",
       "/images/service-01.png"
     ],
     video: "/videos/Kimball/Kimball.webm",
@@ -251,7 +269,7 @@ export const allProjects: Project[] = [
     category: "Pool Design",
     heroImage: "/images/project-06.png",
     overview: "A sleek pool built for a technological visionary, integrating full-flow pool filters, intelligent heating controllers, and multi-zone LED strips under the pool coping.",
-    location: "Los Angeles, CA",
+    location: "Gilbert, AZ",
     year: "2024",
     services: ["Pool Design & Build", "Smart Pool Automation", "Lighting Design"],
     vision: "Seamless, minimal detailing combined with cutting-edge smart home controls for optimal operational convenience.",
@@ -292,7 +310,7 @@ export const allProjects: Project[] = [
     gallery: [
       "/images/project-01.png",
       "/images/features_1.png",
-      "/images/service-03.png"
+      "/images/service-03.jpeg"
     ],
     video: "/videos/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",

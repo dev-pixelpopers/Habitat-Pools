@@ -123,6 +123,21 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
           ]
         : images.map((src, i) => ({ kind: "image" as const, src, photoIndex: i }));
 
+    // Exactly 3 images show on the front end (the video tile doesn't count
+    // toward that limit); the rest are still reachable through the lightbox.
+    const visibleCells: GalleryCell[] = [];
+    let visibleImageCount = 0;
+    for (const cell of cells) {
+        if (visibleImageCount >= 3) break;
+        visibleCells.push(cell);
+        if (cell.kind === "image") visibleImageCount++;
+    }
+    const lastVisible = visibleCells[visibleCells.length - 1];
+    const hiddenCount =
+        lastVisible && lastVisible.kind === "image"
+            ? images.length - (lastVisible.photoIndex + 1)
+            : 0;
+
     return (
         <>
             {/* ── GALLERY SECTION ── */}
@@ -145,7 +160,7 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
                             gridAutoRows: "300px",
                         }}
                     >
-                        {cells.map((cell, idx) => {
+                        {visibleCells.map((cell, idx) => {
                             const pos = idx % 5;
                             let colSpan = 1;
                             let rowSpan = 1;
@@ -165,6 +180,8 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
                                 return <VideoTile key="video" src={cell.src} poster={videoThumbnail} style={gridStyle} />;
                             }
 
+                            const isLoadMoreTile = cell === lastVisible && hiddenCount > 0;
+
                             return (
                                 <div
                                     key={cell.photoIndex}
@@ -179,40 +196,51 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
 
-                                    {/* Hover overlay */}
-                                    <div className="absolute inset-0 bg-[#112931]/0 group-hover:bg-[#112931]/40 transition-all duration-500" />
-
-                                    {/* View icon */}
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div
-                                            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full"
-                                            style={{
-                                                background: "rgba(255,255,255,0.15)",
-                                                backdropFilter: "blur(8px)",
-                                                border: "1px solid rgba(255,255,255,0.3)",
-                                            }}
-                                        >
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                            <span className="text-white text-[14px] font-medium tracking-wide">View</span>
+                                    {isLoadMoreTile ? (
+                                        /* Permanent scrim + prompt so it's discoverable without hovering */
+                                        <div className="absolute inset-0 flex items-center justify-center bg-[#112931]/60 group-hover:bg-[#112931]/70 transition-all duration-500">
+                                            <span className="text-white text-[16px] font-medium tracking-wide text-center px-4">
+                                                Click to load more images
+                                            </span>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        <>
+                                            {/* Hover overlay */}
+                                            <div className="absolute inset-0 bg-[#112931]/0 group-hover:bg-[#112931]/40 transition-all duration-500" />
 
-                                    {/* Index counter */}
-                                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <span
-                                            className="text-white text-[13px]"
-                                            style={{
-                                                background: "rgba(0,0,0,0.4)",
-                                                backdropFilter: "blur(4px)",
-                                                padding: "4px 10px",
-                                                borderRadius: "20px",
-                                            }}
-                                        >
-                                            {cell.photoIndex + 1} / {images.length}
-                                        </span>
-                                    </div>
+                                            {/* View icon */}
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <div
+                                                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-full"
+                                                    style={{
+                                                        background: "rgba(255,255,255,0.15)",
+                                                        backdropFilter: "blur(8px)",
+                                                        border: "1px solid rgba(255,255,255,0.3)",
+                                                    }}
+                                                >
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                    <span className="text-white text-[14px] font-medium tracking-wide">View</span>
+                                                </div>
+                                            </div>
+
+                                            {/* Index counter */}
+                                            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <span
+                                                    className="text-white text-[13px]"
+                                                    style={{
+                                                        background: "rgba(0,0,0,0.4)",
+                                                        backdropFilter: "blur(4px)",
+                                                        padding: "4px 10px",
+                                                        borderRadius: "20px",
+                                                    }}
+                                                >
+                                                    {cell.photoIndex + 1} / {images.length}
+                                                </span>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             );
                         })}

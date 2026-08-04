@@ -62,7 +62,7 @@ const services: Service[] = [
       "Pool automation",
       "LED lighting & Water features",
     ],
-    imageSrc: "/images/service-03.png",
+    imageSrc: "/images/service-03.jpeg",
     href: "/services/pool-remodeling-and-renovations",
   },
   

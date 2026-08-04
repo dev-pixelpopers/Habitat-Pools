@@ -38,7 +38,7 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
             className="w-full h-full object-cover"
           />
           {/* Dark overlay taake white text wazeh nazar aaye */}
-          {/* <div className="absolute inset-0 bg-black/30"></div>  */}
+          <div className="absolute inset-0 bg-black/30"></div> 
         </div>
 
         {/* Content Container */}
@@ -98,7 +98,7 @@ export const StickyServicesContainer: React.FC = () => {
       title: "Pool Remodeling & Backyard Renovations",
       description: "Our pool remodeling services include resurfacing, tile replacement, new decking, equipment upgrades, and complete pool redesigns. We also renovate backyards with landscaping, lighting, outdoor kitchens, and fire features to create cohesive Arizona outdoor living spaces built for lasting enjoyment.",
       buttonText: "Make An Appointment",
-      imageSrc: "/images/service-03.png",
+      imageSrc: "/images/service-03.jpeg",
     }
   ];
 

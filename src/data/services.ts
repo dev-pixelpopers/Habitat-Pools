@@ -329,7 +329,7 @@ export const allServices: ServiceDetail[] = [
     title: "Pool Remodeling & Renovations",
     titleTwo:"Custom Pool Construction",
     category: "Renovation",
-    heroImage: "/images/service-03.png",
+    heroImage: "/images/service-03.jpeg",
     subtitle: "Thoughtful design, expert craftsmanship, and long-term performance for luxury backyard pools in Arizona.",
     overview:
       "At Habitat Pools, we specialize in custom pool construction for homeowners across Arizona, creating outdoor spaces that combine exceptional craftsmanship with thoughtful design and long-term performance. Whether you're dreaming of a sleek geometric pool, a resort-inspired retreat, an infinity-edge design, or a complete backyard transformation, our team works closely with you to create a one-of-a-kind outdoor environment tailored to your home and lifestyle.",
