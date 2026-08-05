@@ -18,12 +18,12 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({
-  imageSrc = '/images/about-img.jpeg',
+  imageSrc = '/images/about-img.jpg',
   tagline = 'Who We Are',
   headingLines = ['We Make Stunning', 'Outdoor', 'Spaces'],
   description = "Habitat Pools was founded in 2024 by two brothers after more than 18 years of combined experience in Arizona's pool and landscape industry. As brothers and business partners, we're passionate about creating outdoor spaces that are as functional as they are beautiful. Unlike larger companies where projects often change hands between multiple departments, we stay involved, committed and transparent.",
-  buttonText = 'Call Us Today',
-  buttonLink= '/contact',
+  buttonText = 'About Us',
+  buttonLink= '/about',
   onButtonClick,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -73,7 +73,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       </div>
 
       {/* Second Row */}
-      <div className="flex gap-[40px]">
+      <div className="flex gap-[40px] h-[95vh]">
 
         {/* First Column */}
         <div className='w-[15%] pt-[20px]'>

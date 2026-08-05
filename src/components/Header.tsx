@@ -148,6 +148,80 @@ export default function Header() {
         </div>
       </header>
 
+      {/* ── Floating call button — sibling of <header>, since header's own
+          transform (Tailwind translate + GSAP) would otherwise become the
+          containing block for a "fixed" child and break viewport pinning ── */}
+      <a
+        href="tel:+4804207515"
+        aria-label="Call Habitat Pool & Landscape"
+        className="floating-icon flex md:hidden"
+        style={{
+                position: "fixed",
+                right: "40px",
+                bottom: "40px",
+                zIndex: 60,
+                width: "64px",
+                height: "64px",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "50%",
+                background: "rgba(17, 41, 49, 0.4)",       // #112931 ka translucent version
+                backdropFilter: "blur(12px) saturate(180%)",
+                WebkitBackdropFilter: "blur(12px) saturate(180%)", // Safari ke liye zaroori
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                transition: "transform 0.2s ease, background 0.2s ease",
+              }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.08)";
+          (e.currentTarget as HTMLAnchorElement).style.background = "rgba(17, 41, 49, 0.8)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+          (e.currentTarget as HTMLAnchorElement).style.background = "rgba(17, 41, 49, 0.4)";
+        }}
+      >
+        <img
+          src="/images/icons/phone.svg"
+          alt=""
+          style={{ width: "26px", height: "26px", filter: "brightness(0) invert(1)" }}
+        />
+      </a>
+      <a
+        href="/contact"
+        aria-label="Go to Contact Page"
+        className="floating-icon hidden md:flex"
+        style={{
+                position: "fixed",
+                right: "40px",
+                bottom: "40px",
+                zIndex: 60,
+                width: "64px",
+                height: "64px",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "50%",
+                background: "rgba(17, 41, 49, 0.4)",       // #112931 ka translucent version
+                backdropFilter: "blur(12px) saturate(180%)",
+                WebkitBackdropFilter: "blur(12px) saturate(180%)", // Safari ke liye zaroori
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                transition: "transform 0.2s ease, background 0.2s ease",
+              }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.08)";
+          (e.currentTarget as HTMLAnchorElement).style.background = "rgba(17, 41, 49, 0.8)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+          (e.currentTarget as HTMLAnchorElement).style.background = "rgba(17, 41, 49, 0.4)";
+        }}
+      >
+        <img
+          src="/images/icons/get-in-touch.png"
+          alt=""
+          style={{ width: "26px", height: "26px", filter: "brightness(0) invert(1)" }}
+        />
+      </a>
+
       {/* ── Menu Pop-up Overlay ── */}
       {menuOpen && (
         <div
@@ -239,13 +313,39 @@ export default function Header() {
 
               {/* Empty right cell */}
               <div
-                style={{
-                  borderLeft: "1px solid rgba(255,255,255,0.15)",
-                  paddingTop: "40px",
-                  paddingBottom: "40px",
-                  paddingLeft: "40px",
-                }}
-              />
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              paddingTop: "40px",
+              paddingBottom: "40px",
+              paddingLeft: "40px",
+              paddingRight: "85px",
+              borderLeft: "1px solid rgba(255,255,255,0.25)",
+            }}
+          >
+            <Link
+              href="tel:+4804207515"
+              style={{
+                color: "#ffffff",
+                fontFamily: "'Nohemi', sans-serif",
+                fontSize: "20px",
+                lineHeight: "28px",
+                textDecoration: "underline",
+                textDecorationThickness: "1px",
+                textUnderlineOffset: "3px",
+                transition: "opacity 0.2s ease",
+              }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.7")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")
+              }
+            >
+              Call Us
+            </Link>
+          </div>
             </div>
           </div>
 
@@ -300,10 +400,15 @@ export default function Header() {
               gap: "32px",
             }}
           >
-            {["Instagram", "Facebook"].map((s) => (
+            {[
+              { label: "Instagram", href: "https://www.instagram.com/habitatpoolsaz/" },
+              { label: "Facebook", href: "https://www.facebook.com/Habitat-Pools-61561546888937/" },
+            ].map((s) => (
               <a
-                key={s}
-                href="#"
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   fontSize: "20px",
                   color: "#86A3AC",
@@ -319,7 +424,7 @@ export default function Header() {
                   "#86A3AC")
                 }
               >
-                {s}
+                {s.label}
               </a>
             ))}
           </div>

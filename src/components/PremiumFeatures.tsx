@@ -1,37 +1,32 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import type { ProjectFeature } from "@/data/projects";
 
-type Feature = {
-    id: string;
-    label: string;
-    image: string;
+type PremiumFeaturesProps = {
+    features?: ProjectFeature[];
 };
 
-const features: Feature[] = [
+const fallbackFeatures: ProjectFeature[] = [
     {
-        id: "water",
         label: "Water Features",
-        image: "/images/features_1.png",
+        image: "/images/features_1.jpg",
     },
     {
-        id: "fire",
         label: "Outdoor Fire Features",
         image: "/images/features_2.jpg",
     },
     {
-        id: "lighting",
         label: "Lighting Features",
         image: "/images/features_3.jpg",
     },
     {
-        id: "kitchen",
         label: "Outdoor Kitchens & BBQ Area",
-        image: "/images/features_4.png",
+        image: "/images/features_4.jpg",
     },
 ];
 
-export default function PremiumFeatures() {
+export default function PremiumFeatures({ features = fallbackFeatures }: PremiumFeaturesProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [mounted, setMounted] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
@@ -61,13 +56,13 @@ export default function PremiumFeatures() {
                 {/* Feature label */}
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-[36px] text-[#86A3AC] hidden lg:block tracking-wide">
-                        Feature
+                       Custom Features
                     </span>
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-[96px] leading-[88px] max-w-[1200px] text-white">
-                    Custom Features That Bring Your Backyard to Life
+                <h2 className="text-[96px] leading-[1.1] max-w-[60%] text-white">
+                    Bring Your Backyard to Life
                 </h2>
             </div>
 
@@ -83,7 +78,7 @@ export default function PremiumFeatures() {
 
                     return (
                         <div
-                            key={feature.id}
+                            key={`${feature.label}-${index}`}
                             onMouseEnter={() => setActiveIndex(index)}
                             className="relative overflow-hidden cursor-pointer"
                             style={{
@@ -133,7 +128,7 @@ export default function PremiumFeatures() {
                                             : "clamp(14px, 1.3vw, 20px)",
                                         transition: "font-size 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                                         textShadow: "0 2px 16px rgba(0,0,0,0.5)",
-                                        maxWidth: isActive ? "500px" : "200px",
+                                        maxWidth: isActive ? "100%" : "100%",
                                     }}
                                 >
                                     {feature.label}

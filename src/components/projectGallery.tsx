@@ -323,8 +323,8 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
 
                     {/* Thumbnail strip */}
                     <div
-                        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 items-center"
-                        style={{ maxWidth: "80vw", overflowX: "auto" }}
+                        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 items-center overflow-hidden"
+                        style={{ maxWidth: "80vw" }}
                         onClick={(e) => e.stopPropagation()}
                     >
                         {images.map((img, idx) => (

@@ -34,7 +34,7 @@ const services: Service[] = [
       "Smart pool automation",
       "Energy-efficient pool equipment"
     ],
-    imageSrc: "/images/service-02.png",
+    imageSrc: "/images/before-pool.png",
     href: "/services/custom-pool-construction",
   },
    {
@@ -48,7 +48,7 @@ const services: Service[] = [
       "Outdoor lighting",
       "Plant and Material Selections",
     ],
-    imageSrc: "/images/service-01.png",
+    imageSrc: "/images/Projects/Melissa-Dinan/melissa-dinan-01.jpg",
     href: "/services/pool-and-landscape-design",
   },
   {
@@ -76,10 +76,10 @@ type Feature = {
 };
 
 const features: Feature[] = [
-  { id: "water", label: "Water Features", image: "/images/features_1.png" },
+  { id: "water", label: "Water Features", image: "/images/features_1.jpg" },
   { id: "fire", label: "Fire Features", image: "/images/features_2.jpg" },
   { id: "lighting", label: "Lighting Features", image: "/images/features_3.jpg" },
-  { id: "kitchen", label: "Outdoor Kitchens", image: "/images/features_4.png" },
+  { id: "kitchen", label: "Outdoor Kitchens", image: "/images/features_4.jpg" },
 ];
 
 /* ── Service Card ── */
@@ -308,7 +308,7 @@ export default function ServicesPage() {
                       fontSize: isActive ? "clamp(28px, 3vw, 40px)" : "clamp(14px, 1.3vw, 20px)",
                       transition: "font-size 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                       textShadow: "0 2px 16px rgba(0,0,0,0.5)",
-                      maxWidth: isActive ? "500px" : "200px",
+                      maxWidth: isActive ? "100%" : "100%",
                     }}
                   >
                     {feature.label}

@@ -13,6 +13,7 @@ interface SectionProps {
   description: string;
   buttonText: string;
   imageSrc: string;
+  href: string;
 }
 
 // --- Reusable Sticky Section Component ---
@@ -59,7 +60,7 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
 
             {/* Outlined Button */}
             <div className='btn-all mt-[30px] relative'>
-              <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{data.buttonText}</a>
+              <a href={data.href} className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{data.buttonText}</a>
             </div>
           </div>
 
@@ -83,22 +84,25 @@ export const StickyServicesContainer: React.FC = () => {
       id: 1,
       title: "Custom Swimming Pool Construction",
       description: "Every phase of swimming pool construction is carefully coordinated, from excavation and engineering to plumbing, electrical work, shotcrete, tile installation, coping, decking, landscaping, and premium pebble finishes. 90 days is all it takes!",
-      buttonText: "Make An Appointment",
+      buttonText: "View More",
       imageSrc: "/images/service-01.png", // Add your own image URL
+      href: "/services/custom-pool-construction",
     },
     {
       id: 2,
       title: "Custom Pool & Landscape Design",
       description: "Your vision is the starting point for every project. From modern geometric pools to resort-style retreats and timeless entertaining spaces, we create custom designs that combine exceptional beauty with smarter planning for easier long-term maintenance.",
-      buttonText: "Make An Appointment",
+      buttonText: "View More",
       imageSrc: "/images/service-02.png",
+      href: "/services/pool-and-landscape-design",
     },
     {
       id: 3,
       title: "Pool Remodeling & Backyard Renovations",
       description: "Our pool remodeling services include resurfacing, tile replacement, new decking, equipment upgrades, and complete pool redesigns. We also renovate backyards with landscaping, lighting, outdoor kitchens, and fire features to create cohesive Arizona outdoor living spaces built for lasting enjoyment.",
-      buttonText: "Make An Appointment",
+      buttonText: "View More",
       imageSrc: "/images/service-03.jpeg",
+      href: "/services/pool-remodeling-and-renovations",
     }
   ];
 

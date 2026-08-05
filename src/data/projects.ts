@@ -1,3 +1,8 @@
+export interface ProjectFeature {
+  label: string;
+  image: string;
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -17,7 +22,8 @@ export interface Project {
   videoThumbnail?: string;
   beforeImages?: string[];
   afterImages?: string[];
-  features?: string[];
+  features?: ProjectFeature[];
+  crafts?: string[];
   timeline?: {
     title: string;
     description: string;
@@ -36,7 +42,7 @@ export const allProjects: Project[] = [
     title: "Kimball",
     subtitle: "A modern architectural marvel blending light, water, and geometric concrete styling.",
     category: "Pool Design",
-    heroImage: "/images/Projects/Kimball/Kimball-4.jpg",
+    heroImage: "/images/Projects/Kimball/Kimball-25.jpg",
     overview: "Located on a hillside overlooking the valley, the Kimball project is a custom geometric pool featuring a perimeter overflow, floating stepping stones, and an integrated spa. The design emphasizes clean horizontal lines, raw concrete structures, and custom LED lighting integrated directly into the coping.",
     location: "Beverly Hills, CA",
     year: "2025",
@@ -46,40 +52,50 @@ export const allProjects: Project[] = [
     howwedoit: "We started with a comprehensive site analysis, including grading, drainage, and solar path studies, to determine the ideal placement for the pool and patio areas. Our design phase involved 3D renderings and material.",
     gallery: [
       "/images/Projects/Kimball/Kimball-1.jpg",
-      "/images/Projects/Kimball/Kimball-2.jpg",
       "/images/Projects/Kimball/Kimball-3.jpg",
-      "/images/Projects/Kimball/Kimball-10.jpg",
       "/images/Projects/Kimball/Kimball-11.jpg",
       "/images/Projects/Kimball/Kimball-12.jpg",
       "/images/Projects/Kimball/Kimball-13.jpg",
       "/images/Projects/Kimball/Kimball-14.jpg",
-      "/images/Projects/Kimball/Kimball-15.jpg",
       "/images/Projects/Kimball/Kimball-16.jpg",
       "/images/Projects/Kimball/Kimball-17.jpg",
-      "/images/Projects/Kimball/Kimball-18.jpg",
       "/images/Projects/Kimball/Kimball-19.jpg",
       "/images/Projects/Kimball/Kimball-20.jpg",
       "/images/Projects/Kimball/Kimball-21.jpg",
       "/images/Projects/Kimball/Kimball-22.jpg",
-      "/images/Projects/Kimball/Kimball-23.jpg",
-      "/images/Projects/Kimball/Kimball-24.jpg",
       "/images/Projects/Kimball/Kimball-25.jpg",
-      "/images/Projects/Kimball/Kimball-26.jpg",
-      "/images/Projects/Kimball/Kimball-27.jpg",
     ],
-    video: "/videos/Kimball/Kimball.webm",
+    video: "/videos/Projects/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/Projects/Kimball/before.jpg"
+      "/images/Projects/Kimball/before.webp"
     ],
     afterImages: [
-      "/images/Projects/Kimball/Kimball-10.jpg"
+      "/images/Projects/Kimball/after.webp"
     ],
     features: [
+      {
+        label: "Perimeter Overflow Edge",
+        image: "/images/Projects/Kimball/Kimball-22.jpg",
+      },
+      {
+        label: "Floating Concrete Stepping Stones",
+        image: "/images/Projects/Kimball/Kimball-14.jpg",
+      },
+      {
+        label: "Integrated 8-Person Spa",
+        image: "/images/Projects/Kimball/Kimball-20.jpg",
+      },
+      {
+        label: "Smart LED Color-Changing Lighting",
+        image: "/images/Projects/Kimball/Kimball-12.jpg",
+      },
+    ],
+    crafts: [
       "Perimeter Overflow Edge",
       "Floating Concrete Stepping Stones",
       "Integrated 8-Person Spa",
-      "Smart LED Color-Changing Lighting"
+      "Smart LED Color-Changing Lighting",
     ],
     timeline: [
       {
@@ -109,7 +125,7 @@ export const allProjects: Project[] = [
     title: "Melissa Dinan",
     subtitle: "A serene infinity pool that blends seamlessly with the natural coastal horizon.",
     category: "Landscape",
-    heroImage: "/images/project-02.png",
+    heroImage: "/images/Projects/Melissa-Dinan/melissa-dinan-01.jpg",
     overview: "Overlooking the Pacific ocean, Melissa Dinan was engineered to establish a vanishing horizon line. Surrounded by soft native grasses and natural stone paving, the landscape honors the quiet coastal environment.",
     location: "Malibu, CA",
     year: "2024",
@@ -118,34 +134,59 @@ export const allProjects: Project[] = [
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
     howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
-      "/images/project-02.png",
-      "/images/project-05.png",
-      "/images/features_1.png"
+      "/images/Projects/Melissa-Dinan/melissa-dinan-01.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-03.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-02.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-08.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-10.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-05.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg",
+      "/images/Projects/Melissa-Dinan/melissa-dinan-09.jpg"
     ],
-    video: "/videos/Kimball/Kimball.webm",
+    video: "/videos/Projects/Melissa-Dinan/melissa-dinan-vid-01.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/service-02.png"
+      "/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
     ],
     afterImages: [
-      "/images/project-02.png"
+      "/images/Projects/Melissa-Dinan/melissa-dinan-05.jpg"
     ],
     features: [
+      {
+        label: "Vanishing Infinity Edge",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-01.jpg",
+      },
+      {
+        label: "Imported French Limestone Decking",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg",
+      },
+      {
+        label: "Drought-Tolerant Native Gardens",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-03.jpg",
+      },
+      {
+        label: "Low-Voltage Landscape Lighting",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-02.jpg",
+      },
+    ],
+    crafts: [
       "Vanishing Infinity Edge",
       "Imported French Limestone Decking",
       "Drought-Tolerant Native Gardens",
-      "Low-Voltage Landscape Lighting"
+      "Low-Voltage Landscape Lighting",
     ],
     timeline: [
       {
         title: "Site Grading & Prep",
         description: "Clearing coastal brush and grading the oceanview slope to engineer structural zero-edge support columns.",
-        image: "/images/service-01.png"
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
       },
       {
         title: "Hydraulics & Plumbing",
         description: "Setting up dual-stage overflow gutters and sub-grade balance tanks for the infinity edge replenishment system.",
-        image: "/images/service-02.png"
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
       }
     ],
     testimonial: {
@@ -159,7 +200,7 @@ export const allProjects: Project[] = [
     title: "Parkview Media",
     subtitle: "Modern geometric pool with integrated spa and soothing linear water features.",
     category: "Pool Design",
-    heroImage: "/images/project-03.png",
+    heroImage: "/images/Projects/Parkview-Media/parkview-media-31.jpg",
     overview: "Built for a contemporary urban residence, Parkview Media is a rectangular oasis featuring black granite plaster, custom bronze scuppers, and an adjacent sunken fire pit lounge area.",
     location: "Pasadena, CA",
     year: "2025",
@@ -168,23 +209,74 @@ export const allProjects: Project[] = [
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
     howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
-      "/images/project-03.png",
-      "/images/project-06.png",
-      "/images/project-05.png",
+      "/images/Projects/Parkview-Media/parkview-media-1.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-2.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-3.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-4.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-5.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-7.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-8.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-9.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-10.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-13.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-14.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-15.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-17.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-19.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-20.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-21.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-22.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-23.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-24.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-25.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-26.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-27.jpg",
+      "/images/Projects/Parkview-Media/parkview-media-28.jpg",
+  
     ],
-    video: "/videos/Kimball/Kimball.webm",
+    video: "/videos/Projects/Park-Media/parkview-vid-01.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/service-03.jpeg"
+      "/images/Projects/Parkview-Media/before.jpg"
     ],
     afterImages: [
-      "/images/project-03.png"
+      "/images/Projects/Parkview-Media/parkview-media-30.jpg"
     ],
     features: [
+      {
+        label: "Black Granite Plaster Interior",
+        image: "/images/Projects/Parkview-Media/parkview-media-1.jpg",
+      },
+      {
+        label: "Bronze Flowing Scuppers",
+        image: "/images/Projects/Parkview-Media/parkview-media-2.jpg",
+      },
+      {
+        label: "Sunken Concrete Fire Pit Lounge",
+        image: "/images/Projects/Parkview-Media/parkview-media-3.jpg",
+      },
+      {
+        label: "In-Floor Automated Cleaning System",
+        image: "/images/Projects/Parkview-Media/parkview-media-4.jpg",
+      },
+    ],
+    crafts: [
       "Black Granite Plaster Interior",
       "Bronze Flowing Scuppers",
       "Sunken Concrete Fire Pit Lounge",
-      "In-Floor Automated Cleaning System"
+      "In-Floor Automated Cleaning System",
+    ],
+    timeline: [
+      {
+        title: "Site Grading & Prep",
+        description: "Clearing coastal brush and grading the oceanview slope to engineer structural zero-edge support columns.",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
+      },
+      {
+        title: "Hydraulics & Plumbing",
+        description: "Setting up dual-stage overflow gutters and sub-grade balance tanks for the infinity edge replenishment system.",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+      }
     ],
     testimonial: {
       name: "Sarah & David Wu",
@@ -197,7 +289,7 @@ export const allProjects: Project[] = [
     title: "Vidlak",
     subtitle: "Resort-style backyard transformation with fire and water elements.",
     category: "Remodel",
-    heroImage: "/images/project-04.png",
+    heroImage: "/images/Projects/Vidlak/project-01.jpg",
     overview: "A complete reconstruction of an outdated 1980s pool. We raised the floor, integrated a luxury Baja shelf, added custom linear fire pits, and rebuilt the patio with oversized concrete pavers.",
     location: "Santa Monica, CA",
     year: "2024",
@@ -206,23 +298,62 @@ export const allProjects: Project[] = [
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
     howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
-      "/images/project-04.png",
-      "/images/features_4.png",
-      "/images/features_2.jpg"
+      "/images/Projects/Vidlak/project-01.jpg",
+      "/images/Projects/Vidlak/project-02.jpg",
+      "/images/Projects/Vidlak/project-03.jpg",
+      "/images/Projects/Vidlak/project-04.jpg",
+      "/images/Projects/Vidlak/project-05.jpg",
+      "/images/Projects/Vidlak/project-06.jpg",
+      "/images/Projects/Vidlak/project-07.jpg",
+      "/images/Projects/Vidlak/project-08.jpg",
+      "/images/Projects/Vidlak/project-09.jpg",
+      "/images/Projects/Vidlak/project-10.jpg",
+      "/images/Projects/Vidlak/project-11.jpg",
+      "/images/Projects/Vidlak/project-12.jpg",      
     ],
-    video: "/videos/Kimball/Kimball.webm",
+    video: "/videos/Projects/Vidlak/vidlak-vid-01.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     beforeImages: [
-      "/images/service-03.jpeg"
+      "/images/Projects/Vidlak/project-01.jpg"
     ],
     afterImages: [
-      "/images/project-04.png"
+      "/images/Projects/Vidlak/project-02.jpg"
     ],
     features: [
+      {
+        label: "Baja Sun Shelf with Umbrella Sleeves",
+        image: "/images/Projects/Vidlak/project-01.jpg",
+      },
+      {
+        label: "Custom Linear Gas Fire Pits",
+        image: "/images/Projects/Vidlak/project-02.jpg",
+      },
+      {
+        label: "Oversized Sandblasted Concrete Pavers",
+        image: "/images/Projects/Vidlak/project-03.jpg",
+      },
+      {
+        label: "Energy-Efficient Smart Heat Pump",
+        image: "/images/Projects/Vidlak/project-04.jpg",
+      },
+    ],
+    crafts: [
       "Baja Sun Shelf with Umbrella Sleeves",
       "Custom Linear Gas Fire Pits",
       "Oversized Sandblasted Concrete Pavers",
-      "Energy-Efficient Smart Heat Pump"
+      "Energy-Efficient Smart Heat Pump",
+    ],
+    timeline: [
+      {
+        title: "Site Grading & Prep",
+        description: "Clearing coastal brush and grading the oceanview slope to engineer structural zero-edge support columns.",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
+      },
+      {
+        title: "Hydraulics & Plumbing",
+        description: "Setting up dual-stage overflow gutters and sub-grade balance tanks for the infinity edge replenishment system.",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+      }
     ],
     testimonial: {
       name: "Elena Rostova",
@@ -231,8 +362,8 @@ export const allProjects: Project[] = [
   },
   {
     id: "5",
-    slug: "orchard",
-    title: "Orchard",
+    slug: "blue-sage",
+    title: "Blue Sage",
     subtitle: "Elegant garden pool with natural stone and lush surrounding landscaping.",
     category: "Landscape",
     heroImage: "/images/project-05.png",
@@ -245,148 +376,50 @@ export const allProjects: Project[] = [
     howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
       "/images/project-05.png",
-      "/images/about-img.jpeg",
+      "/images/about-img.jpg",
       "/images/service-01.png"
     ],
-    video: "/videos/Kimball/Kimball.webm",
+    video: "/videos/Projects/Kimball/Kimball.webm",
     videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
     features: [
+      {
+        label: "Hand-Chiseled Fieldstone Coping",
+        image: "/images/project-05.png",
+      },
+      {
+        label: "PebbleTec Natural Pool Plaster",
+        image: "/images/about-img.jpg",
+      },
+      {
+        label: "Olive Tree Relocation & Planting",
+        image: "/images/service-01.png",
+      },
+      {
+        label: "Hand-Carved Stone Staircase",
+        image: "/images/project-05.png",
+      },
+    ],
+    crafts: [
       "Hand-Chiseled Fieldstone Coping",
       "PebbleTec Natural Pool Plaster",
       "Olive Tree Relocation & Planting",
-      "Hand-Carved Stone Staircase"
+      "Hand-Carved Stone Staircase",
+    ],
+    timeline: [
+      {
+        title: "Site Grading & Prep",
+        description: "Clearing coastal brush and grading the oceanview slope to engineer structural zero-edge support columns.",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
+      },
+      {
+        title: "Hydraulics & Plumbing",
+        description: "Setting up dual-stage overflow gutters and sub-grade balance tanks for the infinity edge replenishment system.",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+      }
     ],
     testimonial: {
       name: "Arthur Pendelton",
       quote: "Every guest thinks this pool is a restored stone basin from an old olive grove. The texture of the natural stone is exceptional."
-    }
-  },
-  {
-    id: "6",
-    slug: "loller",
-    title: "Loller",
-    subtitle: "Contemporary pool design with smart lighting and automation.",
-    category: "Pool Design",
-    heroImage: "/images/project-06.png",
-    overview: "A sleek pool built for a technological visionary, integrating full-flow pool filters, intelligent heating controllers, and multi-zone LED strips under the pool coping.",
-    location: "Gilbert, AZ",
-    year: "2024",
-    services: ["Pool Design & Build", "Smart Pool Automation", "Lighting Design"],
-    vision: "Seamless, minimal detailing combined with cutting-edge smart home controls for optimal operational convenience.",
-    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
-    gallery: [
-      "/images/project-06.png",
-      "/images/features_3.jpg",
-      "/images/service-02.png"
-    ],
-    video: "/videos/Kimball/Kimball.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
-    features: [
-      "IntelliFlo Variable Speed Pumps",
-      "Under-Coping LED Accent Strips",
-      "IntelliCenter Remote Smart Hub",
-      "Sleek Concealed Safety Cover"
-    ],
-    testimonial: {
-      name: "Chris Loller",
-      quote: "I can control the entire pool, heating, and lighting from an app on my phone. The design is clean, automated, and absolutely perfect."
-    }
-  },
-  {
-    id: "7",
-    slug: "oasis",
-    title: "Oasis",
-    subtitle: "Tropical paradise with lagoon-style pool and rock waterfalls.",
-    category: "Remodel",
-    heroImage: "/images/project-01.png",
-    overview: "Rebuilt from a plain rectangular pool, Oasis incorporates natural boulders, custom cave features, a hidden grotto spa, and a lush layer of tropical landscaping.",
-    location: "Sherman Oaks, CA",
-    year: "2023",
-    services: ["Remodel & Upgrades", "Landscape Design", "Spa Integration"],
-    vision: "To recreate a organic, jungle-inspired water lagoon in the heart of suburban Los Angeles.",
-    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
-    gallery: [
-      "/images/project-01.png",
-      "/images/features_1.png",
-      "/images/service-03.jpeg"
-    ],
-    video: "/videos/Kimball/Kimball.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
-    features: [
-      "Natural Fieldstone Rock Grotto",
-      "Hidden Grotto Spa with Seating",
-      "Custom Cave-Style Rock Slide",
-      "Lush Tropical Planting Plan"
-    ],
-    testimonial: {
-      name: "Theresa Gable",
-      quote: "It feels like we stepped straight into a tropical lagoon. The rockwork is so organic and natural—we absolutely love our new backyard."
-    }
-  },
-  {
-    id: "8",
-    slug: "mirage",
-    title: "Mirage",
-    subtitle: "Minimalist pool with vanishing edge and custom LED accents.",
-    category: "Pool Design",
-    heroImage: "/images/project-02.png",
-    overview: "Mirage presents a ultra-modern pool design that feels like a clean plate of glass resting in the garden. Water flows over all four sides, creating a perfect mirror.",
-    location: "Brentwood, CA",
-    year: "2025",
-    services: ["Pool Design & Build", "Hardscape Design", "Water Features"],
-    vision: "Absolute minimalism. Minimal joints, zero protruding coping, and absolute stillness of the water surface.",
-    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
-    gallery: [
-      "/images/project-02.png",
-      "/images/features_3.jpg",
-      "/images/project-05.png"
-    ],
-    video: "/videos/Kimball/Kimball.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
-    features: [
-      "Four-Sided Slot Overflow Gutters",
-      "Extra-Fine Gray Quartz Finish",
-      "Invisible Skimmer Technology",
-      "Integrated Linear Spa Chamber"
-    ],
-    testimonial: {
-      name: "Julian Brooks",
-      quote: "The pool looks like a perfectly flat sheet of glass. It is the absolute centerpiece of our modern architectural landscape."
-    }
-  },
-  {
-    id: "9",
-    slug: "zenith",
-    title: "Zenith",
-    subtitle: "Complete outdoor living space with pool, kitchen & lounge.",
-    category: "Landscape",
-    heroImage: "/images/project-03.png",
-    overview: "A comprehensive project including a dark plaster lap pool, a fully equipped concrete outdoor kitchen, built-in teak wood benches, and custom concrete pathway steps.",
-    location: "Encino, CA",
-    year: "2025",
-    services: ["Pool Design & Build", "Landscape Design", "Outdoor Kitchens"],
-    vision: "To design a multi-zone outdoor entertainment zone that feels unified in its architectural language, material palette, and scale.",
-    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
-    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
-    gallery: [
-      "/images/project-03.png",
-      "/images/features_4.png",
-      "/images/features_2.jpg"
-    ],
-    video: "/videos/Kimball/Kimball.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
-    features: [
-      "Architectural Raw Concrete Outdoor Kitchen",
-      "Polished Teak Wood Bench Lounge",
-      "Dark Plaster 50-Foot Lap Pool",
-      "Floating Concrete Path Paving"
-    ],
-    testimonial: {
-      name: "Sarah & Robert K.",
-      quote: "Habitat designed the entire backyard as one cohesive living space. We spend more time in our outdoor lounge than we do inside our house."
     }
   }
 ];

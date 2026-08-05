@@ -55,7 +55,9 @@ export default function Footer() {
 
             <div className="flex gap-6">
               <a
-                href="#"
+                href="https://www.instagram.com/habitatpoolsaz/"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   fontSize: "20px",
                   color: "#86A3AC",
@@ -74,7 +76,9 @@ export default function Footer() {
                 Instagram
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/Habitat-Pools-61561546888937/"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   fontSize: "20px",
                   color: "#86A3AC",

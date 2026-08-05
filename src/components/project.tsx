@@ -80,12 +80,13 @@ export const ProjectsSection: React.FC = () => {
       const centerCard = cardRefs.current[i + 1];
       const rightCard = cardRefs.current[i + 2];
 
-      if (!leftCard || !centerCard || !rightCard) continue;
+      // Need at least left + center to animate; a row missing the right
+      // card (e.g. trailing row not divisible by 3) still fans out fine —
+      // just skip the right-card tween below.
+      if (!leftCard || !centerCard) continue;
 
       // Measure the offset from the left card to center card so we know exactly how far to translate
-      const leftRect = leftCard.getBoundingClientRect();
       const centerRect = centerCard.getBoundingClientRect();
-      const rightRect = rightCard.getBoundingClientRect();
 
       // How far left card needs to move RIGHT to land on center
       const leftToCenter = centerRect.left;
@@ -109,14 +110,16 @@ export const ProjectsSection: React.FC = () => {
         opacity: 0
       });
 
-      gsap.set(rightCard, {
-        zIndex: 5,
-        x: rightToCenter,
-        rotation: -5.663,
-        transformOrigin: "bottom center",
-        position: "relative",
-        opacity: 0
-      });
+      if (rightCard) {
+        gsap.set(rightCard, {
+          zIndex: 5,
+          x: rightToCenter,
+          rotation: -5.663,
+          transformOrigin: "bottom center",
+          position: "relative",
+          opacity: 0
+        });
+      }
 
       // 2. ScrollTrigger timeline: fan out cards to their natural grid positions
       const tl = gsap.timeline({
@@ -128,8 +131,11 @@ export const ProjectsSection: React.FC = () => {
       });
 
       tl.to(leftCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0)
-        .to(rightCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0)
         .to(centerCard, { rotation: 0, zIndex: 5, duration: 1.2, ease: "power3.out" }, 0);
+
+      if (rightCard) {
+        tl.to(rightCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0);
+      }
     }
   }, { dependencies: [visibleCount], scope: sectionRef });
   // Re-run animation logic whenever visibleCount changes so newly loaded cards get animated!

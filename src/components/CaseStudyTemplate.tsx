@@ -11,6 +11,7 @@ import { ProjectCard } from "@/components/project";
 import CTA from "@/components/CTA";
 import { Project } from "@/data/projects";
 import ProjectGallery from "./projectGallery";
+import PremiumFeatures from "./PremiumFeatures";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -345,7 +346,7 @@ export default function CaseStudyTemplate({
 
 
       {/* ── SECTION 7 — DESIGN HIGHLIGHTS ── */}
-      {project.features && project.features.length > 0 && (
+      {project.crafts && project.crafts.length > 0 && (
         <section className="w-full py-[120px] px-[85px] bg-[#ffffff] ">
           <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
             <div className="lg:w-[35%]">
@@ -358,14 +359,14 @@ export default function CaseStudyTemplate({
               </p>
             </div>
             <div className="lg:w-[65%] grid grid-cols-1 md:grid-cols-2 gap-8">
-              {project.features.map((feature, idx) => (
+              {project.crafts.map((craft, idx) => (
                 <div
-                  key={idx}
+                  key={`${craft}-${idx}`}
                   className="p-10 rounded-[20px] border border-[#112931]/10 hover:bg-white/5 transition-colors duration-300 flex flex-col gap-4"
                 >
                   <span className="text-[#86A3AC] text-[24px]">0{idx + 1}</span>
                   <h3 className="text-[#112931]/80 text-[32px] leading-[38px] capitalize">
-                    {feature}
+                    {craft}
                   </h3>
                 </div>
               ))}
@@ -373,6 +374,8 @@ export default function CaseStudyTemplate({
           </div>
         </section>
       )}
+
+      <PremiumFeatures features={project.features} />
 
       {/* ── SECTION 8 — BUILD PROCESS TIMELINE ── */}
       {project.timeline && project.timeline.length > 0 && (

@@ -128,7 +128,7 @@ export default function AboutPage() {
         }}
       >
         <div className="absolute inset-0 z-0">
-          <img src="/images/about-img.jpeg" alt="" className="w-full h-full object-cover" />
+          <img src="/images/about-img.jpg" alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/55" />
         </div>
         <div className="relative z-10 w-full px-[85px] pb-[80px]">
@@ -149,7 +149,7 @@ export default function AboutPage() {
         </div>
 
         {/* Two column layout */}
-        <div className="flex gap-[40px]">
+        <div className="flex gap-[40px] h-[95vh]">
           {/* Tag */}
           <div className="w-[20%] pt-[20px]">
             <h4 className="text-[#86A3AC] text-[36px] leading-[38px] capitalize">Our Story</h4>
@@ -157,7 +157,7 @@ export default function AboutPage() {
 
           {/* Image */}
           <div className="flex justify-center w-[42%]">
-            <img ref={storyImageRef} src="/images/about-img.jpeg" alt="About" className="w-full rounded-[20px]" />
+            <img ref={storyImageRef} src="/images/about-img.jpg" alt="About" className="w-full rounded-[20px]" />
           </div>
 
           {/* Text */}

@@ -197,7 +197,7 @@ export default function ContactPage() {
                   Send An Email To
                 </p>
                 <a
-                  href="mailto:info@habitatpools.com"
+                  href="mailto:habitatpoolsaz@gmail.com"
                   style={{
                     fontSize: "26px",
                     lineHeight: "30px",

@@ -121,7 +121,7 @@ export default function BeforeAfter({
             style={{
               backgroundImage: `url(${afterImage})`,
               backgroundSize: "cover",
-              backgroundPosition: "center bottom",
+              backgroundPosition: "center",
             }}
           />
 

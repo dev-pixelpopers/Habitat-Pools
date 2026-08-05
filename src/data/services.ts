@@ -70,7 +70,7 @@ export const allServices: ServiceDetail[] = [
     title: "custom pool Construction In Arizona",
     titleTwo:"Custom Pool Construction",
     category: "Pool Construction",
-    heroImage: "/images/service-01.png",
+    heroImage: "/images/before-pool.png",
     subtitle: "Thoughtful design, expert craftsmanship, and long-term performance for luxury backyard pools in Arizona.",
     overview:
       "At Habitat Pools, we specialize in custom pool construction for homeowners across Arizona, creating outdoor spaces that combine exceptional craftsmanship with thoughtful design and long-term performance. Whether you're dreaming of a sleek geometric pool, a resort-inspired retreat, an infinity-edge design, or a complete backyard transformation, our team works closely with you to create a one-of-a-kind outdoor environment tailored to your home and lifestyle.",
@@ -111,20 +111,14 @@ export const allServices: ServiceDetail[] = [
       "Every custom pool is designed specifically for the homeowner, property, and lifestyle. While no two projects are identical, our construction services commonly include :",
     featuresOutro:"Every feature is thoughtfully integrated to create a cohesive outdoor living environment that complements your home and enhances the way you live outdoors.",
     features: [
-  { text: "custom pool construction", image: "/images/Services/Custom Pool Construction/custom-swimming-pool-construction.webp" , altText:"hello"},
-  { text: "Geometric and freeform pool designs", image: "/images/Services/Custom Pool Construction/geometric-and-freeform-pool-designs.jpg" , altText:"hello" },
-  { text: "Infinity-edge and vanishing-edge pools", image: "/images/Services/Custom Pool Construction/infinity-edge-and-vanishing-edge-pools.jpg", altText:"hello" },
   { text: "Integrated spas and Baja shelves", image: "/images/Services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
   { text: "Premium pebble interiors", image: "/images/Services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
-  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.png" , altText:"hello"},
-  { text: "Energy-efficient pool equipment", image: "/images/Services/Custom Pool Construction/energy-efficient-pool-equipment.jpeg" , altText:"hello"},
-  { text: "Smart pool automation systems", image: "/images/Services/Custom Pool Construction/smart-pool-automation-systems.webp" , altText:""},
-  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.png", altText:"hello" },
+  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
+  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
   { text: "Water features", image: "/images/Services/Custom Pool Construction/water-features.jpg", altText:"hello" },
-  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.webp", altText:"hello" },
+  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
   { text: "Custom decking and hardscaping", image: "/images/Services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
   { text: "Outdoor kitchens", image: "/images/Services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
-  { text: "Complete backyard transformations", image: "/images/Services/Custom Pool Construction/complete-backyard-transformations.png", altText:"hello" },
 ] satisfies Features[],
     processSubtitle:"stay informed",
     processTitle: "Our Transparent Process",
@@ -133,17 +127,17 @@ export const allServices: ServiceDetail[] = [
       {
         title: "Complimentary Consultation",
         description: "Every project begins with a free consultation where we take the time to understand your goals, lifestyle, and vision for your outdoor space. We'll discuss your ideas, answer your questions, and evaluate your property's unique characteristics.",
-        image:"/images/project-01.png"
+        image:"/images/owner.png"
       },
       {
         title: "Custom Design & Planning",
         description: "After visiting your property, we take detailed measurements and photographs before developing custom design 3D renderings tailored specifically to your home. We continue refining your design based on your feedback until you're confident it reflects your vision. Only after you're satisfied, we send over a detailed proposal, and after your selections are finalized, we coordinate engineering plans and submit all required permits before construction begins.",
-        image:"/images/project-02.png"
+        image:"/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
       },
       {
         title: "Expert Construction",
         description: "With permits approved, construction begins. Every project follows a carefully coordinated sequence designed to ensure structural integrity, lasting performance, and exceptional craftsmanship. Throughout construction, we keep you informed with regular updates so you'll always know what's happening and what to expect next. While every project is unique, most custom pool projects are completed in approximately 90 days after construction begins, with larger or more complex backyard transformations requiring additional time depending on scope and permitting.",
-        image:"/images/project-03.png"
+        image:"/images/before-pool.png"
       },
       {
         title: "Final Walkthrough & Pool School",
@@ -238,20 +232,14 @@ export const allServices: ServiceDetail[] = [
       "Every custom pool is designed specifically for the homeowner, property, and lifestyle. While no two projects are identical, our construction services commonly include :",
     featuresOutro:"Every feature is thoughtfully integrated to create a cohesive outdoor living environment that complements your home and enhances the way you live outdoors.",
     features: [
-  { text: "custom pool construction", image: "/images/Services/Custom Pool Construction/custom-swimming-pool-construction.webp" , altText:"hello"},
-  { text: "Geometric and freeform pool designs", image: "/images/Services/Custom Pool Construction/geometric-and-freeform-pool-designs.jpg" , altText:"hello" },
-  { text: "Infinity-edge and vanishing-edge pools", image: "/images/Services/Custom Pool Construction/infinity-edge-and-vanishing-edge-pools.jpg", altText:"hello" },
   { text: "Integrated spas and Baja shelves", image: "/images/Services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
   { text: "Premium pebble interiors", image: "/images/Services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
-  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.png" , altText:"hello"},
-  { text: "Energy-efficient pool equipment", image: "/images/Services/Custom Pool Construction/energy-efficient-pool-equipment.jpeg" , altText:"hello"},
-  { text: "Smart pool automation systems", image: "/images/Services/Custom Pool Construction/smart-pool-automation-systems.webp" , altText:""},
-  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.png", altText:"hello" },
+  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
+  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
   { text: "Water features", image: "/images/Services/Custom Pool Construction/water-features.jpg", altText:"hello" },
-  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.webp", altText:"hello" },
+  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
   { text: "Custom decking and hardscaping", image: "/images/Services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
   { text: "Outdoor kitchens", image: "/images/Services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
-  { text: "Complete backyard transformations", image: "/images/Services/Custom Pool Construction/complete-backyard-transformations.png", altText:"hello" },
 ] satisfies Features[],
     processSubtitle:"stay informed",
     processTitle: "Our Transparent Process",
@@ -260,17 +248,17 @@ export const allServices: ServiceDetail[] = [
       {
         title: "Complimentary Consultation",
         description: "Every project begins with a free consultation where we take the time to understand your goals, lifestyle, and vision for your outdoor space. We'll discuss your ideas, answer your questions, and evaluate your property's unique characteristics.",
-        image:"/images/project-01.png"
+        image:"/images/owner.png"
       },
       {
         title: "Custom Design & Planning",
         description: "After visiting your property, we take detailed measurements and photographs before developing custom design 3D renderings tailored specifically to your home. We continue refining your design based on your feedback until you're confident it reflects your vision. Only after you're satisfied, we send over a detailed proposal, and after your selections are finalized, we coordinate engineering plans and submit all required permits before construction begins.",
-        image:"/images/project-02.png"
+        image:"/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
       },
       {
         title: "Expert Construction",
         description: "With permits approved, construction begins. Every project follows a carefully coordinated sequence designed to ensure structural integrity, lasting performance, and exceptional craftsmanship. Throughout construction, we keep you informed with regular updates so you'll always know what's happening and what to expect next. While every project is unique, most custom pool projects are completed in approximately 90 days after construction begins, with larger or more complex backyard transformations requiring additional time depending on scope and permitting.",
-        image:"/images/project-03.png"
+        image:"/images/before-pool.png"
       },
       {
         title: "Final Walkthrough & Pool School",
@@ -368,20 +356,14 @@ export const allServices: ServiceDetail[] = [
       "Every custom pool is designed specifically for the homeowner, property, and lifestyle. While no two projects are identical, our construction services commonly include :",
     featuresOutro:"Every feature is thoughtfully integrated to create a cohesive outdoor living environment that complements your home and enhances the way you live outdoors.",
     features: [
-  { text: "custom pool construction", image: "/images/Services/Custom Pool Construction/custom-swimming-pool-construction.webp" , altText:"hello"},
-  { text: "Geometric and freeform pool designs", image: "/images/Services/Custom Pool Construction/geometric-and-freeform-pool-designs.jpg" , altText:"hello" },
-  { text: "Infinity-edge and vanishing-edge pools", image: "/images/Services/Custom Pool Construction/infinity-edge-and-vanishing-edge-pools.jpg", altText:"hello" },
   { text: "Integrated spas and Baja shelves", image: "/images/Services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
   { text: "Premium pebble interiors", image: "/images/Services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
-  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.png" , altText:"hello"},
-  { text: "Energy-efficient pool equipment", image: "/images/Services/Custom Pool Construction/energy-efficient-pool-equipment.jpeg" , altText:"hello"},
-  { text: "Smart pool automation systems", image: "/images/Services/Custom Pool Construction/smart-pool-automation-systems.webp" , altText:""},
-  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.png", altText:"hello" },
+  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
+  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
   { text: "Water features", image: "/images/Services/Custom Pool Construction/water-features.jpg", altText:"hello" },
-  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.webp", altText:"hello" },
+  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
   { text: "Custom decking and hardscaping", image: "/images/Services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
   { text: "Outdoor kitchens", image: "/images/Services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
-  { text: "Complete backyard transformations", image: "/images/Services/Custom Pool Construction/complete-backyard-transformations.png", altText:"hello" },
 ] satisfies Features[],
     processSubtitle:"stay informed",
     processTitle: "Our Transparent Process",
@@ -390,17 +372,17 @@ export const allServices: ServiceDetail[] = [
       {
         title: "Complimentary Consultation",
         description: "Every project begins with a free consultation where we take the time to understand your goals, lifestyle, and vision for your outdoor space. We'll discuss your ideas, answer your questions, and evaluate your property's unique characteristics.",
-        image:"/images/project-01.png"
+        image:"/images/owner.png"
       },
       {
         title: "Custom Design & Planning",
         description: "After visiting your property, we take detailed measurements and photographs before developing custom design 3D renderings tailored specifically to your home. We continue refining your design based on your feedback until you're confident it reflects your vision. Only after you're satisfied, we send over a detailed proposal, and after your selections are finalized, we coordinate engineering plans and submit all required permits before construction begins.",
-        image:"/images/project-02.png"
+        image:"/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
       },
       {
         title: "Expert Construction",
         description: "With permits approved, construction begins. Every project follows a carefully coordinated sequence designed to ensure structural integrity, lasting performance, and exceptional craftsmanship. Throughout construction, we keep you informed with regular updates so you'll always know what's happening and what to expect next. While every project is unique, most custom pool projects are completed in approximately 90 days after construction begins, with larger or more complex backyard transformations requiring additional time depending on scope and permitting.",
-        image:"/images/project-03.png"
+        image:"/images/before-pool.png"
       },
       {
         title: "Final Walkthrough & Pool School",

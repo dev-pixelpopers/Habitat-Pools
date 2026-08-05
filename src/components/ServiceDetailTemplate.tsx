@@ -86,7 +86,7 @@ function FeatureRow({ items }: { items: FeatureItem[] }) {
                   fontSize: isActive ? "clamp(28px, 3vw, 40px)" : "clamp(14px, 1.3vw, 20px)",
                   transition: "font-size 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   textShadow: "0 2px 16px rgba(0,0,0,0.5)",
-                  maxWidth: isActive ? "500px" : "200px",
+                  maxWidth: isActive ? "100%" : "100%",
                 }}
               >
                 {feature.text}
@@ -249,9 +249,7 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
             </div>
           </div>
           <div className="flex flex-col gap-6">
-            {chunk(service.features, 7).map((row, rowIdx) => (
-              <FeatureRow key={rowIdx} items={row} />
-            ))}
+            <FeatureRow items={service.features} />
           </div>
         </div>
       </section>
@@ -269,13 +267,13 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
           </div>
           <div className="flex flex-col gap-12">
             {service.processSteps.map((step, idx) => (
-              <div key={idx} className="process-step flex flex-col lg:flex-row gap-8 items-start border-t border-white/10 pt-8">
+              <div key={idx} className="process-step flex flex-col lg:flex-row gap-8 items-center border-t border-white/10 pt-8">
                 <span className="text-[#86A3AC] text-[54px] leading-[54px] w-[20%]">0{idx + 1}</span>
                 <div className="w-[60%]">
                   <h3 className="text-white text-[36px] leading-[42px] capitalize mb-4">{step.title}</h3>
                   <p className="text-white/70 text-[20px] leading-[36px] max-w-[900px]">{step.description}</p>
                 </div>
-                {step.image && <img src={step.image} alt={step.title} className="w-[20%]"/>}
+                {step.image && <img src={step.image} alt={step.title} className="w-[20%] h-[35vh] object-cover"/>}
               </div>
             ))}
           </div>
