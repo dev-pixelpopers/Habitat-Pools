@@ -56,7 +56,7 @@ export const ProjectCard = forwardRef<HTMLAnchorElement, { project: Project }>((
       </div>
 
       {/* Project Description */}
-      <p className="text-[20px] text-[#112931] group-hover:text-white transition-colors duration-300 text-center leading-relaxed px-4 mt-[50px]">
+      <p className="text-[20px] text-[#112931] group-hover:text-white transition-colors duration-300 text-center leading-relaxed px-4 mt-[50px] line-clamp-2">
         {project.subtitle}
       </p>
     </Link>

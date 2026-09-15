@@ -53,6 +53,11 @@ export default function CaseStudyTemplate({
     },
   ];
 
+  // Services split into two balanced columns (left gets the extra one on odd counts)
+  const servicesMid = Math.ceil(project.services.length / 2);
+  const servicesLeft = project.services.slice(0, servicesMid);
+  const servicesRight = project.services.slice(servicesMid);
+
   // ── Animation 1, 2, 4 — unchanged ──
   useGSAP(() => {
     // 1. Hero entrance
@@ -191,7 +196,7 @@ export default function CaseStudyTemplate({
           </h1>
           <p
             ref={heroSubRef}
-            className="text-white/80 text-[26px] leading-[38px] max-w-[650px] font-light"
+            className="text-white/80 text-[26px] leading-[38px] max-w-[70%] font-light"
           >
             {project.subtitle}
           </p>
@@ -199,37 +204,55 @@ export default function CaseStudyTemplate({
       </section>
 
       {/* ── SECTION 2 — PROJECT INTRO ── */}
-      <section className="w-full py-[120px] px-[85px] bg-white flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
-        <div ref={introLeftRef} className="lg:w-[40%]">
+      <section className="w-full py-[120px] px-[85px] bg-white flex flex-col gap-16 lg:gap-24 items-start">
+        <div ref={introLeftRef} className="flex gap-10">
+          <div className="w-[50%] flex flex-col gap-4">
           <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">Project Intro</span>
           <h2 className="text-[#112931] text-[66px] leading-[72px] capitalize">
             The Overview
           </h2>
-        </div>
-        <div ref={introRightRef} className="lg:w-[60%] flex flex-col gap-12">
-          <p className="text-[#112931]/80 text-[24px] leading-[44px] capitalize">
+          
+          </div>
+          <p className="text-[#112931]/80 text-[24px] leading-[44px] capitalize w-[50%]">
             {project.overview}
           </p>
+        </div>
+        <div ref={introRightRef} className="flex flex-col gap-12 w-full">
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-[#112931]/10">
             <div>
               <span className="text-[#86A3AC] text-[20px] block mb-2">Location</span>
-              <span className="text-[#112931] text-[22px] font-medium">{project.location}</span>
+              <span className="text-[#112931] text-[20px] font-medium">{project.location}</span>
             </div>
+            
             <div>
               <span className="text-[#86A3AC] text-[20px] block mb-2">Completed</span>
-              <span className="text-[#112931] text-[22px] font-medium">{project.year}</span>
+              <span className="text-[#112931] text-[20px] font-medium">{project.year}</span>
             </div>
             <div>
-              <span className="text-[#86A3AC] text-[20px] block mb-2">Services Delivered</span>
-              <div className="flex flex-col gap-1">
-                {project.services.map((service) => (
-                  <span key={service} className="text-[#112931] text-[22px] font-medium">
-                    {service}
-                  </span>
-                ))}
-              </div>
+              <span className="text-[#86A3AC] text-[20px] block mb-2">Scope</span>
+              <span className="text-[#112931] text-[20px] font-medium">{project.scope}</span>
             </div>
           </div>
+          <div className="pt-8 border-t border-[#112931]/10">
+              <span className="text-[#86A3AC] text-[20px] block mb-2">Services Delivered</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
+                <div className="flex flex-col gap-1 border-r border-[#112931]/10 pl-4">
+                  {servicesLeft.map((service) => (
+                    <span key={service} className="text-[#112931] text-[20px] font-medium">
+                      -&nbsp;{service}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col gap-1 pl-4">
+                  {servicesRight.map((service) => (
+                    <span key={service} className="text-[#112931] text-[20px] font-medium">
+                      -&nbsp;{service}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
         </div>
       </section>
 
@@ -348,17 +371,21 @@ export default function CaseStudyTemplate({
       {/* ── SECTION 7 — DESIGN HIGHLIGHTS ── */}
       {project.crafts && project.crafts.length > 0 && (
         <section className="w-full py-[120px] px-[85px] bg-[#ffffff] ">
-          <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-            <div className="lg:w-[35%]">
+          <div className="max-w-[1440px] mx-auto flex flex-col gap-16 lg:gap-24">
+            <div className="w-full flex gap-10 items-center">
+              <div className="w-[50%] flex flex-col gap-4">
               <span className="text-[#86A3AC] text-[36px] block mb-4">Craftsmanship</span>
               <h2 className="text-[#112931]/80 text-[66px] leading-[72px] capitalize">
                 Key Design Highlights
               </h2>
+              </div>
+              <div className="w-[50%]">
               <p className="text-[#112931]/80 text-[20px] leading-[34px] mt-6 capitalize">
                 Every detail is custom built to suit the property flow. The highlights listed here represent the technical milestones of this construction.
               </p>
+              </div>
             </div>
-            <div className="lg:w-[65%] grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
               {project.crafts.map((craft, idx) => (
                 <div
                   key={`${craft}-${idx}`}
@@ -366,8 +393,15 @@ export default function CaseStudyTemplate({
                 >
                   <span className="text-[#86A3AC] text-[24px]">0{idx + 1}</span>
                   <h3 className="text-[#112931]/80 text-[32px] leading-[38px] capitalize">
-                    {craft}
+                    {craft.heading}
                   </h3>
+                 
+                    {craft.para && (
+                      <p className="text-[#112931]/80 text-[18px] leading-[32px] mt-4">
+                        {craft.para}
+                      </p>
+                    )}
+                  
                 </div>
               ))}
             </div>
@@ -400,10 +434,10 @@ export default function CaseStudyTemplate({
                       {step.description}
                     </p>
                   </div>
-                  {step.image && (
+                  {step.media && (
                     <div className="lg:w-[50%] w-full overflow-hidden rounded-[16px] aspect-[16/10]">
                       <img
-                        src={step.image}
+                        src={step.media}
                         alt={step.title}
                         className="w-full h-full object-cover"
                       />
@@ -419,9 +453,9 @@ export default function CaseStudyTemplate({
       {/* ── SECTION 9 — TESTIMONIAL ── */}
       {project.testimonial && (
         <section className="w-full py-[140px] px-[85px] bg-[#ffffff] flex flex-col items-center justify-center text-center">
-          <div className="max-w-[900px] flex flex-col items-center">
+          <div className="max-w-[90%] flex flex-col items-center">
             <span className="text-[#86A3AC] text-[36px] block mb-8">Client Testimonial</span>
-            <blockquote className="text-[#112931] text-[32px] md:text-[38px] leading-[54px] md:leading-[60px] font-light mb-8 italic">
+            <blockquote className="text-[#112931] text-[22px] leading-[36px] font-light mb-8 italic">
               &ldquo;{project.testimonial.quote}&rdquo;
             </blockquote>
             <span className="w-12 h-[1px] bg-[#86A3AC] mb-6" />
