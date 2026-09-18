@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import type { ProjectFeature } from "@/data/projects";
 
 type PremiumFeaturesProps = {
@@ -93,13 +94,23 @@ export default function PremiumFeatures({ features = fallbackFeatures }: Premium
                             <div
                                 className="absolute inset-0 w-full h-full"
                                 style={{
-                                    backgroundImage: `url(${feature.image})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
                                     transform: isActive ? "scale(1)" : "scale(1.15)",
                                     transition: "transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                                    willChange: "transform",
                                 }}
-                            />
+                            >
+                                <Image
+                                    src={feature.image}
+                                    alt={feature.label}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 45vw"
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    style={{
+                                        objectFit: "cover",
+                                        objectPosition: "center",
+                                    }}
+                                />
+                            </div>
 
                             {/* Gradient overlay */}
                             <div

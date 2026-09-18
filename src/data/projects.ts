@@ -170,25 +170,25 @@ export const allProjects: Project[] = [
       "/images/Projects/Melissa-Dinan/melissa-dinan-09.jpg"
     ],
     video: "/videos/Projects/Melissa-Dinan/melissa-dinan-vid-01.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
+    videoThumbnail: "/images/Projects/Melissa-Dinan/MISSING-melissa-dinan-video-thumbnail.png",
     beforeImages: [
-      "/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
+      "/images/Projects/Melissa-Dinan/before.png"
     ],
     afterImages: [
-      "/images/Projects/Melissa-Dinan/melissa-dinan-05.jpg"
+      "/images/Projects/Melissa-Dinan/after.png"
     ],
     features: [
       {
-        label: "Water Feature",
-        image: "/images/Projects/Melissa-Dinan/melissa-dinan-01.jpg",
+        label: "Raised Spa",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-11.png",
       },
       {
-        label: "Spa",
+        label: "Arches & Pergola",
         image: "/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg",
       },
       {
-        label: "Lighting Feature",
-        image: "/images/Projects/Melissa-Dinan/melissa-dinan-05.jpg",
+        label: "Turf & Landscape Plantings",
+        image: "/images/Projects/Melissa-Dinan/melissa-dinan-12.png",
       },
     ],
     crafts: [
@@ -283,7 +283,7 @@ export const allProjects: Project[] = [
   
     ],
     video: "/videos/Projects/Park-Media/parkview-vid-01.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
+    videoThumbnail: "/images/Projects/Parkview-Media/MISSING-parkview-video-thumbnail.png",
     beforeImages: [
       "/images/Projects/Parkview-Media/before.jpg"
     ],
@@ -292,20 +292,20 @@ export const allProjects: Project[] = [
     ],
     features: [
       {
-        label: "Black Granite Plaster Interior",
-        image: "/images/Projects/Parkview-Media/parkview-media-1.jpg",
-      },
-      {
-        label: "Bronze Flowing Scuppers",
+        label: "Spillover Spa",
         image: "/images/Projects/Parkview-Media/parkview-media-2.jpg",
       },
       {
-        label: "Sunken Concrete Fire Pit Lounge",
+        label: "Side Plantings",
+        image: "/images/Projects/Parkview-Media/parkview-media-4.jpg",
+      },
+      {
+        label: "Raised Water Features",
         image: "/images/Projects/Parkview-Media/parkview-media-3.jpg",
       },
       {
-        label: "In-Floor Automated Cleaning System",
-        image: "/images/Projects/Parkview-Media/parkview-media-4.jpg",
+        label: "Pool & Landscape Lighting",
+        image: "/images/Projects/Parkview-Media/parkview-media-19.jpg",
       },
     ],
     crafts: [
@@ -330,22 +330,22 @@ export const allProjects: Project[] = [
       {
         title: "Pool & Spa Structure",
         description: "Excavated and built the geometric pool, the corner spillover spa, and the raised feature wall behind it.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
+        media: "/images/Projects/Parkview-Media/construction-1.jpg"
       },
       {
         title: "Tile & Water Features",
         description: "Installed the ornate cement tile on the wall and spa and plumbed the sheer-descent scuppers.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/Parkview-Media/parkview-media-9.jpg"
       },
       {
         title: "Hardscape & Turf",
         description: "Set the paver decking and patio, installed the turf lawn, and built the perimeter block wall.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/Parkview-Media/parkview-media-1.jpg"
       },
       {
         title: "Landscaping & Lighting",
         description: "Planted the desert landscape design and installed the color-changing pool, spa, and landscape lighting.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/Parkview-Media/parkview-media-19.jpg"
       }
     ],
     testimonial: {
@@ -376,35 +376,34 @@ export const allProjects: Project[] = [
       "/images/Projects/Vidlak/project-05.jpg",
       "/images/Projects/Vidlak/project-06.jpg",
       "/images/Projects/Vidlak/project-07.jpg",
-      "/images/Projects/Vidlak/project-08.jpg",
       "/images/Projects/Vidlak/project-09.jpg",
       "/images/Projects/Vidlak/project-10.jpg",
       "/images/Projects/Vidlak/project-11.jpg",
       "/images/Projects/Vidlak/project-12.jpg",      
     ],
     video: "/videos/Projects/Vidlak/vidlak-vid-01.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
+    videoThumbnail: "/images/Projects/Vidlak/MISSING-vidlak-video-thumbnail.png",
     beforeImages: [
-      "/images/Projects/Vidlak/project-01.jpg"
+      "/images/Projects/Vidlak/before.png"
     ],
     afterImages: [
-      "/images/Projects/Vidlak/project-02.jpg"
+      "/images/Projects/Vidlak/after.png"
     ],
     features: [
       {
-        label: "Baja Sun Shelf with Umbrella Sleeves",
-        image: "/images/Projects/Vidlak/project-01.jpg",
-      },
-      {
-        label: "Custom Linear Gas Fire Pits",
-        image: "/images/Projects/Vidlak/project-02.jpg",
-      },
-      {
-        label: "Oversized Sandblasted Concrete Pavers",
+        label: "Raised Water Feature",
         image: "/images/Projects/Vidlak/project-03.jpg",
       },
       {
-        label: "Energy-Efficient Smart Heat Pump",
+        label: "Desert Landscaping & Planting",
+        image: "/images/Projects/Vidlak/project-05.jpg",
+      },
+      {
+        label: "Pool with Baja Shelves",
+        image: "/images/Projects/Vidlak/bajashelf.png",
+      },
+      {
+        label: "Wood-Look Accent Walls",
         image: "/images/Projects/Vidlak/project-04.jpg",
       },
     ],
@@ -430,22 +429,22 @@ export const allProjects: Project[] = [
       {
         title: "Layout & Excavation",
         description: "Staked out the pool shape and excavated with the yard completely bare.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
+        media: "/images/Projects/Vidlak/excavation-vidlak.png"
       },
       {
         title: "Plumbing, Electrical & Structure",
         description: "Ran new plumbing and electrical lines and formed the raised water feature wall and pool structure.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/Vidlak/plumbing-vidlak.png"
       },
       {
         title: "Hardscape & Water Features",
         description: "Installed the travertine decking and finished the sheer-descent water feature and Baja shelf.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/Vidlak/project-03.jpg"
       },
       {
         title: "Landscaping & Finishing Touches",
         description: "Installed turf, desert plantings, and the perimeter block and view fencing.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/Vidlak/project-05.jpg"
       }
     ],
     testimonial: {
@@ -459,7 +458,7 @@ export const allProjects: Project[] = [
     title: "The Sagebrush",
     subtitle: "What started as a pool project grew into a full reimagining of this Gilbert backyard — a resort-style pool and spa, a covered outdoor kitchen, a dedicated lounge retreat, and a side yard turned into one of the family's favorite spots on the property.",
     category: "Complete Backyard Transformation",
-    heroImage: "/images/project-05.png",
+    heroImage: "/images/Projects/SageBrush/Sagebrush-15.jpg",
     overview: "The homeowners came to us with a clear vision and an entire outdoor space to reimagine. Our team demoed and removed the existing landscape, then rebuilt it from the ground up: an in-ground pool paired with an elevated spa, a paver patio, turf, a covered outdoor kitchen with a fireplace, a separate shaded lounge area, new plantings and irrigation throughout, and a side yard transformed with raised garden beds, fruit trees, and a kids' playhouse. Layered landscape and pool lighting carries the space from day use into the evening.",
     location: "Gilbert, AZ",
     scope: "Landscape Design, Pool Design & Build, Softscape & Planting",
@@ -469,28 +468,51 @@ export const allProjects: Project[] = [
     philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
     howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
     gallery: [
-      "/images/project-05.png",
-      "/images/about-img.jpg",
-      "/images/service-01.png"
+      "/images/Projects/SageBrush/Sagebrush-15.jpg",
+      "/images/Projects/SageBrush/Sagebrush-5.jpg",
+      "/images/Projects/SageBrush/Sagebrush-7.jpg",
+      "/images/Projects/SageBrush/Sagebrush-1.jpg",
+      "/images/Projects/SageBrush/Sagebrush-2.jpg",
+      "/images/Projects/SageBrush/Sagebrush-16.jpg",
+      "/images/Projects/SageBrush/Sagebrush-14.jpg",
+      "/images/Projects/SageBrush/Sagebrush-11.jpg",
+      "/images/Projects/SageBrush/Sagebrush-4.jpg",
+      "/images/Projects/SageBrush/Sagebrush-6.jpg",
+      "/images/Projects/SageBrush/Sagebrush-3.jpg",
+      "/images/Projects/SageBrush/Sagebrush-8.jpg",
+      "/images/Projects/SageBrush/Sagebrush-9.jpg",
+      "/images/Projects/SageBrush/Sagebrush-13.jpg",
+      "/images/Projects/SageBrush/Sagebrush-10.jpg",
+      "/images/Projects/SageBrush/Sagebrush-12.jpg"
     ],
-    video: "/videos/Projects/Kimball/Kimball.webm",
-    videoThumbnail: "/images/Projects/Kimball/kimball-video-thumbnail.png",
+    video: "/videos/Projects/SageBrush/MISSING-sagebrush-vid-01.webm",
+    videoThumbnail: "/images/Projects/SageBrush/MISSING-sagebrush-video-thumbnail.png",
+    beforeImages: [
+      "/images/Projects/SageBrush/before.png"
+    ],
+    afterImages: [
+      "/images/Projects/SageBrush/after.png"
+    ],
     features: [
       {
-        label: "Hand-Chiseled Fieldstone Coping",
-        image: "/images/project-05.png",
+        label: "Cascading Water Wall",
+        image: "/images/Projects/SageBrush/Sagebrush-8.jpg",
       },
       {
-        label: "PebbleTec Natural Pool Plaster",
-        image: "/images/about-img.jpg",
+        label: "Elevated Spa & Sun Shelf",
+        image: "/images/Projects/SageBrush/Sagebrush-16.jpg",
       },
       {
-        label: "Olive Tree Relocation & Planting",
-        image: "/images/service-01.png",
+        label: "Outdoor Kitchen & Fireplace",
+        image: "/images/Projects/SageBrush/Sagebrush-2.jpg",
       },
       {
-        label: "Hand-Carved Stone Staircase",
-        image: "/images/project-05.png",
+        label: "Dedicated Lounge Retreat",
+        image: "/images/Projects/SageBrush/Sagebrush-11.jpg",
+      },
+      {
+        label: "Landscape & Pool Lighting",
+        image: "/images/Projects/SageBrush/Sagebrush-13.jpg",
       },
     ],
     crafts: [
@@ -515,22 +537,22 @@ export const allProjects: Project[] = [
       {
         title: "Demo & Site Prep",
         description: "Removed the existing landscape completely to start with a clean slate.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-06.jpg"
+        media: "/images/Projects/SageBrush/Sagebrush-9.jpg"
       },
       {
         title: "Pool & Hardscape",
         description: "Excavated and built the pool and elevated spa, then set the paver patio and walkways.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/SageBrush/Sagebrush-12.jpg"
       },
       {
         title: "Structures, Turf & Planting",
         description: "Built the pergola, outdoor kitchen, fireplace, and perimeter block wall; installed turf, irrigation, and new plantings, including the side yard garden beds.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/SageBrush/Sagebrush-11.jpg"
       },
       {
         title: "Lighting & Finishing Touches",
         description: "Added landscape and pool lighting, furnished the patio and lounge areas, and did a final walkthrough.",
-        media: "/images/Projects/Melissa-Dinan/melissa-dinan-07.jpg"
+        media: "/images/Projects/SageBrush/Sagebrush-13.jpg"
       }
     ],
     testimonial: {

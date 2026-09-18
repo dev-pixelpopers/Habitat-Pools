@@ -191,6 +191,7 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
                                 >
                                     {/* Image */}
                                     <img
+                                        loading="lazy"
                                         src={cell.src}
                                         alt={`${title} gallery ${cell.photoIndex + 1}`}
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -343,6 +344,7 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
                                 }}
                             >
                                 <img
+                                    loading="lazy"
                                     src={img}
                                     alt=""
                                     className="w-full h-full object-cover"

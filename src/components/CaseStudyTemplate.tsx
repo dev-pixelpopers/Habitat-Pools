@@ -178,6 +178,7 @@ export default function CaseStudyTemplate({
       >
         <div className="absolute inset-0 z-0">
           <img
+            fetchPriority="high"
             src={project.heroImage}
             alt={project.title}
             className="w-full h-full object-cover"
@@ -263,6 +264,7 @@ export default function CaseStudyTemplate({
           {/* LEFT — images crossfade */}
           <div className="w-[50%] h-screen relative overflow-hidden bg-[#112931]">
             <img
+              loading="lazy"
               ref={(el) => { imageRefs.current[0] = el; }}
               src={visionSections[0].image}
               alt={visionSections[0].label}
@@ -270,6 +272,7 @@ export default function CaseStudyTemplate({
               style={{ opacity: 1 }}
             />
             <img
+              loading="lazy"
               ref={(el) => { imageRefs.current[1] = el; }}
               src={visionSections[1].image}
               alt={visionSections[1].label}
@@ -277,6 +280,7 @@ export default function CaseStudyTemplate({
               style={{ opacity: 0 }}
             />
             <img
+              loading="lazy"
               ref={(el) => { imageRefs.current[2] = el; }}
               src={visionSections[2].image}
               alt={visionSections[2].label}
@@ -328,6 +332,7 @@ export default function CaseStudyTemplate({
               return (
                 <div key={idx} className="w-full overflow-hidden rounded-[20px] aspect-[16/9]">
                   <img
+                    loading="lazy"
                     src={image}
                     alt={`${project.title} details`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -340,6 +345,7 @@ export default function CaseStudyTemplate({
                 <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                   <div className="overflow-hidden rounded-[20px] aspect-[4/3]">
                     <img
+                      loading="lazy"
                       src={image}
                       alt={`${project.title} details`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -347,6 +353,7 @@ export default function CaseStudyTemplate({
                   </div>
                   <div className="overflow-hidden rounded-[20px] aspect-[4/3]">
                     <img
+                      loading="lazy"
                       src={nextImage}
                       alt={`${project.title} details`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -437,6 +444,7 @@ export default function CaseStudyTemplate({
                   {step.media && (
                     <div className="lg:w-[50%] w-full overflow-hidden rounded-[16px] aspect-[16/10]">
                       <img
+                        loading="lazy"
                         src={step.media}
                         alt={step.title}
                         className="w-full h-full object-cover"
