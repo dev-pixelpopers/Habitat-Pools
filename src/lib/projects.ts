@@ -55,11 +55,16 @@ export async function getProjectCards(): Promise<ProjectCardData[]> {
   return cards.length ? cards : allProjects;
 }
 
-/** Every published project, with the full field group the detail page needs. */
+/**
+ * Every published project, with the full field group the detail page needs.
+ *
+ * Ordered oldest first, so the grids read in the order the projects were
+ * added rather than WordPress's newest-first default.
+ */
 export async function getProjectPosts<TAcf extends object = ProjectAcf>(): Promise<
   WPPost<TAcf>[]
 > {
-  return getCustomPostType<TAcf>("project");
+  return getCustomPostType<TAcf>("project?orderby=date&order=asc");
 }
 
 /**
