@@ -7,6 +7,8 @@ interface ProjectGalleryProps {
     title: string;
     video?: string;
     videoThumbnail?: string;
+    tagline?: string;
+    heading?: string;
 }
 
 function VideoTile({ src, poster, style }: { src: string; poster?: string; style: React.CSSProperties }) {
@@ -63,7 +65,14 @@ function VideoTile({ src, poster, style }: { src: string; poster?: string; style
     );
 }
 
-export default function ProjectGallery({ images, title, video, videoThumbnail }: ProjectGalleryProps) {
+export default function ProjectGallery({
+    images,
+    title,
+    video,
+    videoThumbnail,
+    tagline = "Portfolio",
+    heading = "Project Gallery",
+}: ProjectGalleryProps) {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -146,9 +155,9 @@ export default function ProjectGallery({ images, title, video, videoThumbnail }:
 
                     {/* Section header */}
                     <div className="mb-16">
-                        <span className="text-[#86A3AC] text-[36px] block mb-2">Portfolio</span>
-                        <h2 className="text-[#ffffff] text-[66px] leading-[72px] capitalize">
-                            Project Gallery
+                        <span className="text-[#86A3AC] text-[36px] block mb-2">{tagline}</span>
+                        <h2 className="text-[#ffffff] text-[66px] leading-[72px] capitalize whitespace-pre-line">
+                            {heading}
                         </h2>
                     </div>
 

@@ -10,9 +10,18 @@ interface FAQItem {
 interface FAQSectionProps {
   faqs: FAQItem[];
   theme?: "light" | "dark";
+  tagline?: string;
+  heading?: string;
+  intro?: string;
 }
 
-export default function FAQSection({ faqs, theme = "light" }: FAQSectionProps) {
+export default function FAQSection({
+  faqs,
+  theme = "light",
+  tagline = "FAQs",
+  heading = "Frequently Asked Questions",
+  intro = "Have a question about our design process, build timeline, or materials? Check our answers below, or reach out to our team directly.",
+}: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -95,19 +104,19 @@ export default function FAQSection({ faqs, theme = "light" }: FAQSectionProps) {
             className="text-[36px] font-normal tracking-wide mb-4"
             style={{ color: tagColor }}
           >
-            FAQs
+            {tagline}
           </span>
           <h2
-            className="text-[66px] leading-[72px] tracking-tight font-normal capitalize"
+            className="text-[66px] leading-[72px] tracking-tight font-normal capitalize whitespace-pre-line"
             style={{ color: textColor }}
           >
-            Frequently Asked Questions
+            {heading}
           </h2>
           <p
             className="text-[20px] leading-[32px] mt-8 max-w-[400px]"
             style={{ color: subTextColor }}
           >
-            Have a question about our design process, build timeline, or materials? Check our answers below, or reach out to our team directly.
+            {intro}
           </p>
         </div>
 

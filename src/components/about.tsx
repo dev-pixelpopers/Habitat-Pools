@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface AboutSectionProps {
   imageSrc?: string;
   tagline?: string;
-  headingLines?: string[];
+  heading?: string;
   description?: string;
   buttonText?: string;
   buttonLink?:string;
@@ -20,7 +20,7 @@ interface AboutSectionProps {
 export const AboutSection: React.FC<AboutSectionProps> = ({
   imageSrc = '/images/about-img.jpg',
   tagline = 'Who We Are',
-  headingLines = ['We Make Stunning', 'Outdoor', 'Spaces'],
+  heading = "Built on Experience\nDriven by Craftsmanship",
   description = "Habitat Pools was founded in 2024 by two brothers after more than 18 years of combined experience in Arizona's pool and landscape industry. As brothers and business partners, we're passionate about creating outdoor spaces that are as functional as they are beautiful. Unlike larger companies where projects often change hands between multiple departments, we stay involved, committed and transparent.",
   buttonText = 'About Us',
   buttonLink= '/about',
@@ -67,8 +67,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
       {/* First Row */}
       <div className="mb-[-170px] z-2 relative ml-[50px]">
-        <h2 ref={headingRef} className="text-white text-[86px] leading-[72px] max-w-[1150px] m-auto">
-          Built on Experience<br/>Driven by Craftsmanship
+        <h2 ref={headingRef} className="text-white text-[86px] leading-[72px] max-w-[1150px] m-auto whitespace-pre-line">
+          {heading}
         </h2>
       </div>
 

@@ -1,8 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { telHref } from "@/lib/utils";
 
-export default function GetInTouch() {
+interface GetInTouchProps {
+  subHeading?: string;
+  heading?: string;
+  phoneLabel?: string;
+  phoneNumber?: string;
+  emailLabel?: string;
+  email?: string;
+  text?: string;
+}
+
+export default function GetInTouch({
+  subHeading = "Wanna transform your outdoor space? Let’s talk.",
+  heading = "Schedule Your Free Consultation Today",
+  phoneLabel = "Call Us",
+  phoneNumber = "( 480 ) 420 7515",
+  emailLabel = "Send An Email To",
+  email = "habitatpoolsaz@gmail.com",
+  text = "Or complete our online contact form, and a member of our team will get back to you within 24 hours to discuss your project.",
+}: GetInTouchProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,7 +65,7 @@ export default function GetInTouch() {
               fontFamily: "'Nohemi', sans-serif",
             }}
           >
-            Wanna transform your outdoor space? Let’s talk.
+            {subHeading}
           </span>
 
           {/* Main heading */}
@@ -61,7 +80,7 @@ export default function GetInTouch() {
               marginBottom: "48px",
             }}
           >
-            Schedule Your Free Consultation Today
+            {heading}
           </h2>
 
           {/* Contact details */}
@@ -77,10 +96,10 @@ export default function GetInTouch() {
                   marginBottom: "4px",
                 }}
               >
-                Call Us
+                {phoneLabel}
               </p>
               <a
-                href="tel:+4804207515"
+                href={telHref(phoneNumber)}
                 style={{
                   fontSize: "26px",
                   lineHeight: "30px",
@@ -100,7 +119,7 @@ export default function GetInTouch() {
                   "#0a0a0a")
                 }
               >
-                ( 480 ) 420 7515
+                {phoneNumber}
               </a>
             </div>
 
@@ -115,10 +134,10 @@ export default function GetInTouch() {
                   marginBottom: "4px",
                 }}
               >
-                Send An Email To
+                {emailLabel}
               </p>
               <a
-                href="mailto:habitatpoolsaz@gmail.com"
+                href={`mailto:${email}`}
                 style={{
                   fontSize: "26px",
                   lineHeight: "30px",
@@ -138,7 +157,7 @@ export default function GetInTouch() {
                   "#0a0a0a")
                 }
               >
-                habitatpoolsaz@gmail.com
+                {email}
               </a>
 
               
@@ -153,7 +172,7 @@ export default function GetInTouch() {
               fontFamily: "'Nohemi', sans-serif",
             }}
           >
-           Or complete our online contact form, and a member of our team will get back to you within 24 hours to discuss your project.
+           {text}
           </span>
             </div>
           </div>

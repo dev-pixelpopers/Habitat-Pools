@@ -235,7 +235,7 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
       <section className="w-full py-[120px] px-[85px] bg-white">
         <div className="max-w-[90%] mx-auto flex flex-col gap-16 lg:gap-24">
           {/* <div className="">
-            <span className="text-[#86A3AC] text-[36px] block mb-4">Features</span>
+            <span className="text-[#86A3AC] text-[36px] block mb-4">{service.featuresSubtitle}</span>
             <h2 className="text-[#112931] text-[66px] leading-[72px] capitalize">{service.featuresTitle}</h2>
             <p className="text-[#112931]/80 text-[20px] leading-[34px] mt-6">{service.featuresDescription}</p>
           </div> */}
@@ -315,7 +315,7 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
               </div>
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative btn-dark'>
-            <a href='#' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-[#112931] text-center '>call us today</a>
+            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-[#112931] text-center '>{service.whyUsButtonText ?? 'call us today'}</a>
           </div>
 
         </div>
@@ -350,7 +350,7 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
               </div>
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative'>
-            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>call us today</a>
+            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{service.whyUsButtonText ?? 'call us today'}</a>
           </div>
 
         </div>

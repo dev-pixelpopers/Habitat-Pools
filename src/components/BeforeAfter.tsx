@@ -5,9 +5,11 @@ import { useRef, useState, useCallback, useEffect } from "react";
 export default function BeforeAfter({
   beforeImage = "/images/before-pool.png",
   afterImage = "/images/after-pool.png",
+  heading = "Before & After",
 }: {
   beforeImage?: string;
   afterImage?: string;
+  heading?: string;
 } = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -92,7 +94,7 @@ export default function BeforeAfter({
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
-          Before & After
+          {heading}
         </h2>
       </div>
       {/* Slider container — overlapping both sections */}

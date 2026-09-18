@@ -8,11 +8,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // --- Types ---
-interface Review {
+export interface Review {
   id: string;
   name: string;
   rating: number; // Max 5
   text: string;
+}
+
+interface ReviewsSectionProps {
+  reviews?: Review[];
+  subtitle?: string;
+  heading?: string;
+  backgroundImage?: string;
 }
 
 // --- Icons ---
@@ -72,12 +79,18 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 };
 
 // --- Main Component ---
-export const ReviewsSection: React.FC = () => {
+export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
+  reviews,
+  subtitle = "Reviews",
+  heading = "Real Stories.\nStunning Backyards",
+  backgroundImage = "/images/review-bg.png",
+}) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const bgImageRef = useRef<HTMLImageElement>(null);
 
-  const reviews: Review[] = [
+  // Fallback content, used when the CMS has no testimonials
+  const fallbackReviews: Review[] = [
     {
       id: "1",
       name: "Jordyn Matthews",
@@ -98,6 +111,8 @@ export const ReviewsSection: React.FC = () => {
     },
     // Dummy review added for testing slider movement
   ];
+
+  const reviewItems = reviews?.length ? reviews : fallbackReviews;
 
   // --- Scroll Logic ---
   const scrollLeft = () => {
@@ -149,7 +164,7 @@ export const ReviewsSection: React.FC = () => {
       <div className="absolute inset-0">
         <img
           ref={bgImageRef}
-          src="/images/review-bg.png"
+          src={backgroundImage}
           className="w-full h-full object-cover"
           alt=""
           style={{ transformOrigin: "center bottom" }}
@@ -161,11 +176,10 @@ export const ReviewsSection: React.FC = () => {
         {/* Header Section */}
         <div className="w-full relative">
           <span className="absolute left-0 top-20 text-[#86A3AC] text-[36px]">
-            Reviews
+            {subtitle}
           </span>
-          <h2 className="text-[96px] leading-[1.1] tracking-tight max-w-[900px] m-auto">
-            Real Stories. <br />
-            Stunning Backyards
+          <h2 className="text-[96px] leading-[1.1] tracking-tight max-w-[900px] m-auto whitespace-pre-line">
+            {heading}
           </h2>
         </div>
 
@@ -185,7 +199,7 @@ export const ReviewsSection: React.FC = () => {
             ref={scrollContainerRef}
             className="flex gap-6 w-full max-w-[1300px] mx-auto z-10 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
-            {reviews.map((review) => (
+            {reviewItems.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>

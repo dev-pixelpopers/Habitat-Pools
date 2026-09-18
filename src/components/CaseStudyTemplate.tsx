@@ -9,21 +9,17 @@ import Footer from "@/components/Footer";
 import BeforeAfter from "@/components/BeforeAfter";
 import { ProjectCard } from "@/components/project";
 import CTA from "@/components/CTA";
-import { Project } from "@/data/projects";
+import type { CaseStudyContent } from "@/lib/project-detail";
 import ProjectGallery from "./projectGallery";
 import PremiumFeatures from "./PremiumFeatures";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface CaseStudyTemplateProps {
-  project: Project;
-  relatedProjects: Project[];
+  content: CaseStudyContent;
 }
 
-export default function CaseStudyTemplate({
-  project,
-  relatedProjects,
-}: CaseStudyTemplateProps) {
+export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
@@ -35,28 +31,13 @@ export default function CaseStudyTemplate({
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const visionSections = [
-    {
-      image: project.gallery[0] || project.heroImage,
-      label: "The Design Vision",
-      content: project.vision,
-    },
-    {
-      image: project.gallery[1] || project.heroImage,
-      label: "Our Philosophy",
-      content: project.philosophy,
-    },
-    {
-      image: project.gallery[2] || project.heroImage,
-      label: "How We Do It",
-      content: project.howwedoit,
-    },
-  ];
+  const visionSections = content.vision;
 
   // Services split into two balanced columns (left gets the extra one on odd counts)
-  const servicesMid = Math.ceil(project.services.length / 2);
-  const servicesLeft = project.services.slice(0, servicesMid);
-  const servicesRight = project.services.slice(servicesMid);
+  const services = content.intro.services;
+  const servicesMid = Math.ceil(services.length / 2);
+  const servicesLeft = services.slice(0, servicesMid);
+  const servicesRight = services.slice(servicesMid);
 
   // ── Animation 1, 2, 4 — unchanged ──
   useGSAP(() => {
@@ -162,7 +143,7 @@ export default function CaseStudyTemplate({
 
   }, {
     scope: containerRef,
-    dependencies: [project.id],
+    dependencies: [content.id],
     revertOnUpdate: true,
   });
 
@@ -179,27 +160,27 @@ export default function CaseStudyTemplate({
         <div className="absolute inset-0 z-0">
           <img
             fetchPriority="high"
-            src={project.heroImage}
-            alt={project.title}
+            src={content.hero.image}
+            alt={content.hero.title}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative z-10 w-full px-[85px] pb-[100px]">
           <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">
-            {project.category}
+            {content.hero.tagline}
           </span>
           <h1
             ref={heroTitleRef}
             className="text-white text-[96px] leading-[88px] max-w-[1000px] mb-6 capitalize tracking-tight"
           >
-            {project.title}
+            {content.hero.title}
           </h1>
           <p
             ref={heroSubRef}
             className="text-white/80 text-[26px] leading-[38px] max-w-[70%] font-light"
           >
-            {project.subtitle}
+            {content.hero.subtitle}
           </p>
         </div>
       </section>
@@ -208,35 +189,28 @@ export default function CaseStudyTemplate({
       <section className="w-full py-[120px] px-[85px] bg-white flex flex-col gap-16 lg:gap-24 items-start">
         <div ref={introLeftRef} className="flex gap-10">
           <div className="w-[50%] flex flex-col gap-4">
-          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">Project Intro</span>
-          <h2 className="text-[#112931] text-[66px] leading-[72px] capitalize">
-            The Overview
+          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">{content.intro.tagline}</span>
+          <h2 className="text-[#112931] text-[66px] leading-[72px] capitalize whitespace-pre-line">
+            {content.intro.heading}
           </h2>
-          
+
           </div>
           <p className="text-[#112931]/80 text-[24px] leading-[44px] capitalize w-[50%]">
-            {project.overview}
+            {content.intro.overview}
           </p>
         </div>
         <div ref={introRightRef} className="flex flex-col gap-12 w-full">
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-[#112931]/10">
-            <div>
-              <span className="text-[#86A3AC] text-[20px] block mb-2">Location</span>
-              <span className="text-[#112931] text-[20px] font-medium">{project.location}</span>
-            </div>
-            
-            <div>
-              <span className="text-[#86A3AC] text-[20px] block mb-2">Completed</span>
-              <span className="text-[#112931] text-[20px] font-medium">{project.year}</span>
-            </div>
-            <div>
-              <span className="text-[#86A3AC] text-[20px] block mb-2">Scope</span>
-              <span className="text-[#112931] text-[20px] font-medium">{project.scope}</span>
-            </div>
+            {content.intro.info.map((item) => (
+              <div key={item.label}>
+                <span className="text-[#86A3AC] text-[20px] block mb-2">{item.label}</span>
+                <span className="text-[#112931] text-[20px] font-medium">{item.value}</span>
+              </div>
+            ))}
           </div>
           <div className="pt-8 border-t border-[#112931]/10">
-              <span className="text-[#86A3AC] text-[20px] block mb-2">Services Delivered</span>
+              <span className="text-[#86A3AC] text-[20px] block mb-2">{content.intro.servicesLabel}</span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
                 <div className="flex flex-col gap-1 border-r border-[#112931]/10 pl-4">
                   {servicesLeft.map((service) => (
@@ -316,10 +290,11 @@ export default function CaseStudyTemplate({
       </section>
 
       {/* ── SECTION 5 — BEFORE & AFTER ── */}
-      {project.beforeImages && project.afterImages && project.beforeImages[0] && project.afterImages[0] && (
+      {content.beforeAfter && (
         <BeforeAfter
-          beforeImage={project.beforeImages[0]}
-          afterImage={project.afterImages[0]}
+          beforeImage={content.beforeAfter.beforeImage}
+          afterImage={content.beforeAfter.afterImage}
+          heading={content.beforeAfter.heading}
         />
       )}
 
@@ -367,48 +342,50 @@ export default function CaseStudyTemplate({
         </div>
       </section> */}
       <ProjectGallery
-        images={project.gallery}
-        title={project.title}
-        video={project.video}
-        videoThumbnail={project.videoThumbnail}
+        images={content.gallery.images}
+        title={content.hero.title}
+        video={content.gallery.video}
+        videoThumbnail={content.gallery.videoThumbnail}
+        tagline={content.gallery.tagline}
+        heading={content.gallery.heading}
       />
 
 
 
       {/* ── SECTION 7 — DESIGN HIGHLIGHTS ── */}
-      {project.crafts && project.crafts.length > 0 && (
+      {content.highlights && (
         <section className="w-full py-[120px] px-[85px] bg-[#ffffff] ">
           <div className="max-w-[1440px] mx-auto flex flex-col gap-16 lg:gap-24">
             <div className="w-full flex gap-10 items-center">
               <div className="w-[50%] flex flex-col gap-4">
-              <span className="text-[#86A3AC] text-[36px] block mb-4">Craftsmanship</span>
-              <h2 className="text-[#112931]/80 text-[66px] leading-[72px] capitalize">
-                Key Design Highlights
+              <span className="text-[#86A3AC] text-[36px] block mb-4">{content.highlights.tagline}</span>
+              <h2 className="text-[#112931]/80 text-[66px] leading-[72px] capitalize whitespace-pre-line">
+                {content.highlights.heading}
               </h2>
               </div>
               <div className="w-[50%]">
               <p className="text-[#112931]/80 text-[20px] leading-[34px] mt-6 capitalize">
-                Every detail is custom built to suit the property flow. The highlights listed here represent the technical milestones of this construction.
+                {content.highlights.intro}
               </p>
               </div>
             </div>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-              {project.crafts.map((craft, idx) => (
+              {content.highlights.items.map((highlight, idx) => (
                 <div
-                  key={`${craft}-${idx}`}
+                  key={`${highlight.title}-${idx}`}
                   className="p-10 rounded-[20px] border border-[#112931]/10 hover:bg-white/5 transition-colors duration-300 flex flex-col gap-4"
                 >
-                  <span className="text-[#86A3AC] text-[24px]">0{idx + 1}</span>
+                  <span className="text-[#86A3AC] text-[24px]">{highlight.number}</span>
                   <h3 className="text-[#112931]/80 text-[32px] leading-[38px] capitalize">
-                    {craft.heading}
+                    {highlight.title}
                   </h3>
-                 
-                    {craft.para && (
+
+                    {highlight.text && (
                       <p className="text-[#112931]/80 text-[18px] leading-[32px] mt-4">
-                        {craft.para}
+                        {highlight.text}
                       </p>
                     )}
-                  
+
                 </div>
               ))}
             </div>
@@ -416,36 +393,42 @@ export default function CaseStudyTemplate({
         </section>
       )}
 
-      <PremiumFeatures features={project.features} />
+      {content.features && (
+        <PremiumFeatures
+          features={content.features.items}
+          tagline={content.features.tagline}
+          heading={content.features.heading}
+        />
+      )}
 
       {/* ── SECTION 8 — BUILD PROCESS TIMELINE ── */}
-      {project.timeline && project.timeline.length > 0 && (
+      {content.process && (
         <section className="w-full py-[120px] px-[85px] bg-[#112931]">
           <div ref={timelineRef} className="max-w-[1440px] mx-auto">
             <div className="text-center mb-20">
-              <span className="text-[#86A3AC] text-[36px] block mb-4">Construction</span>
-              <h2 className="text-white text-[66px] leading-[72px] capitalize">
-                The Build Process
+              <span className="text-[#86A3AC] text-[36px] block mb-4">{content.process.tagline}</span>
+              <h2 className="text-white text-[66px] leading-[72px] capitalize whitespace-pre-line">
+                {content.process.heading}
               </h2>
             </div>
             <div className="flex flex-col gap-24 relative pl-8 md:pl-16 border-l-2 border-[#ffffff]/10">
-              {project.timeline.map((step, idx) => (
+              {content.process.steps.map((step, idx) => (
                 <div key={idx} className="timeline-step relative flex flex-col lg:flex-row gap-12 items-start">
                   <span className="absolute -left-[41px] md:-left-[73px] top-2 w-[16px] h-[16px] rounded-full bg-[#86A3AC] border-4 border-white" />
                   <div className="lg:w-[50%] flex flex-col gap-4">
-                    <span className="text-[#86A3AC] text-[24px]">Stage 0{idx + 1}</span>
+                    <span className="text-[#86A3AC] text-[24px]">{step.stage}</span>
                     <h3 className="text-white text-[36px] leading-[42px] capitalize">
                       {step.title}
                     </h3>
                     <p className="text-white/70 text-[20px] leading-[36px]">
-                      {step.description}
+                      {step.text}
                     </p>
                   </div>
-                  {step.media && (
+                  {step.image && (
                     <div className="lg:w-[50%] w-full overflow-hidden rounded-[16px] aspect-[16/10]">
                       <img
                         loading="lazy"
-                        src={step.media}
+                        src={step.image}
                         alt={step.title}
                         className="w-full h-full object-cover"
                       />
@@ -459,35 +442,35 @@ export default function CaseStudyTemplate({
       )}
 
       {/* ── SECTION 9 — TESTIMONIAL ── */}
-      {project.testimonial && (
+      {content.testimonial && (
         <section className="w-full py-[140px] px-[85px] bg-[#ffffff] flex flex-col items-center justify-center text-center">
           <div className="max-w-[90%] flex flex-col items-center">
-            <span className="text-[#86A3AC] text-[36px] block mb-8">Client Testimonial</span>
+            <span className="text-[#86A3AC] text-[36px] block mb-8">{content.testimonial.heading}</span>
             <blockquote className="text-[#112931] text-[22px] leading-[36px] font-light mb-8 italic">
-              &ldquo;{project.testimonial.quote}&rdquo;
+              &ldquo;{content.testimonial.quote}&rdquo;
             </blockquote>
             <span className="w-12 h-[1px] bg-[#86A3AC] mb-6" />
             <cite className="text-[#86A3AC] text-[22px] font-normal not-italic capitalize">
-              {project.testimonial.name}
+              {content.testimonial.author}
             </cite>
           </div>
         </section>
       )}
 
       {/* ── SECTION 10 — RELATED PROJECTS ── */}
-      {relatedProjects.length > 0 && (
+      {content.related.items.length > 0 && (
         <section className="w-full py-[120px] px-[85px] bg-[#112931] border-t border-[#ffffff]/10">
           <div className="max-w-[1440px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
               <div>
-                <span className="text-[#86A3AC] text-[36px] block mb-2">Portfolio</span>
-                <h2 className="text-white text-[66px] leading-[72px] capitalize">
-                  Related Projects
+                <span className="text-[#86A3AC] text-[36px] block mb-2">{content.related.tagline}</span>
+                <h2 className="text-white text-[66px] leading-[72px] capitalize whitespace-pre-line">
+                  {content.related.heading}
                 </h2>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedProjects.map((relProj) => (
+              {content.related.items.map((relProj) => (
                 <ProjectCard key={relProj.id} project={relProj} />
               ))}
             </div>
@@ -497,9 +480,9 @@ export default function CaseStudyTemplate({
 
       {/* ── SECTION 11 — CTA ── */}
       <CTA
-        heading="Ready To Design Yours?"
-        description="Book a private design consultation and let our team map out your dream pool and landscape environment."
-        buttonText="Book A Service"
+        heading={content.cta.heading}
+        description={content.cta.description}
+        buttonText={content.cta.buttonText}
         buttonLink="/contact"
       />
 

@@ -52,6 +52,8 @@ export interface ServiceDetail {
   }[];
   whyUstitle:string;
   whyUsdescription:whyUsdescription;
+  /** Optional CMS-supplied label for the why-us button. */
+  whyUsButtonText?: string;
   ourEasiness : ourEasiness;
   ctaHeading: string;
   ctaDescription: string;

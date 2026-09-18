@@ -1,51 +1,49 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CaseStudyTemplate from "@/components/CaseStudyTemplate";
-import { getProjectBySlug, allProjects } from "@/data/projects";
+import { getCaseStudy, getCaseStudySlugs } from "@/lib/project-detail";
+
+export const revalidate = 300;
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return allProjects.map((project) => ({
-    slug: project.slug,
-  }));
+  const slugs = await getCaseStudySlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const content = await getCaseStudy(slug);
 
-  if (!project) {
+  if (!content) {
     return {
       title: "Project Not Found | Habitat Pools & Landscape",
     };
   }
 
+  const title = `${content.hero.title} | Habitat Pools & Landscape`;
+
   return {
-    title: `${project.title} | Habitat Pools & Landscape`,
-    description: project.subtitle,
+    title,
+    description: content.hero.subtitle,
     openGraph: {
-      title: `${project.title} | Habitat Pools & Landscape`,
-      description: project.subtitle,
-      images: [{ url: project.heroImage }],
+      title,
+      description: content.hero.subtitle,
+      images: content.hero.image ? [{ url: content.hero.image }] : undefined,
     },
   };
 }
 
 export default async function ProjectDetailPage({ params }: RouteParams) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const content = await getCaseStudy(slug);
 
-  if (!project) {
+  if (!content) {
     notFound();
   }
 
-  // Get 3 related projects (excluding current one)
-  const relatedProjects = allProjects
-    .filter((p) => p.id !== project.id)
-    .slice(0, 3);
-
-  return <CaseStudyTemplate project={project} relatedProjects={relatedProjects} />;
+  return <CaseStudyTemplate content={content} />;
 }

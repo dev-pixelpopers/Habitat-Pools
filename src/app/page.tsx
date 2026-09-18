@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 import AboutSection from "@/components/about";
 import ProjectsSection from "@/components/project";
 import StickyServicesContainer from "@/components/service";
@@ -9,93 +9,87 @@ import BeforeAfter from "@/components/BeforeAfter";
 import GetInTouch from "@/components/GetInTouch";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import HomeHero from "@/components/HomeHero";
+import { getHomeContent } from "@/lib/home";
+import { WP_REVALIDATE, getPageBySlug, pageMetadata } from "@/lib/wp";
 
-export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+export const revalidate = 300;
 
-  useGSAP(() => {
-    if (!videoRef.current || !containerRef.current) return;
-    const tl = gsap.timeline();
-    tl.to(videoRef.current, {
-      borderRadius: "0px",
-      width: "100%",
-      height: "100%",
-      top: 0,
-      left: 0,
-      duration: 1,
-      ease: "power3.out",
-    })
-    tl.to(containerRef.current, {
-      y: 0,
-      duration: 1.5,
-      ease: "power3.out",
-    }, ">")
-  }, { scope: videoRef })
+const FALLBACK_METADATA: Metadata = {
+  title: "Habitat Pools & Landscapes",
+  description: "Luxury Pools & Landscapes",
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  // Same request as the page below, so Next serves it from the data cache.
+  const page = await getPageBySlug("home", { revalidate: WP_REVALIDATE });
+  return pageMetadata(page, FALLBACK_METADATA);
+}
+
+export default async function Home() {
+  const content = await getHomeContent();
 
   return (
     <div className="app">
       <Header />
-      <section className="relative h-screen w-full overflow-hidden px-[85px] pb-[50px] flex flex-col justify-end items-center">
-        {/* Background Video */}
-        <video ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute w-[386px] h-[383px] object-cover rounded-[540px]"
-        >
-          <source src="/videos/HeroVideo.webm" type="video/webm" />
-        </video>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+      <HomeHero
+        heading={content.hero.heading}
+        paragraph={content.hero.paragraph}
+        videoSrc={content.hero.videoSrc}
+      />
 
-        {/* Content */}
-        <div ref={containerRef} className="relative z-10 flex items-end translate-y-100">
-          <div className="grid grid-cols-1 md:grid-cols-3 xl:flex xl:flex-row xl:gap-4 gap-0 items-center justify-center w-full">
-            {/* First Column */}
-            <div className="xl:w-[40%]">
-              <h1 className="text-white text-[80px] leading-[76.1px] font-normal">
-                Custom Pool Builders In Phoenix, Arizona
-              </h1>
-            </div>
+      <AboutSection
+        tagline={content.about.tagline}
+        heading={content.about.heading}
+        description={content.about.description}
+        imageSrc={content.about.imageSrc}
+        buttonText={content.about.buttonText}
+      />
 
-            {/* Second Column */}
-            <div className="flex justify-center xl:w-[20%]">
-              <div className="w-[419px]">
-                <img src="/images/arrow.png" alt="Arrow" className="w-full h-full object-cover" />
-              </div>
-            </div>
+      <ProjectsSection
+        projects={content.projects.items}
+        tagline={content.projects.tagline}
+        heading={content.projects.heading}
+      />
 
-            {/* Third Column */}
-            <div className="xl:w-[40%]">
-              <p className="text-white text-[22px] leading-[44px] capitalize font-normal">
-                We design and build custom pools, luxury landscapes, and complete outdoor living spaces throughout Gilbert, Queen Creek, Mesa, Scottsdale, Tempe, Paradise Valley, Phoenix, and the surrounding East & West Valley.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <StickyServicesContainer sections={content.services} />
 
-      <AboutSection />
+      <AboutService
+        imageSrc={content.serviceArea.imageSrc}
+        heading={content.serviceArea.heading}
+        description={content.serviceArea.description}
+        buttonText={content.serviceArea.buttonText}
+      />
 
-      <ProjectsSection />
+      <ReviewsSection
+        reviews={content.reviews.items}
+        subtitle={content.reviews.subtitle}
+        heading={content.reviews.heading}
+        backgroundImage={content.reviews.backgroundImage}
+      />
 
-      <StickyServicesContainer />
+      <PremiumFeatures
+        features={content.features.items}
+        tagline={content.features.tagline}
+        heading={content.features.heading}
+      />
 
-      <AboutService />
+      <BeforeAfter
+        beforeImage={content.beforeAfter.beforeImage}
+        afterImage={content.beforeAfter.afterImage}
+        heading={content.beforeAfter.heading}
+      />
 
-      <ReviewsSection />
-
-      <PremiumFeatures />
-
-      <BeforeAfter />
-
-      <GetInTouch />
+      <GetInTouch
+        subHeading={content.contact.subHeading}
+        heading={content.contact.heading}
+        phoneLabel={content.contact.phoneLabel}
+        phoneNumber={content.contact.phoneNumber}
+        emailLabel={content.contact.emailLabel}
+        email={content.contact.email}
+        text={content.contact.text}
+      />
 
       <Footer />
     </div>

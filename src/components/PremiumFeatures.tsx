@@ -6,6 +6,8 @@ import type { ProjectFeature } from "@/data/projects";
 
 type PremiumFeaturesProps = {
     features?: ProjectFeature[];
+    tagline?: string;
+    heading?: string;
 };
 
 const fallbackFeatures: ProjectFeature[] = [
@@ -27,7 +29,11 @@ const fallbackFeatures: ProjectFeature[] = [
     },
 ];
 
-export default function PremiumFeatures({ features = fallbackFeatures }: PremiumFeaturesProps) {
+export default function PremiumFeatures({
+    features = fallbackFeatures,
+    tagline = "Custom Features",
+    heading = "Bring Your Backyard to Life",
+}: PremiumFeaturesProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [mounted, setMounted] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
@@ -57,13 +63,13 @@ export default function PremiumFeatures({ features = fallbackFeatures }: Premium
                 {/* Feature label */}
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-[36px] text-[#86A3AC] hidden lg:block tracking-wide">
-                       Custom Features
+                       {tagline}
                     </span>
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-[96px] leading-[1.1] max-w-[60%] text-white">
-                    Bring Your Backyard to Life
+                <h2 className="text-[96px] leading-[1.1] max-w-[60%] text-white whitespace-pre-line">
+                    {heading}
                 </h2>
             </div>
 

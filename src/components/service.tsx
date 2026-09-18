@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // --- Types ---
-interface SectionProps {
+export interface StickySectionData {
   id: string | number;
   title: string;
   description: string;
@@ -15,6 +15,8 @@ interface SectionProps {
   imageSrc: string;
   href: string;
 }
+
+type SectionProps = StickySectionData;
 
 // --- Reusable Sticky Section Component ---
 const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; index: number }>(
@@ -73,13 +75,15 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
 StickySection.displayName = "StickySection";
 
 // --- Main Container (Jismein 3 sections render honge) ---
-export const StickyServicesContainer: React.FC = () => {
+export const StickyServicesContainer: React.FC<{ sections?: StickySectionData[] }> = ({
+  sections,
+}) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Aapke 3 sections ka data
-  const sectionsData: SectionProps[] = [
+  // Fallback content, used when the CMS has no services cards
+  const fallbackSections: SectionProps[] = [
     {
       id: 1,
       title: "Custom Swimming Pool Construction",
@@ -106,6 +110,8 @@ export const StickyServicesContainer: React.FC = () => {
     }
   ];
 
+  const sectionsData = sections?.length ? sections : fallbackSections;
+
   useGSAP(() => {
     const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
 
@@ -131,7 +137,7 @@ export const StickyServicesContainer: React.FC = () => {
         },
       });
     });
-  }, { scope: containerRef });
+  }, { dependencies: [sectionsData.length], scope: containerRef });
 
   return (
     // Parent div mein overflow nahi hona chahiye warna sticky toot jayega

@@ -1,21 +1,22 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceDetailTemplate from "@/components/ServiceDetailTemplate";
-import { allServices, getServiceBySlug } from "@/data/services";
+import { getServiceDetail, getServiceDetailSlugs } from "@/lib/service-detail";
+
+export const revalidate = 300;
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return allServices.map((service) => ({
-    slug: service.slug,
-  }));
+  const slugs = await getServiceDetailSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceDetail(slug);
 
   if (!service) {
     return {
@@ -25,13 +26,13 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
   return {
     title: `${service.title} | Habitat Pools & Landscape`,
-    description: service.subtitle,
+    description: service.subtitle || service.overview,
   };
 }
 
 export default async function ServiceDetailPage({ params }: RouteParams) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceDetail(slug);
 
   if (!service) {
     notFound();

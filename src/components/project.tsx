@@ -4,10 +4,22 @@ import Link from 'next/link';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { allProjects, Project } from "@/data/projects";
+import { allProjects } from "@/data/projects";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * The fields a card needs. Kept narrower than the full `Project` so cards can
+ * be rendered straight from the CMS without inventing the case-study fields.
+ */
+export interface ProjectCardData {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  heroImage: string;
+}
 
 // --- Icons ---
 const ArrowUpRightIcon = () => (
@@ -29,7 +41,7 @@ const ArrowUpRightIcon = () => (
 // --- Sub-components ---
 
 // 1. Wrap ProjectCard in forwardRef so we can attach GSAP animations directly to it
-export const ProjectCard = forwardRef<HTMLAnchorElement, { project: Project }>(({ project }, ref) => {
+export const ProjectCard = forwardRef<HTMLAnchorElement, { project: ProjectCardData }>(({ project }, ref) => {
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -67,7 +79,17 @@ ProjectCard.displayName = "ProjectCard";
 
 // --- Main Component ---
 
-export const ProjectsSection: React.FC = () => {
+interface ProjectsSectionProps {
+  projects?: ProjectCardData[];
+  tagline?: string;
+  heading?: string;
+}
+
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
+  projects = allProjects,
+  tagline = "Projects",
+  heading = "Explore Our Work",
+}) => {
   // 2. State to track visible projects
   const [visibleCount, setVisibleCount] = useState(6);
 
@@ -143,7 +165,7 @@ export const ProjectsSection: React.FC = () => {
   const handleLoadMore = (e: React.MouseEvent) => {
     e.preventDefault();
     // Increase by 3, up to the total length of the array
-    setVisibleCount(prev => Math.min(prev + 3, allProjects.length));
+    setVisibleCount(prev => Math.min(prev + 3, projects.length));
 
     // Give a slight delay for DOM to render, then refresh ScrollTrigger calculations
     setTimeout(() => {
@@ -158,10 +180,10 @@ export const ProjectsSection: React.FC = () => {
         {/* Header Section */}
         <div className="relative w-full flex justify-center items-center mb-16">
           <span className="absolute left-0 text-[#86A3AC] text-[36px] hidden md:block">
-            Projects
+            {tagline}
           </span>
-          <h2 className="text-[96px] leading-[88px] text-[#112931]">
-            Explore Our Work
+          <h2 className="text-[96px] leading-[88px] text-[#112931] whitespace-pre-line">
+            {heading}
           </h2>
         </div>
 
@@ -169,7 +191,7 @@ export const ProjectsSection: React.FC = () => {
         {/* overflow-hidden on a parent container ensures the fanning cards don't create horizontal scrollbars temporarily */}
         <div className="overflow-hidden py-8 px-4 -mx-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[38px] gap-x-[28px] mb-20" style={{ perspective: '1200px' }}>
-            {allProjects.slice(0, visibleCount).map((project, index) => (
+            {projects.slice(0, visibleCount).map((project, index) => (
               <ProjectCard
                 key={project.id}
                 project={project}
@@ -180,7 +202,7 @@ export const ProjectsSection: React.FC = () => {
         </div>
 
         {/* Call To Action / Load More */}
-        {visibleCount < allProjects.length && (
+        {visibleCount < projects.length && (
           <div className="flex justify-center">
             <div className="btn-all mt-[40px] relative btn-dark">
               <a
