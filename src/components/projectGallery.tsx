@@ -13,39 +13,62 @@ interface ProjectGalleryProps {
 
 function VideoTile({ src, poster, style }: { src: string; poster?: string; style: React.CSSProperties }) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [hovering, setHovering] = useState(false);
+    // The <video> is not mounted until the first hover/tap, so the file is
+    // never requested on page load — only the poster image is.
+    const [activated, setActivated] = useState(false);
+    const [playing, setPlaying] = useState(false);
 
-    const handleMouseEnter = () => {
-        setHovering(true);
-        videoRef.current?.play();
+    const activate = () => {
+        setActivated(true);
+        videoRef.current?.play().catch(() => {});
     };
 
-    const handleMouseLeave = () => {
-        setHovering(false);
+    const deactivate = () => {
         videoRef.current?.pause();
     };
 
+    useEffect(() => {
+        if (activated) videoRef.current?.play().catch(() => {});
+    }, [activated]);
+
     return (
         <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={activate}
+            onMouseLeave={deactivate}
+            onClick={activate}
             className="group relative overflow-hidden rounded-[16px] cursor-pointer bg-black"
             style={style}
         >
-            <video
-                ref={videoRef}
-                src={src}
-                poster={poster}
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-            />
+            {poster && (
+                <img
+                    src={poster}
+                    alt=""
+                    loading="lazy"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                        playing ? "opacity-0" : "opacity-100"
+                    }`}
+                />
+            )}
 
-            {/* Play icon — visible until hovered */}
+            {activated && (
+                <video
+                    ref={videoRef}
+                    src={src}
+                    poster={poster}
+                    preload="none"
+                    muted
+                    loop
+                    playsInline
+                    onPlaying={() => setPlaying(true)}
+                    onPause={() => setPlaying(false)}
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+            )}
+
+            {/* Play icon — visible until the clip is actually running */}
             <div
                 className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                    hovering ? "opacity-0" : "opacity-100"
+                    playing ? "opacity-0" : "opacity-100"
                 }`}
             >
                 <div
@@ -63,6 +86,21 @@ function VideoTile({ src, poster, style }: { src: string; poster?: string; style
             </div>
         </div>
     );
+}
+
+/**
+ * Span map for the masonry grid, keyed on how many tiles are actually shown.
+ * Every branch fills the 3-column grid exactly, so a short gallery can never
+ * leave a hole.
+ */
+function spanFor(idx: number, count: number) {
+    if (count <= 1) return { colSpan: 3, rowSpan: 1 };
+    if (count === 2) return idx === 0 ? { colSpan: 2, rowSpan: 1 } : { colSpan: 1, rowSpan: 1 };
+    if (count === 3) return { colSpan: 1, rowSpan: 1 };
+    // 4 tiles: wide lead, tall second, two squares underneath.
+    if (idx === 0) return { colSpan: 2, rowSpan: 1 };
+    if (idx === 1) return { colSpan: 1, rowSpan: 2 };
+    return { colSpan: 1, rowSpan: 1 };
 }
 
 export default function ProjectGallery({
@@ -132,12 +170,16 @@ export default function ProjectGallery({
           ]
         : images.map((src, i) => ({ kind: "image" as const, src, photoIndex: i }));
 
-    // Exactly 3 images show on the front end (the video tile doesn't count
-    // toward that limit); the rest are still reachable through the lightbox.
+    // The grid always shows 4 tiles so it fills exactly: with a video that is
+    // 1 video + 3 images, without one it is 4 images. The rest of the photos
+    // stay reachable through the lightbox.
+    const MAX_TILES = 4;
+    const maxImages = video ? MAX_TILES - 1 : MAX_TILES;
     const visibleCells: GalleryCell[] = [];
     let visibleImageCount = 0;
     for (const cell of cells) {
-        if (visibleImageCount >= 3) break;
+        if (visibleCells.length >= MAX_TILES) break;
+        if (cell.kind === "image" && visibleImageCount >= maxImages) break;
         visibleCells.push(cell);
         if (cell.kind === "image") visibleImageCount++;
     }
@@ -170,15 +212,7 @@ export default function ProjectGallery({
                         }}
                     >
                         {visibleCells.map((cell, idx) => {
-                            const pos = idx % 5;
-                            let colSpan = 1;
-                            let rowSpan = 1;
-
-                            if (pos === 0) { colSpan = 2; rowSpan = 1; }
-                            else if (pos === 1) { colSpan = 1; rowSpan = 2; }
-                            else if (pos === 2) { colSpan = 1; rowSpan = 1; }
-                            else if (pos === 3) { colSpan = 1; rowSpan = 1; }
-                            else if (pos === 4) { colSpan = 2; rowSpan = 1; }
+                            const { colSpan, rowSpan } = spanFor(idx, visibleCells.length);
 
                             const gridStyle = {
                                 gridColumn: `span ${colSpan}`,

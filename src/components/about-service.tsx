@@ -101,7 +101,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 40%",
+        start: "top 80%",
         toggleActions: "play none none reverse",
       },
     });

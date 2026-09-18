@@ -42,6 +42,10 @@ export interface ProjectDetailAcf extends ProjectAcf {
     sub_heading?: string;
     heading?: string;
     gallery?: unknown;
+    /** SCF File field — an attachment object, or a plain URL if the field is
+     *  switched to URL for externally hosted video. */
+    video?: unknown;
+    video_thumbnail?: AcfImage | false;
   };
   sixth_section?: {
     sub_heading?: string;
@@ -197,11 +201,29 @@ function text(value: unknown, fallback = ""): string {
   return acfText(value, fallback).replace(/\r\n?/g, "\n");
 }
 
-/** An ACF gallery field is an array of image objects. */
+/**
+ * An ACF gallery field is an array of image objects.
+ *
+ * Non-image attachments are dropped: a video uploaded into the gallery by
+ * mistake would otherwise reach the grid as `<img src="clip.webm">` and render
+ * as a blank tile. Anything without a `mime_type` is kept, since the field can
+ * legitimately hold a bare URL.
+ */
 function galleryUrls(value: unknown): string[] {
   return acfRepeater<AcfImage>(value)
+    .filter((item) => !item?.mime_type || item.mime_type.startsWith("image/"))
     .map((image) => acfImageUrl(image))
     .filter(Boolean);
+}
+
+/**
+ * A media URL from a File/Image field, whether it returns an attachment object
+ * or a plain URL string. Lets a project move to externally hosted video by
+ * switching the field type, with no code change.
+ */
+function mediaUrl(value: unknown): string {
+  if (typeof value === "string") return value.trim();
+  return acfImageUrl(value);
 }
 
 function mapVision(
@@ -299,6 +321,8 @@ function fromPost(
       tagline: text(acf.fifth_section?.sub_heading, DEFAULTS.galleryTagline),
       heading: text(acf.fifth_section?.heading, DEFAULTS.galleryHeading),
       images: gallery,
+      video: mediaUrl(acf.fifth_section?.video) || undefined,
+      videoThumbnail: mediaUrl(acf.fifth_section?.video_thumbnail) || undefined,
     },
     highlights: highlights.length
       ? {

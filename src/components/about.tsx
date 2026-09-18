@@ -47,7 +47,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 30%",
+        start: "top 60%",
         end: "+=400",
         scrub: 1,
         toggleActions: "play none none reverse",
