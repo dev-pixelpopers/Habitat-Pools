@@ -66,9 +66,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     <section ref={sectionRef} className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]">
 
       {/* First Row */}
-      <div className="mb-[-185px] z-2 relative ml-[150px]">
-        <h2 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[1150px] m-auto">
-          Built on Experience<br/>Driven by <br/> Craftsmanship
+      <div className="mb-[-170px] z-2 relative ml-[50px]">
+        <h2 ref={headingRef} className="text-white text-[86px] leading-[72px] max-w-[1150px] m-auto">
+          Built on Experience<br/>Driven by Craftsmanship
         </h2>
       </div>
 
@@ -76,14 +76,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       <div className="flex gap-[40px] h-[95vh]">
 
         {/* First Column */}
-        <div className='w-[15%] pt-[20px]'>
+        <div className='w-[12%] pt-[20px]'>
           <h4 className="text-[#86A3AC] text-[36px] leading-[38px] capitalize">
             {tagline}
           </h4>
         </div>
 
         {/* Second Column (Fixed className typo here) */}
-        <div className="flex justify-center w-[47%]">
+        <div className="flex justify-center w-[53%]">
           <img
             ref={imageRef}
             src={imageSrc}
@@ -93,7 +93,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         </div>
 
         {/* Third Column */}
-        <div className='w-[38%] pl-[60px] flex flex-col justify-center'>
+        <div className='w-[35%] pl-[60px] pt-[5%] flex flex-col justify-center'>
           <p ref={descriptionRef} className="text-white text-[24px] leading-[41px] capitalize">
             {description}
           </p>

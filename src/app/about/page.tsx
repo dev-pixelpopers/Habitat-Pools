@@ -128,7 +128,7 @@ export default function AboutPage() {
         }}
       >
         <div className="absolute inset-0 z-0">
-          <img src="/images/about-img.jpg" alt="" className="w-full h-full object-cover" />
+          <img src="/images/about-banner.jpg" alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/55" />
         </div>
         <div className="relative z-10 w-full px-[85px] pb-[80px]">

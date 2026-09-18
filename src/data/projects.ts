@@ -559,6 +559,331 @@ export const allProjects: Project[] = [
       name: "Cassandra Nash",
       quote: "We cannot say enough good things about Habitat Pools. What started as a pool project turned into a complete transformation of our entire outdoor space. We had a vision of exactly what we wanted and they went above and beyond to create a space beyond what we had imagined. They handled everything: landscaping, all new plants, garden beds, irrigation, pool, spa, and a beautiful shade structure, and every detail was thoughtfully designed and executed. One of our favorite parts of the project is the side yard transformation. What was once wasted space is now one of the most special areas of our property, complete with raised garden beds, fruit trees, and the sweetest playhouse tucked away for our kids. It feels like something out of a magazine, but still functional and family-focused. Colby and Carter were responsive, collaborative, and genuinely cared about making sure every part of the project was perfect. We are beyond grateful for the vision and effort they brought to our home and would recommend Habitat Pools to anyone looking for a company that goes above and beyond."
     }
+  },
+  {
+    id: "6",
+    slug: "oltmann",
+    title: "The Oltmann",
+    subtitle: "What started as a pool project grew into a full reimagining of this Gilbert backyard — a resort-style pool and spa, a covered outdoor kitchen, a dedicated lounge retreat, and a side yard turned into one of the family's favorite spots on the property.",
+    category: "Complete Backyard Transformation",
+    heroImage: "/images/Projects/Oltmann/oltmann-02.jpg",
+    overview: "The homeowners came to us with a clear vision and an entire outdoor space to reimagine. Our team demoed and removed the existing landscape, then rebuilt it from the ground up: an in-ground pool paired with an elevated spa, a paver patio, turf, a covered outdoor kitchen with a fireplace, a separate shaded lounge area, new plantings and irrigation throughout, and a side yard transformed with raised garden beds, fruit trees, and a kids' playhouse. Layered landscape and pool lighting carries the space from day use into the evening.",
+    location: "Gilbert, AZ",
+    scope: "Landscape Design, Pool Design & Build, Softscape & Planting",
+    year: "2025",
+    services: ["Full landscape demolition and site prep", "In-ground pool with an elevated, spillover spa", "Paver patio and hardscape installation", "Artificial turf installation", "Perimeter block wall and desert landscaping (palms, agave, and accent plantings)", "New irrigation and planting", "Raised garden beds and fruit trees in a reimagined side yard", "Covered pergola with a built-in outdoor kitchen, fireplace, and bar seating", "Separate covered lounge area for shaded seating", "Landscape and pool lighting"],
+    vision: "Establishing a rustic pool deck that feels like it has been part of the orchard grounds for generations.",
+    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
+    gallery: [
+      "/images/Projects/Oltmann/oltmann-02.jpg",
+      "/images/Projects/Oltmann/oltmann-03.jpg",
+      "/images/Projects/Oltmann/oltmann-04.jpg",
+      "/images/Projects/Oltmann/oltmann-01.jpg",
+      "/images/Projects/Oltmann/oltmann-05.jpg",
+      "/images/Projects/Oltmann/oltmann-06.jpg",
+      "/images/Projects/Oltmann/oltmann-14.jpg",
+      "/images/Projects/Oltmann/oltmann-15.jpg",
+      "/images/Projects/Oltmann/oltmann-11.jpg",
+      "/images/Projects/Oltmann/oltmann-07.jpg",
+      "/images/Projects/Oltmann/oltmann-08.jpg",
+      "/images/Projects/Oltmann/oltmann-12.jpg",
+      "/images/Projects/Oltmann/oltmann-13.jpg",
+      "/images/Projects/Oltmann/oltmann-10.jpg",
+      "/images/Projects/Oltmann/oltmann-09.jpg"
+    ],
+    video: "/videos/Projects/Oltmann/MISSING-oltmann-vid-01.webm",
+    videoThumbnail: "/images/Projects/Oltmann/MISSING-oltmann-video-thumbnail.png",
+    beforeImages: [
+      "/images/Projects/Oltmann/oltmann-04.jpg"
+    ],
+    afterImages: [
+      "/images/Projects/Oltmann/oltmann-02.jpg"
+    ],
+    features: [
+      {
+        label: "Cascading Water Wall",
+        image: "/images/Projects/Oltmann/oltmann-08.jpg",
+      },
+      {
+        label: "Elevated Spa & Sun Shelf",
+        image: "/images/Projects/Oltmann/oltmann-11.jpg",
+      },
+      {
+        label: "Outdoor Kitchen & Fireplace",
+        image: "/images/Projects/Oltmann/oltmann-05.jpg",
+      },
+      {
+        label: "Dedicated Lounge Retreat",
+        image: "/images/Projects/Oltmann/oltmann-06.jpg",
+      },
+      {
+        label: "Landscape & Pool Lighting",
+        image: "/images/Projects/Oltmann/oltmann-04.jpg",
+      },
+    ],
+    crafts: [
+      {
+        heading: "Cascading Water Wall",
+        para: "Three wall scuppers spill from a raised bond-beam wall into the pool below, giving the space movement and sound without a full waterfall footprint — a clean, modern take on a classic feature."
+      },
+      {
+        heading: "Elevated Spa with a Sun Shelf",
+        para: "An elevated, jetted spa spills into the main pool, which includes a wide sun shelf for lounging in the shallows — two distinct ways to enjoy the water in one connected feature."
+      },
+      {
+        heading: "Outdoor Kitchen with Fireplace",
+        para: "A pergola-covered kitchen and bar anchor the entertaining side of the yard — a built-in BBQ counter, woven bar stools, a mounted TV, and a fireplace wall make it a space that works year-round, day or night."
+      },
+      {
+        heading: "The Side Yard Reimagined",
+        para: "What was once unused space became one of the most personal parts of the property: raised garden beds, fruit trees, and a playhouse tucked away for the kids — proof that a project like this can be just as much about family life as it is about the pool."
+      }
+    ],
+    timeline: [
+      {
+        title: "Demo & Site Prep",
+        description: "Removed the existing landscape completely to start with a clean slate.",
+        media: "/images/Projects/Oltmann/oltmann-04.jpg"
+      },
+      {
+        title: "Pool & Hardscape",
+        description: "Excavated and built the pool and elevated spa, then set the paver patio and walkways.",
+        media: "/images/Projects/Oltmann/oltmann-14.jpg"
+      },
+      {
+        title: "Structures, Turf & Planting",
+        description: "Built the pergola, outdoor kitchen, fireplace, and perimeter block wall; installed turf, irrigation, and new plantings, including the side yard garden beds.",
+        media: "/images/Projects/Oltmann/oltmann-03.jpg"
+      },
+      {
+        title: "Lighting & Finishing Touches",
+        description: "Added landscape and pool lighting, furnished the patio and lounge areas, and did a final walkthrough.",
+        media: "/images/Projects/Oltmann/oltmann-01.jpg"
+      }
+    ],
+    testimonial: {
+      name: "Cassandra Nash",
+      quote: "We cannot say enough good things about Habitat Pools. What started as a pool project turned into a complete transformation of our entire outdoor space. We had a vision of exactly what we wanted and they went above and beyond to create a space beyond what we had imagined. They handled everything: landscaping, all new plants, garden beds, irrigation, pool, spa, and a beautiful shade structure, and every detail was thoughtfully designed and executed. One of our favorite parts of the project is the side yard transformation. What was once wasted space is now one of the most special areas of our property, complete with raised garden beds, fruit trees, and the sweetest playhouse tucked away for our kids. It feels like something out of a magazine, but still functional and family-focused. Colby and Carter were responsive, collaborative, and genuinely cared about making sure every part of the project was perfect. We are beyond grateful for the vision and effort they brought to our home and would recommend Habitat Pools to anyone looking for a company that goes above and beyond."
+    }
+  },
+  {
+    id: "7",
+    slug: "bluesage",
+    title: "The Bluesage",
+    subtitle: "What started as a pool project grew into a full reimagining of this Gilbert backyard — a resort-style pool and spa, a covered outdoor kitchen, a dedicated lounge retreat, and a side yard turned into one of the family's favorite spots on the property.",
+    category: "Complete Backyard Transformation",
+    heroImage: "/images/Projects/BlueSage/BlueSage-19.jpg",
+    overview: "The homeowners came to us with a clear vision and an entire outdoor space to reimagine. Our team demoed and removed the existing landscape, then rebuilt it from the ground up: an in-ground pool paired with an elevated spa, a paver patio, turf, a covered outdoor kitchen with a fireplace, a separate shaded lounge area, new plantings and irrigation throughout, and a side yard transformed with raised garden beds, fruit trees, and a kids' playhouse. Layered landscape and pool lighting carries the space from day use into the evening.",
+    location: "Gilbert, AZ",
+    scope: "Landscape Design, Pool Design & Build, Softscape & Planting",
+    year: "2025",
+    services: ["Full landscape demolition and site prep", "In-ground pool with an elevated, spillover spa", "Paver patio and hardscape installation", "Artificial turf installation", "Perimeter block wall and desert landscaping (palms, agave, and accent plantings)", "New irrigation and planting", "Raised garden beds and fruit trees in a reimagined side yard", "Covered pergola with a built-in outdoor kitchen, fireplace, and bar seating", "Separate covered lounge area for shaded seating", "Landscape and pool lighting"],
+    vision: "Establishing a rustic pool deck that feels like it has been part of the orchard grounds for generations.",
+    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
+    gallery: [
+      "/images/Projects/BlueSage/BlueSage-19.jpg",
+      "/images/Projects/BlueSage/BlueSage-02.jpg",
+      "/images/Projects/BlueSage/BlueSage-05.jpg",
+      "/images/Projects/BlueSage/BlueSage-03.jpg",
+      "/images/Projects/BlueSage/BlueSage-13.jpg",
+      "/images/Projects/BlueSage/BlueSage-21.jpg",
+      "/images/Projects/BlueSage/BlueSage-17.jpg",
+      "/images/Projects/BlueSage/BlueSage-20.jpg",
+      "/images/Projects/BlueSage/BlueSage-01.jpg",
+      "/images/Projects/BlueSage/BlueSage-06.jpg",
+      "/images/Projects/BlueSage/BlueSage-09.jpg",
+      "/images/Projects/BlueSage/BlueSage-10.jpg",
+      "/images/Projects/BlueSage/BlueSage-18.jpg",
+      "/images/Projects/BlueSage/BlueSage-04.jpg",
+      "/images/Projects/BlueSage/BlueSage-14.jpg",
+      "/images/Projects/BlueSage/BlueSage-16.jpg",
+      "/images/Projects/BlueSage/BlueSage-15.jpg"
+    ],
+    video: "/videos/Projects/BlueSage/MISSING-bluesage-vid-01.webm",
+    videoThumbnail: "/images/Projects/BlueSage/MISSING-bluesage-video-thumbnail.png",
+    beforeImages: [
+      "/images/Projects/BlueSage/BlueSage-12.jpg"
+    ],
+    afterImages: [
+      "/images/Projects/BlueSage/BlueSage-19.jpg"
+    ],
+    features: [
+      {
+        label: "Cascading Water Wall",
+        image: "/images/Projects/BlueSage/BlueSage-01.jpg",
+      },
+      {
+        label: "Elevated Spa & Sun Shelf",
+        image: "/images/Projects/BlueSage/BlueSage-21.jpg",
+      },
+      {
+        label: "Outdoor Kitchen & Fireplace",
+        image: "/images/Projects/BlueSage/BlueSage-17.jpg",
+      },
+      {
+        label: "Dedicated Lounge Retreat",
+        image: "/images/Projects/BlueSage/BlueSage-20.jpg",
+      },
+      {
+        label: "Landscape & Pool Lighting",
+        image: "/images/Projects/BlueSage/BlueSage-13.jpg",
+      },
+    ],
+    crafts: [
+      {
+        heading: "Cascading Water Wall",
+        para: "Three wall scuppers spill from a raised bond-beam wall into the pool below, giving the space movement and sound without a full waterfall footprint — a clean, modern take on a classic feature."
+      },
+      {
+        heading: "Elevated Spa with a Sun Shelf",
+        para: "An elevated, jetted spa spills into the main pool, which includes a wide sun shelf for lounging in the shallows — two distinct ways to enjoy the water in one connected feature."
+      },
+      {
+        heading: "Outdoor Kitchen with Fireplace",
+        para: "A pergola-covered kitchen and bar anchor the entertaining side of the yard — a built-in BBQ counter, woven bar stools, a mounted TV, and a fireplace wall make it a space that works year-round, day or night."
+      },
+      {
+        heading: "The Side Yard Reimagined",
+        para: "What was once unused space became one of the most personal parts of the property: raised garden beds, fruit trees, and a playhouse tucked away for the kids — proof that a project like this can be just as much about family life as it is about the pool."
+      }
+    ],
+    timeline: [
+      {
+        title: "Demo & Site Prep",
+        description: "Removed the existing landscape completely to start with a clean slate.",
+        media: "/images/Projects/BlueSage/BlueSage-12.jpg"
+      },
+      {
+        title: "Pool & Hardscape",
+        description: "Excavated and built the pool and elevated spa, then set the paver patio and walkways.",
+        media: "/images/Projects/BlueSage/BlueSage-11.jpg"
+      },
+      {
+        title: "Structures, Turf & Planting",
+        description: "Built the pergola, outdoor kitchen, fireplace, and perimeter block wall; installed turf, irrigation, and new plantings, including the side yard garden beds.",
+        media: "/images/Projects/BlueSage/BlueSage-09.jpg"
+      },
+      {
+        title: "Lighting & Finishing Touches",
+        description: "Added landscape and pool lighting, furnished the patio and lounge areas, and did a final walkthrough.",
+        media: "/images/Projects/BlueSage/BlueSage-19.jpg"
+      }
+    ],
+    testimonial: {
+      name: "Cassandra Nash",
+      quote: "We cannot say enough good things about Habitat Pools. What started as a pool project turned into a complete transformation of our entire outdoor space. We had a vision of exactly what we wanted and they went above and beyond to create a space beyond what we had imagined. They handled everything: landscaping, all new plants, garden beds, irrigation, pool, spa, and a beautiful shade structure, and every detail was thoughtfully designed and executed. One of our favorite parts of the project is the side yard transformation. What was once wasted space is now one of the most special areas of our property, complete with raised garden beds, fruit trees, and the sweetest playhouse tucked away for our kids. It feels like something out of a magazine, but still functional and family-focused. Colby and Carter were responsive, collaborative, and genuinely cared about making sure every part of the project was perfect. We are beyond grateful for the vision and effort they brought to our home and would recommend Habitat Pools to anyone looking for a company that goes above and beyond."
+    }
+  }
+  ,
+  {
+    id: "8",
+    slug: "woodpool",
+    title: "The Woodpool",
+    subtitle: "What started as a pool project grew into a full reimagining of this Gilbert backyard — a resort-style pool and spa, a covered outdoor kitchen, a dedicated lounge retreat, and a side yard turned into one of the family's favorite spots on the property.",
+    category: "Complete Backyard Transformation",
+    heroImage: "/images/Projects/WoodPool/WoodPool-04.jpg",
+    overview: "The homeowners came to us with a clear vision and an entire outdoor space to reimagine. Our team demoed and removed the existing landscape, then rebuilt it from the ground up: an in-ground pool paired with an elevated spa, a paver patio, turf, a covered outdoor kitchen with a fireplace, a separate shaded lounge area, new plantings and irrigation throughout, and a side yard transformed with raised garden beds, fruit trees, and a kids' playhouse. Layered landscape and pool lighting carries the space from day use into the evening.",
+    location: "Gilbert, AZ",
+    scope: "Landscape Design, Pool Design & Build, Softscape & Planting",
+    year: "2025",
+    services: ["Full landscape demolition and site prep", "In-ground pool with an elevated, spillover spa", "Paver patio and hardscape installation", "Artificial turf installation", "Perimeter block wall and desert landscaping (palms, agave, and accent plantings)", "New irrigation and planting", "Raised garden beds and fruit trees in a reimagined side yard", "Covered pergola with a built-in outdoor kitchen, fireplace, and bar seating", "Separate covered lounge area for shaded seating", "Landscape and pool lighting"],
+    vision: "Establishing a rustic pool deck that feels like it has been part of the orchard grounds for generations.",
+    philosophy: "We believe that the best pool designs are those that complement the natural environment. Our approach is to create pools that are both beautiful and functional, and that will provide years of enjoyment for our clients.",
+    howwedoit: "We began with site analysis, grading, and solar studies to plan the ideal pool layout. After 3D renderings and material selection, we engineered a custom retaining wall system and completed the build with excavation, smart automation, and lighting installation.",
+    gallery: [
+      "/images/Projects/WoodPool/WoodPool-04.jpg",
+      "/images/Projects/WoodPool/WoodPool-03.jpg",
+      "/images/Projects/WoodPool/WoodPool-01.jpg",
+      "/images/Projects/WoodPool/WoodPool-02.jpg",
+      "/images/Projects/WoodPool/WoodPool-04.jpg",
+      "/images/Projects/WoodPool/WoodPool-03.jpg",
+      "/images/Projects/WoodPool/WoodPool-01.jpg",
+      "/images/Projects/WoodPool/WoodPool-02.jpg",
+      "/images/Projects/WoodPool/WoodPool-04.jpg",
+      "/images/Projects/WoodPool/WoodPool-03.jpg",
+      "/images/Projects/WoodPool/WoodPool-01.jpg",
+      "/images/Projects/WoodPool/WoodPool-02.jpg",
+      "/images/Projects/WoodPool/WoodPool-04.jpg",
+      "/images/Projects/WoodPool/WoodPool-03.jpg",
+      "/images/Projects/WoodPool/WoodPool-01.jpg",
+      "/images/Projects/WoodPool/WoodPool-02.jpg"
+    ],
+    video: "/videos/Projects/WoodPool/MISSING-woodpool-vid-01.webm",
+    videoThumbnail: "/images/Projects/WoodPool/MISSING-woodpool-video-thumbnail.png",
+    beforeImages: [
+      "/images/Projects/WoodPool/WoodPool-01.jpg"
+    ],
+    afterImages: [
+      "/images/Projects/WoodPool/WoodPool-04.jpg"
+    ],
+    features: [
+      {
+        label: "Cascading Water Wall",
+        image: "/images/Projects/WoodPool/WoodPool-04.jpg",
+      },
+      {
+        label: "Elevated Spa & Sun Shelf",
+        image: "/images/Projects/WoodPool/WoodPool-03.jpg",
+      },
+      {
+        label: "Outdoor Kitchen & Fireplace",
+        image: "/images/Projects/WoodPool/WoodPool-01.jpg",
+      },
+      {
+        label: "Dedicated Lounge Retreat",
+        image: "/images/Projects/WoodPool/WoodPool-02.jpg",
+      },
+      {
+        label: "Landscape & Pool Lighting",
+        image: "/images/Projects/WoodPool/WoodPool-04.jpg",
+      },
+    ],
+    crafts: [
+      {
+        heading: "Cascading Water Wall",
+        para: "Three wall scuppers spill from a raised bond-beam wall into the pool below, giving the space movement and sound without a full waterfall footprint — a clean, modern take on a classic feature."
+      },
+      {
+        heading: "Elevated Spa with a Sun Shelf",
+        para: "An elevated, jetted spa spills into the main pool, which includes a wide sun shelf for lounging in the shallows — two distinct ways to enjoy the water in one connected feature."
+      },
+      {
+        heading: "Outdoor Kitchen with Fireplace",
+        para: "A pergola-covered kitchen and bar anchor the entertaining side of the yard — a built-in BBQ counter, woven bar stools, a mounted TV, and a fireplace wall make it a space that works year-round, day or night."
+      },
+      {
+        heading: "The Side Yard Reimagined",
+        para: "What was once unused space became one of the most personal parts of the property: raised garden beds, fruit trees, and a playhouse tucked away for the kids — proof that a project like this can be just as much about family life as it is about the pool."
+      }
+    ],
+    timeline: [
+      {
+        title: "Demo & Site Prep",
+        description: "Removed the existing landscape completely to start with a clean slate.",
+        media: "/images/Projects/WoodPool/WoodPool-02.jpg"
+      },
+      {
+        title: "Pool & Hardscape",
+        description: "Excavated and built the pool and elevated spa, then set the paver patio and walkways.",
+        media: "/images/Projects/WoodPool/WoodPool-03.jpg"
+      },
+      {
+        title: "Structures, Turf & Planting",
+        description: "Built the pergola, outdoor kitchen, fireplace, and perimeter block wall; installed turf, irrigation, and new plantings, including the side yard garden beds.",
+        media: "/images/Projects/WoodPool/WoodPool-04.jpg"
+      },
+      {
+        title: "Lighting & Finishing Touches",
+        description: "Added landscape and pool lighting, furnished the patio and lounge areas, and did a final walkthrough.",
+        media: "/images/Projects/WoodPool/WoodPool-03.jpg"
+      }
+    ],
+    testimonial: {
+      name: "Cassandra Nash",
+      quote: "We cannot say enough good things about Habitat Pools. What started as a pool project turned into a complete transformation of our entire outdoor space. We had a vision of exactly what we wanted and they went above and beyond to create a space beyond what we had imagined. They handled everything: landscaping, all new plants, garden beds, irrigation, pool, spa, and a beautiful shade structure, and every detail was thoughtfully designed and executed. One of our favorite parts of the project is the side yard transformation. What was once wasted space is now one of the most special areas of our property, complete with raised garden beds, fruit trees, and the sweetest playhouse tucked away for our kids. It feels like something out of a magazine, but still functional and family-focused. Colby and Carter were responsive, collaborative, and genuinely cared about making sure every part of the project was perfect. We are beyond grateful for the vision and effort they brought to our home and would recommend Habitat Pools to anyone looking for a company that goes above and beyond."
+    }
   }
 ];
 

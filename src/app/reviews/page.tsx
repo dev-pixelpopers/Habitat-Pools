@@ -164,7 +164,7 @@ export default function ReviewsPage() {
         }}
       >
         <div className="absolute inset-0 z-0">
-          <img src="/images/review-bg.png" alt="" className="w-full h-full object-cover" />
+          <img src="/images/reviews-banner.jpg" alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative z-10 w-full px-[85px] pb-[80px]">

@@ -23,7 +23,7 @@ const fallbackFeatures: ProjectFeature[] = [
     },
     {
         label: "Outdoor Kitchens & BBQ Area",
-        image: "/images/features_4.jpg",
+        image: "/images/features_4-v2.jpg",
     },
 ];
 

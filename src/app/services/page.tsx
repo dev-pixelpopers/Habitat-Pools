@@ -190,7 +190,7 @@ export default function ServicesPage() {
         }}
       >
         <div className="absolute inset-0 z-0">
-          <img src="/images/service-01.png" alt="" className="w-full h-full object-cover" />
+          <img src="/images/services-banner.jpg" alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative z-10 w-full px-[85px] pb-[80px]">

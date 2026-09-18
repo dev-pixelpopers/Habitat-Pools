@@ -55,7 +55,7 @@ export default function ProjectsPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/project-01.png"
+            src="/images/projects-banner.jpg"
             alt=""
             className="w-full h-full object-cover"
           />
