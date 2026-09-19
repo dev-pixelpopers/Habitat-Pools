@@ -13,18 +13,21 @@ interface ProjectGalleryProps {
 
 function VideoTile({ src, poster, style }: { src: string; poster?: string; style: React.CSSProperties }) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    // The <video> is not mounted until the first hover/tap, so the file is
-    // never requested on page load — only the poster image is.
+    // The <video> is not mounted until the first click, so the file is never
+    // requested on page load — only the poster image is.
     const [activated, setActivated] = useState(false);
     const [playing, setPlaying] = useState(false);
 
-    const activate = () => {
-        setActivated(true);
-        videoRef.current?.play().catch(() => {});
-    };
-
-    const deactivate = () => {
-        videoRef.current?.pause();
+    // Click toggles: first click mounts and starts, later clicks play/pause.
+    const toggle = () => {
+        if (!activated) {
+            setActivated(true);
+            return;
+        }
+        const video = videoRef.current;
+        if (!video) return;
+        if (video.paused) video.play().catch(() => {});
+        else video.pause();
     };
 
     useEffect(() => {
@@ -33,9 +36,16 @@ function VideoTile({ src, poster, style }: { src: string; poster?: string; style
 
     return (
         <div
-            onMouseEnter={activate}
-            onMouseLeave={deactivate}
-            onClick={activate}
+            role="button"
+            tabIndex={0}
+            aria-label={playing ? "Pause video" : "Play video"}
+            onClick={toggle}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    toggle();
+                }
+            }}
             className="group relative overflow-hidden rounded-[16px] cursor-pointer bg-black"
             style={style}
         >
@@ -57,18 +67,18 @@ function VideoTile({ src, poster, style }: { src: string; poster?: string; style
                     poster={poster}
                     preload="none"
                     muted
-                    loop
                     playsInline
                     onPlaying={() => setPlaying(true)}
                     onPause={() => setPlaying(false)}
+                    onEnded={() => setPlaying(false)}
                     className="absolute inset-0 w-full h-full object-cover"
                 />
             )}
 
-            {/* Play icon — visible until the clip is actually running */}
+            {/* Play badge while paused; a pause badge appears on hover while running */}
             <div
                 className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                    playing ? "opacity-0" : "opacity-100"
+                    playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"
                 }`}
             >
                 <div
@@ -79,9 +89,15 @@ function VideoTile({ src, poster, style }: { src: string; poster?: string; style
                         border: "1px solid rgba(255,255,255,0.3)",
                     }}
                 >
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
+                    {playing ? (
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+                        </svg>
+                    ) : (
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    )}
                 </div>
             </div>
         </div>

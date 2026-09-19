@@ -3,6 +3,7 @@ import {
   findProjectPost,
   getProjectPosts,
   mapProjectCard,
+  resolveProjectCategory,
   resolveProjectSlug,
   type ProjectAcf,
 } from "./projects";
@@ -467,6 +468,34 @@ export function fromStaticProject(project: Project): CaseStudyContent {
 }
 
 /**
+ * The other projects, ranked for the "Related Projects" row: the ones sharing
+ * this project's service category first, then the rest.
+ *
+ * The row shows three, and a category can easily hold fewer than three other
+ * projects, so the remainder tops it up rather than letting it render short.
+ * A project with no category yet just gets the others, in their usual order.
+ */
+function byCategory(
+  posts: WPPost<ProjectDetailAcf>[],
+  current: WPPost<ProjectDetailAcf>,
+): WPPost<ProjectDetailAcf>[] {
+  const others = posts.filter((post) => post.id !== current.id);
+  const category = resolveProjectCategory(current)?.slug;
+  if (!category) return others;
+
+  const sameCategory = new Set(
+    others
+      .filter((post) => resolveProjectCategory(post)?.slug === category)
+      .map((post) => post.id),
+  );
+
+  return [
+    ...others.filter((post) => sameCategory.has(post.id)),
+    ...others.filter((post) => !sameCategory.has(post.id)),
+  ];
+}
+
+/**
  * The case study for a URL slug: the CMS project when one matches, otherwise
  * the local case study, so the projects not yet in the CMS keep working.
  */
@@ -475,17 +504,16 @@ export async function getCaseStudy(slug: string): Promise<CaseStudyContent | nul
   const post = findProjectPost(posts, slug);
 
   if (post) {
-    // The page can hand-pick related projects; otherwise show the others.
+    // The page can hand-pick related projects; otherwise go by category.
     const picked = acfPostObjects(post.acf?.tenth_section?.related_projects).map(
       (item) => item.ID,
     );
-    const others = posts.filter((other) => other.id !== post.id);
     const related = (
       picked.length
         ? picked
             .map((id) => posts.find((other) => other.id === id))
             .filter((other): other is WPPost<ProjectDetailAcf> => Boolean(other))
-        : others
+        : byCategory(posts, post)
     )
       .map(mapProjectCard)
       .filter((card) => card.heroImage)

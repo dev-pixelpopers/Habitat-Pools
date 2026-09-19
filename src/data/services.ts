@@ -69,8 +69,8 @@ export const allServices: ServiceDetail[] = [
   {
     id: "1",
     slug: "custom-pool-construction",
-    title: "custom pool Construction In Arizona",
-    titleTwo:"Custom Pool Construction",
+    title: "Custom Swimming Pool Construction",
+    titleTwo:"Custom Swimming Pool Construction",
     category: "Pool Construction",
     heroImage: "/images/before-pool.png",
     subtitle: "Thoughtful design, expert craftsmanship, and long-term performance for luxury backyard pools in Arizona.",
@@ -192,8 +192,8 @@ export const allServices: ServiceDetail[] = [
   {
     id: "2",
     slug: "pool-and-landscape-design",
-    title: "Pool & Landscape Design",
-    titleTwo:"Custom Pool Construction",
+    title: "Custom Pool & Landscape Design",
+    titleTwo:"Custom Pool & Landscape Design",
     category: "Design Studio",
     heroImage: "/images/service-02.png",
     subtitle: "Thoughtful design, expert craftsmanship, and long-term performance for luxury backyard pools in Arizona.",
@@ -316,8 +316,8 @@ export const allServices: ServiceDetail[] = [
   {
     id: "3",
     slug: "pool-remodeling-and-renovations",
-    title: "Pool Remodeling & Renovations",
-    titleTwo:"Custom Pool Construction",
+    title: "Pool Remodeling & Backyard Renovations",
+    titleTwo:"Pool Remodeling & Backyard Renovations",
     category: "Renovation",
     heroImage: "/images/service-03.jpeg",
     subtitle: "Thoughtful design, expert craftsmanship, and long-term performance for luxury backyard pools in Arizona.",

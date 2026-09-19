@@ -19,6 +19,15 @@ export interface ProjectCardData {
   title: string;
   subtitle: string;
   heroImage: string;
+  /**
+   * The service this project falls under, one of the three service names.
+   * Set from the CMS `project_category` field; absent on the local case
+   * studies and on any CMS project not assigned a category yet, so nothing
+   * that reads it may assume it is there.
+   */
+  serviceCategory?: string;
+  /** The `/services/[slug]` `serviceCategory` belongs to. */
+  serviceCategorySlug?: string;
 }
 
 // --- Icons ---

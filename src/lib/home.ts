@@ -8,7 +8,7 @@ import {
 } from "./wp";
 import { getAllTestimonials, getTestimonialsByIds } from "./testimonials";
 import { getProjectCards } from "./projects";
-import { resolveServiceSlug, serviceHrefFromTitle } from "./services";
+import { canonicalCardTitle, resolveServiceSlug, serviceHrefFromTitle } from "./services";
 import type { AcfImage, AcfPostObject } from "./wp-types";
 import type { ProjectCardData } from "@/components/project";
 import type { StickySectionData } from "@/components/service";
@@ -188,7 +188,10 @@ function mapServices(acf: HomeAcf): StickySectionData[] {
   return acfRepeater<ServiceCardRow>(acf.fourth_section?.services)
     .map((row, index) => ({
       id: index + 1,
-      title: acfText(row.title),
+      title: canonicalCardTitle(
+        acfText(row.title),
+        acfPostObjects(row.service)[0]?.post_name,
+      ),
       description: acfText(row.paragraph),
       buttonText: acfText(row.button_text, "View More"),
       imageSrc: acfImageUrl(row.background_image),

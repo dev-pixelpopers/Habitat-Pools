@@ -1,5 +1,5 @@
 import { acfImageUrl, acfPostObjects, acfRepeater, acfText, decodeEntities, getCustomPostType, getPostsByIds } from "./wp";
-import { resolveServiceSlug } from "./services";
+import { canonicalServiceName, resolveServiceSlug } from "./services";
 import type { AcfImage, WPPost } from "./wp-types";
 import type { ServiceDetail } from "@/data/services";
 import { allServices, getServiceBySlug } from "@/data/services";
@@ -142,7 +142,12 @@ function merge(
 ): ServiceDetail {
   const acf = post.acf ?? {};
   const banner = acf.banner_section;
-  const title = text(banner?.heading, base.title || decodeEntities(post.title?.rendered));
+  // Both headings on the page render the service name, and the CMS stores it
+  // once, in `banner_section.heading` — worded its own way, so it is
+  // normalised to the one name the rest of the site uses.
+  const heading = text(banner?.heading, base.title || decodeEntities(post.title?.rendered));
+  const title =
+    canonicalServiceName(post.slug) ?? canonicalServiceName(heading) ?? heading;
 
   const features = acfRepeater<FeatureRow>(acf.fourth_section?.features)
     .map((row) => ({
@@ -157,7 +162,7 @@ function merge(
     id: String(post.id),
     slug: resolveServiceSlug(post.slug),
     title,
-    titleTwo: text(banner?.heading, base.titleTwo),
+    titleTwo: title,
     category: text(banner?.sub_heading, base.category),
     heroImage: acfImageUrl(banner?.background_image, base.heroImage),
     overview: text(

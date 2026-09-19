@@ -65,7 +65,7 @@ const FALLBACK_SERVICES: ServiceCardData[] = [
   },
   {
     id: 2,
-    title: "Pool & Landscape Design",
+    title: "Custom Pool & Landscape Design",
     description: "Our pool & landscape design services combine creative vision and functionality, ensuring every element of your backyard works together seamlessly.",
     details: [
       "Pool & Landscape design",
@@ -80,7 +80,7 @@ const FALLBACK_SERVICES: ServiceCardData[] = [
   },
   {
     id: 3,
-    title: "Pool Remodeling & Renovations",
+    title: "Pool Remodeling & Backyard Renovations",
     description: "We transform existing pools into beautiful, functional outdoor living environments built for today's lifestyle.",
     details: [
       "Pool resurfacing",

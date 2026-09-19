@@ -1,6 +1,6 @@
 import { acfImageUrl, acfPostObjects, acfRepeater, acfText, getPageBySlug } from "./wp";
 import { getFaqsByIds, type FaqItem } from "./faq";
-import { resolveServiceSlug, serviceHrefFromTitle } from "./services";
+import { canonicalCardTitle, resolveServiceSlug, serviceHrefFromTitle } from "./services";
 import type { AcfImage, AcfPostObject } from "./wp-types";
 
 /**
@@ -149,7 +149,10 @@ function mapServiceCards(acf: ServicesPageAcf): ServiceCard[] {
   return acfRepeater<ServiceCardRow>(acf.third_section?.services)
     .map((row, index) => ({
       id: index + 1,
-      title: acfText(row.title),
+      title: canonicalCardTitle(
+        acfText(row.title),
+        acfPostObjects(row.service)[0]?.post_name,
+      ),
       description: acfText(row.text),
       details: acfRepeater<ServiceListRow>(row.list)
         .map((item) => acfText(item.item))

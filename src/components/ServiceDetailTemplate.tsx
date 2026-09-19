@@ -8,12 +8,18 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import { ServiceDetail } from "@/data/services";
+import { ProjectCard, type ProjectCardData } from "@/components/project";
 import FAQSection from "./FAQSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface ServiceDetailTemplateProps {
   service: ServiceDetail;
+  /**
+   * The projects delivered under this service. Empty when none are tagged to
+   * it yet, and the row is left out rather than rendered bare.
+   */
+  projects?: ProjectCardData[];
 }
 
 function chunk<T>(items: T[], size: number): T[][] {
@@ -99,7 +105,10 @@ function FeatureRow({ items }: { items: FeatureItem[] }) {
   );
 }
 
-export default function ServiceDetailTemplate({ service }: ServiceDetailTemplateProps) {
+export default function ServiceDetailTemplate({
+  service,
+  projects = [],
+}: ServiceDetailTemplateProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
@@ -368,6 +377,31 @@ export default function ServiceDetailTemplate({ service }: ServiceDetailTemplate
 
     </section>
 
+
+      {projects.length > 0 && (
+        <section className="w-full py-[120px] px-[85px] bg-[#112931] border-t border-[#ffffff]/10">
+          <div className="w-full">
+            <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+              <div>
+                <span className="text-[#86A3AC] text-[36px] block mb-2">Portfolio</span>
+                <h2 className="text-white text-[66px] leading-[72px] capitalize whitespace-pre-line">
+                  Related Projects
+                </h2>
+              </div>
+            </div>
+            {/* Grid sized like the projects listing: full width inside the
+                section's 85px gutters, with the negative-margin padding that
+                keeps the cards' hover shadow from being clipped. */}
+            <div className="overflow-hidden py-8 px-4 -mx-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[38px] gap-x-[28px]">
+                {projects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <CTA
         heading={service.ctaHeading}
