@@ -3,12 +3,23 @@ import React, { useRef } from 'react';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PillList from "./PillList";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface AboutServiceProps {
   imageSrc?: string;
   heading?: string;
+  /** Lead paragraph above the service areas. */
+  intro?: string;
+  /** Service areas as plain names — rendered as chips. */
+  areas?: string[];
+  /** Closing paragraph below the service areas. */
+  outro?: string;
+  /**
+   * Legacy `{li}` / `{br}` template. Only rendered when `areas` is empty, which
+   * is what happens if the CMS is unreachable and the default below is used.
+   */
   description?: string;
   buttonText?: string;
   onButtonClick?: () => void;
@@ -18,6 +29,9 @@ export const AboutService: React.FC<AboutServiceProps> = ({
   // Fallback image added for testing, you can replace it with your actual asset
   imageSrc = '/images/owner.png',
   heading = 'Serving Homeowners Across Arizona',
+  intro,
+  areas,
+  outro,
   description = "Habitat Pools builds custom swimming pools, luxury landscapes, and complete outdoor living spaces across Arizona's East Valley.{li} Gilbert{/li} {li}Queen Creek{/li} {li}San Tan Valley{/li} {li}Mesa{/li} {li}Tempe{/li} {li}Scottsdale{/li} {li}Paradise Valley{/li} {li}Cave Creek{/li} {li}Ahwatukee{/li} {li}Phoenix{/li} {br}We've also done projects in Goodyear, Glendale, and Peoria, and we're always happy to discuss projects in nearby communities.",
   buttonText = 'Call Us Today',
   onButtonClick,
@@ -25,6 +39,8 @@ export const AboutService: React.FC<AboutServiceProps> = ({
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
+
+  const hasStructuredAreas = Boolean(areas && areas.length > 0);
 
   const renderDescription = (raw: string): React.ReactNode[] => {
     const output: React.ReactNode[] = [];
@@ -43,7 +59,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
 
       if (remainingText) {
         output.push(
-          <p key={`p-${chunkIdx}`} className="mb-4 last:mb-0">
+          <p key={`p-${chunkIdx}`} className="mb-4 last:mb-0 lg:max-w-[70%] lg:ml-auto">
             {remainingText}
           </p>
         );
@@ -143,13 +159,21 @@ export const AboutService: React.FC<AboutServiceProps> = ({
         <div ref={rightColRef} className="flex flex-col justify-center items-end text-right">
 
           {/* Heading */}
-          <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 max-w-[786px]">
+          <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 lg:max-w-[70%]">
             {heading}
           </h2>
 
           {/* Description Paragraph */}
-          <div className="text-white/90 text-[24px] leading-[44px] mb-14 max-w-[680px]">
-            {renderDescription(description)}
+          <div className="text-white/90 text-[24px] leading-[44px] mb-14 w-full">
+            {hasStructuredAreas ? (
+              <>
+                {intro && <p className="lg:max-w-[70%] lg:ml-auto">{intro}</p>}
+                <PillList items={areas!} columns={3} tone="dark" className="my-8" />
+                {outro && <p className="lg:max-w-[70%] lg:ml-auto">{outro}</p>}
+              </>
+            ) : (
+              renderDescription(description)
+            )}
           </div>
 
           {/* Outlined Action Button */}
@@ -157,7 +181,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
             <a
               href='/contact'
               onClick={onButtonClick}
-              className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '
+              className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer '
             >
               {buttonText}
             </a>

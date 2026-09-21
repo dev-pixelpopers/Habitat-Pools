@@ -460,7 +460,7 @@ export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
       {/* ── SECTION 10 — RELATED PROJECTS ── */}
       {content.related.items.length > 0 && (
         <section className="w-full py-[120px] px-[85px] bg-[#112931] border-t border-[#ffffff]/10">
-          <div className="max-w-[1440px] mx-auto">
+          <div className="max-w-full mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
               <div>
                 <span className="text-[#86A3AC] text-[36px] block mb-2">{content.related.tagline}</span>
@@ -469,7 +469,7 @@ export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
                 </h2>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[38px] gap-x-[28px]">
               {content.related.items.map((relProj) => (
                 <ProjectCard key={relProj.id} project={relProj} />
               ))}

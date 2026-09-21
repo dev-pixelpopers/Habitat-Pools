@@ -132,6 +132,17 @@ export interface HomeContent {
   serviceArea: {
     imageSrc?: string;
     heading?: string;
+    /** Lead paragraph above the service-area list. */
+    intro?: string;
+    /** The service areas themselves, as plain names. */
+    areas?: string[];
+    /** Closing paragraph below the list. */
+    outro?: string;
+    /**
+     * The same three fields flattened into the legacy `{li}` / `{br}` template.
+     * Only used when `areas` is empty, so the section still renders if the CMS
+     * is unreachable and the component falls back to its own default string.
+     */
     description?: string;
     buttonText?: string;
   };
@@ -210,10 +221,16 @@ function mapFeatures(acf: HomeAcf): ProjectFeature[] {
 }
 
 /**
- * Rebuild the `{li}` / `{br}` template the service-area block renders from the
- * three fields the CMS splits it across.
+ * The service-area block, read straight from the three fields the CMS splits it
+ * across. `description` repeats the same content in the legacy `{li}` / `{br}`
+ * template so the component keeps a working fallback path.
  */
-function mapServiceAreaDescription(acf: HomeAcf): string | undefined {
+function mapServiceArea(acf: HomeAcf): {
+  intro?: string;
+  areas: string[];
+  outro?: string;
+  description?: string;
+} {
   const section = acf.fifth_section;
   const intro = acfText(section?.first_paragraph);
   const areas = acfRepeater<ListRow>(section?.list)
@@ -221,9 +238,16 @@ function mapServiceAreaDescription(acf: HomeAcf): string | undefined {
     .filter(Boolean);
   const outro = acfText(section?.final_paragraph);
 
-  if (!intro && areas.length === 0 && !outro) return undefined;
+  if (!intro && areas.length === 0 && !outro) {
+    return { areas: [] };
+  }
 
-  return buildListTemplate(intro, areas, outro);
+  return {
+    intro: intro || undefined,
+    areas,
+    outro: outro || undefined,
+    description: buildListTemplate(intro, areas, outro),
+  };
 }
 
 /**
@@ -284,7 +308,7 @@ export async function getHomeContent(): Promise<HomeContent> {
         acfImageUrl(acf.fifth_section?.image ?? acf.fifth_section?.[""]) ||
         undefined,
       heading: text(acf.fifth_section?.heading),
-      description: mapServiceAreaDescription(acf),
+      ...mapServiceArea(acf),
       buttonText: text(acf.fifth_section?.button_text),
     },
     reviews: {

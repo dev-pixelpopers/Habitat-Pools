@@ -58,6 +58,9 @@ export default async function Home() {
       <AboutService
         imageSrc={content.serviceArea.imageSrc}
         heading={content.serviceArea.heading}
+        intro={content.serviceArea.intro}
+        areas={content.serviceArea.areas}
+        outro={content.serviceArea.outro}
         description={content.serviceArea.description}
         buttonText={content.serviceArea.buttonText}
       />

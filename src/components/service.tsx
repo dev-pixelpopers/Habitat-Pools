@@ -62,7 +62,7 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
 
             {/* Outlined Button */}
             <div className='btn-all mt-[30px] relative'>
-              <a href={data.href} className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{data.buttonText}</a>
+              <a href={data.href} className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer'>{data.buttonText}</a>
             </div>
           </div>
 

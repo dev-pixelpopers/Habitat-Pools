@@ -10,6 +10,7 @@ import CTA from "@/components/CTA";
 import { ServiceDetail } from "@/data/services";
 import { ProjectCard, type ProjectCardData } from "@/components/project";
 import FAQSection from "./FAQSection";
+import PillList from "./PillList";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -307,20 +308,21 @@ export default function ServiceDetailTemplate({
         <div className="flex flex-col justify-center items-end text-right">
 
           {/* Heading */}
-          <h2 className="text-[#112931] text-[54px] leading-[71px] tracking-tight mb-8 max-w-[786px]">
+          <h2 className="text-[#112931] text-[54px] leading-[71px] tracking-tight mb-8 max-w-[80%]">
             {service.whyUstitle}
           </h2>
 
           {/* Description Paragraph */}
-          <div className="text-[#112931]/80 text-[24px] leading-[44px] mb-14 max-w-[680px]">
-            {service.whyUsdescription.whypara}
+          <div className="text-[#112931]/80 text-[24px] leading-[44px] mb-14 w-full">
+            <p className="lg:max-w-[70%] lg:ml-auto">{service.whyUsdescription.whypara}</p>
           
             {/* whyDescListItems */}
-          <ul className="flex flex-col items-end gap-x-8 gap-y-2 pl-5 text-left pt-4">
-            {service.whyUsdescription.whyListItems.map((item, i) => (
-              <li key={i}>- {item}</li>
-            ))}
-          </ul>
+          <PillList
+            items={service.whyUsdescription.whyListItems}
+            columns={2}
+            tone="light"
+            className="pt-6"
+          />
               </div>
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative btn-dark'>
@@ -342,24 +344,25 @@ export default function ServiceDetailTemplate({
         <div className="flex flex-col justify-center items-start text-left">
 
           {/* Heading */}
-          <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 max-w-[786px]">
+          <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 lg:max-w-[70%]">
             {service.ourEasiness.easyTitle}
           </h2>
 
           {/* Description Paragraph */}
-          <div className="text-white/90 text-[24px] leading-[44px] mb-14 max-w-[680px]">
-            {service.ourEasiness.easypara}
+          <div className="text-white/90 text-[24px] leading-[44px] mb-14 w-full">
+            <p className="lg:max-w-[70%]">{service.ourEasiness.easypara}</p>
           
             {/* whyDescListItems */}
-          <ul className="flex flex-col gap-x-8 gap-y-2 pl-5 text-left pt-4">
-            {service.ourEasiness.easyListItems.map((item, i) => (
-              <li key={i}>- {item}</li>
-            ))}
-          </ul>
+          <PillList
+            items={service.ourEasiness.easyListItems}
+            columns={2}
+            tone="dark"
+            className="pt-6"
+          />
               </div>
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative'>
-            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center '>{service.whyUsButtonText ?? 'call us today'}</a>
+            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer'>{service.whyUsButtonText ?? 'call us today'}</a>
           </div>
 
         </div>
