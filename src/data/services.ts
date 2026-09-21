@@ -113,14 +113,14 @@ export const allServices: ServiceDetail[] = [
       "Every custom pool is designed specifically for the homeowner, property, and lifestyle. While no two projects are identical, our construction services commonly include :",
     featuresOutro:"Every feature is thoughtfully integrated to create a cohesive outdoor living environment that complements your home and enhances the way you live outdoors.",
     features: [
-  { text: "Integrated spas and Baja shelves", image: "/images/Services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
-  { text: "Premium pebble interiors", image: "/images/Services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
-  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
-  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
-  { text: "Water features", image: "/images/Services/Custom Pool Construction/water-features.jpg", altText:"hello" },
-  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
-  { text: "Custom decking and hardscaping", image: "/images/Services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
-  { text: "Outdoor kitchens", image: "/images/Services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
+  { text: "Integrated spas and Baja shelves", image: "/images/services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
+  { text: "Premium pebble interiors", image: "/images/services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
+  { text: "Designer tile and coping", image: "/images/services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
+  { text: "LED pool lighting", image: "/images/services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
+  { text: "Water features", image: "/images/services/Custom Pool Construction/water-features.jpg", altText:"hello" },
+  { text: "Fire features", image: "/images/services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
+  { text: "Custom decking and hardscaping", image: "/images/services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
+  { text: "Outdoor kitchens", image: "/images/services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
 ] satisfies Features[],
     processSubtitle:"stay informed",
     processTitle: "Our Transparent Process",
@@ -134,7 +134,7 @@ export const allServices: ServiceDetail[] = [
       {
         title: "Custom Design & Planning",
         description: "After visiting your property, we take detailed measurements and photographs before developing custom design 3D renderings tailored specifically to your home. We continue refining your design based on your feedback until you're confident it reflects your vision. Only after you're satisfied, we send over a detailed proposal, and after your selections are finalized, we coordinate engineering plans and submit all required permits before construction begins.",
-        image:"/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
+        image:"/images/projects/Melissa-Dinan/melissa-dinan-04.jpg"
       },
       {
         title: "Expert Construction",
@@ -234,14 +234,14 @@ export const allServices: ServiceDetail[] = [
       "Every custom pool is designed specifically for the homeowner, property, and lifestyle. While no two projects are identical, our construction services commonly include :",
     featuresOutro:"Every feature is thoughtfully integrated to create a cohesive outdoor living environment that complements your home and enhances the way you live outdoors.",
     features: [
-  { text: "Integrated spas and Baja shelves", image: "/images/Services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
-  { text: "Premium pebble interiors", image: "/images/Services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
-  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
-  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
-  { text: "Water features", image: "/images/Services/Custom Pool Construction/water-features.jpg", altText:"hello" },
-  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
-  { text: "Custom decking and hardscaping", image: "/images/Services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
-  { text: "Outdoor kitchens", image: "/images/Services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
+  { text: "Integrated spas and Baja shelves", image: "/images/services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
+  { text: "Premium pebble interiors", image: "/images/services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
+  { text: "Designer tile and coping", image: "/images/services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
+  { text: "LED pool lighting", image: "/images/services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
+  { text: "Water features", image: "/images/services/Custom Pool Construction/water-features.jpg", altText:"hello" },
+  { text: "Fire features", image: "/images/services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
+  { text: "Custom decking and hardscaping", image: "/images/services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
+  { text: "Outdoor kitchens", image: "/images/services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
 ] satisfies Features[],
     processSubtitle:"stay informed",
     processTitle: "Our Transparent Process",
@@ -255,7 +255,7 @@ export const allServices: ServiceDetail[] = [
       {
         title: "Custom Design & Planning",
         description: "After visiting your property, we take detailed measurements and photographs before developing custom design 3D renderings tailored specifically to your home. We continue refining your design based on your feedback until you're confident it reflects your vision. Only after you're satisfied, we send over a detailed proposal, and after your selections are finalized, we coordinate engineering plans and submit all required permits before construction begins.",
-        image:"/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
+        image:"/images/projects/Melissa-Dinan/melissa-dinan-04.jpg"
       },
       {
         title: "Expert Construction",
@@ -358,14 +358,14 @@ export const allServices: ServiceDetail[] = [
       "Every custom pool is designed specifically for the homeowner, property, and lifestyle. While no two projects are identical, our construction services commonly include :",
     featuresOutro:"Every feature is thoughtfully integrated to create a cohesive outdoor living environment that complements your home and enhances the way you live outdoors.",
     features: [
-  { text: "Integrated spas and Baja shelves", image: "/images/Services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
-  { text: "Premium pebble interiors", image: "/images/Services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
-  { text: "Designer tile and coping", image: "/images/Services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
-  { text: "LED pool lighting", image: "/images/Services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
-  { text: "Water features", image: "/images/Services/Custom Pool Construction/water-features.jpg", altText:"hello" },
-  { text: "Fire features", image: "/images/Services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
-  { text: "Custom decking and hardscaping", image: "/images/Services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
-  { text: "Outdoor kitchens", image: "/images/Services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
+  { text: "Integrated spas and Baja shelves", image: "/images/services/Custom Pool Construction/integrated-spas-and-baja-shelves.jpg", altText:"hello" },
+  { text: "Premium pebble interiors", image: "/images/services/Custom Pool Construction/premium-pebble-interiors.jpg", altText:"hello" },
+  { text: "Designer tile and coping", image: "/images/services/Custom Pool Construction/designer-tile-and-coping.jpg" , altText:"hello"},
+  { text: "LED pool lighting", image: "/images/services/Custom Pool Construction/led-pool-lighting.jpg", altText:"hello" },
+  { text: "Water features", image: "/images/services/Custom Pool Construction/water-features.jpg", altText:"hello" },
+  { text: "Fire features", image: "/images/services/Custom Pool Construction/fire-features.jpg", altText:"hello" },
+  { text: "Custom decking and hardscaping", image: "/images/services/Custom Pool Construction/custom-decking-and-hardscaping.jpg", altText:"hello" },
+  { text: "Outdoor kitchens", image: "/images/services/Custom Pool Construction/outdoor-kitchens.jpg", altText:"hello" },
 ] satisfies Features[],
     processSubtitle:"stay informed",
     processTitle: "Our Transparent Process",
@@ -379,7 +379,7 @@ export const allServices: ServiceDetail[] = [
       {
         title: "Custom Design & Planning",
         description: "After visiting your property, we take detailed measurements and photographs before developing custom design 3D renderings tailored specifically to your home. We continue refining your design based on your feedback until you're confident it reflects your vision. Only after you're satisfied, we send over a detailed proposal, and after your selections are finalized, we coordinate engineering plans and submit all required permits before construction begins.",
-        image:"/images/Projects/Melissa-Dinan/melissa-dinan-04.jpg"
+        image:"/images/projects/Melissa-Dinan/melissa-dinan-04.jpg"
       },
       {
         title: "Expert Construction",

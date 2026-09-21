@@ -74,7 +74,7 @@ const FALLBACK_SERVICES: ServiceCardData[] = [
       "Outdoor lighting",
       "Plant and Material Selections",
     ],
-    imageSrc: "/images/Projects/Melissa-Dinan/melissa-dinan-01.jpg",
+    imageSrc: "/images/projects/Melissa-Dinan/melissa-dinan-01.jpg",
     buttonText: "Explore More",
     href: "/services/pool-and-landscape-design",
   },
