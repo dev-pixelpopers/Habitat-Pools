@@ -11,6 +11,14 @@ interface ProjectGalleryProps {
     heading?: string;
 }
 
+// Assets that have not been delivered yet are kept in the project data as
+// "MISSING-" placeholders so it stays visible what is outstanding. They must
+// never reach the DOM: a placeholder <video> src 404s and throws
+// NotSupportedError, and a placeholder poster shows a broken image.
+function isPlaceholderAsset(path?: string) {
+    return !path || path.split("/").pop()!.startsWith("MISSING-");
+}
+
 function VideoTile({ src, poster, style }: { src: string; poster?: string; style: React.CSSProperties }) {
     const videoRef = useRef<HTMLVideoElement>(null);
     // The <video> is not mounted until the first click, so the file is never
@@ -122,11 +130,14 @@ function spanFor(idx: number, count: number) {
 export default function ProjectGallery({
     images,
     title,
-    video,
-    videoThumbnail,
+    video: videoProp,
+    videoThumbnail: videoThumbnailProp,
     tagline = "Portfolio",
     heading = "Project Gallery",
 }: ProjectGalleryProps) {
+    const video = isPlaceholderAsset(videoProp) ? undefined : videoProp;
+    const videoThumbnail = isPlaceholderAsset(videoThumbnailProp) ? undefined : videoThumbnailProp;
+
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
 

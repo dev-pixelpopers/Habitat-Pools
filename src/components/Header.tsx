@@ -181,7 +181,7 @@ export default function Header() {
         }}
       >
         <img
-          src="/images/icons/phone.svg"
+          src="/images/Icons/phone.svg"
           alt=""
           style={{ width: "26px", height: "26px", filter: "brightness(0) invert(1)" }}
         />
@@ -216,7 +216,7 @@ export default function Header() {
         }}
       >
         <img
-          src="/images/icons/get-in-touch.png"
+          src="/images/Icons/get-in-touch.png"
           alt=""
           style={{ width: "26px", height: "26px", filter: "brightness(0) invert(1)" }}
         />

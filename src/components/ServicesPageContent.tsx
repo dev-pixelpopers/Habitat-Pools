@@ -99,7 +99,7 @@ const FALLBACK_FEATURES: ServiceFeature[] = [
   { id: "water", label: "Water Features", image: "/images/features_1.jpg" },
   { id: "fire", label: "Fire Features", image: "/images/features_2.jpg" },
   { id: "lighting", label: "Lighting Features", image: "/images/features_3.jpg" },
-  { id: "kitchen", label: "Outdoor Kitchens", image: "/images/features_4.jpg" },
+  { id: "kitchen", label: "Outdoor Kitchens", image: "/images/features_4-v2.jpg" },
 ];
 
 const FALLBACK_PROCESS: ProcessStep[] = [
