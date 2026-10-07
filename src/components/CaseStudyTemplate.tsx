@@ -68,7 +68,7 @@ export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
         ease: "power3.out",
         scrollTrigger: {
           trigger: introLeftRef.current,
-          start: "top 80%",
+          start: "top 90%",
           toggleActions: "play none none reverse",
         },
       });

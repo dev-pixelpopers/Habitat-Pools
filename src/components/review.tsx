@@ -99,7 +99,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
     },
     {
       id: "2",
-      name: "Christopher Langake",
+      name: "Christopher Langanke",
       rating: 5,
       text: "Absolutely fantastic company to work with for your backyard paradise! They took our dreams and made them reality! From landscaping to pool design we couldn’t be happier with our family oasis, Cactus Cove! What has made the exceptional is the after care, this wasn’t just a job for them, it was a commitment and they have honored every bit of what you’d expect but so rarely get these days! Looking for a dream pool or landscape, don’t hesitate, call Colby and Carter - Ha it at Pools!",
     },
@@ -168,6 +168,11 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
           className="w-full h-full object-cover"
           alt=""
           style={{ transformOrigin: "center bottom" }}
+        />
+        <div className="absolute inset-0 bg-black opacity-30 z-10" 
+          style={{ 
+            background: `linear-gradient(180deg, #102830 20%, transparent 60%, #00000066 20%)`,
+           }}
         />
       </div>
       {/* Main Content Container */}

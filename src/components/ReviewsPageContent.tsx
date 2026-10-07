@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -116,9 +116,45 @@ const FALLBACK_FAQS = [
   },
 ];
 
+/** Seconds the review count takes to tick up from 0. */
+const COUNT_DURATION = 1;
+
+/**
+ * Split the rating note around its number so the live count can sit in its
+ * place: "Based On 9 Reviews" → ["Based On ", " Reviews"]. A note without a
+ * number (or no note) falls back to the default wording.
+ */
+function splitNote(note?: string): [string, string] {
+  const match = note?.match(/\d+/);
+  if (!note || !match || match.index === undefined) return ["Based On ", " Reviews"];
+  return [note.slice(0, match.index), note.slice(match.index + match[0].length)];
+}
+
 /* ── Review Card ── */
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  // Only offer "Read more" when the quote is actually cut off; re-measured on
+  // resize because the line count depends on the card width.
+  const [clamped, setClamped] = useState(false);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el || expanded) return;
+    const measure = () => setClamped(el.scrollHeight > el.clientHeight + 1);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [expanded, review.text]);
+
+  const toggle = () => {
+    setExpanded((value) => !value);
+    // Card heights changed, so the cards below need their trigger points
+    // recalculated.
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  };
 
   useGSAP(() => {
     if (!cardRef.current) return;
@@ -156,10 +192,27 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         </div>
       </div>
 
-      {/* Review Text */}
-      <p className="text-[#000000] text-[18px] leading-[32px] font-normal">
-        {review.text}
-      </p>
+      {/* Review Text — clamped to 5 lines until expanded */}
+      <div className="flex flex-col items-start gap-4">
+        <p
+          ref={textRef}
+          id={`review-text-${review.id}`}
+          className={`text-[#000000] text-[18px] leading-[32px] font-normal ${expanded ? "" : "line-clamp-5"}`}
+        >
+          {review.text}
+        </p>
+        {(clamped || expanded) && (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-expanded={expanded}
+            aria-controls={`review-text-${review.id}`}
+            className="text-[#112931] text-[16px] underline underline-offset-4 hover:text-[#86A3AC] transition-colors duration-200 cursor-pointer"
+          >
+            {expanded ? "Read less" : "Read more"}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
@@ -172,6 +225,7 @@ export default function ReviewsPageContent({
 }) {
   const heroRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const countRef = useRef<HTMLSpanElement>(null);
 
   const banner = { ...FALLBACK.banner, ...definedOnly(content.banner) };
   const rating = { ...FALLBACK.rating, ...definedOnly(content.rating) };
@@ -179,9 +233,29 @@ export default function ReviewsPageContent({
   const reviews = content.reviews.length ? content.reviews : FALLBACK_REVIEWS;
   const faqs = content.faq.items ?? FALLBACK_FAQS;
 
-  // The CMS note ("Based On 9 Reviews") is authored copy; without it, count
-  // whatever is actually on the page.
-  const note = rating.note ?? `Based On ${reviews.length} Reviews`;
+  // The count is always the number of reviews on the page. The CMS note keeps
+  // its wording ("Based On 9 Reviews"), but its number is replaced live so it
+  // never goes stale when testimonials are added or removed.
+  const reviewCount = reviews.length;
+  const [noteBefore, noteAfter] = splitNote(rating.note);
+
+  useGSAP(() => {
+    const el = countRef.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // The server-rendered number stays in place until the bar scrolls into
+    // view, so crawlers and no-JS visitors still see the real count.
+    const counter = { value: 0 };
+    gsap.to(counter, {
+      value: reviewCount,
+      duration: COUNT_DURATION,
+      ease: "power2.out",
+      snap: { value: 1 },
+      onUpdate: () => {
+        el.textContent = String(counter.value);
+      },
+      scrollTrigger: { trigger: el, start: "top 90%", once: true },
+    });
+  }, { dependencies: [reviewCount] });
 
   useGSAP(() => {
     if (!headingRef.current) return;
@@ -235,7 +309,11 @@ export default function ReviewsPageContent({
                 </svg>
               ))}
             </div>
-            <span className="text-white/70 text-[18px] mt-1">{note}</span>
+            <span className="text-white/70 text-[18px] mt-1">
+              {noteBefore}
+              <span ref={countRef} className="tabular-nums">{reviewCount}</span>
+              {noteAfter}
+            </span>
           </div>
         </div>
         <p className="text-white/80 text-[22px] leading-[30px] max-w-[500px] text-right">
@@ -248,7 +326,7 @@ export default function ReviewsPageContent({
         className="w-full py-[100px] px-[85px] bg-white"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           {reviews.map((review, index) => (
             <ReviewCard key={review.id} review={review} index={index} />
           ))}

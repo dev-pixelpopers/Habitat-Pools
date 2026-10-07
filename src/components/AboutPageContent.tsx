@@ -217,8 +217,8 @@ export default function AboutPageContent({
       {/* ── Story Section ── */}
       <section className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]" style={{ fontFamily: "'Nohemi', sans-serif" }}>
         {/* Overlapping heading */}
-        <div className="mb-[-95px] z-2 relative ml-[150px]">
-          <h2 className="text-white text-[96px] leading-[88px] max-w-[1020px] m-auto whitespace-pre-line">
+        <div className="mb-[-170px] z-2 relative ml-[50px]">          
+          <h2 className="text-white text-[86px] leading-[72px] max-w-[1150px] m-auto whitespace-pre-line">
             {story.heading}
           </h2>
         </div>
@@ -226,17 +226,17 @@ export default function AboutPageContent({
         {/* Two column layout */}
         <div className="flex gap-[40px] h-[95vh]">
           {/* Tag */}
-          <div className="w-[20%] pt-[20px]">
+          <div className="w-[12%] pt-[20px]">
             <h4 className="text-[#86A3AC] text-[36px] leading-[38px] capitalize">{story.tagline}</h4>
           </div>
 
           {/* Image */}
-          <div className="flex justify-center w-[42%]">
+          <div className="flex justify-center w-[53%]">
             <img ref={storyImageRef} src={story.image} alt="About" className="w-full rounded-[20px]" />
           </div>
 
           {/* Text */}
-          <div ref={storyTextRef} className="w-[38%] pl-[60px] flex flex-col justify-center">
+          <div ref={storyTextRef} className="w-[35%] pl-[60px] pt-[5%] flex flex-col justify-center">
             <p className="text-white text-[26px] leading-[48px] capitalize pt-16">
               {story.paragraph}
             </p>
