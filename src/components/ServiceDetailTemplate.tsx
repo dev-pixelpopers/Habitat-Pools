@@ -267,10 +267,10 @@ export default function ServiceDetailTemplate({
       <section className="w-full py-[120px] px-[85px] bg-[#112931]">
         <div ref={processRef} className="max-w-[1440px] mx-auto flex flex-col gap-16 lg:gap-20">
           <div className="flex flex-row gap-4 items-start">
-            <div className="flex flex-col w-[45%]">
+            <div className="flex flex-col w-[55%]">
            <h2 className="text-white text-[66px] leading-[72px] capitalize">{service.processTitle}</h2>
             </div>
-            <div className="flex flex-col w-[55%]">
+            <div className="flex flex-col w-[45%]">
               <span className="text-[#86A3AC] text-[36px] block capitalize">{service.processSubtitle}</span>
              <p className="text-white text-[20px] leading-[34px]">{service.processDescription}</p>
              </div>
@@ -362,16 +362,16 @@ export default function ServiceDetailTemplate({
               </div>
           {/* Outlined Action Button */}
           <div className='btn-all mt-[20px] relative'>
-            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer'>{service.whyUsButtonText ?? 'call us today'}</a>
+            <a href='/contact' className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer'>{service.ourEasiness.easyButtonText ?? service.whyUsButtonText ?? 'call us today'}</a>
           </div>
 
         </div>
 
         {/* Right Column:Image  */}
-        
+
         <div className="w-full">
           <img
-            src={service.whyUsdescription.whyImage}
+            src={service.ourEasiness.easyImage || service.whyUsdescription.whyImage}
             alt="Owners reviewing plans on site"
             className="w-full h-auto object-cover shadow-2xl"
           />

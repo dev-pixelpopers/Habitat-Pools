@@ -3,7 +3,7 @@ import {
   findProjectPost,
   getProjectPosts,
   mapProjectCard,
-  resolveProjectCategory,
+  resolveProjectCategories,
   resolveProjectSlug,
   type ProjectAcf,
 } from "./projects";
@@ -469,30 +469,33 @@ export function fromStaticProject(project: Project): CaseStudyContent {
 
 /**
  * The other projects, ranked for the "Related Projects" row: the ones sharing
- * this project's service category first, then the rest.
+ * the most service categories with this project first, then the rest.
  *
  * The row shows three, and a category can easily hold fewer than three other
  * projects, so the remainder tops it up rather than letting it render short.
- * A project with no category yet just gets the others, in their usual order.
+ * Ties keep their usual order. A project with no category yet just gets the
+ * others, in their usual order.
  */
 function byCategory(
   posts: WPPost<ProjectDetailAcf>[],
   current: WPPost<ProjectDetailAcf>,
 ): WPPost<ProjectDetailAcf>[] {
   const others = posts.filter((post) => post.id !== current.id);
-  const category = resolveProjectCategory(current)?.slug;
-  if (!category) return others;
+  const categories = new Set(
+    resolveProjectCategories(current).map((category) => category.slug),
+  );
+  if (!categories.size) return others;
 
-  const sameCategory = new Set(
-    others
-      .filter((post) => resolveProjectCategory(post)?.slug === category)
-      .map((post) => post.id),
+  const shared = new Map(
+    others.map((post) => [
+      post.id,
+      resolveProjectCategories(post).filter((category) => categories.has(category.slug))
+        .length,
+    ]),
   );
 
-  return [
-    ...others.filter((post) => sameCategory.has(post.id)),
-    ...others.filter((post) => !sameCategory.has(post.id)),
-  ];
+  // Array.prototype.sort is stable, so equal scores keep the CMS order.
+  return [...others].sort((a, b) => (shared.get(b.id) ?? 0) - (shared.get(a.id) ?? 0));
 }
 
 /**

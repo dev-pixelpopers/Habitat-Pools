@@ -26,44 +26,65 @@ export interface ProjectAcf {
 }
 
 /**
- * How the CMS names this project's service category, in whatever shape the
+ * How the CMS names this project's service categories, in whatever shape the
  * field was set up as. All three are read so the field group can be an ACF
- * post_object pointing at a `service` post, an ACF select of the three names,
+ * post_object pointing at `service` posts, an ACF select of the three names,
  * or a real WordPress taxonomy on the CPT, without a code change either way.
+ *
+ * A project can fall under more than one service, so every value is returned.
  */
-function projectCategoryHint(post: WPPost<ProjectAcf>): string {
+function projectCategoryHints(post: WPPost<ProjectAcf>): string[] {
   const field = post.acf?.project_category;
 
-  // post_object → the `service` post that was selected.
-  const [selected] = acfPostObjects(field);
-  if (selected?.post_name) return selected.post_name;
+  // post_object → the `service` posts that were selected.
+  const selected = acfPostObjects(field)
+    .map((item) => item.post_name)
+    .filter((name): name is string => Boolean(name));
+  if (selected.length) return selected;
 
-  // select / text → the name as it was typed.
+  // select / checkbox / text → the names as they were typed.
+  if (Array.isArray(field)) {
+    const typed = field.map((value) => acfText(value)).filter(Boolean);
+    if (typed.length) return typed;
+  }
   const typed = acfText(field);
-  if (typed) return typed;
+  if (typed) return [typed];
 
-  // taxonomy → the first term `_embed` returned that is not a core one.
+  // taxonomy → every term `_embed` returned that is not a core one.
   const terms = post._embedded?.["wp:term"]?.flat() ?? [];
-  const term = terms.find(
-    (entry) =>
-      entry?.slug && entry.taxonomy !== "category" && entry.taxonomy !== "post_tag",
-  );
-  return term?.slug ?? "";
+  return terms
+    .filter(
+      (entry) =>
+        entry?.slug && entry.taxonomy !== "category" && entry.taxonomy !== "post_tag",
+    )
+    .map((entry) => entry.slug);
 }
 
 /**
- * The service a project belongs to, for the card badge and for picking the
- * related projects under a case study.
+ * Every service a project belongs to, for the service pages' project rows and
+ * for picking the related projects under a case study.
  *
- * `null` until the project is assigned one in the CMS, and whenever the value
- * does not name one of the three services — callers treat an unassigned
- * project as simply uncategorised rather than inventing a category for it.
+ * Empty until the project is assigned one in the CMS. Values that do not name
+ * one of the three services are dropped, as are duplicates — callers treat an
+ * unassigned project as simply uncategorised rather than inventing a category
+ * for it.
  */
+export function resolveProjectCategories(
+  post: WPPost<ProjectAcf>,
+): ServiceIdentity[] {
+  const categories = new Map<string, ServiceIdentity>();
+  for (const hint of projectCategoryHints(post)) {
+    const service = identifyService(hint);
+    if (service && !categories.has(service.slug)) categories.set(service.slug, service);
+  }
+  return [...categories.values()];
+}
+
+/** The project's first service, for the single badge on its card. */
 export function resolveProjectCategory(
   post: WPPost<ProjectAcf>,
 ): ServiceIdentity | null {
-  const hint = projectCategoryHint(post);
-  return hint ? identifyService(hint) : null;
+  return resolveProjectCategories(post)[0] ?? null;
 }
 
 /**
@@ -115,7 +136,8 @@ export async function getProjectCards(): Promise<ProjectCardData[]> {
  * The published projects delivered under one service, as grid cards, for the
  * "Related Projects" row on `/services/[slug]`.
  *
- * Only projects actually assigned that category are returned — a service page
+ * Only projects actually assigned that category are returned (among any
+ * others they carry) — a service page
  * claiming a project it did not deliver would be worse than a short row — so
  * this comes back empty for a service with nothing tagged to it yet, and the
  * page leaves the section out.
@@ -127,7 +149,9 @@ export async function getProjectCardsByService(
   const posts = await getProjectPosts();
 
   return posts
-    .filter((post) => resolveProjectCategory(post)?.slug === serviceSlug)
+    .filter((post) =>
+      resolveProjectCategories(post).some((category) => category.slug === serviceSlug),
+    )
     .map(mapProjectCard)
     .filter((card) => card.heroImage)
     .slice(0, limit);

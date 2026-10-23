@@ -19,6 +19,10 @@ type ourEasiness = {
   easyTitle:string;
   easypara: string;
   easyListItems: string[];
+  /** Falls back to the why-us image when unset. */
+  easyImage?: string;
+  /** Falls back to the why-us button text when unset. */
+  easyButtonText?: string;
 };
 
 export interface ServiceDetail {

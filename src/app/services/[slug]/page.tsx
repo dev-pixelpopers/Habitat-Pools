@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import ServiceDetailTemplate from "@/components/ServiceDetailTemplate";
 import { getServiceDetail, getServiceDetailSlugs } from "@/lib/service-detail";
 import { getProjectCardsByService } from "@/lib/projects";
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = (await params).slug.toLowerCase();
   const service = await getServiceDetail(slug);
 
   if (!service) {
@@ -33,6 +33,13 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
 export default async function ServiceDetailPage({ params }: RouteParams) {
   const { slug } = await params;
+
+  // Slugs are lowercase; any other casing (e.g. a typed "/services/Pool-Landscape-Design")
+  // permanently redirects so each page has one URL.
+  if (slug !== slug.toLowerCase()) {
+    permanentRedirect(`/services/${slug.toLowerCase()}`);
+  }
+
   const service = await getServiceDetail(slug);
 
   if (!service) {

@@ -39,7 +39,7 @@ export interface Project {
 export const allProjects: Project[] = [
   {
     id: "1",
-    slug: "Kimball",
+    slug: "kimball",
     title: "The Kimball",
     subtitle: "A dated backyard with a free-form pool and plain concrete patio was reimagined into a sleek, architectural outdoor space — a geometric pool with a raised water wall and spillover spa, a cantilevered shade structure, a sunken fire feature, and a stone outdoor kitchen.",
     category: "Complete Pool & Backyard Remodel",

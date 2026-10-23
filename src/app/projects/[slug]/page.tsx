@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import CaseStudyTemplate from "@/components/CaseStudyTemplate";
 import { getCaseStudy, getCaseStudySlugs } from "@/lib/project-detail";
 
@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = (await params).slug.toLowerCase();
   const content = await getCaseStudy(slug);
 
   if (!content) {
@@ -39,6 +39,13 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
 export default async function ProjectDetailPage({ params }: RouteParams) {
   const { slug } = await params;
+
+  // Slugs are lowercase; any other casing (e.g. a typed "/projects/Kimball")
+  // permanently redirects so each page has one URL.
+  if (slug !== slug.toLowerCase()) {
+    permanentRedirect(`/projects/${slug.toLowerCase()}`);
+  }
+
   const content = await getCaseStudy(slug);
 
   if (!content) {

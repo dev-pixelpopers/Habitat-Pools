@@ -51,6 +51,8 @@ export interface ServiceDetailAcf {
     heading?: string;
     text?: string;
     list?: unknown;
+    /** Not in the field group yet; the why-us button text is used without it. */
+    button_text?: string;
   };
   final_section?: {
     heading?: string;
@@ -196,6 +198,8 @@ function merge(
       easyTitle: text(acf.seventh_section?.heading, base.ourEasiness.easyTitle),
       easypara: text(acf.seventh_section?.text, base.ourEasiness.easypara),
       easyListItems: listOr(acf.seventh_section?.list, base.ourEasiness.easyListItems),
+      easyImage: acfImageUrl(acf.seventh_section?.image, base.ourEasiness.easyImage ?? "") || undefined,
+      easyButtonText: text(acf.seventh_section?.button_text, base.ourEasiness.easyButtonText ?? "") || undefined,
     },
 
     ctaHeading: text(acf.final_section?.heading, base.ctaHeading),
