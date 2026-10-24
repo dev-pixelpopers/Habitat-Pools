@@ -36,23 +36,18 @@ export default function Header() {
       <header className="absolute top-0 left-0 w-full z-50 -translate-y-100"
       >
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "320px 1fr 320px",
-            alignItems: "stretch",
-            borderBottom: "1px solid rgba(255,255,255,0.25)",
-            gap: "400px",
-          }}
+          className="grid items-stretch grid-cols-[clamp(96px,41.1px_+_14.641vw,320px)_1fr_clamp(96px,41.1px_+_14.641vw,320px)] gap-[clamp(0px,26.144vw_-_98.04px,400px)] max-lg:grid-cols-[1fr_auto_1fr] max-lg:gap-0"
+          style={{ borderBottom: "1px solid rgba(255,255,255,0.25)" }}
         >
           {/* Left — Menu Button */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              paddingTop: "40px",
-              paddingBottom: "40px",
-              paddingLeft: "85px",
-              paddingRight: "40px",
+              paddingTop: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingLeft: "var(--gutter)",
+              paddingRight: "clamp(12px,5.13px + 1.831vw,40px)",
               borderRight: "1px solid rgba(255,255,255,0.25)",
             }}
           >
@@ -64,8 +59,8 @@ export default function Header() {
                 cursor: "pointer",
                 color: "#ffffff",
                 fontFamily: "'Nohemi', sans-serif",
-                fontSize: "20px",
-                lineHeight: "28px",
+                fontSize: "clamp(16px,15.02px + 0.262vw,20px)",
+                lineHeight: "clamp(22px,20.53px + 0.393vw,28px)",
                 padding: 0,
                 textDecoration: "underline",
                 textDecorationThickness: "1px",
@@ -89,10 +84,10 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              paddingTop: "40px",
-              paddingBottom: "40px",
-              paddingLeft: "40px",
-              paddingRight: "40px",
+              paddingTop: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingLeft: "clamp(12px,5.13px + 1.831vw,40px)",
+              paddingRight: "clamp(12px,5.13px + 1.831vw,40px)",
               borderLeft: "1px solid rgba(255,255,255,0.25)",
               borderRight: "1px solid rgba(255,255,255,0.25)",
             }}
@@ -102,7 +97,7 @@ export default function Header() {
                 src="/images/logo-main.png"
                 alt="HABITAT Pool & Landscape"
                 style={{
-                  height: "58px",
+                  height: "clamp(28px, 20.65px + 1.961vw, 58px)",
                   width: "auto",
                   display: "block",
                 }}
@@ -116,20 +111,21 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
-              paddingTop: "40px",
-              paddingBottom: "40px",
-              paddingLeft: "40px",
-              paddingRight: "85px",
+              paddingTop: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingLeft: "clamp(12px,5.13px + 1.831vw,40px)",
+              paddingRight: "var(--gutter)",
               borderLeft: "1px solid rgba(255,255,255,0.25)",
             }}
           >
             <Link
               href="/projects"
+              className="whitespace-nowrap"
               style={{
                 color: "#ffffff",
                 fontFamily: "'Nohemi', sans-serif",
-                fontSize: "20px",
-                lineHeight: "28px",
+                fontSize: "clamp(16px,15.02px + 0.262vw,20px)",
+                lineHeight: "clamp(22px,20.53px + 0.393vw,28px)",
                 textDecoration: "underline",
                 textDecorationThickness: "1px",
                 textUnderlineOffset: "3px",
@@ -142,7 +138,8 @@ export default function Header() {
                 ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")
               }
             >
-              See Our Work
+              {/* "See" is dropped on phones, where the side column is too narrow. */}
+              <span className="max-sm:hidden">See </span>Our Work
             </Link>
           </div>
         </div>
@@ -157,11 +154,11 @@ export default function Header() {
         className="floating-icon flex md:hidden"
         style={{
                 position: "fixed",
-                right: "40px",
-                bottom: "40px",
+                right: "clamp(16px, 10.12px + 1.569vw, 40px)",
+                bottom: "clamp(16px, 10.12px + 1.569vw, 40px)",
                 zIndex: 60,
-                width: "64px",
-                height: "64px",
+                width: "clamp(52px, 49.06px + 0.785vw, 64px)",
+                height: "clamp(52px, 49.06px + 0.785vw, 64px)",
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: "50%",
@@ -183,7 +180,7 @@ export default function Header() {
         <img
           src="/images/icons/phone.svg"
           alt=""
-          style={{ width: "26px", height: "26px", filter: "brightness(0) invert(1)" }}
+          style={{ width: "clamp(22px, 21.02px + 0.262vw, 26px)", height: "clamp(22px, 21.02px + 0.262vw, 26px)", filter: "brightness(0) invert(1)" }}
         />
       </a>
       <a
@@ -192,11 +189,11 @@ export default function Header() {
         className="floating-icon hidden md:flex"
         style={{
                 position: "fixed",
-                right: "40px",
-                bottom: "40px",
+                right: "clamp(16px, 10.12px + 1.569vw, 40px)",
+                bottom: "clamp(16px, 10.12px + 1.569vw, 40px)",
                 zIndex: 60,
-                width: "64px",
-                height: "64px",
+                width: "clamp(52px, 49.06px + 0.785vw, 64px)",
+                height: "clamp(52px, 49.06px + 0.785vw, 64px)",
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: "50%",
@@ -218,7 +215,7 @@ export default function Header() {
         <img
           src="/images/icons/get-in-touch.png"
           alt=""
-          style={{ width: "26px", height: "26px", filter: "brightness(0) invert(1)" }}
+          style={{ width: "clamp(22px, 21.02px + 0.262vw, 26px)", height: "clamp(22px, 21.02px + 0.262vw, 26px)", filter: "brightness(0) invert(1)" }}
         />
       </a>
 
@@ -238,27 +235,20 @@ export default function Header() {
           {/* Top bar inside overlay — mirrors header layout */}
           <div
             style={{
-              gap: "420px",
-              paddingLeft: "85px",
-              paddingRight: "85px",
+              paddingLeft: "var(--gutter)",
+              paddingRight: "var(--gutter)",
               borderBottom: "1px solid rgba(255,255,255,0.15)",
             }}
           >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr 320px",
-                alignItems: "stretch",
-              }}
-            >
+            <div className="grid items-stretch grid-cols-[clamp(96px,41.1px_+_14.641vw,320px)_1fr_clamp(96px,41.1px_+_14.641vw,320px)] max-lg:grid-cols-[1fr_auto_1fr]">
               {/* Close */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  paddingTop: "40px",
-                  paddingBottom: "40px",
-                  paddingRight: "40px",
+                  paddingTop: "clamp(16px,10.12px + 1.569vw,40px)",
+                  paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
+                  paddingRight: "clamp(12px,5.13px + 1.831vw,40px)",
                   borderRight: "1px solid rgba(255,255,255,0.15)",
                 }}
               >
@@ -270,8 +260,8 @@ export default function Header() {
                     cursor: "pointer",
                     color: "#ffffff",
                     fontFamily: "'Nohemi', sans-serif",
-                    fontSize: "20px",
-                    lineHeight: "28px",
+                    fontSize: "clamp(16px,15.02px + 0.262vw,20px)",
+                    lineHeight: "clamp(22px,20.53px + 0.393vw,28px)",
                     padding: 0,
                     textDecoration: "underline",
                     textDecorationThickness: "1px",
@@ -296,17 +286,17 @@ export default function Header() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  paddingTop: "40px",
-                  paddingBottom: "40px",
-                  paddingLeft: "40px",
-                  paddingRight: "40px",
+                  paddingTop: "clamp(16px,10.12px + 1.569vw,40px)",
+                  paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
+                  paddingLeft: "clamp(12px,5.13px + 1.831vw,40px)",
+                  paddingRight: "clamp(12px,5.13px + 1.831vw,40px)",
                 }}
               >
                 <Link href="/">
                   <img
                     src="/images/logo-main.png"
                     alt="HABITAT Pool & Landscape"
-                    style={{ height: "58px", width: "auto", display: "block" }}
+                    style={{ height: "clamp(28px, 20.65px + 1.961vw, 58px)", width: "auto", display: "block" }}
                   />
                 </Link>
               </div>
@@ -317,10 +307,10 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
-              paddingTop: "40px",
-              paddingBottom: "40px",
-              paddingLeft: "40px",
-              paddingRight: "85px",
+              paddingTop: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
+              paddingLeft: "clamp(12px,5.13px + 1.831vw,40px)",
+              paddingRight: "var(--gutter)",
               borderLeft: "1px solid rgba(255,255,255,0.25)",
             }}
           >
@@ -329,8 +319,8 @@ export default function Header() {
               style={{
                 color: "#ffffff",
                 fontFamily: "'Nohemi', sans-serif",
-                fontSize: "20px",
-                lineHeight: "28px",
+                fontSize: "clamp(16px,15.02px + 0.262vw,20px)",
+                lineHeight: "clamp(22px,20.53px + 0.393vw,28px)",
                 textDecoration: "underline",
                 textDecorationThickness: "1px",
                 textUnderlineOffset: "3px",
@@ -356,8 +346,8 @@ export default function Header() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              paddingLeft: "85px",
-              paddingRight: "85px",
+              paddingLeft: "var(--gutter)",
+              paddingRight: "var(--gutter)",
               gap: "8px",
             }}
           >
@@ -367,8 +357,8 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 style={{
-                  fontSize: "56px",
-                  lineHeight: "68px",
+                  fontSize: "clamp(36px, 3.6vw - 12.58px, 56px)",
+                  lineHeight: "clamp(44px, 4.372vw - 15.29px, 68px)",
                   color: "#ffffff",
                   textDecoration: "none",
                   fontWeight: 400,
@@ -393,11 +383,11 @@ export default function Header() {
           {/* Bottom social links */}
           <div
             style={{
-              paddingLeft: "85px",
-              paddingRight: "85px",
-              paddingBottom: "40px",
+              paddingLeft: "var(--gutter)",
+              paddingRight: "var(--gutter)",
+              paddingBottom: "clamp(16px,10.12px + 1.569vw,40px)",
               display: "flex",
-              gap: "32px",
+              gap: "clamp(20px, 17.06px + 0.785vw, 32px)",
             }}
           >
             {[
@@ -410,7 +400,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "clamp(16px,15.02px + 0.262vw,20px)",
                   color: "#86A3AC",
                   textDecoration: "none",
                   transition: "color 0.2s ease",

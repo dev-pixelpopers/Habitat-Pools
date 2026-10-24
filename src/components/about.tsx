@@ -63,46 +63,46 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   }, { scope: sectionRef }); // Good practice: scope GSAP to this specific section
 
   return (
-    <section ref={sectionRef} className="pt-[200px] pb-[100px] px-[130px] bg-[#112931]">
+    <section ref={sectionRef} className="pt-[clamp(80px,50.59px_+_7.844vw,200px)] pb-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,7.19vw_-_6.96px,130px)] bg-[#112931] abt-parent">
 
       {/* First Row */}
-      <div className="mb-[-170px] z-2 relative ml-[50px]">
-        <h2 ref={headingRef} className="text-white text-[86px] leading-[72px] max-w-[1150px] m-auto whitespace-pre-line">
+      <div className="mb-[calc(-1*clamp(60px,33.04px_+_7.19vw,170px))] z-2 relative ml-[clamp(0px,3.268vw_-_12.25px,50px)] max-lg:mb-[clamp(24px,17.63px_+_1.7vw,50px)] max-lg:ml-0">
+        <h2 ref={headingRef} className="text-white text-[clamp(38px,5.529vw_-_19.33px,86px)] leading-[clamp(36px,4.629vw_-_16.18px,72px)] max-w-[clamp(320px,116.57px_+_54.249vw,1150px)] m-auto whitespace-pre-line max-lg:max-w-none max-lg:m-0">
           {heading}
         </h2>
       </div>
 
       {/* Second Row */}
-      <div className="flex gap-[40px] h-[95vh]">
+      <div className="flex gap-[clamp(20px,15.1px_+_1.308vw,40px)] h-[95vh] max-lg:flex-col max-lg:h-auto">
 
         {/* First Column */}
-        <div className='w-[12%] pt-[20px]'>
-          <h4 className="text-[#86A3AC] text-[36px] leading-[38px] capitalize">
+        <div className='w-[12%] pt-[20px] max-lg:w-full max-lg:pt-0 max-lg:order-first abt-first-col'>
+          <h4 className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) capitalize">
             {tagline}
           </h4>
         </div>
 
         {/* Second Column (Fixed className typo here) */}
-        <div className="flex justify-center w-[53%]">
+        <div className="flex justify-center w-[53%] max-lg:w-full abt-second-col">
           <img
             ref={imageRef}
             src={imageSrc}
             alt="About"
-            className="w-full rounded-[20px] max-h-[90%]"
+            className="w-full rounded-[clamp(12px,10.04px_+_0.523vw,20px)] max-h-[900px] max-lg:max-h-none max-lg:aspect-[4/3] max-lg:object-cover"
           />
         </div>
 
         {/* Third Column */}
-        <div className='w-[35%] pl-[60px] pt-[5%] flex flex-col justify-center'>
-          <p ref={descriptionRef} className="text-white text-[24px] leading-[41px] capitalize">
+        <div className='w-[35%] pl-[clamp(24px,15.18px_+_2.353vw,60px)] pt-[5%] flex flex-col justify-center max-lg:w-full max-lg:pl-0 max-lg:pt-0 abt-third-col'>
+          <p ref={descriptionRef} className="text-white text-[clamp(17px,7.66px_+_0.858vw,24px)] leading-[clamp(28px,13.09px_+_1.465vw,41px)] capitalize">
             {description}
           </p>
-          <div className='btn-all mt-[60px] relative'>
+          <div className='btn-all mt-[clamp(32px,25.13px_+_1.831vw,60px)] relative'>
             <a
               ref={buttonRef}
               href={buttonLink}
               onClick={onButtonClick}
-              className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center'>
+              className='capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) underline decoration-[1px] text-white text-center'>
               {buttonText}
             </a>
           </div>

@@ -156,9 +156,9 @@ function ServiceCard({ service, index }: { service: ServiceCardData; index: numb
 
   return (
     <div ref={cardRef} className="w-full">
-      <div className={`flex flex-col lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""} gap-0 overflow-hidden rounded-[20px]`}>
+      <div className={`flex flex-col lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""} gap-0 overflow-hidden rounded-[clamp(14px,12.53px_+_0.393vw,20px)]`}>
         {/* Image */}
-        <div className="w-full lg:w-[55%] relative overflow-hidden" style={{ minHeight: "600px" }}>
+        <div className="w-full lg:w-[55%] relative overflow-hidden" style={{ minHeight: "clamp(280px, 201.57px + 20.916vw, 600px)" }}>
           <img
             src={service.imageSrc}
             alt={service.title}
@@ -168,28 +168,28 @@ function ServiceCard({ service, index }: { service: ServiceCardData; index: numb
 
         {/* Content */}
         <div
-          className="w-full lg:w-[45%] flex flex-col justify-center p-[60px] lg:p-[80px]"
+          className="w-full lg:w-[45%] flex flex-col justify-center p-[clamp(24px,10.27px_+_3.661vw,80px)]"
           style={{ background: "#112931", fontFamily: "'Nohemi', sans-serif" }}
         >
           {/* Number */}
-          <span className="text-[#86A3AC] text-[22px] mb-4">
+          <span className="text-[#86A3AC] text-[clamp(16px,7.03px_+_0.786vw,22px)] mb-4">
             {String(service.id).padStart(2, "0")}
           </span>
 
           {/* Title */}
-          <h3 className="text-white text-[66px] leading-[62px] tracking-tight uppercase mb-8">
+          <h3 className="text-white text-[clamp(30px,4.243vw_-_14.83px,66px)] leading-[clamp(32px,3.986vw_-_13.93px,62px)] tracking-tight uppercase mb-[clamp(20px,17.06px_+_0.785vw,32px)]">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-white/80 text-[24px] leading-[36px] font-normal">
+          <p className="text-white/80 text-(length:--fs-body-xl) leading-[clamp(26px,11.5px_+_1.286vw,36px)] font-normal">
             {service.description}
           </p>
 
           {/* Detail list */}
-          <ul className="flex flex-col gap-3 pt-6 pb-10">
+          <ul className="flex flex-col gap-[clamp(8px,7.02px_+_0.262vw,12px)] pt-[clamp(16px,14.04px_+_0.523vw,24px)] pb-[clamp(24px,20.08px_+_1.046vw,40px)]">
             {service.details.map((detail) => (
-              <li key={detail} className="text-white/70 text-[20px] leading-[28px] flex items-center gap-3 capitalize">
+              <li key={detail} className="text-white/70 text-[clamp(16px,6.38px_+_0.715vw,20px)] leading-[clamp(22px,8.95px_+_1vw,28px)] flex items-center gap-3 capitalize">
                 <span className="w-[6px] h-[6px] rounded-full bg-[#86A3AC] flex-shrink-0" />
                 {detail}
               </li>
@@ -198,7 +198,7 @@ function ServiceCard({ service, index }: { service: ServiceCardData; index: numb
 
           {/* CTA Button */}
           <div className="btn-all relative mt-2">
-            <a href={service.href} className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center">
+            <a href={service.href} className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) underline decoration-[1px] text-white text-center">
               {service.buttonText}
             </a>
           </div>
@@ -253,7 +253,7 @@ export default function ServicesPageContent({
         className="relative w-full flex items-end overflow-hidden"
         style={{
           height: "70vh",
-          minHeight: "500px",
+          minHeight: "clamp(360px, 325.68px + 9.151vw, 500px)",
           fontFamily: "'Nohemi', sans-serif",
         }}
       >
@@ -261,9 +261,9 @@ export default function ServicesPageContent({
           <img src={banner.backgroundImage} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
-        <div className="relative z-10 w-full px-[85px] pb-[80px]">
-          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">{banner.tagline}</span>
-          <h1 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[900px] whitespace-pre-line">
+        <div className="relative z-10 w-full px-(--gutter) pb-[clamp(40px,30.19px_+_2.615vw,80px)]">
+          <span className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) block mb-4">{banner.tagline}</span>
+          <h1 ref={headingRef} className="text-white text-(length:--fs-display) leading-(--lh-display) max-w-[9.375em] whitespace-pre-line">
             {banner.heading}
           </h1>
         </div>
@@ -271,24 +271,24 @@ export default function ServicesPageContent({
 
       {/* ── Intro Text ── */}
       <section
-        className="w-full py-[100px] px-[85px] bg-white flex flex-col lg:flex-row gap-16 items-end"
+        className="w-full py-[clamp(56px,45.22px_+_2.876vw,100px)] px-(--gutter) bg-white flex flex-col lg:flex-row gap-[clamp(32px,24.16px_+_2.092vw,64px)] lg:items-end"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
         <div className="lg:w-[40%]">
-          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">{intro.tagline}</span>
-          <h2 className="text-[#112931] text-[66px] leading-[72px] whitespace-pre-line">
+          <span className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) block mb-4">{intro.tagline}</span>
+          <h2 className="text-[#112931] text-(length:--fs-h2) leading-(--lh-h2) whitespace-pre-line">
             {intro.heading}
           </h2>
         </div>
         <div className="lg:w-[60%] flex items-center">
-          <p className="text-[#112931]/80 text-[24px] leading-[44px] capitalize">
+          <p className="text-[#112931]/80 text-(length:--fs-body-xl) leading-(--lh-body-xl) capitalize">
             {intro.paragraph}
           </p>
         </div>
       </section>
 
-      {/* ── Service Cards ── */}
-      <section className="w-full px-[85px] pb-[100px] bg-white flex flex-col gap-[60px]">
+      {/* ── Service Cards (sized like the home page's stacked service cards) ── */}
+      <section className="w-full px-(--gutter) pb-[clamp(56px,45.22px_+_2.876vw,100px)] bg-white flex flex-col gap-[clamp(32px,25.13px_+_1.831vw,60px)]">
         {services.map((service, index) => (
           <ServiceCard key={service.id} service={service} index={index} />
         ))}
@@ -296,7 +296,7 @@ export default function ServicesPageContent({
 
       {/* ── Premium Features ── */}
       <section
-        className="relative w-full flex flex-col justify-center px-8 py-16 md:py-20 md:px-16 lg:px-24"
+        className="relative w-full flex flex-col justify-center px-[clamp(20px,1.37px_+_4.968vw,96px)] py-[clamp(56px,50.12px_+_1.569vw,80px)]"
         style={{
           background: "#112931",
           fontFamily: "'Nohemi', sans-serif",
@@ -304,7 +304,7 @@ export default function ServicesPageContent({
       >
         {/* Header */}
         <div
-          className="relative mb-7 flex flex-col lg:flex-row justify-start lg:gap-[354px]"
+          className="relative mb-7 flex flex-col lg:flex-row justify-start lg:gap-[clamp(40px,20.523vw_-_36.96px,354px)]"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(-16px)",
@@ -312,31 +312,32 @@ export default function ServicesPageContent({
           }}
         >
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-[36px] text-[#86A3AC] hidden lg:block tracking-wide">
+            <span className="text-(length:--fs-eyebrow) text-[#86A3AC] hidden lg:block tracking-wide">
               {featureSection.tagline}
             </span>
           </div>
           <div className="flex flex-col gap-4">
-            <h2 className="text-[96px] leading-[88px] max-w-[1100px] text-white whitespace-pre-line">
+            <h2 className="text-(length:--fs-display) leading-(--lh-display) max-w-[calc(1100em/96)] text-white whitespace-pre-line">
               {featureSection.heading}
             </h2>
-            <p className="text-white/80 text-[24px] leading-[36px] font-normal mb-10">
+            <p className="text-white/80 text-(length:--fs-body-xl) leading-[clamp(26px,11.5px_+_1.286vw,36px)] font-normal mb-[clamp(24px,20.08px_+_1.046vw,40px)]">
               {featureSection.paragraph}
             </p>
           </div>
         </div>
 
         {/* Cards */}
-        <div
-          className="relative flex overflow-hidden"
-          style={{ height: "clamp(360px, 48vw, 540px)" }}
-        >
+        {/* A row on desktop, a vertical accordion below 1024, where four
+            side-by-side cards get too narrow for their labels */}
+        <div className="relative flex overflow-hidden h-[clamp(360px,48vw,540px)] max-lg:flex-col max-lg:h-[clamp(480px,140vw,640px)]">
           {features.map((feature, index) => {
             const isActive = activeFeature === index;
             return (
               <div
                 key={feature.id}
                 onMouseEnter={() => setActiveFeature(index)}
+                // Touch screens have no hover, so a tap opens the card.
+                onClick={() => setActiveFeature(index)}
                 className="relative overflow-hidden cursor-pointer"
                 style={{
                   flex: isActive ? "2.5 1 0%" : "1 1 0%",
@@ -366,14 +367,14 @@ export default function ServicesPageContent({
                   }}
                 />
                 <div
-                  className="absolute bottom-0 left-0 right-0 flex items-end"
+                  className={`absolute bottom-0 left-0 right-0 flex items-end ${isActive ? "" : "lg:top-0 lg:justify-center"}`}
                   style={{
                     padding: isActive ? "32px 28px" : "24px 20px",
                     transition: "padding 0.5s ease",
                   }}
                 >
                   <h3
-                    className="text-white font-normal leading-tight"
+                    className={`text-white font-normal leading-tight ${isActive ? "" : "lg:[writing-mode:vertical-rl] lg:rotate-180 lg:max-h-full"}`}
                     style={{
                       fontSize: isActive ? "clamp(28px, 3vw, 40px)" : "clamp(14px, 1.3vw, 20px)",
                       transition: "font-size 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
@@ -392,22 +393,24 @@ export default function ServicesPageContent({
 
       {/* ── Process Section ── */}
       <section
-        className="w-full py-[120px] px-[85px] bg-white"
+        className="w-full py-(--section-y) px-(--gutter) bg-white"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
-        <div className="relative w-full flex justify-center items-center mb-20">
-          <span className="absolute left-0 text-[#86A3AC] text-[36px]">{processSection.tagline}</span>
-          <h2 className="text-[96px] leading-[88px] text-[#112931] text-center whitespace-pre-line">
+        {/* The tagline floats beside the centred heading on desktop and sits
+            above it once the screen narrows */}
+        <div className="relative w-full flex justify-center items-center mb-[clamp(40px,30.19px_+_2.615vw,80px)] max-lg:flex-col max-lg:items-start">
+          <span className="absolute left-0 text-[#86A3AC] text-(length:--fs-eyebrow) max-lg:static max-lg:mb-3">{processSection.tagline}</span>
+          <h2 className="text-(length:--fs-display) leading-(--lh-display) text-[#112931] text-center whitespace-pre-line max-lg:text-left">
             {processSection.heading}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(20px,17.06px_+_0.785vw,32px)]">
           {steps.map((item) => (
-            <div key={item.step} className="flex flex-col gap-4 p-8 border-t-2 border-[#112931]/10 hover:border-[#86A3AC] transition-colors duration-300">
-              <span className="text-[#86A3AC] text-[54px] leading-[54px]">{item.step}</span>
-              <h3 className="text-[#112931] text-[36px] leading-[42px]">{item.title}</h3>
-              <p className="text-[#112931]/70 text-[20px] leading-[36px]">{item.desc}</p>
+            <div key={item.step} className="flex flex-col gap-4 p-[clamp(20px,17.06px_+_0.785vw,32px)] border-t-2 border-[#112931]/10 hover:border-[#86A3AC] transition-colors duration-300">
+              <span className="text-[#86A3AC] text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(30px,3.472vw_-_12.14px,54px)]">{item.step}</span>
+              <h3 className="text-[#112931] text-[clamp(24px,2.315vw_-_8.1px,36px)] leading-[clamp(30px,2.7vw_-_9.44px,42px)]">{item.title}</h3>
+              <p className="text-[#112931]/70 text-[clamp(16px,6.38px_+_0.715vw,20px)] leading-[clamp(28px,11.5px_+_1.286vw,36px)]">{item.desc}</p>
             </div>
           ))}
         </div>

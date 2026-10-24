@@ -91,36 +91,36 @@ export default function FAQSection({
 
   return (
     <section
-      className="w-full py-[120px] px-[85px] transition-colors duration-300"
+      className="w-full py-(--section-y) px-(--gutter) transition-colors duration-300"
       style={{
         background: bgStyle,
         fontFamily: "'Nohemi', sans-serif",
       }}
     >
-      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-[clamp(40px,26.27px_+_3.661vw,96px)]">
         {/* Left Column - Heading info */}
         <div className="w-full lg:w-[40%] flex flex-col items-start">
           <span
-            className="text-[36px] font-normal tracking-wide mb-4"
+            className="text-(length:--fs-eyebrow) font-normal tracking-wide mb-4"
             style={{ color: tagColor }}
           >
             {tagline}
           </span>
           <h2
-            className="text-[66px] leading-[72px] tracking-tight font-normal capitalize whitespace-pre-line"
+            className="text-(length:--fs-h2) leading-(--lh-h2) tracking-tight font-normal capitalize whitespace-pre-line"
             style={{ color: textColor }}
           >
             {heading}
           </h2>
           <p
-            className="text-[20px] leading-[32px] mt-8 max-w-[400px]"
+            className="text-[clamp(16px,6.38px_+_0.715vw,20px)] leading-[clamp(26px,10.23px_+_1.143vw,32px)] mt-[clamp(20px,17.06px_+_0.785vw,32px)] max-w-[400px]"
             style={{ color: subTextColor }}
           >
             {intro}
           </p>
         </div>
 
-        {/* Right Column - Accordion Accordion */}
+        {/* Right Column - Accordion */}
         <div className="w-full lg:w-[60%] flex flex-col">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -132,10 +132,10 @@ export default function FAQSection({
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full text-left py-8 flex justify-between items-center gap-8 focus:outline-none group"
+                  className="w-full text-left py-[clamp(20px,17.06px_+_0.785vw,32px)] flex justify-between items-center gap-8 focus:outline-none group"
                 >
                   <h3
-                    className="text-[26px] md:text-[28px] leading-[36px] font-normal capitalize transition-colors duration-300"
+                    className="text-[clamp(20px,1.8vw_-_6.29px,28px)] leading-[clamp(28px,2.315vw_-_8.1px,36px)] font-normal capitalize transition-colors duration-300"
                     style={{ color: textColor }}
                   >
                     {faq.question}
@@ -159,19 +159,23 @@ export default function FAQSection({
                   </div>
                 </button>
 
-                {/* Answer container with smooth height transitions */}
+                {/* Answer: animates between 0fr and 1fr grid rows, which opens
+                    to the answer's own height however long it is. A fixed
+                    max-height cut long answers off on narrow screens. */}
                 <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                  className="grid transition-all duration-500 ease-in-out"
                   style={{
-                    maxHeight: isOpen ? "300px" : "0px",
+                    gridTemplateRows: isOpen ? "1fr" : "0fr",
                     opacity: isOpen ? 1 : 0,
                   }}
                 >
-                  <div
-                    className="pb-8 text-[20px] leading-[36px] max-w-[680px]"
-                    style={{ color: subTextColor }}
-                  >
-                    {renderAnswer(faq.answer)}
+                  <div className="overflow-hidden min-h-0">
+                    <div
+                      className="pb-8 text-[clamp(16px,6.38px_+_0.715vw,20px)] leading-[clamp(28px,11.5px_+_1.286vw,36px)] max-w-[680px]"
+                      style={{ color: subTextColor }}
+                    >
+                      {renderAnswer(faq.answer)}
+                    </div>
                   </div>
                 </div>
               </div>

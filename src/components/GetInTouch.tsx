@@ -46,21 +46,20 @@ export default function GetInTouch({
 
   return (
     <section
-      className="w-full flex items-center px-[85px]"
+      className="w-full flex items-center px-(--gutter) min-h-screen max-lg:min-h-0 max-lg:py-(--section-y)"
       style={{
-        minHeight: "100vh",
         background: "#ffffff",
         fontFamily: "'Nohemi', sans-serif",
       }}
     >
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(40px,34.12px_+_1.569vw,64px)] items-center">
         {/* ── Left Column ── */}
         <div className="flex flex-col">
           {/* Sub-label */}
           <span
             style={{
-              fontSize: "26px",
-              lineHeight: "30px",
+              fontSize: "clamp(18px, 8.3px + 0.929vw, 26px)",
+              lineHeight: "clamp(24px, 9.58px + 1.072vw, 30px)",
               color: "#0a0a0a",
               fontFamily: "'Nohemi', sans-serif",
             }}
@@ -71,26 +70,26 @@ export default function GetInTouch({
           {/* Main heading */}
           <h2
             style={{
-              fontSize: "66px",
-              lineHeight: "72px",
+              fontSize: "var(--fs-h2)",
+              lineHeight: "var(--lh-h2)",
               color: "#0a0a0a",
               fontFamily: "'Nohemi', sans-serif",
               fontWeight: 400,
               marginTop: "12px",
-              marginBottom: "48px",
+              marginBottom: "clamp(28px, 23.1px + 1.308vw, 48px)",
             }}
           >
             {heading}
           </h2>
 
           {/* Contact details */}
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-[clamp(32px,24.16px_+_2.092vw,64px)]">
             {/* Call Us */}
             <div>
               <p
                 style={{
-                  fontSize: "22px",
-                  lineHeight: "24px",
+                  fontSize: "clamp(17px, 7.03px + 0.786vw, 22px)",
+                  lineHeight: "clamp(20px, 7.66px + 0.858vw, 24px)",
                   color: "#0a0a0a",
                   fontFamily: "'Nohemi', sans-serif",
                   marginBottom: "4px",
@@ -101,8 +100,8 @@ export default function GetInTouch({
               <a
                 href={telHref(phoneNumber)}
                 style={{
-                  fontSize: "26px",
-                  lineHeight: "30px",
+                  fontSize: "clamp(18px, 8.3px + 0.929vw, 26px)",
+                  lineHeight: "clamp(24px, 9.58px + 1.072vw, 30px)",
                   color: "#0a0a0a",
                   fontFamily: "'Nohemi', sans-serif",
                   textDecoration: "none",
@@ -127,8 +126,8 @@ export default function GetInTouch({
             <div>
               <p
                 style={{
-                  fontSize: "22px",
-                  lineHeight: "24px",
+                  fontSize: "clamp(17px, 7.03px + 0.786vw, 22px)",
+                  lineHeight: "clamp(20px, 7.66px + 0.858vw, 24px)",
                   color: "#0a0a0a",
                   fontFamily: "'Nohemi', sans-serif",
                   marginBottom: "4px",
@@ -138,9 +137,10 @@ export default function GetInTouch({
               </p>
               <a
                 href={`mailto:${email}`}
+                className="break-all"
                 style={{
-                  fontSize: "26px",
-                  lineHeight: "30px",
+                  fontSize: "clamp(18px, 8.3px + 0.929vw, 26px)",
+                  lineHeight: "clamp(24px, 9.58px + 1.072vw, 30px)",
                   color: "#0a0a0a",
                   fontFamily: "'Nohemi', sans-serif",
                   textDecoration: "none",
@@ -166,8 +166,8 @@ export default function GetInTouch({
             <div>
               <span
             style={{
-              fontSize: "18px",
-              lineHeight: "30px",
+              fontSize: "clamp(16px, 15.51px + 0.131vw, 18px)",
+              lineHeight: "clamp(26px, 25.02px + 0.262vw, 30px)",
               color: "#0a0a0a",
               fontFamily: "'Nohemi', sans-serif",
             }}
@@ -195,9 +195,9 @@ export default function GetInTouch({
                 required
                 style={{
                   width: "100%",
-                  padding: "18px 20px",
-                  fontSize: "18px",
-                  lineHeight: "26px",
+                  padding: "clamp(14px, 13.02px + 0.262vw, 18px) clamp(16px, 15.02px + 0.262vw, 20px)",
+                  fontSize: "clamp(16px, 15.51px + 0.131vw, 18px)",
+                  lineHeight: "clamp(24px, 23.51px + 0.131vw, 26px)",
                   fontFamily: "'Nohemi', sans-serif",
                   color: "#112931",
                   background: "transparent",
@@ -224,9 +224,9 @@ export default function GetInTouch({
                 required
                 style={{
                   width: "100%",
-                  padding: "18px 20px",
-                  fontSize: "18px",
-                  lineHeight: "26px",
+                  padding: "clamp(14px, 13.02px + 0.262vw, 18px) clamp(16px, 15.02px + 0.262vw, 20px)",
+                  fontSize: "clamp(16px, 15.51px + 0.131vw, 18px)",
+                  lineHeight: "clamp(24px, 23.51px + 0.131vw, 26px)",
                   fontFamily: "'Nohemi', sans-serif",
                   color: "#112931",
                   background: "transparent",
@@ -252,9 +252,9 @@ export default function GetInTouch({
                 onBlur={() => setFocused(null)}
                 style={{
                   width: "100%",
-                  padding: "18px 20px",
-                  fontSize: "18px",
-                  lineHeight: "26px",
+                  padding: "clamp(14px, 13.02px + 0.262vw, 18px) clamp(16px, 15.02px + 0.262vw, 20px)",
+                  fontSize: "clamp(16px, 15.51px + 0.131vw, 18px)",
+                  lineHeight: "clamp(24px, 23.51px + 0.131vw, 26px)",
                   fontFamily: "'Nohemi', sans-serif",
                   color: "#112931",
                   background: "transparent",
@@ -280,9 +280,9 @@ export default function GetInTouch({
                 onBlur={() => setFocused(null)}
                 style={{
                   width: "100%",
-                  padding: "18px 20px",
-                  fontSize: "18px",
-                  lineHeight: "26px",
+                  padding: "clamp(14px, 13.02px + 0.262vw, 18px) clamp(16px, 15.02px + 0.262vw, 20px)",
+                  fontSize: "clamp(16px, 15.51px + 0.131vw, 18px)",
+                  lineHeight: "clamp(24px, 23.51px + 0.131vw, 26px)",
                   fontFamily: "'Nohemi', sans-serif",
                   color: "#112931",
                   background: "transparent",
@@ -301,11 +301,11 @@ export default function GetInTouch({
               <button
                 id="git-submit"
                 type="submit"
-                className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] text-black text-center "
+                className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) text-black text-center "
                 style={{ fontFamily: "'Nohemi', sans-serif" }}
               >
                 <div className="flex items-center justify-center gap-2">
-                  <img className="w-[36px] h-[36px]" src="/images/arrow-right.svg" alt="arrow-right" />
+                  <img className="size-[clamp(28px,26.04px_+_0.523vw,36px)]" src="/images/arrow-right.svg" alt="arrow-right" />
                   <span>
                     {submitted ? "Message Sent!" : "Submit"}
                   </span>

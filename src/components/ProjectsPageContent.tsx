@@ -90,7 +90,7 @@ export default function ProjectsPageContent({
         className="relative w-full flex items-end overflow-hidden"
         style={{
           height: "70vh",
-          minHeight: "500px",
+          minHeight: "clamp(360px, 325.68px + 9.151vw, 500px)",
           fontFamily: "'Nohemi', sans-serif",
         }}
       >
@@ -105,13 +105,13 @@ export default function ProjectsPageContent({
         </div>
 
         {/* Content */}
-        <div className="relative z-10 w-full px-[85px] pb-[80px]">
-          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">
+        <div className="relative z-10 w-full px-(--gutter) pb-[clamp(40px,30.19px_+_2.615vw,80px)]">
+          <span className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) block mb-4">
             {banner.tagline}
           </span>
           <h1
             ref={headingRef}
-            className="text-white text-[96px] leading-[88px] max-w-[900px] whitespace-pre-line"
+            className="text-white text-(length:--fs-display) leading-(--lh-display) max-w-[9.375em] whitespace-pre-line"
           >
             {banner.heading}
           </h1>
@@ -119,11 +119,11 @@ export default function ProjectsPageContent({
       </section>
 
       {/* ── Projects Grid ── */}
-      <section className="w-full py-24 px-[85px] bg-white">
+      <section className="w-full py-[clamp(56px,46.19px_+_2.615vw,96px)] px-(--gutter) bg-white">
         <div className="w-full">
           {/* Grid */}
           <div className="overflow-hidden py-8 px-4 -mx-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[38px] gap-x-[28px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[clamp(20px,15.59px_+_1.177vw,38px)] gap-x-[clamp(16px,13.06px_+_0.785vw,28px)]">
               {projects.slice(0, visibleCount).map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
@@ -132,12 +132,12 @@ export default function ProjectsPageContent({
 
           {/* Load More */}
           {visibleCount < projects.length && (
-            <div className="flex justify-center mt-16">
+            <div className="flex justify-center mt-[clamp(32px,24.16px_+_2.092vw,64px)]">
               <div className="btn-all relative btn-dark">
                 <a
                   href="#"
                   onClick={handleLoadMore}
-                  className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-[#112931] text-center"
+                  className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) underline decoration-[1px] text-[#112931] text-center"
                 >
                   Load More Projects
                 </a>

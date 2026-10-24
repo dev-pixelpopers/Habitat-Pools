@@ -45,7 +45,7 @@ export default function HomeHero({
   }, { scope: videoRef })
 
   return (
-    <section className="relative h-screen w-full overflow-hidden px-[85px] pb-[50px] flex flex-col justify-end items-center">
+    <section className="relative h-screen w-full overflow-hidden px-(--gutter) pb-[clamp(24px,17.63px_+_1.7vw,50px)] flex flex-col justify-end items-center">
       {/* Background Video */}
       <video ref={videoRef}
         autoPlay
@@ -53,7 +53,7 @@ export default function HomeHero({
         muted
         playsInline
         poster={posterSrc}
-        className="absolute w-[386px] h-[383px] object-cover rounded-[540px]"
+        className="absolute w-[clamp(180px,129.51px_+_13.465vw,386px)] h-[clamp(178px,127.75px_+_13.399vw,383px)] object-cover rounded-[540px]"
       >
         <source src={videoSrc} type="video/webm" />
       </video>
@@ -63,24 +63,26 @@ export default function HomeHero({
 
       {/* Content */}
       <div ref={containerRef} className="relative z-10 flex items-end translate-y-100">
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:flex xl:flex-row xl:gap-4 gap-0 items-center justify-center w-full">
+        {/* Below 1280 the three columns stack (heading, then copy); the
+            decorative arrow only has room alongside them on wide screens. */}
+        <div className="flex flex-col items-start gap-6 xl:flex-row xl:items-center xl:gap-4 justify-center w-full">
           {/* First Column */}
           <div className="xl:w-[40%]">
-            <h1 className="text-white text-[80px] leading-[76.1px] font-normal whitespace-pre-line">
+            <h1 className="text-white text-[clamp(38px,5.143vw_-_17.97px,80px)] leading-[clamp(36px,4.893vw_-_17.11px,76.1px)] font-normal whitespace-pre-line">
               {heading}
             </h1>
           </div>
 
           {/* Second Column */}
-          <div className="flex justify-center xl:w-[20%]">
-            <div className="w-[419px]">
+          <div className="hidden xl:flex justify-center xl:w-[20%]">
+            <div className="w-[clamp(140px,71.61px_+_18.236vw,419px)]">
               <img src="/images/arrow.png" alt="Arrow" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {/* Third Column */}
           <div className="xl:w-[40%]">
-            <p className="text-white text-[22px] leading-[44px] capitalize font-normal">
+            <p className="text-white text-[clamp(16px,7.03px_+_0.786vw,22px)] leading-[clamp(26px,14.05px_+_1.572vw,44px)] capitalize font-normal">
               {paragraph}
             </p>
           </div>

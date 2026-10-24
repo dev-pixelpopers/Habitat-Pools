@@ -59,7 +59,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
 
       if (remainingText) {
         output.push(
-          <p key={`p-${chunkIdx}`} className="mb-4 last:mb-0 lg:max-w-[70%] lg:ml-auto">
+          <p key={`p-${chunkIdx}`} className="mb-4 last:mb-0 2xl:max-w-[70%] 2xl:ml-auto">
             {remainingText}
           </p>
         );
@@ -141,13 +141,13 @@ export const AboutService: React.FC<AboutServiceProps> = ({
 
   return (
     // Background color set to match the dark teal in the design
-    <section ref={sectionRef} className="relative w-full bg-[#112931] flex items-center justify-center py-[100px] px-[40px] z-50 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full bg-[#112931] flex items-center justify-center py-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,15.1px_+_1.308vw,40px)] z-50 overflow-hidden">
 
       {/* Max-width container to keep things constrained on very large screens */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-center">
 
         {/* Left Column: Image */}
-        <div ref={leftColRef} className="w-full">
+        <div ref={leftColRef} className="w-full max-h-screen">
           <img
             src={imageSrc}
             alt="Owners reviewing plans on site"
@@ -156,20 +156,20 @@ export const AboutService: React.FC<AboutServiceProps> = ({
         </div>
 
         {/* Right Column: Content (Right-aligned as per design) */}
-        <div ref={rightColRef} className="flex flex-col justify-center items-end text-right">
+        <div ref={rightColRef} className="flex flex-col justify-center items-end text-right max-lg:items-start max-lg:text-left">
 
           {/* Heading */}
-          <h2 className="text-white text-[54px] leading-[71px] tracking-tight mb-8 lg:max-w-[70%]">
+          <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] 2xl:max-w-[70%]">
             {heading}
           </h2>
 
           {/* Description Paragraph */}
-          <div className="text-white/90 text-[24px] leading-[44px] mb-14 w-full">
+          <div className="text-white/90 text-(length:--fs-body-xl) leading-(--lh-body-xl) mb-[clamp(32px,26.12px_+_1.569vw,56px)] w-full">
             {hasStructuredAreas ? (
               <>
-                {intro && <p className="lg:max-w-[70%] lg:ml-auto">{intro}</p>}
+                {intro && <p className="2xl:max-w-[70%] 2xl:ml-auto">{intro}</p>}
                 <PillList items={areas!} columns={3} tone="dark" className="my-8" />
-                {outro && <p className="lg:max-w-[70%] lg:ml-auto">{outro}</p>}
+                {outro && <p className="2xl:max-w-[70%] 2xl:ml-auto">{outro}</p>}
               </>
             ) : (
               renderDescription(description)
@@ -181,7 +181,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
             <a
               href='/contact'
               onClick={onButtonClick}
-              className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer '
+              className='capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) underline decoration-[1px] text-white text-center cursor-pointer '
             >
               {buttonText}
             </a>

@@ -36,21 +36,21 @@ const FALLBACK = {
 
 /** Shared styling for the contact detail blocks. */
 const LABEL_STYLE = {
-  fontSize: "22px",
-  lineHeight: "24px",
+  fontSize: "clamp(17px, 7.03px + 0.786vw, 22px)",
+  lineHeight: "clamp(20px, 7.66px + 0.858vw, 24px)",
   color: "#0a0a0a",
   marginBottom: "4px",
 } as const;
 
 const VALUE_STYLE = {
-  fontSize: "26px",
-  lineHeight: "36px",
+  fontSize: "clamp(18px, 8.3px + 0.929vw, 26px)",
+  lineHeight: "clamp(26px, 11.5px + 1.286vw, 36px)",
   color: "#0a0a0a",
 } as const;
 
 const LINK_STYLE = {
-  fontSize: "26px",
-  lineHeight: "30px",
+  fontSize: "clamp(18px, 8.3px + 0.929vw, 26px)",
+  lineHeight: "clamp(24px, 9.58px + 1.072vw, 30px)",
   color: "#0a0a0a",
   textDecoration: "none",
   borderBottom: "1px solid #0a0a0a",
@@ -134,9 +134,9 @@ export default function ContactPageContent({
   /* Shared input style */
   const inputStyle = (field: string) => ({
     width: "100%",
-    padding: "18px 20px",
-    fontSize: "18px",
-    lineHeight: "26px",
+    padding: "clamp(14px, 13.02px + 0.262vw, 18px) clamp(16px, 15.02px + 0.262vw, 20px)",
+    fontSize: "clamp(16px, 15.51px + 0.131vw, 18px)",
+    lineHeight: "clamp(24px, 23.51px + 0.131vw, 26px)",
     fontFamily: "'Nohemi', sans-serif",
     color: "#112931",
     background: "transparent",
@@ -157,7 +157,7 @@ export default function ContactPageContent({
         className="relative w-full flex items-end overflow-hidden"
         style={{
           height: "70vh",
-          minHeight: "500px",
+          minHeight: "clamp(360px, 325.68px + 9.151vw, 500px)",
           background: "#112931",
           fontFamily: "'Nohemi', sans-serif",
         }}
@@ -166,9 +166,9 @@ export default function ContactPageContent({
           <img src={banner.backgroundImage} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
-        <div className="relative z-10 w-full px-[85px] pb-[80px]">
-          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">{banner.tagline}</span>
-          <h1 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[900px] whitespace-pre-line">
+        <div className="relative z-10 w-full px-(--gutter) pb-[clamp(40px,30.19px_+_2.615vw,80px)]">
+          <span className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) block mb-4">{banner.tagline}</span>
+          <h1 ref={headingRef} className="text-white text-(length:--fs-display) leading-(--lh-display) max-w-[9.375em] whitespace-pre-line">
             {banner.heading}
           </h1>
         </div>
@@ -176,20 +176,19 @@ export default function ContactPageContent({
 
       {/* ── Contact Form Section ── */}
       <section
-        className="w-full flex items-center px-[85px]"
+        className="w-full flex items-center px-(--gutter) min-h-screen max-lg:min-h-0"
         style={{
-          minHeight: "100vh",
           background: "#ffffff",
           fontFamily: "'Nohemi', sans-serif",
         }}
       >
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-[100px]">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(40px,34.12px_+_1.569vw,64px)] items-center py-[clamp(56px,45.22px_+_2.876vw,100px)]">
           {/* Left Column — Info */}
           <div ref={infoRef} className="flex flex-col">
             <span
               style={{
-                fontSize: "26px",
-                lineHeight: "30px",
+                fontSize: "clamp(18px, 8.3px + 0.929vw, 26px)",
+                lineHeight: "clamp(24px, 9.58px + 1.072vw, 30px)",
                 color: "#0a0a0a",
               }}
             >
@@ -199,19 +198,19 @@ export default function ContactPageContent({
             <h2
               className="whitespace-pre-line"
               style={{
-                fontSize: "66px",
-                lineHeight: "72px",
+                fontSize: "var(--fs-h2)",
+                lineHeight: "var(--lh-h2)",
                 color: "#0a0a0a",
                 fontWeight: 400,
                 marginTop: "12px",
-                marginBottom: "48px",
+                marginBottom: "clamp(28px, 23.1px + 1.308vw, 48px)",
               }}
             >
               {details.heading}
             </h2>
 
             {/* Contact details */}
-            <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-[clamp(32px,24.16px_+_2.092vw,64px)]">
               {/* Call Us */}
               <div>
                 <p style={LABEL_STYLE}>{details.callLabel}</p>
@@ -226,7 +225,7 @@ export default function ContactPageContent({
               {/* Email */}
               <div>
                 <p style={LABEL_STYLE}>{details.emailLabel}</p>
-                <a href={`mailto:${details.email}`} style={LINK_STYLE}>
+                <a href={`mailto:${details.email}`} className="break-all" style={LINK_STYLE}>
                   {details.email}
                 </a>
               </div>
@@ -333,7 +332,7 @@ export default function ContactPageContent({
                   strokeLinejoin="round"
                   style={{
                     position: "absolute",
-                    right: "20px",
+                    right: "clamp(16px, 15.02px + 0.262vw, 20px)",
                     top: "50%",
                     transform: "translateY(-50%)",
                     pointerEvents: "none",
@@ -366,11 +365,11 @@ export default function ContactPageContent({
                 <button
                   id="contact-submit"
                   type="submit"
-                  className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] text-black text-center cursor-pointer"
+                  className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) text-black text-center cursor-pointer"
                   style={{ fontFamily: "'Nohemi', sans-serif", background: "transparent", border: "none" }}
                 >
                   <div className="flex items-center justify-center gap-2">
-                    <img className="w-[36px] h-[36px]" src="/images/arrow-right.svg" alt="" />
+                    <img className="size-[clamp(28px,26.04px_+_0.523vw,36px)]" src="/images/arrow-right.svg" alt="" />
                     <span>{submitted ? "Message Sent!" : "Submit"}</span>
                   </div>
                 </button>

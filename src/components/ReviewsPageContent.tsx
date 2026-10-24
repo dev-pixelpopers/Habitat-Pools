@@ -175,15 +175,15 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
   return (
     <div
       ref={cardRef}
-      className="bg-white rounded-[1.1rem] flex flex-col gap-10 shadow-2xl pt-[50px] pb-[30px] px-[30px] hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-shadow duration-300"
+      className="bg-white rounded-[1.1rem] flex flex-col gap-[clamp(24px,20.08px_+_1.046vw,40px)] shadow-2xl pt-[clamp(28px,22.61px_+_1.438vw,50px)] pb-[clamp(20px,17.55px_+_0.654vw,30px)] px-[clamp(20px,17.55px_+_0.654vw,30px)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-shadow duration-300"
     >
       {/* Header */}
       <div className="flex items-center gap-5">
         <div className="flex-shrink-0">
-          <img src="/images/review-quote.png" width="60" height="60" alt="" />
+          <img src="/images/review-quote.png" alt="" className="w-[clamp(44px,40.08px_+_1.046vw,60px)] h-auto" />
         </div>
         <div className="flex flex-col">
-          <h4 className="text-[22px] text-black leading-tight">{review.name}</h4>
+          <h4 className="text-[clamp(18px,17.02px_+_0.262vw,22px)] text-black leading-tight">{review.name}</h4>
           <div className="flex items-center gap-0 mt-1">
             {[...Array(review.rating)].map((_, i) => (
               <StarIcon key={i} />
@@ -197,7 +197,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         <p
           ref={textRef}
           id={`review-text-${review.id}`}
-          className={`text-[#000000] text-[18px] leading-[32px] font-normal ${expanded ? "" : "line-clamp-5"}`}
+          className={`text-[#000000] text-[clamp(16px,15.51px_+_0.131vw,18px)] leading-[clamp(26px,24.53px_+_0.393vw,32px)] font-normal ${expanded ? "" : "line-clamp-5"}`}
         >
           {review.text}
         </p>
@@ -278,7 +278,7 @@ export default function ReviewsPageContent({
         className="relative w-full flex items-end overflow-hidden"
         style={{
           height: "70vh",
-          minHeight: "500px",
+          minHeight: "clamp(360px, 325.68px + 9.151vw, 500px)",
           fontFamily: "'Nohemi', sans-serif",
         }}
       >
@@ -286,9 +286,9 @@ export default function ReviewsPageContent({
           <img src={banner.backgroundImage} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative z-10 w-full px-[85px] pb-[80px]">
-          <span className="text-[#86A3AC] text-[36px] leading-[38px] block mb-4">{banner.tagline}</span>
-          <h1 ref={headingRef} className="text-white text-[96px] leading-[88px] max-w-[900px] whitespace-pre-line">
+        <div className="relative z-10 w-full px-(--gutter) pb-[clamp(40px,30.19px_+_2.615vw,80px)]">
+          <span className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) block mb-4">{banner.tagline}</span>
+          <h1 ref={headingRef} className="text-white text-(length:--fs-display) leading-(--lh-display) max-w-[9.375em] whitespace-pre-line">
             {banner.heading}
           </h1>
         </div>
@@ -296,11 +296,11 @@ export default function ReviewsPageContent({
 
       {/* ── Overall Rating Bar ── */}
       <section
-        className="w-full py-[60px] px-[85px] bg-[#112931] flex flex-col md:flex-row items-center justify-between gap-8"
+        className="w-full py-[clamp(32px,25.13px_+_1.831vw,60px)] px-(--gutter) bg-[#112931] flex flex-col md:flex-row md:items-center justify-between gap-8"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
         <div className="flex items-center gap-6">
-          <span className="text-white text-[66px] leading-[66px]">{rating.average}</span>
+          <span className="text-white text-(length:--fs-h2) leading-(--fs-h2)">{rating.average}</span>
           <div className="flex flex-col">
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
@@ -309,24 +309,24 @@ export default function ReviewsPageContent({
                 </svg>
               ))}
             </div>
-            <span className="text-white/70 text-[18px] mt-1">
+            <span className="text-white/70 text-[clamp(16px,15.51px_+_0.131vw,18px)] mt-1">
               {noteBefore}
               <span ref={countRef} className="tabular-nums">{reviewCount}</span>
               {noteAfter}
             </span>
           </div>
         </div>
-        <p className="text-white/80 text-[22px] leading-[30px] max-w-[500px] text-right">
+        <p className="text-white/80 text-[clamp(17px,7.03px_+_0.786vw,22px)] leading-[clamp(22px,9.58px_+_1.072vw,30px)] max-w-[500px] md:text-right">
           {rating.text}
         </p>
       </section>
 
       {/* ── Reviews Grid ── */}
       <section
-        className="w-full py-[100px] px-[85px] bg-white"
+        className="w-full py-[clamp(56px,45.22px_+_2.876vw,100px)] px-(--gutter) bg-white"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(20px,17.06px_+_0.785vw,32px)] items-start">
           {reviews.map((review, index) => (
             <ReviewCard key={review.id} review={review} index={index} />
           ))}

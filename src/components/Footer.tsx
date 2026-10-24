@@ -18,9 +18,8 @@ export default function Footer() {
 
   return (
     <footer
-      className="w-full px-[85px]"
+      className="w-full px-(--gutter) min-h-[64vh] max-lg:min-h-0"
       style={{
-        minHeight: "64vh",
         background: "#ffffff",
         fontFamily: "'Nohemi', sans-serif",
         display: "flex",
@@ -30,22 +29,19 @@ export default function Footer() {
     >
       {/* ── Dark container ── */}
       <div
-        className="w-full flex-1 flex items-center px-16 py-14"
-        style={{
-          background: "#112931",
-          borderRadius: "20px",
-        }}
+        className="w-full flex-1 flex items-center px-[clamp(24px,14.19px_+_2.615vw,64px)] py-[clamp(40px,36.08px_+_1.046vw,56px)] rounded-[clamp(14px,12.53px_+_0.393vw,20px)]"
+        style={{ background: "#112931" }}
       >
-        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-[clamp(32px,28.08px_+_1.046vw,48px)] items-center">
           {/* Left — Heading + Socials */}
           <div className="flex flex-col">
             <h2
               style={{
-                fontSize: "44px",
-                lineHeight: "50px",
+                fontSize: "clamp(28px, 2.829vw - 9.89px, 44px)",
+                lineHeight: "clamp(34px, 3.215vw - 11.25px, 50px)",
                 color: "#ffffff",
                 fontWeight: 400,
-                marginBottom: "28px",
+                marginBottom: "clamp(20px, 18.04px + 0.523vw, 28px)",
               }}
             >
               Talk To Us About
@@ -59,7 +55,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "clamp(16px, 15.02px + 0.262vw, 20px)",
                   color: "#86A3AC",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
@@ -80,7 +76,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "20px",
+                  fontSize: "clamp(16px, 15.02px + 0.262vw, 20px)",
                   color: "#86A3AC",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
@@ -113,7 +109,7 @@ export default function Footer() {
                 cursor: "pointer",
                 color: "#ffffff",
                 fontFamily: "'Nohemi', sans-serif",
-                fontSize: "20px",
+                fontSize: "clamp(16px, 15.02px + 0.262vw, 20px)",
                 transition: "opacity 0.2s ease",
               }}
               onMouseEnter={(e) =>
@@ -144,16 +140,15 @@ export default function Footer() {
 
           {/* Right — Nav Links (2 columns) */}
           <div
-            className="grid grid-cols-2 gap-x-12 gap-y-4"
-            style={{ justifySelf: "end" }}
+            className="grid grid-cols-2 gap-x-[clamp(32px,28.08px_+_1.046vw,48px)] gap-y-4 lg:justify-self-end"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 style={{
-                  fontSize: "20px",
-                  lineHeight: "28px",
+                  fontSize: "clamp(16px, 15.02px + 0.262vw, 20px)",
+                  lineHeight: "clamp(22px, 20.53px + 0.393vw, 28px)",
                   color: "#ffffff",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
@@ -178,14 +173,14 @@ export default function Footer() {
       <div
         className="w-full flex justify-center"
         style={{
-          paddingTop: "30px",
-          paddingBottom: "30px",
+          paddingTop: "clamp(20px, 17.55px + 0.654vw, 30px)",
+          paddingBottom: "clamp(20px, 17.55px + 0.654vw, 30px)",
         }}
       >
         <p
           style={{
-            fontSize: "18px",
-            lineHeight: "22px",
+            fontSize: "clamp(14px, 13.02px + 0.262vw, 18px)",
+            lineHeight: "clamp(18px, 17.02px + 0.262vw, 22px)",
             color: "#112931",
             letterSpacing: "0.04em",
           }}

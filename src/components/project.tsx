@@ -55,15 +55,15 @@ export const ProjectCard = forwardRef<HTMLAnchorElement, { project: ProjectCardD
     <Link
       href={`/projects/${project.slug}`}
       ref={ref}
-      className="relative flex flex-col p-6 bg-white border border-gray rounded-[2rem] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:bg-[#112931] transition-colors duration-300 group cursor-pointer text-decoration-none block"
+      className="relative flex flex-col p-[clamp(16px,14.04px_+_0.523vw,24px)] bg-white border border-gray rounded-[2rem] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:bg-[#112931] transition-colors duration-300 group cursor-pointer text-decoration-none block"
     >
       {/* Top Right Action Button */}
-      <div className="bg-[#122126] text-white p-6 rounded-full group-hover:bg-white group-hover:text-[#112931] transition-colors duration-300 z-10 max-w-[75px] ml-auto my-auto flex items-center justify-center">
+      <div className="bg-[#122126] text-white p-[clamp(16px,14.04px_+_0.523vw,24px)] rounded-full group-hover:bg-white group-hover:text-[#112931] transition-colors duration-300 z-10 max-w-[clamp(56px,51.34px_+_1.242vw,75px)] [&_svg]:size-[clamp(20px,18.53px_+_0.393vw,26px)] ml-auto my-auto flex items-center justify-center project-card-arrow">
         <ArrowUpRightIcon />
       </div>
 
       {/* Project Title */}
-      <h3 className="mt-2 mb-5 text-[61px] text-[#112931] group-hover:text-white transition-colors duration-300 text-center tracking-tight">
+      <h3 className="mt-2 mb-5 text-[clamp(30px,3.922vw_-_13.71px,61px)] leading-1.3 text-[#112931] group-hover:text-white transition-colors duration-300 text-center tracking-tight">
         {project.title}
       </h3>
 
@@ -77,7 +77,7 @@ export const ProjectCard = forwardRef<HTMLAnchorElement, { project: ProjectCardD
       </div>
 
       {/* Project Description */}
-      <p className="text-[20px] text-[#112931] group-hover:text-white transition-colors duration-300 text-center leading-relaxed px-4 mt-[50px] line-clamp-2">
+      <p className="text-[clamp(16px,6.38px_+_0.715vw,20px)] text-[#112931] group-hover:text-white transition-colors duration-300 text-center leading-relaxed px-4 mt-[clamp(24px,17.63px_+_1.7vw,50px)] line-clamp-2">
         {project.subtitle}
       </p>
     </Link>
@@ -106,68 +106,92 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useGSAP(() => {
-    for (let i = 0; i < visibleCount; i += 3) {
-      const leftCard = cardRefs.current[i];
-      const centerCard = cardRefs.current[i + 1];
-      const rightCard = cardRefs.current[i + 2];
+    const mm = gsap.matchMedia();
 
-      // Need at least left + center to animate; a row missing the right
-      // card (e.g. trailing row not divisible by 3) still fans out fine —
-      // just skip the right-card tween below.
-      if (!leftCard || !centerCard) continue;
+    // The fan-out stacks each row's outer cards behind its centre card, so it
+    // only works where a row really holds three cards (the xl grid).
+    mm.add("(min-width: 1280px)", () => {
+      for (let i = 0; i < visibleCount; i += 3) {
+        const leftCard = cardRefs.current[i];
+        const centerCard = cardRefs.current[i + 1];
+        const rightCard = cardRefs.current[i + 2];
 
-      // Measure the offset from the left card to center card so we know exactly how far to translate
-      const centerRect = centerCard.getBoundingClientRect();
+        // Need at least left + center to animate; a row missing the right
+        // card (e.g. trailing row not divisible by 3) still fans out fine —
+        // just skip the right-card tween below.
+        if (!leftCard || !centerCard) continue;
 
-      // How far left card needs to move RIGHT to land on center
-      const leftToCenter = centerRect.left;
-      // How far right card needs to move LEFT to land on center
-      const rightToCenter = centerRect.left * -1;
+        // Measure the offset from the left card to center card so we know exactly how far to translate
+        const centerRect = centerCard.getBoundingClientRect();
 
-      // 1. Initial State: All cards stacked on the center card position, rotated 35deg
-      gsap.set(centerCard, {
-        zIndex: 10,
-        rotation: -5.663,
-        transformOrigin: "bottom center",
-        position: "relative",
-      });
+        // How far left card needs to move RIGHT to land on center
+        const leftToCenter = centerRect.left;
+        // How far right card needs to move LEFT to land on center
+        const rightToCenter = centerRect.left * -1;
 
-      gsap.set(leftCard, {
-        zIndex: 5,
-        x: leftToCenter,
-        rotation: -5.663,
-        transformOrigin: "bottom center",
-        position: "relative",
-        opacity: 0
-      });
+        // 1. Initial State: All cards stacked on the center card position, rotated 35deg
+        gsap.set(centerCard, {
+          zIndex: 10,
+          rotation: -5.663,
+          transformOrigin: "bottom center",
+          position: "relative",
+        });
 
-      if (rightCard) {
-        gsap.set(rightCard, {
+        gsap.set(leftCard, {
           zIndex: 5,
-          x: rightToCenter,
+          x: leftToCenter,
           rotation: -5.663,
           transformOrigin: "bottom center",
           position: "relative",
           opacity: 0
         });
-      }
 
-      // 2. ScrollTrigger timeline: fan out cards to their natural grid positions
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: centerCard,
-          start: "top 40%",
-          toggleActions: "play none none reverse",
+        if (rightCard) {
+          gsap.set(rightCard, {
+            zIndex: 5,
+            x: rightToCenter,
+            rotation: -5.663,
+            transformOrigin: "bottom center",
+            position: "relative",
+            opacity: 0
+          });
         }
-      });
 
-      tl.to(leftCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0)
-        .to(centerCard, { rotation: 0, zIndex: 5, duration: 1.2, ease: "power3.out" }, 0);
+        // 2. ScrollTrigger timeline: fan out cards to their natural grid positions
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: centerCard,
+            start: "top 40%",
+            toggleActions: "play none none reverse",
+          }
+        });
 
-      if (rightCard) {
-        tl.to(rightCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0);
+        tl.to(leftCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0)
+          .to(centerCard, { rotation: 0, zIndex: 5, duration: 1.2, ease: "power3.out" }, 0);
+
+        if (rightCard) {
+          tl.to(rightCard, { x: 0, rotation: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, 0);
+        }
       }
-    }
+    });
+
+    // One or two cards per row: each card simply rises in as it is reached.
+    mm.add("(max-width: 1279.98px)", () => {
+      cardRefs.current.slice(0, visibleCount).forEach((card) => {
+        if (!card) return;
+        gsap.from(card, {
+          y: 60,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    });
   }, { dependencies: [visibleCount], scope: sectionRef });
   // Re-run animation logic whenever visibleCount changes so newly loaded cards get animated!
 
@@ -183,15 +207,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   };
 
   return (
-    <section ref={sectionRef} className="w-full min-h-screen py-24 px-[85px] bg-white flex flex-col items-center rounded-t-[20px]">
+    <section ref={sectionRef} className="w-full min-h-screen py-[clamp(56px,46.19px_+_2.615vw,96px)] px-(--gutter) bg-white flex flex-col items-center rounded-t-[20px]">
       <div className="w-full">
 
         {/* Header Section */}
-        <div className="relative w-full flex justify-center items-center mb-16">
-          <span className="absolute left-0 text-[#86A3AC] text-[36px] hidden md:block">
+        <div className="relative w-full flex justify-center items-center mb-[clamp(32px,24.16px_+_2.092vw,64px)]">
+          <span className="absolute left-0 text-[#86A3AC] text-(length:--fs-eyebrow) hidden lg:block">
             {tagline}
           </span>
-          <h2 className="text-[96px] leading-[88px] text-[#112931] whitespace-pre-line">
+          <h2 className="text-(length:--fs-display) leading-(--lh-display) text-[#112931] whitespace-pre-line text-center">
             {heading}
           </h2>
         </div>
@@ -199,7 +223,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         {/* Projects Grid */}
         {/* overflow-hidden on a parent container ensures the fanning cards don't create horizontal scrollbars temporarily */}
         <div className="overflow-hidden py-8 px-4 -mx-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[38px] gap-x-[28px] mb-20" style={{ perspective: '1200px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[clamp(20px,15.59px_+_1.177vw,38px)] gap-x-[clamp(16px,13.06px_+_0.785vw,28px)] mb-[clamp(40px,30.19px_+_2.615vw,80px)]" style={{ perspective: '1200px' }}>
             {projects.slice(0, visibleCount).map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -217,7 +241,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <a
                 href="#"
                 onClick={handleLoadMore}
-                className="capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-[#112931] text-center"
+                className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) underline decoration-[1px] text-[#112931] text-center"
               >
                 load more projects
               </a>

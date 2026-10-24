@@ -77,7 +77,7 @@ export default function BeforeAfter({
 
   return (
     <section
-      className="relative w-full overflow-hidden flex flex-col gap-15 py-[120px]"
+      className="relative w-full overflow-hidden flex flex-col gap-[clamp(32px,25.13px_+_1.831vw,60px)] py-(--section-y)"
       style={{
         background: "#ffffff",
       }}
@@ -85,9 +85,9 @@ export default function BeforeAfter({
       {/* Top dark section with heading */}
       <div className="w-full flex justify-center">
         <h2
-          className="text-[#112931] text-center"
+          className="text-[#112931] text-center max-lg:px-(--gutter)"
           style={{
-            fontSize: "96px",
+            fontSize: "var(--fs-display)",
             lineHeight: 1.2,
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(-20px)",
@@ -99,7 +99,7 @@ export default function BeforeAfter({
       </div>
       {/* Slider container — overlapping both sections */}
       <div
-        className="w-full px-8 md:px-16 lg:px-24"
+        className="w-full px-[clamp(20px,1.37px_+_4.968vw,96px)]"
         style={{
           maxWidth: "100%",
           opacity: mounted ? 1 : 0,
@@ -108,9 +108,8 @@ export default function BeforeAfter({
       >
         <div
           ref={containerRef}
-          className="relative w-full overflow-hidden select-none"
+          className="relative w-full overflow-hidden select-none h-[80vh] max-md:h-[min(80vh,110vw)]"
           style={{
-            height: "80vh",
             borderRadius: "12px",
             cursor: isDragging ? "grabbing" : "grab",
           }}

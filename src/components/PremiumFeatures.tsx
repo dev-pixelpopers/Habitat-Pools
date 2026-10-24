@@ -45,7 +45,7 @@ export default function PremiumFeatures({
     return (
         <section
             ref={sectionRef}
-            className="relative w-full flex flex-col justify-center px-8 py-16 md:py-20 md:px-16 lg:px-24"
+            className="relative w-full flex flex-col justify-center px-[clamp(20px,1.37px_+_4.968vw,96px)] py-[clamp(56px,50.12px_+_1.569vw,80px)]"
             style={{
                 background: "#112931",
                 fontFamily: "'Nohemi', sans-serif",
@@ -53,7 +53,7 @@ export default function PremiumFeatures({
         >
             {/* Header */}
             <div
-                className="relative mb-7 md:mb-7 flex flex-col lg:flex-row justify-start lg:gap-[300px]"
+                className="relative mb-7 md:mb-7 flex flex-col lg:flex-row justify-start lg:gap-[clamp(40px,16.994vw_-_23.73px,300px)]"
                 style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? "translateY(0)" : "translateY(-16px)",
@@ -62,24 +62,20 @@ export default function PremiumFeatures({
             >
                 {/* Feature label */}
                 <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[36px] text-[#86A3AC] hidden lg:block tracking-wide">
+                    <span className="text-(length:--fs-eyebrow) text-[#86A3AC] hidden lg:block tracking-wide">
                        {tagline}
                     </span>
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-[96px] leading-[1.1] max-w-[60%] text-white whitespace-pre-line">
+                <h2 className="text-(length:--fs-display) leading-[1.1] max-w-[60%] max-lg:max-w-none text-white whitespace-pre-line">
                     {heading}
                 </h2>
             </div>
 
-            {/* Cards container */}
-            <div
-                className="relative flex overflow-hidden"
-                style={{
-                    height: "clamp(360px, 48vw, 540px)",
-                }}
-            >
+            {/* Cards container: a row on desktop, a vertical accordion below
+                1024, where four side-by-side cards get too narrow for labels */}
+            <div className="relative flex overflow-hidden h-[clamp(360px,48vw,540px)] max-lg:flex-col max-lg:h-[clamp(480px,140vw,640px)]">
                 {features.map((feature, index) => {
                     const isActive = activeIndex === index;
 
@@ -87,6 +83,8 @@ export default function PremiumFeatures({
                         <div
                             key={`${feature.label}-${index}`}
                             onMouseEnter={() => setActiveIndex(index)}
+                            // Touch screens have no hover, so a tap opens the card.
+                            onClick={() => setActiveIndex(index)}
                             className="relative overflow-hidden cursor-pointer"
                             style={{
                                 flex: isActive ? "2.5 1 0%" : "1 1 0%",
@@ -131,14 +129,14 @@ export default function PremiumFeatures({
 
                             {/* Label */}
                             <div
-                                className="absolute bottom-0 left-0 right-0 flex items-end"
+                                className={`absolute bottom-0 left-0 right-0 flex items-end ${isActive ? "" : "lg:top-0 lg:justify-center"}`}
                                 style={{
                                     padding: isActive ? "32px 28px" : "24px 20px",
                                     transition: "padding 0.5s ease",
                                 }}
                             >
                                 <h3
-                                    className="text-white font-normal leading-tight"
+                                    className={`text-white font-normal leading-tight ${isActive ? "" : "lg:[writing-mode:vertical-rl] lg:rotate-180 lg:max-h-full"}`}
                                     style={{
                                         fontSize: isActive
                                             ? "clamp(28px, 3vw, 40px)"

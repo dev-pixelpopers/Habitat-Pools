@@ -163,6 +163,20 @@ export default function ProjectGallery({
         setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
     }, [lightboxIndex, images.length]);
 
+    // Touch: a horizontal swipe of 50px or more steps through the photos.
+    const touchStartX = useRef<number | null>(null);
+    const onTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+    const onTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+        if (Math.abs(dx) < 50) return;
+        if (dx < 0) goNext();
+        else goPrev();
+    };
+
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
             if (e.key === "Escape") closeLightbox();
@@ -219,25 +233,19 @@ export default function ProjectGallery({
     return (
         <>
             {/* ── GALLERY SECTION ── */}
-            <section className="w-full py-[120px] px-[85px] bg-[#112931]">
+            <section className="w-full py-(--section-y) px-(--gutter) bg-[#112931]">
                 <div className="max-w-[1440px] mx-auto">
 
                     {/* Section header */}
-                    <div className="mb-16">
-                        <span className="text-[#86A3AC] text-[36px] block mb-2">{tagline}</span>
-                        <h2 className="text-[#ffffff] text-[66px] leading-[72px] capitalize whitespace-pre-line">
+                    <div className="mb-[clamp(32px,24.16px_+_2.092vw,64px)]">
+                        <span className="text-[#86A3AC] text-(length:--fs-eyebrow) block mb-2">{tagline}</span>
+                        <h2 className="text-[#ffffff] text-(length:--fs-h2) leading-(--lh-h2) capitalize whitespace-pre-line">
                             {heading}
                         </h2>
                     </div>
 
                     {/* Masonry-style CSS Grid */}
-                    <div
-                        className="grid gap-4 md:gap-6"
-                        style={{
-                            gridTemplateColumns: "repeat(3, 1fr)",
-                            gridAutoRows: "300px",
-                        }}
-                    >
+                    <div className="grid grid-cols-3 auto-rows-[clamp(200px,175.49px_+_6.536vw,300px)] gap-[clamp(16px,14.04px_+_0.523vw,24px)] max-md:grid-cols-1 max-md:[&>*]:col-span-1! max-md:[&>*]:row-span-1!">
                         {visibleCells.map((cell, idx) => {
                             const { colSpan, rowSpan } = spanFor(idx, visibleCells.length);
 
@@ -330,6 +338,8 @@ export default function ProjectGallery({
                         transition: "opacity 0.3s ease",
                     }}
                     onClick={closeLightbox}
+                    onTouchStart={onTouchStart}
+                    onTouchEnd={onTouchEnd}
                 >
                     {/* Counter */}
                     <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
@@ -394,7 +404,7 @@ export default function ProjectGallery({
 
                     {/* Thumbnail strip */}
                     <div
-                        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 items-center overflow-hidden"
+                        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 items-center overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                         style={{ maxWidth: "80vw" }}
                         onClick={(e) => e.stopPropagation()}
                     >

@@ -46,6 +46,33 @@
   --color-neutral-300: #d9d9d9;
 }
 
+/*
+ * Fluid size tokens. 1920 is the approved design: every value hits its 1920
+ * size exactly and scales linearly down to its phone size at 375px.
+ * clamp(min, a + b·vw, max) — b is solved against 1905px, the width a 1920
+ * window has once its 15px scrollbar is taken off, and rounded up so 1920
+ * lands on max (clamp caps it). Recompute both ends when changing a value;
+ * one-off sizes inside components use the same formula inline.
+ */
+:root {
+  --gutter: clamp(20px,4.07px + 4.249vw,85px);
+  --section-y: clamp(64px,50.27px + 3.661vw,120px);
+  --fs-display: clamp(40px,6.172vw - 21.58px,96px);
+  --lh-display: clamp(37px,5.658vw - 19.78px,88px);
+  --fs-eyebrow: clamp(22px,18.57px + 0.916vw,36px);
+  --lh-eyebrow: clamp(24px,20.57px + 0.916vw,38px);
+  --fs-h2: clamp(32px,4.243vw - 14.83px,66px);
+  --lh-h2: clamp(36px,4.629vw - 16.18px,72px);
+  --fs-body-xl: clamp(17px,7.66px + 0.858vw,24px);
+  --lh-body-xl: clamp(28px,14.05px + 1.572vw,44px);
+  --btn-fs: clamp(17px,15.77px + 0.327vw,22px);
+  --btn-lh: clamp(24px,22.53px + 0.393vw,30px);
+  --btn-py: clamp(14px,12.53px + 0.393vw,20px);
+  --btn-px: clamp(32px,24.16px + 2.092vw,64px);
+  --btn-before-h: clamp(36px,32.57px + 0.916vw,50px);
+  --btn-after-h: clamp(44px,40.08px + 1.046vw,60px);
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
@@ -73,7 +100,7 @@ body {
 .btn-all a:before,
 .btn-all button:before {
   content: '';
-  height: 50px;
+  height: var(--btn-before-h);
   position: absolute;
   border-left: 1px solid #fff;
   left: 0%;
@@ -92,7 +119,7 @@ body {
   content: '';
   position: absolute;
   border-right: 1px solid #fff;
-  height: 60px;
+  height: var(--btn-after-h);
   right: 0px;
   border-bottom: 1px solid #fff;
   width: 95%;
@@ -105,4 +132,134 @@ body {
 .btn-dark button:before,
 .btn-dark button:after {
   border-color: #112931;
+}
+
+
+@media (max-width: 1600px) and (min-width: 1442px) {
+
+  .abt-second-col {
+    width: 40%;
+}
+
+.abt-third-col {
+    width: 48%;
+}
+
+}
+
+@media (max-width: 1441px) and (min-width: 1368px) {
+
+ .abt-second-col {
+    width: 47% !important;
+}
+
+.abt-third-col {
+    width: 41% !important;
+}
+
+.review-parent {
+    max-width: 85%;
+}
+
+.service-cards {
+  gap: 80px;
+}
+
+.services-left-col {
+  width: 55%;
+}
+
+.services-right-col {
+  width: 45%;
+}
+
+}
+
+/* @media (max-width: 1400px) and (min-width: 1368px) {
+
+    .abt-second-col {
+    width: 50%;
+}
+
+.abt-third-col {
+    width: 38%;
+}
+
+
+} */
+
+@media (max-width: 1367px) and (min-width: 1299px) {
+  
+ .abt-second-col {
+    width: 30%;
+}
+
+.abt-third-col {
+    width: 58%;
+}
+.service-cards {
+  gap: 60px;
+}
+
+.review-parent {
+    max-width: 85%;
+}
+
+}
+
+
+@media (max-width: 1280px) and (min-width: 1025px) {
+   .abt-second-col {
+    width: 33%;
+}
+
+.abt-second-col img {
+  max-height: 100%;
+}
+
+.abt-third-col {
+    width: 55%;
+    padding-top:8%;
+    justify-content: center;
+}
+
+.review-parent {
+    max-width: 85%;
+}
+
+}
+
+@media (max-width: 1025px) and (min-width: 769px) {
+
+  .abt-parent {
+    padding-inline: 5vw;
+  }
+
+  .abt-second-col {
+    width: 28%;
+}
+
+.abt-third-col {
+    width: 60%;
+}
+
+}
+
+/* for1440pxAndBelow */
+@media (max-width: 1441px) {
+
+  .project-card-arrow {
+    padding: 2%;
+}
+
+.review-con {
+  gap:3vw;
+}
+
+.rev-prev img, .rev-next img {
+    height: 10vw;
+    width: 10vw;
+}
+
+
 }

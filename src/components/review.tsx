@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -48,18 +48,25 @@ const StarIcon = () => (
   </svg>
 );
 
+// One slider step: a card's width plus the gap between cards.
+const cardStep = (el: HTMLElement) => {
+  const card = el.firstElementChild as HTMLElement | null;
+  if (!card) return 0;
+  return card.offsetWidth + (parseFloat(getComputedStyle(el).columnGap) || 0);
+};
+
 // --- Sub-components ---
 const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
   return (
-    <div className="bg-white rounded-[1.1rem] flex flex-col gap-30 flex-shrink-0 w-full lg:w-[100%] snap-center shadow-2xl pt-[50px] pb-[30px] px-[30px]">
+    <div className="bg-white rounded-[1.1rem] flex flex-col gap-[clamp(24px,0.47px_+_6.275vw,120px)] flex-shrink-0 w-full lg:w-[100%] snap-center shadow-2xl pt-[clamp(28px,22.61px_+_1.438vw,50px)] pb-[clamp(20px,17.55px_+_0.654vw,30px)] px-[clamp(20px,17.55px_+_0.654vw,30px)] review-card">
 
       {/* Header: Quote Icon + Name & Stars */}
       <div className="flex items-center gap-5">
         <div className="flex-shrink-0">
-          <img src="/images/review-quote.png" width="60px" height="60px" />
+          <img src="/images/review-quote.png" alt="" className="w-[clamp(44px,40.08px_+_1.046vw,60px)] h-auto" />
         </div>
         <div className="flex flex-col">
-          <h4 className="text-[22px] text-black leading-tight">
+          <h4 className="text-[clamp(18px,17.02px_+_0.262vw,22px)] text-black leading-tight">
             {review.name}
           </h4>
           <div className="flex items-center gap-0 mt-1">
@@ -71,7 +78,7 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
       </div>
 
       {/* Review Text */}
-      <p className="text-[#000000] text-[18px] leading-[32px] font-normal">
+      <p className="text-[#000000] text-[clamp(16px,15.51px_+_0.131vw,18px)] leading-[clamp(26px,24.53px_+_0.393vw,32px)] font-normal">
         {review.text}
       </p>
     </div>
@@ -115,17 +122,49 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
   const reviewItems = reviews?.length ? reviews : fallbackReviews;
 
   // --- Scroll Logic ---
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
-    }
+  // The row scrolls natively, so touch devices swipe it (snapping card to
+  // card). Arrows dim when there is nothing further to slide to in their
+  // direction; the dots below 1280 show which review is in view.
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const update = () => {
+      setCanPrev(el.scrollLeft > 2);
+      setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+      const step = cardStep(el);
+      if (step) setActiveIndex(Math.round(el.scrollLeft / step));
+    };
+    el.addEventListener("scroll", update, { passive: true });
+    // Card widths change with the viewport, and so does whether there is
+    // anything left to scroll to. The observer also fires once on observe,
+    // which sets the initial state.
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [reviewItems.length]);
+
+  // One card per click.
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: direction * cardStep(el), behavior: "smooth" });
   };
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
-    }
+  const scrollToCard = (index: number) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.scrollTo({ left: index * cardStep(el), behavior: "smooth" });
   };
+
+  const scrollLeft = () => scrollByCard(-1);
+  const scrollRight = () => scrollByCard(1);
 
   // --- GSAP: Animate background image from bottom + scale up ---
   useGSAP(() => {
@@ -158,7 +197,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
     // Section Background setup directly on the section tag
     <section
       ref={sectionRef}
-      className="relative w-full flex flex-col justify-center pt-[0px] pb-[150px] px-[95px] pt-[40px] overflow-hidden"
+      className="relative w-full flex flex-col justify-center pb-[clamp(72px,52.88px_+_5.099vw,150px)] px-[clamp(20px,1.62px_+_4.902vw,95px)] pt-[clamp(24px,20.08px_+_1.046vw,40px)] overflow-hidden"
     >
       {/* Absolute Background Image — animated from bottom with scale */}
       <div className="absolute inset-0">
@@ -176,25 +215,27 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
         />
       </div>
       {/* Main Content Container */}
-      <div className="relative z-10 w-full flex flex-col gap-[150px]">
+      <div className="review-con relative z-10 w-full flex flex-col gap-[clamp(48px,23px_+_6.667vw,150px)]">
 
         {/* Header Section */}
         <div className="w-full relative">
-          <span className="absolute left-0 top-20 text-[#86A3AC] text-[36px]">
+          <span className="absolute left-0 top-[38%] text-[#86A3AC] text-(length:--fs-eyebrow) max-lg:static max-lg:block max-lg:mb-3">
             {subtitle}
           </span>
-          <h2 className="text-[96px] leading-[1.1] tracking-tight max-w-[900px] m-auto whitespace-pre-line">
+          <h2 className="text-(length:--fs-display) leading-[1.1] tracking-tight max-w-[clamp(300px,152.94px_+_39.216vw,900px)] m-auto whitespace-pre-line max-lg:max-w-none max-lg:m-0">
             {heading}
           </h2>
         </div>
 
         {/* Carousel & Cards Section */}
-        <div className="relative flex items-center justify-center w-full">
+        <div className="relative flex items-center justify-center w-full max-xl:flex-col">
 
           {/* Left Arrow */}
           <button
             onClick={scrollLeft}
-            className="hidden xl:flex absolute -left-4 2xl:-left-12 z-20 w-[271px] h-[271px] items-center justify-center text-white cursor-pointer"
+            disabled={!canPrev}
+            aria-label="Previous review"
+            className="hidden xl:flex absolute -left-4 2xl:-left-12 z-20 w-[clamp(140px,107.89px_+_8.563vw,271px)] h-[clamp(140px,107.89px_+_8.563vw,271px)] items-center justify-center text-white cursor-pointer transition-opacity duration-300 disabled:opacity-30 disabled:cursor-default rev-prev"
           >
             <img src="/images/arrow-left-new.svg" alt="" />
           </button>
@@ -202,18 +243,38 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
           {/* Cards Grid / Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 w-full max-w-[1300px] mx-auto z-10 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex gap-6 w-full max-w-[1300px] mx-auto z-10 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] review-parent"
           >
             {reviewItems.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
 
+          {/* Dots: below 1280, where the arrows are hidden */}
+          {reviewItems.length > 1 && (
+            <div className="xl:hidden flex items-center justify-center gap-2.5 mt-[clamp(20px,17.06px_+_0.785vw,32px)]">
+              {reviewItems.map((review, index) => (
+                <button
+                  key={review.id}
+                  type="button"
+                  onClick={() => scrollToCard(index)}
+                  aria-label={`Go to review ${index + 1}`}
+                  aria-current={index === activeIndex}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === activeIndex ? "w-7 bg-white" : "w-2.5 bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+
 
           {/* Right Arrow */}
           <button
             onClick={scrollRight}
-            className="hidden xl:flex absolute -right-4 2xl:-right-12 z-20 w-[271px] h-[271px] items-center justify-center text-white cursor-pointer"
+            disabled={!canNext}
+            aria-label="Next review"
+            className="hidden xl:flex absolute -right-4 2xl:-right-12 z-20 w-[clamp(140px,107.89px_+_8.563vw,271px)] h-[clamp(140px,107.89px_+_8.563vw,271px)] items-center justify-center text-white cursor-pointer transition-opacity duration-300 disabled:opacity-30 disabled:cursor-default rev-next "
           >
             {/* <ArrowRightIcon /> */}
             <img src="/images/arrow-right-new.svg" alt="" />

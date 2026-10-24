@@ -45,24 +45,24 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 w-full px-[95px] py-[200px] flex gap-10">
+        <div className="service-cards relative z-10 w-full px-[clamp(20px,1.62px_+_4.902vw,95px)] py-[clamp(48px,10.74px_+_9.935vw,200px)] flex gap-[clamp(20px,15.1px_+_1.308vw,40px)] max-lg:flex-col max-lg:justify-end">
 
           {/* Left Column: Main Title */}
-          <div className="flex w-[65%] pt-[60px]">
-            <h2 className="text-white text-[66px] leading-[62px] tracking-tight uppercase">
+          <div className="flex w-[65%] pt-[clamp(0px,3.922vw_-_14.71px,60px)] max-lg:w-full services-left-col">
+            <h2 className="text-white text-[clamp(30px,4.243vw_-_14.83px,66px)] leading-[clamp(32px,3.986vw_-_13.93px,62px)] tracking-tight uppercase">
               {data.title}
             </h2>
           </div>
 
           {/* Right Column: Description & Action */}
-          <div className="flex flex-col w-[35%]">
-            <p className="text-white text-[24px] leading-[36px] font-normal">
+          <div className="flex flex-col w-[35%] max-lg:w-full services-right-col">
+            <p className="text-white text-(length:--fs-body-xl) leading-[clamp(26px,11.5px_+_1.286vw,36px)] font-normal">
               {data.description}
             </p>
 
             {/* Outlined Button */}
-            <div className='btn-all mt-[30px] relative'>
-              <a href={data.href} className='capitalize relative text-[22px] py-[20px] px-[64px] leading-[30px] underline decoration-[1px] text-white text-center cursor-pointer'>{data.buttonText}</a>
+            <div className='btn-all mt-[clamp(20px,17.55px_+_0.654vw,30px)] relative'>
+              <a href={data.href} className='capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) underline decoration-[1px] text-white text-center cursor-pointer'>{data.buttonText}</a>
             </div>
           </div>
 
