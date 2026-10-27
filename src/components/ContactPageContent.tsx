@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { ContactContent } from "@/lib/contact";
 import { definedOnly, telHref } from "@/lib/utils";
+import { sendContact } from "@/lib/send-contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,7 +71,9 @@ export default function ContactPageContent({
     service: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [company, setCompany] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
 
   const heroRef = useRef<HTMLDivElement>(null);
@@ -124,11 +127,20 @@ export default function ContactPageContent({
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    if (status === "sending") return;
+    setStatus("sending");
+    setError(null);
+    try {
+      await sendContact({ ...formData, company });
+      setStatus("sent");
+      setTimeout(() => setStatus("idle"), 3000);
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (err) {
+      setStatus("idle");
+      setError(err instanceof Error ? err.message : "Sorry, your message could not be sent.");
+    }
   };
 
   /* Shared input style */
@@ -360,20 +372,40 @@ export default function ContactPageContent({
                 />
               </div>
 
+              {/* Honeypot — hidden from visitors, catches bots */}
+              <input
+                type="text"
+                name="company"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+              />
+
               {/* Submit */}
               <div className="btn-all btn-dark mt-[20px] relative">
                 <button
                   id="contact-submit"
                   type="submit"
-                  className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) text-black text-center cursor-pointer"
+                  disabled={status === "sending"}
+                  className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) text-black text-center cursor-pointer disabled:cursor-wait disabled:opacity-60"
                   style={{ fontFamily: "'Nohemi', sans-serif", background: "transparent", border: "none" }}
                 >
                   <div className="flex items-center justify-center gap-2">
                     <img className="size-[clamp(28px,26.04px_+_0.523vw,36px)]" src="/images/arrow-right.svg" alt="" />
-                    <span>{submitted ? "Message Sent!" : "Submit"}</span>
+                    <span>
+                      {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent!" : "Submit"}
+                    </span>
                   </div>
                 </button>
               </div>
+              {error && (
+                <p role="alert" style={{ color: "#c0392b" }}>
+                  {error}
+                </p>
+              )}
             </form>
           </div>
         </div>

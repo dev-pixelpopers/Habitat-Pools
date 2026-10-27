@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { telHref } from "@/lib/utils";
+import { sendContact } from "@/lib/send-contact";
 
 interface GetInTouchProps {
   subHeading?: string;
@@ -28,7 +29,9 @@ export default function GetInTouch({
     phone: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [company, setCompany] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
 
   const handleChange = (
@@ -37,11 +40,20 @@ export default function GetInTouch({
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    if (status === "sending") return;
+    setStatus("sending");
+    setError(null);
+    try {
+      await sendContact({ ...formData, company });
+      setStatus("sent");
+      setTimeout(() => setStatus("idle"), 3000);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (err) {
+      setStatus("idle");
+      setError(err instanceof Error ? err.message : "Sorry, your message could not be sent.");
+    }
   };
 
   return (
@@ -296,22 +308,40 @@ export default function GetInTouch({
               />
             </div>
 
+            {/* Honeypot — hidden from visitors, catches bots */}
+            <input
+              type="text"
+              name="company"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+            />
+
             {/* Submit button — consistent btn-all style */}
             <div className="btn-all btn-dark mt-[20px] relative">
               <button
                 id="git-submit"
                 type="submit"
-                className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) text-black text-center "
+                disabled={status === "sending"}
+                className="capitalize relative text-(length:--btn-fs) py-(--btn-py) px-(--btn-px) leading-(--btn-lh) text-black text-center disabled:cursor-wait disabled:opacity-60"
                 style={{ fontFamily: "'Nohemi', sans-serif" }}
               >
                 <div className="flex items-center justify-center gap-2">
                   <img className="size-[clamp(28px,26.04px_+_0.523vw,36px)]" src="/images/arrow-right.svg" alt="arrow-right" />
                   <span>
-                    {submitted ? "Message Sent!" : "Submit"}
+                    {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent!" : "Submit"}
                   </span>
                 </div>
               </button>
             </div>
+            {error && (
+              <p role="alert" style={{ color: "#c0392b" }}>
+                {error}
+              </p>
+            )}
           </form>
         </div>
       </div>
