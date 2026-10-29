@@ -58,8 +58,8 @@ export default function HomeHero({
         <source src={videoSrc} type="video/webm" />
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      {/* Overlay
+      <div className="absolute inset-0 bg-black/50"></div> */}
 
       {/* Content */}
       <div ref={containerRef} className="relative z-10 flex items-end translate-y-100">
