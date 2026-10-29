@@ -12,6 +12,10 @@ const nohemi = Outfit({
 export const metadata: Metadata = {
   title: "Habitat Pools & Landscapes",
   description: "Luxury Pools & Landscapes",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({

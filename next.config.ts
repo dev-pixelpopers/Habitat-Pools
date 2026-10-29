@@ -13,6 +13,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Pre-launch: keep every response (pages, images, files) out of search
+  // engines. Remove together with `robots` in `src/app/layout.tsx` at launch.
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
