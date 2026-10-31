@@ -1,6 +1,15 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect, type CSSProperties } from "react";
+import { optimisedUrl } from "@/lib/image";
+
+/** Phone- and desktop-sized backgrounds, picked by the `md` breakpoint in CSS. */
+function backgroundVars(src: string) {
+  return {
+    "--bg-sm": `url(${optimisedUrl(src, 828)})`,
+    "--bg-lg": `url(${optimisedUrl(src, 1920)})`,
+  } as CSSProperties;
+}
 
 export default function BeforeAfter({
   beforeImage = "/images/before-pool.png",
@@ -118,9 +127,9 @@ export default function BeforeAfter({
         >
           {/* After image (full background) */}
           <div
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full bg-(image:--bg-sm) md:bg-(image:--bg-lg)"
             style={{
-              backgroundImage: `url(${afterImage})`,
+              ...backgroundVars(afterImage),
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -128,9 +137,9 @@ export default function BeforeAfter({
 
           {/* Before image (clipped by slider) */}
           <div
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full bg-(image:--bg-sm) md:bg-(image:--bg-lg)"
             style={{
-              backgroundImage: `url(${beforeImage})`,
+              ...backgroundVars(beforeImage),
               backgroundSize: "cover",
               backgroundPosition: "center",
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,

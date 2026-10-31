@@ -1,8 +1,8 @@
-"use client";
-
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+/** MIME type from the file extension — the CMS video is an .mp4, not WebM. */
+function videoType(src: string) {
+  const ext = src.split("?")[0].split(".").pop()?.toLowerCase();
+  return ext === "webm" ? "video/webm" : "video/mp4";
+}
 
 interface HomeHeroProps {
   heading?: string;
@@ -15,6 +15,10 @@ interface HomeHeroProps {
  * Home hero: the video expands from a circle to fill the viewport, then the
  * headline block slides up. Split out of the page so the page itself can stay
  * a server component and fetch CMS content.
+ *
+ * The intro is plain CSS (`.hero-intro-*` in globals.css) rather than GSAP so
+ * it starts on first paint instead of after hydration, and the video grows by
+ * `clip-path` over a full-size element so the expansion never shifts layout.
  */
 export default function HomeHero({
   heading = "Custom Pool Builders In Phoenix, Arizona",
@@ -22,47 +26,25 @@ export default function HomeHero({
   videoSrc = "/videos/HeroVideo.webm",
   posterSrc,
 }: HomeHeroProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    if (!videoRef.current || !containerRef.current) return;
-    const tl = gsap.timeline();
-    tl.to(videoRef.current, {
-      borderRadius: "0px",
-      width: "100%",
-      height: "100%",
-      top: 0,
-      left: 0,
-      duration: 1,
-      ease: "power3.out",
-    })
-    tl.to(containerRef.current, {
-      y: 0,
-      duration: 1.5,
-      ease: "power3.out",
-    }, ">")
-  }, { scope: videoRef })
-
   return (
     <section className="relative h-screen w-full overflow-hidden px-(--gutter) pb-[clamp(24px,17.63px_+_1.7vw,50px)] flex flex-col justify-end items-center">
       {/* Background Video */}
-      <video ref={videoRef}
+      <video
         autoPlay
         loop
         muted
         playsInline
         poster={posterSrc}
-        className="absolute w-[clamp(180px,129.51px_+_13.465vw,386px)] h-[clamp(178px,127.75px_+_13.399vw,383px)] object-cover rounded-[540px]"
+        className="hero-intro-video absolute inset-0 w-full h-full object-cover"
       >
-        <source src={videoSrc} type="video/webm" />
+        <source src={videoSrc} type={videoType(videoSrc)} />
       </video>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content */}
-      <div ref={containerRef} className="relative z-10 flex items-end translate-y-100">
+      <div className="hero-intro-content relative z-10 flex items-end">
         {/* Below 1280 the three columns stack (heading, then copy); the
             decorative arrow only has room alongside them on wide screens. */}
         <div className="flex flex-col items-start gap-6 xl:flex-row xl:items-center xl:gap-4 justify-center w-full">
@@ -76,7 +58,7 @@ export default function HomeHero({
           {/* Second Column */}
           <div className="hidden xl:flex justify-center xl:w-[20%]">
             <div className="w-[clamp(140px,71.61px_+_18.236vw,419px)]">
-              <img src="/images/arrow.png" alt="Arrow" className="w-full h-full object-cover" />
+              <img src="/images/arrow.png" alt="Arrow" width={419} height={181} className="w-full h-full object-cover" />
             </div>
           </div>
 

@@ -188,7 +188,7 @@ export default function ContactPageContent({
 
       {/* ── Contact Form Section ── */}
       <section
-        className="w-full flex items-center px-(--gutter) min-h-screen max-lg:min-h-0"
+        className="w-full flex items-center px-(--gutter) min-h-screen max-lg:min-h-0 overflow-x-clip"
         style={{
           background: "#ffffff",
           fontFamily: "'Nohemi', sans-serif",

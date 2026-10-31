@@ -316,14 +316,14 @@ export default function ServiceDetailTemplate({
       <section className="relative w-full bg-white flex items-center justify-center py-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,15.1px_+_1.308vw,40px)] z-50 overflow-hidden">
 
       {/* whyUsSection*/}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-center">
+      <div className="w-full grid grid-cols-1 min-[1025px]:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-stretch">
 
         {/* Left Column: Image */}
         <div className="w-full">
           <img
             src={service.whyUsdescription.whyImage}
             alt="Owners reviewing plans on site"
-            className="w-full h-auto object-cover shadow-2xl"
+            className="w-full h-[100%] object-cover object-center shadow-2xl"
           />
         </div>
 
@@ -361,19 +361,19 @@ export default function ServiceDetailTemplate({
     <section className="relative w-full bg-[#112931] flex items-center justify-center py-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,15.1px_+_1.308vw,40px)] z-50 overflow-hidden">
 
       {/* ourEasiness*/}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-center">
+      <div className="w-full grid grid-cols-1 min-[1025px]:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-stretch">
 
         {/* Left Column: Content (Right-aligned as per design) */}
         <div className="flex flex-col justify-center items-start text-left">
 
           {/* Heading */}
-          <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] lg:max-w-[70%]">
+          <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] 2xl:max-w-[70%]">
             {service.ourEasiness.easyTitle}
           </h2>
 
           {/* Description Paragraph */}
           <div className="text-white/90 text-(length:--fs-body-xl) leading-(--lh-body-xl) mb-[clamp(32px,26.12px_+_1.569vw,56px)] w-full">
-            <p className="lg:max-w-[70%]">{service.ourEasiness.easypara}</p>
+            <p className="2xl:max-w-[70%]">{service.ourEasiness.easypara}</p>
           
             {/* whyDescListItems */}
           <PillList
@@ -396,7 +396,7 @@ export default function ServiceDetailTemplate({
           <img
             src={service.ourEasiness.easyImage || service.whyUsdescription.whyImage}
             alt="Owners reviewing plans on site"
-            className="w-full h-auto object-cover shadow-2xl"
+            className="w-full h-[100%] object-cover object-center shadow-2xl"
           />
         </div>
       </div>

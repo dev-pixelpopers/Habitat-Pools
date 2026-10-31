@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { preload } from "react-dom";
 import "./globals.css";
 
 // Using Outfit as a placeholder for Nohemi since it's a premium local font.
@@ -7,6 +8,9 @@ import "./globals.css";
 const nohemi = Outfit({
   variable: "--font-nohemi",
   subsets: ["latin"],
+  // globals.css sets "Nohemi" on body and text elements, so Outfit is rarely
+  // painted — don't let it compete with the real font for early bandwidth.
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -23,6 +27,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The site font is otherwise only discovered once the CSS has loaded.
+  preload("/fonts/Nohemi-Regular.otf", {
+    as: "font",
+    type: "font/otf",
+    crossOrigin: "anonymous",
+  });
+
   return (
     <html
       lang="en"

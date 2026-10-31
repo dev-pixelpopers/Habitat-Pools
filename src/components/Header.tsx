@@ -95,6 +95,8 @@ export default function Header() {
             <Link href="/">
               <img
                 src="/images/logo-main.png"
+                width={1073}
+                height={244}
                 alt="HABITAT Pool & Landscape"
                 style={{
                   height: "clamp(28px, 20.65px + 1.961vw, 58px)",
@@ -179,6 +181,7 @@ export default function Header() {
       >
         <img
           src="/images/icons/phone.svg"
+          fetchPriority="high"
           alt=""
           style={{ width: "clamp(22px, 21.02px + 0.262vw, 26px)", height: "clamp(22px, 21.02px + 0.262vw, 26px)", filter: "brightness(0) invert(1)" }}
         />
@@ -214,6 +217,7 @@ export default function Header() {
       >
         <img
           src="/images/icons/get-in-touch.png"
+          fetchPriority="high"
           alt=""
           style={{ width: "clamp(22px, 21.02px + 0.262vw, 26px)", height: "clamp(22px, 21.02px + 0.262vw, 26px)", filter: "brightness(0) invert(1)" }}
         />
@@ -295,6 +299,8 @@ export default function Header() {
                 <Link href="/">
                   <img
                     src="/images/logo-main.png"
+                    width={1073}
+                    height={244}
                     alt="HABITAT Pool & Landscape"
                     style={{ height: "clamp(28px, 20.65px + 1.961vw, 58px)", width: "auto", display: "block" }}
                   />

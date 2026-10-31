@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
 
           {/* Center — Back To Top */}
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col place-self-start md:place-self-center items-center justify-center">
             <button
               onClick={scrollToTop}
               style={{

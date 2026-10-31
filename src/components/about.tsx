@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { responsiveSrc } from "@/lib/image";
 
 // Register ScrollTrigger so GSAP knows how to handle scroll events
 gsap.registerPlugin(ScrollTrigger);
@@ -86,7 +87,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         <div className="flex justify-center w-[53%] max-lg:w-full abt-second-col">
           <img
             ref={imageRef}
-            src={imageSrc}
+            {...responsiveSrc(imageSrc, "(max-width: 1023px) 100vw, 45vw")}
+            fetchPriority="low"
             alt="About"
             className="w-full rounded-[clamp(12px,10.04px_+_0.523vw,20px)] max-h-[900px] max-lg:max-h-none max-lg:aspect-[4/3] max-lg:object-cover"
           />

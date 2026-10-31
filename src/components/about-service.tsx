@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PillList from "./PillList";
+import { responsiveSrc } from "@/lib/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,14 +145,15 @@ export const AboutService: React.FC<AboutServiceProps> = ({
     <section ref={sectionRef} className="relative w-full bg-[#112931] flex items-center justify-center py-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,15.1px_+_1.308vw,40px)] z-50 overflow-hidden">
 
       {/* Max-width container to keep things constrained on very large screens */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-center">
+      <div className="w-full grid grid-cols-1 min-[1025px]:grid-cols-2 gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-stretch">
 
         {/* Left Column: Image */}
-        <div ref={leftColRef} className="w-full max-h-screen">
+        <div ref={leftColRef} className="w-full max-h-screen overflow-clip">
           <img
-            src={imageSrc}
+            {...responsiveSrc(imageSrc, "(max-width: 1023px) 100vw, 45vw")}
+            fetchPriority="low"
             alt="Owners reviewing plans on site"
-            className="w-full h-auto object-cover shadow-2xl"
+            className="w-full h-[100%] object-cover object-center shadow-2xl"
           />
         </div>
 

@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { allProjects } from "@/data/projects";
+import { responsiveSrc } from "@/lib/image";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -70,7 +71,8 @@ export const ProjectCard = forwardRef<HTMLAnchorElement, { project: ProjectCardD
       {/* Project Image */}
       <div className="w-full aspect-[4/3] mb-6 overflow-hidden rounded-[1.5rem] rotate-[-4deg]">
         <img
-          src={project.heroImage}
+          {...responsiveSrc(project.heroImage, "(max-width: 767px) 85vw, 40vw")}
+          fetchPriority="low"
           alt={`Preview of ${project.title} project`}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
         />

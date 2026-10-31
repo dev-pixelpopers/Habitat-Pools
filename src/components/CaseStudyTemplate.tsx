@@ -188,14 +188,14 @@ export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
       {/* ── SECTION 2 — PROJECT INTRO ── */}
       <section className="w-full py-(--section-y) px-(--gutter) bg-white flex flex-col gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-start overflow-x-hidden">
         <div ref={introLeftRef} className="flex gap-[clamp(20px,15.1px_+_1.308vw,40px)] max-lg:flex-col">
-          <div className="w-[50%] flex flex-col gap-4 max-lg:w-full">
+          <div className="flex flex-col gap-4 lg:flex-none lg:w-auto max-lg:w-full">
           <span className="text-[#86A3AC] text-(length:--fs-eyebrow) leading-(--lh-eyebrow) block mb-4">{content.intro.tagline}</span>
           <h2 className="text-[#112931] text-(length:--fs-h2) leading-(--lh-h2) capitalize whitespace-pre-line">
             {content.intro.heading}
           </h2>
 
           </div>
-          <p className="text-[#112931]/80 text-(length:--fs-body-xl) leading-(--lh-body-xl) capitalize w-[50%] max-lg:w-full">
+          <p className="text-[#112931]/80 text-(length:--fs-body-xl) leading-(--lh-body-xl) capitalize lg:flex-1 lg:min-w-0 max-lg:w-full">
             {content.intro.overview}
           </p>
         </div>

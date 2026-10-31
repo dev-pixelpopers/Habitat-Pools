@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { responsiveSrc } from "@/lib/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,7 +64,7 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
       {/* Header: Quote Icon + Name & Stars */}
       <div className="flex items-center gap-5">
         <div className="flex-shrink-0">
-          <img src="/images/review-quote.png" alt="" className="w-[clamp(44px,40.08px_+_1.046vw,60px)] h-auto" />
+          <img src="/images/review-quote.png" alt="" width={61} height={47} className="w-[clamp(44px,40.08px_+_1.046vw,60px)] h-auto" />
         </div>
         <div className="flex flex-col">
           <h4 className="text-[clamp(18px,17.02px_+_0.262vw,22px)] text-black leading-tight">
@@ -203,7 +204,8 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
       <div className="absolute inset-0">
         <img
           ref={bgImageRef}
-          src={backgroundImage}
+          {...responsiveSrc(backgroundImage, "100vw")}
+          fetchPriority="low"
           className="w-full h-full object-cover"
           alt=""
           style={{ transformOrigin: "center bottom" }}
@@ -219,7 +221,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
 
         {/* Header Section */}
         <div className="w-full relative">
-          <span className="absolute left-0 top-[38%] text-[#86A3AC] text-(length:--fs-eyebrow) max-lg:static max-lg:block max-lg:mb-3">
+          <span className="absolute left-0 top-[38%] text-[#bed0d5] text-(length:--fs-eyebrow) max-lg:static max-lg:block max-lg:mb-3">
             {subtitle}
           </span>
           <h2 className="text-(length:--fs-display) leading-[1.1] tracking-tight max-w-[clamp(300px,152.94px_+_39.216vw,900px)] m-auto whitespace-pre-line max-lg:max-w-none max-lg:m-0">

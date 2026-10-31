@@ -2,7 +2,7 @@ import React from "react";
 
 interface PillListProps {
   items: string[];
-  /** Columns from the `sm` breakpoint up. Narrow screens always use two. */
+  /** Columns from the `md` breakpoint up. Narrower screens stack one per row. */
   columns?: 2 | 3;
   /**
    * Which background the pills sit on. `dark` is the teal sections, `light`
@@ -24,6 +24,7 @@ const TONES = {
  * edge a right-aligned bulleted list produces. A count that does not divide
  * evenly would leave its last row against the left edge, so the stragglers are
  * nudged into the middle instead — centred when a single one is left over.
+ * Below `md` (767px and down) the pills stack in a single full-width column.
  */
 export const PillList: React.FC<PillListProps> = ({
   items,
@@ -33,9 +34,9 @@ export const PillList: React.FC<PillListProps> = ({
 }) => {
   if (items.length === 0) return null;
 
-  const gridCols = columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3";
+  const gridCols = columns === 2 ? "md:grid-cols-2" : "md:grid-cols-3";
 
-  // Trailing row at the `sm` breakpoint and up. On a three-column grid the row
+  // Trailing row at the `md` breakpoint and up. On a three-column grid the row
   // starts one cell in, which centres a lone pill and puts a pair in the middle
   // and right cells. A two-column grid has no middle cell, so a lone pill spans
   // the row and centres itself instead.
@@ -43,14 +44,11 @@ export const PillList: React.FC<PillListProps> = ({
   const trailingStart = remainder === 0 ? -1 : items.length - remainder;
   const trailingClasses =
     columns === 2
-      ? "sm:col-span-2 sm:justify-self-center"
-      : "sm:col-start-2";
-
-  // Trailing item in the two-column layout narrow screens always use.
-  const lastIsOrphanOnMobile = items.length % 2 === 1;
+      ? "md:col-span-2 md:justify-self-center"
+      : "md:col-start-2";
 
   return (
-    <ul className={`grid grid-cols-2 ${gridCols} gap-3 list-none p-0 ${className}`}>
+    <ul className={`grid grid-cols-1 ${gridCols} gap-3 list-none p-0 ${className}`}>
       {items.map((item, index) => {
         const classes = [
           "inline-flex items-center justify-center rounded-full border backdrop-blur-md",
@@ -59,22 +57,8 @@ export const PillList: React.FC<PillListProps> = ({
           TONES[tone],
         ];
 
-        // A lone pill on the narrow two-column grid spans the row and centres.
-        const isMobileOrphan = lastIsOrphanOnMobile && index === items.length - 1;
-        const isTrailing = index === trailingStart;
-        // Only reset that span at `sm` when the wider grid wants this pill in a
-        // single cell — otherwise the two rules would set conflicting values for
-        // the same properties and stylesheet order, not class order, would win.
-        const resetsAtSm = columns !== 2;
-
-        if (isMobileOrphan) {
-          classes.push("col-span-2 justify-self-center");
-        }
-        if (isTrailing) {
+        if (index === trailingStart) {
           classes.push(trailingClasses);
-        }
-        if (isMobileOrphan && resetsAtSm) {
-          classes.push("sm:col-span-1 sm:justify-self-stretch");
         }
 
         return (

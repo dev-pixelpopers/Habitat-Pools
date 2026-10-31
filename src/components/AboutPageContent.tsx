@@ -262,16 +262,16 @@ export default function AboutPageContent({
 
       {/* ── Owner Section ── */}
       <section
-        className="relative w-full bg-[#112931] flex flex-col items-center justify-center py-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,15.1px_+_1.308vw,40px)] overflow-hidden"
+        className="relative w-full bg-[#112931] flex flex-col items-center justify-center py-[clamp(56px,45.22px_+_2.876vw,100px)] px-[clamp(20px,15.1px_+_1.308vw,40px)] overflow-hidden gap-[clamp(32px,26.12px_+_1.569vw,56px)]"
         style={{ fontFamily: "'Nohemi', sans-serif" }}
       >
-        <div className="w-full flex flex-row gap-[clamp(40px,26.27px_+_3.661vw,96px)] items-start max-lg:flex-col">
+        <div className="w-full flex flex-row gap-[clamp(32px,26.12px_+_1.569vw,56px)] items-stretch max-lg:flex-col">
           {/* Left — Image */}
           <div ref={ownerLeftRef} className="w-[35%] max-lg:w-full">
             <img
               src={owner.image}
               alt="Owners reviewing plans on site"
-              className="w-full h-[70vh] object-cover shadow-2xl max-lg:h-[clamp(320px,90vw,640px)]"
+              className="w-full h-[100%] object-cover object-center shadow-2xl"
             />
           </div>
 
@@ -280,7 +280,7 @@ export default function AboutPageContent({
             <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] whitespace-pre-line">
               {owner.heading}
             </h2>
-            <p className="text-white/90 text-(length:--fs-body-xl) leading-(--lh-body-xl) mb-[clamp(32px,26.12px_+_1.569vw,56px)] capitalize whitespace-pre-line">
+            <p className="text-white/90 text-(length:--fs-body-xl) leading-(--lh-body-xl) capitalize whitespace-pre-line">
               {owner.paragraph}
             </p>
           </div>

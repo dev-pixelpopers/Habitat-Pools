@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { responsiveSrc } from "@/lib/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +37,8 @@ const StickySection = React.forwardRef<HTMLDivElement, { data: SectionProps; ind
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src={data.imageSrc}
+            {...responsiveSrc(data.imageSrc, "100vw")}
+            fetchPriority="low"
             alt={data.title}
             className="w-full h-full object-cover"
           />
