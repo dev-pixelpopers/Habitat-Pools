@@ -267,10 +267,8 @@ body {
 }
 
 
-/* @media (max-width: 1280px) and (min-width: 1025px) {
-   .abt-second-col {
-    width: 40%;
-} */
+@media (max-width: 1280px) and (min-width: 1025px) {
+   
 
 .abt-second-col img {
   max-height: 100%;
