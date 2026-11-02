@@ -111,8 +111,6 @@
   --btn-lh: clamp(24px,22.53px + 0.393vw,30px);
   --btn-py: clamp(14px,12.53px + 0.393vw,20px);
   --btn-px: clamp(32px,24.16px + 2.092vw,64px);
-  --btn-before-h: clamp(36px,32.57px + 0.916vw,50px);
-  --btn-after-h: clamp(44px,40.08px + 1.046vw,60px);
 }
 
 body {
@@ -139,10 +137,29 @@ body {
   cursor: pointer;
 }
 
+/*
+ * The label is an inline element by default, which drops its vertical padding
+ * and splits into overlapping fragments as soon as the text wraps — and the
+ * brackets below, being absolutely positioned, would measure only part of it.
+ * inline-block keeps a wrapped label as one padded box.
+ */
+.btn-all a,
+.btn-all button {
+  display: inline-block;
+  text-wrap: balance;
+}
+
+/*
+ * Two half-brackets that frame the label without closing around it. Their
+ * heights are a share of the box rather than fixed lengths, so a label that
+ * wraps to a second line keeps its corners instead of leaving the brackets
+ * floating short of each other. 70%/85% match the previous fixed sizes at a
+ * single line (52px tall on a phone, 70px at 1920) to within a percent.
+ */
 .btn-all a:before,
 .btn-all button:before {
   content: '';
-  height: var(--btn-before-h);
+  height: 70%;
   position: absolute;
   border-left: 1px solid #fff;
   left: 0%;
@@ -161,7 +178,7 @@ body {
   content: '';
   position: absolute;
   border-right: 1px solid #fff;
-  height: var(--btn-after-h);
+  height: 85%;
   right: 0px;
   border-bottom: 1px solid #fff;
   width: 95%;
@@ -233,7 +250,7 @@ body {
 @media (max-width: 1367px) and (min-width: 1299px) {
   
  .abt-second-col {
-    width: 30%;
+    width: 55%;
 }
 
 .abt-third-col {
@@ -250,10 +267,10 @@ body {
 }
 
 
-@media (max-width: 1280px) and (min-width: 1025px) {
+/* @media (max-width: 1280px) and (min-width: 1025px) {
    .abt-second-col {
-    width: 33%;
-}
+    width: 40%;
+} */
 
 .abt-second-col img {
   max-height: 100%;
@@ -278,7 +295,7 @@ body {
   }
 
   .abt-second-col {
-    width: 28%;
+    width: 50%;
 }
 
 .abt-third-col {

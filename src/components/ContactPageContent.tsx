@@ -4,8 +4,6 @@ import { useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import type { ContactContent } from "@/lib/contact";
 import { definedOnly, telHref } from "@/lib/utils";
 import { sendContact } from "@/lib/send-contact";
@@ -161,8 +159,6 @@ export default function ContactPageContent({
 
   return (
     <div className="app">
-      <Header />
-
       {/* ── Hero Section ── */}
       <section
         ref={heroRef}
@@ -410,8 +406,6 @@ export default function ContactPageContent({
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

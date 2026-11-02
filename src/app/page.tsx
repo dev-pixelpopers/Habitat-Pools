@@ -7,8 +7,6 @@ import ReviewsSection from "@/components/review";
 import PremiumFeatures from "@/components/PremiumFeatures";
 import BeforeAfter from "@/components/BeforeAfter";
 import GetInTouch from "@/components/GetInTouch";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import HomeHero from "@/components/HomeHero";
 import { getHomeContent } from "@/lib/home";
 import { WP_REVALIDATE, getPageBySlug, pageMetadata } from "@/lib/wp";
@@ -31,8 +29,6 @@ export default async function Home() {
 
   return (
     <div className="app">
-      <Header />
-
       <HomeHero
         heading={content.hero.heading}
         paragraph={content.hero.paragraph}
@@ -93,8 +89,6 @@ export default async function Home() {
         email={content.contact.email}
         text={content.contact.text}
       />
-
-      <Footer />
     </div>
   );
 }

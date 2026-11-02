@@ -72,7 +72,7 @@ export const AboutService: React.FC<AboutServiceProps> = ({
         const secondColumnItems = listItems.slice(midpoint);
 
         output.push(
-          <div key={`ul-${chunkIdx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-right mb-4 last:mb-0">
+          <div key={`ul-${chunkIdx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-right max-[1025px]:text-left mb-4 last:mb-0">
             <ul className="pl-5 space-y-1">
               {firstColumnItems.map((item, index) => (
                 <li key={`li-${chunkIdx}-${index}`}>- {item}</li>
@@ -158,7 +158,11 @@ export const AboutService: React.FC<AboutServiceProps> = ({
         </div>
 
         {/* Right Column: Content (Right-aligned as per design) */}
-        <div ref={rightColRef} className="flex flex-col justify-center items-end text-right max-lg:items-start max-lg:text-left">
+        {/* `max-[1025px]` (= the complement of `min-[1025px]`) rather than `max-lg`,
+            so the alignment flips at the same width the grid stops being
+            two columns. Tailwind compiles `max-*` to a negated min-width, so
+            `max-lg` would leave 1024px itself right-aligned while stacked. */}
+        <div ref={rightColRef} className="flex flex-col justify-center items-end text-right max-[1025px]:items-start max-[1025px]:text-left">
 
           {/* Heading */}
           <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] 2xl:max-w-[70%]">

@@ -221,7 +221,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
 
         {/* Header Section */}
         <div className="w-full relative">
-          <span className="absolute left-0 top-[38%] text-[#bed0d5] text-(length:--fs-eyebrow) max-lg:static max-lg:block max-lg:mb-3">
+          <span className="absolute left-0 top-[38%] text-white text-(length:--fs-eyebrow) max-lg:static max-lg:block max-lg:mb-3">
             {subtitle}
           </span>
           <h2 className="text-(length:--fs-display) leading-[1.1] tracking-tight max-w-[clamp(300px,152.94px_+_39.216vw,900px)] m-auto whitespace-pre-line max-lg:max-w-none max-lg:m-0">

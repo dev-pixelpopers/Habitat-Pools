@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 /**
  * Shown for any unmatched URL, and whenever a page calls `notFound()` — which
@@ -14,8 +12,6 @@ import Footer from "@/components/Footer";
 export default function NotFound() {
   return (
     <div className="app">
-      <Header />
-
       <section className="relative w-full bg-[#112931] px-6 sm:px-[85px] py-[100px] lg:py-[160px] overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
 
@@ -72,8 +68,6 @@ export default function NotFound() {
 
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

@@ -4,8 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import CTA from "@/components/CTA";
 import type {
@@ -245,8 +243,6 @@ export default function ServicesPageContent({
 
   return (
     <div className="app">
-      <Header />
-
       {/* ── Hero Section ── */}
       <section
         ref={heroRef}
@@ -431,8 +427,6 @@ export default function ServicesPageContent({
         buttonText={cta.buttonText}
         buttonLink="/contact"
       />
-
-      <Footer />
     </div>
   );
 }

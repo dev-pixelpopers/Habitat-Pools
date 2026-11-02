@@ -4,8 +4,6 @@ import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import BeforeAfter from "@/components/BeforeAfter";
 import { ProjectCard } from "@/components/project";
 import CTA from "@/components/CTA";
@@ -149,8 +147,6 @@ export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
 
   return (
     <div ref={containerRef} className="app bg-white" style={{ fontFamily: "'Nohemi', sans-serif" }}>
-      <Header />
-
       {/* ── SECTION 1 — HERO ── */}
       <section
         ref={heroRef}
@@ -485,8 +481,6 @@ export default function CaseStudyTemplate({ content }: CaseStudyTemplateProps) {
         buttonText={content.cta.buttonText}
         buttonLink="/contact"
       />
-
-      <Footer />
     </div>
   );
 }

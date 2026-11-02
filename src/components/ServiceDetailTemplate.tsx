@@ -4,8 +4,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import { ServiceDetail } from "@/data/services";
 import { ProjectCard, type ProjectCardData } from "@/components/project";
@@ -184,8 +182,6 @@ export default function ServiceDetailTemplate({
 
   return (
     <div ref={containerRef} className="app bg-white" style={{ fontFamily: "'Nohemi', sans-serif" }}>
-      <Header />
-
       <section
         ref={heroRef}
         className="relative w-full flex items-end overflow-hidden"
@@ -328,10 +324,14 @@ export default function ServiceDetailTemplate({
         </div>
 
         {/* Right Column: Content (Right-aligned as per design) */}
-        <div className="flex flex-col justify-center items-end text-right max-lg:items-start max-lg:text-left">
+        {/* `max-[1025px]` (= the complement of `min-[1025px]`) rather than `max-lg`,
+            so the alignment flips at the same width the grid stops being
+            two columns. Tailwind compiles `max-*` to a negated min-width, so
+            `max-lg` would leave 1024px itself right-aligned while stacked. */}
+        <div className="flex flex-col justify-center items-end text-right max-[1025px]:items-start max-[1025px]:text-left">
 
           {/* Heading */}
-          <h2 className="text-[#112931] text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] xl:max-w-[80%] max-lg:max-w-none">
+          <h2 className="text-[#112931] text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] xl:max-w-[80%] max-[1025px]:max-w-none">
             {service.whyUstitle}
           </h2>
 
@@ -343,6 +343,7 @@ export default function ServiceDetailTemplate({
           <PillList
             items={service.whyUsdescription.whyListItems}
             columns={2}
+            columnsFrom="desktop"
             tone="light"
             className="pt-6"
           />
@@ -367,18 +368,19 @@ export default function ServiceDetailTemplate({
         <div className="flex flex-col justify-center items-start text-left">
 
           {/* Heading */}
-          <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)] 2xl:max-w-[70%]">
+          <h2 className="text-white text-[clamp(30px,3.472vw_-_12.14px,54px)] leading-[clamp(38px,4.565vw_-_15.96px,71px)] tracking-tight mb-[clamp(20px,17.06px_+_0.785vw,32px)]">
             {service.ourEasiness.easyTitle}
           </h2>
 
           {/* Description Paragraph */}
           <div className="text-white/90 text-(length:--fs-body-xl) leading-(--lh-body-xl) mb-[clamp(32px,26.12px_+_1.569vw,56px)] w-full">
-            <p className="2xl:max-w-[70%]">{service.ourEasiness.easypara}</p>
+            <p>{service.ourEasiness.easypara}</p>
           
             {/* whyDescListItems */}
           <PillList
             items={service.ourEasiness.easyListItems}
             columns={2}
+            columnsFrom="desktop"
             tone="dark"
             className="pt-6"
           />
@@ -391,8 +393,10 @@ export default function ServiceDetailTemplate({
         </div>
 
         {/* Right Column:Image  */}
+        {/* Second column on desktop, but once the grid stacks the image leads,
+            matching the other image-and-text sections. */}
 
-        <div className="w-full">
+        <div className="w-full max-[1025px]:order-first">
           <img
             src={service.ourEasiness.easyImage || service.whyUsdescription.whyImage}
             alt="Owners reviewing plans on site"
@@ -435,8 +439,6 @@ export default function ServiceDetailTemplate({
         buttonText={service.ctaButtonText}
         buttonLink={service.ctaButtonLink}
       />
-
-      <Footer />
     </div>
   );
 }

@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import CTA from "@/components/CTA";
 import type { Review } from "@/components/review";
@@ -270,8 +268,6 @@ export default function ReviewsPageContent({
 
   return (
     <div className="app">
-      <Header />
-
       {/* ── Hero Section ── */}
       <section
         ref={heroRef}
@@ -348,8 +344,6 @@ export default function ReviewsPageContent({
         buttonText={cta.buttonText}
         buttonLink="/contact"
       />
-
-      <Footer />
     </div>
   );
 }

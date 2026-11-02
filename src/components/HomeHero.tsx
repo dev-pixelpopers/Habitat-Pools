@@ -47,7 +47,7 @@ export default function HomeHero({
       <div className="hero-intro-content relative z-10 flex items-end">
         {/* Below 1280 the three columns stack (heading, then copy); the
             decorative arrow only has room alongside them on wide screens. */}
-        <div className="flex flex-col items-start gap-6 xl:flex-row xl:items-center xl:gap-4 justify-center w-full">
+        <div className="flex flex-col items-start gap-6 xl:flex-row 2xl:items-center xl:gap-4 justify-center w-full">
           {/* First Column */}
           <div className="xl:w-[40%]">
             <h1 className="text-white text-[clamp(38px,5.143vw_-_17.97px,80px)] leading-[clamp(36px,4.893vw_-_17.11px,76.1px)] font-normal whitespace-pre-line">
